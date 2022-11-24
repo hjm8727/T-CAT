@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import NavBar from "./Tool/NavBar";
+import SearchBar from "./Tool/SearchBar";
+
 
 const MemberBlock=styled.div`
   margin:0 auto;
@@ -15,15 +18,14 @@ const MemberBlock=styled.div`
   }
 table,th,td {
   border: 1px solid black;
-  background-color: red;
 }
 `;
 
 const BlackList=()=>{
     return(
         <MemberBlock>
-        <input/> 
-        <button>검색</button>
+        <NavBar name="블랙리스트 관리"/>
+        <SearchBar/>
          <div className="container">
               <table>
                 <thead>

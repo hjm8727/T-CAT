@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import SearchBar from "./Chart/SearchBar";
+import SearchBar from "./Tool/SearchBar";
+import NavBar from "./Tool/NavBar";
 
 const MemberBlock=styled.div`
   margin:0 auto;
@@ -45,6 +46,7 @@ table,th,td {
 const MemberList=()=>{
     return(
         <MemberBlock>
+          <NavBar name="일반회원관리"/>
           <SearchBar/>
          <div className="container">
               <table>
