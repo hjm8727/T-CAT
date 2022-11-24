@@ -4,13 +4,14 @@ import TCalendar from './Section/Side/TCalendar'
 import Poster from './Section/Summary/Poster';
 import Info from './Section/Summary/Info';
 import DBody from './Section/Body/DBody';
+import MainHeader from '../MainHeader/MainHeader';
 const { Header, Content, Footer, Sider } = Layout;
 
 const Detail = () => (
   <div>
   <Layout>
-    <Header className="header" style={{backgroundColor: 'skyblue'}}>
-      메뉴가 오겠지
+    <Header className="header">
+      <MainHeader/>
     </Header>
     <Content style={{width: '70rem', marginLeft: '10rem ', marginRight: '15rem', padding: '0 50px'}}>
       <Layout className="site-layout-background" style={{padding: '24px 0'}}>
