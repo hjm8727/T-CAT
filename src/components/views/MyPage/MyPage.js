@@ -1,14 +1,9 @@
-import React, { useState } from 'react';
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu } from 'antd';
+import React from 'react';
+import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubOutlined} from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
-const { Header, Content, Footer, Sider } = Layout;
+
+const { Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
   return {
@@ -20,24 +15,27 @@ function getItem(label, key, icon, children) {
 }
 
 const items = [
-  getItem('예매 내역', '1'),
-  getItem('취소 내역', '2'),
-  getItem('문의 관련', 'sub1', <></>, [
+  getItem('예매 내역', '1', <ScheduleOutlined />),
+  getItem('취소 내역', '2', <DeleteOutlined />),
+  getItem('문의 관련', 'sub1', <WhatsAppOutlined />, [
     getItem('문의 하기', '3'),
     getItem('문의 조회', '4'),
   ]),
-  getItem('관리자와 채팅', 'sub2', <></>, [
+  getItem('관리자와 채팅', 'sub2', <GithubOutlined />, [
     getItem('정경수', '5'),
     getItem('김성탁', '6'),
   ])
 ];
+
 function MyPage() {
-  const [collapsed, setCollapsed] = useState(false);
+  // const [collapsed, setCollapsed] = useState(false);
+  // collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} 사이드 안에 있었
   return (
     <div>
     <MainHeader/>
+      <div style={{width: '70%', margin: '0 auto'}}>
     <Layout>
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider>
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
       </Sider>
@@ -51,15 +49,14 @@ function MyPage() {
             </div>
           </div>
         </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        <Footer></Footer>
       </Layout>
     </Layout>
+    <br/>
+      <div style={{border: '1px solid black', width: '100%', height: '350px'}}>
+        
+      </div>
+      </div>
     </div>
   );
 }
