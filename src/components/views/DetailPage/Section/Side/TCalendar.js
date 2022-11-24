@@ -9,7 +9,7 @@ function TCalendar () {
 
     return (
         <div>
-            <h3 className='text-center'> <span style={{visibility: 'hidden'}}>테</span>관람일</h3>
+            <h3 className='text-center'>관람일</h3>
             <div className='calendar-container'>
             <Calendar onChange={setDate} value={date} 
             formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}

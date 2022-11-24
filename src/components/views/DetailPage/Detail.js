@@ -17,7 +17,7 @@ const Detail = () => (
         <Content style={{width: '30rem', padding: '0 24px', minHeight: 280}}>
           <Poster/>
         </Content>
-        <hr style={{backgroundColor: 'silver'}} />
+        <hr style={{backgroundColor: 'black', width: '1rem'}} />
 
         <Content style={{width: '40rem'}}>
           <Info/>

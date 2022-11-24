@@ -23,6 +23,9 @@ const QnaStyle = styled.div `
     font-weight: bold;
     color: brown;
   }
+
+    position: absolute;
+
 `;
 
 function Qna() {
@@ -44,6 +47,7 @@ function Qna() {
         </div>
       </div>
     </QnaStyle>
+    
   )
 }
 

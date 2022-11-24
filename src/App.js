@@ -1,6 +1,6 @@
 import AdminPage from "./components/views/AdminPage/AdminPage";
 import MainPage from "./components/views/MainPage/MainPage";
-import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import Detail from "./components/views/DetailPage/Detail";
 import Login from "./components/views/LoginPage/";
 
@@ -13,10 +13,10 @@ function App() {
       <Route path='/' element={<MainPage/>}/>
       <Route path='/admin' element={<AdminPage/>}/>
     </Routes>
-    <AdminPage/>
-    {/* <Detail/> */}
+    {/* <AdminPage/>
+    <Detail/> */}
     <br/>
-    <Login />
+    {/* <Login /> */}
     </>
   );
 }
