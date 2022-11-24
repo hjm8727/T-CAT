@@ -17,13 +17,13 @@ const Detail = () => (
         <Content style={{width: '30rem', padding: '0 24px', minHeight: 280}}>
           <Poster/>
         </Content>
-        <hr style={{backgroundColor: 'silver', width: '3px'}} />
+        <hr style={{backgroundColor: 'silver'}} />
 
         <Content style={{width: '40rem'}}>
           <Info/>
         </Content>
 
-        <Sider className="site-layout-background" width={300} style={{backgroundColor: 'skyblue', overflow: 'auto', height: '30rem', position: 'fixed', right: '10rem', top: '5rem', bottom: '0'}} >
+        <Sider className="site-layout-background" width={300} style={{borderRadius: '1.2rem', backgroundColor: 'skyblue', overflow: 'auto', height: '30rem', position: 'fixed', right: '10rem', top: '5rem', bottom: '0'}} >
           <TCalendar/>
         </Sider>
 
