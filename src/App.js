@@ -2,6 +2,7 @@
 // import MainPage from "./components/views/MainPage/MainPage";
 // import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
 import Detail from "./components/views/DetailPage/Detail";
+import Login from "./components/views/LoginPage/Login";
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       <Route path='/admin' element={<AdminPage/>}/>
     </Routes>
     <AdminPage/> */}
-    <Detail/>
+    {/* <Detail/> */}
+    <Login />
     </>
   );
 }
