@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Calendar from 'react-calendar';
 import './calendar.css';
 import 'react-calendar/dist/Calendar.css';
+import { Link } from 'react-router-dom';
 
 
 function TCalendar () {
@@ -19,6 +20,7 @@ function TCalendar () {
             <span className='bold'>선택한 날짜:</span>{' '}
             {date.toDateString()}
             </p>
+            <Link to='/payready'>예매하기</Link>
         </div>
     );
 }
