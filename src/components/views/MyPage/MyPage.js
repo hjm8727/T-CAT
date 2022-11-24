@@ -14,6 +14,12 @@ function getItem(label, key, icon, children) {
   };
 }
 
+function xxx(items) {
+  if(items.key === '2') {
+    alert("dmfkdkdk");
+  } 
+};
+
 const items = [
   getItem('예매 내역', '1', <ScheduleOutlined />),
   getItem('취소 내역', '2', <DeleteOutlined />),
@@ -36,8 +42,8 @@ function MyPage() {
       <div style={{width: '70%', margin: '0 auto'}}>
     <Layout>
       <Sider>
-        <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        <div className="logo"/>
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={xxx} />
       </Sider>
       <Layout className="site-layout">
         <Content style={{margin: '0 16px' }}>
