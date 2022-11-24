@@ -98,7 +98,7 @@ const MainHeader = () =>{
 
         <Navbar expand="lg">
         <Container fluid>
-            <Navbar.Brand href="#" ><img className="Logo" src="/imges/TCat.jpg"></img></Navbar.Brand>
+            <Navbar.Brand href="#" ><img className="Logo" src="images/TCat.jpg"></img></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0"navbarScroll>
