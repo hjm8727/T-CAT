@@ -28,7 +28,7 @@ const Detail = () => (
         </Sider>
 
       </Layout>
-      <Content style={{width: '70rem'}}>
+      <Content style={{width: '70rem' }}>
           <DBody/>
       </Content>
     </Content>
