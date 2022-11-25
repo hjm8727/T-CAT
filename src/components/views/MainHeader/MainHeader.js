@@ -95,7 +95,6 @@ const MainHeader = () =>{
 
     return(
     <HeaderContainer>
-
         <Navbar expand="lg">
         <Container fluid>
             {/* 어드민용으로 잠시만 쓸게요 */}
