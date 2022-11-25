@@ -59,7 +59,7 @@ function AdminPage() {
 function Header() {
   return(
     <HeaderBlock>
-      <div className='logoContainer'><img className="Logo" src="/imges/TCat.jpg"></img></div>
+      <div className='logoContainer'><img className="Logo" src="/imges/TCat.jpg" alt=''></img></div>
     </HeaderBlock>
     // <HeaderBlock/>
   );

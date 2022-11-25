@@ -2,8 +2,19 @@ import React from 'react';
 import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubOutlined} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import AdminHome from '../AdminPage/AdminHome';
 
-const { Content, Footer, Sider } = Layout;
+// function xxx(items) {
+//   if(items.key === '2') {
+//     alert("dmfkdkdk");
+//   } 
+// };
+
+
+
+function MyPage() {
+  const { Content, Footer, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
   return {
@@ -14,14 +25,9 @@ function getItem(label, key, icon, children) {
   };
 }
 
-function xxx(items) {
-  if(items.key === '2') {
-    alert("dmfkdkdk");
-  } 
-};
 
 const items = [
-  getItem('예매 내역', '1', <ScheduleOutlined />),
+  getItem('예매 내역', '/admin/home', <ScheduleOutlined />),
   getItem('취소 내역', '2', <DeleteOutlined />),
   getItem('문의 관련', 'sub1', <WhatsAppOutlined />, [
     getItem('문의 하기', '3'),
@@ -32,10 +38,10 @@ const items = [
     getItem('김성탁', '6'),
   ])
 ];
-
-function MyPage() {
+  const navigate = useNavigate();
   // const [collapsed, setCollapsed] = useState(false);
   // collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} 사이드 안에 있었
+  
   return (
     <div>
     <MainHeader/>
@@ -43,7 +49,8 @@ function MyPage() {
     <Layout>
       <Sider>
         <div className="logo"/>
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={xxx} />
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={({key})=>{navigate(key);}}
+        />
       </Sider>
       <Layout className="site-layout">
         <Content style={{margin: '0 16px' }}>
@@ -60,10 +67,21 @@ function MyPage() {
     </Layout>
     <br/>
       <div style={{border: '1px solid black', width: '100%', height: '350px'}}>
-        
+        <MyBody/>
       </div>
       </div>
     </div>
+  );
+}
+
+function MyBody() {
+  return(
+    <>
+    <Routes>
+      {/* <Route path='/admin/home' element={<AdminHome/>}/> */}
+
+    </Routes>
+    </>
   );
 }
 
