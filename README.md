@@ -1,3 +1,9 @@
+파이어베이스 설치(이미지 업로드용/AdminPage/Tool 폴더 안에 firebase.js)
+
+## npm install firebase
+
+## yarn add firebase uuid 
+
 Styled-Components
 
 # yarn add styled-components

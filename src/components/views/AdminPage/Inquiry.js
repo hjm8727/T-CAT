@@ -1,8 +1,10 @@
-import NavBar from "./Tool/NavBar";
 import styled from "styled-components";
+import NavBar from "./Tool/NavBar";
 
-const NoticeBlock=styled.div`
-.container {
+const InquiryBlock=styled.div`
+margin:0 auto;
+  box-sizing: border-box;
+  .container {
     margin : 10px;
     display: flex;
     border: 1px solid black;
@@ -15,31 +17,34 @@ const NoticeBlock=styled.div`
 table,th,td {
   border: 1px solid black;
 }
-
 `;
-const Notice=()=>{
+
+const Inquiry=()=>{
     return(
-        <NoticeBlock>
-        <NavBar name="알림 관리"/>
+        <InquiryBlock>
+        <NavBar name="큐앤에이 관리"/>
          <div className="container">
-         <table>
+              <table>
                 <thead>
                   <tr>
                     <th>번호</th>
-                    <th>공지 제목</th>
-                    <th>글 쓴 시간</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                <tr>
                     <td>1</td>
-                    <td>공지사항 페이지를..글쓰기까지 만들어야 할거같음</td>
-                    <td>11/25</td>
+                    <td>환불해주세요 제발요</td>
+                    <td>rin777</td>
+                    <td>2022.11.23</td>
                 </tr>
                 </tbody>
-            </table>
+              </table> 
             </div>
-         </NoticeBlock>
+        </InquiryBlock>
     );
+
 }
-export default Notice;
+export default Inquiry;

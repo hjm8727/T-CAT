@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import Notice from './Notice';
 import PostManagement from './PostManagement';
 import Banner from './Banner';
+import Inquiry from './Inquiry';
 
 const AdminBlock=styled.div`
   .top {
@@ -26,11 +27,20 @@ const AdminBlock=styled.div`
 `;
 const HeaderBlock=styled.div`
   height: 65px;
-  background-color: lightblue;
+  background-color: #E3CAA5;
   color: black;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
+  .logoContainer{
+    float: left;
+  }
+  .Logo{
+        width   :150px;
+        height: 50px;
+        margin: 3px 15px;
+        padding: 0px;
+    }
 `;
 function AdminPage() {
   return (
@@ -48,7 +58,10 @@ function AdminPage() {
 }
 function Header() {
   return(
-    <HeaderBlock/>
+    <HeaderBlock>
+      <div className='logoContainer'><img className="Logo" src="/imges/TCat.jpg"></img></div>
+    </HeaderBlock>
+    // <HeaderBlock/>
   );
 }
 function Footer() {
@@ -77,6 +90,7 @@ function SideMenu() {
         {label:"게시물관리", key:"/admin/enroll", icon:<LayoutOutlined />},
         {label:"광고관리", key:"/admin/ad", icon:<BulbOutlined />},
         {label:"공지사항 관리", key:"/admin/notice", icon:<SolutionOutlined/>},
+        {label:"1대1 문의", key:"/admin/inquiry", icon:<SolutionOutlined/>},
         {label:"로그아웃", key:'로그아웃', icon:<PoweroffOutlined/>,danger:true},
     ]}>
       </Menu>
@@ -92,6 +106,7 @@ function Content() {
       <Route path='/admin/enroll' element={<PostManagement/>}/>
       <Route path='/admin/ad' element={<Banner/>}/>
       <Route path='/admin/notice' element={<Notice/>}/>
+      <Route path='/admin/inquiry' element={<Inquiry/>}/>
     </Routes>
     </>
   );
