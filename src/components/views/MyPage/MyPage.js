@@ -20,7 +20,6 @@ function getItem(label, key, icon, children) {
   };
 }
 
-
 const items = [
   getItem('예매 내역', '/MyPage/RList', <ScheduleOutlined />),
   getItem('취소 내역', '/MyPage/CList', <DeleteOutlined />),

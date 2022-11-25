@@ -6,9 +6,9 @@
   --space-m: var(--space-root);
   --space-l: calc(var(--space-root) * 1.5);
   --space-xl: calc(var(--space-root) * 2);
-  --color-primary: gold;
-  --color-secondary: black;
-  --color-tertiary: skyblue;
+  --color-primary: blue;
+  --color-secondary: red;
+  --color-tertiary: burlywood; 
   --base-border-radius: 0.25rem;
   --ease: cubic-bezier(0.075, 0.82, 0.165, 1);
   --duration: 350ms;
