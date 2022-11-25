@@ -98,7 +98,7 @@ const MainHeader = () =>{
         <Navbar expand="lg">
         <Container fluid>
             {/* 어드민용으로 잠시만 쓸게요 */}
-            <Navbar.Brand href="/admin" ><img className="Logo" src="images/TCat.jpg" alt=""></img></Navbar.Brand>
+            <Navbar.Brand href="/KakaoPay" ><img className="Logo" src="images/TCat.jpg" alt=""></img></Navbar.Brand>
             {/* 마이페이지용으로도... 미안... */}
             {/* <Navbar.Brand href="/Mypage" ><img className="Logo" src="images/TCat.jpg" alt=""></img></Navbar.Brand> */}
             <Navbar.Toggle aria-controls="navbarScroll" />
