@@ -19,15 +19,17 @@ function App() {
       <Route path='/MyPage/*' element={<MyPage/>}/>
     </Routes> */}
 
-    {/* <Routes>
-      <Route path="/" element={<Detail />} />
-      <Route path="/payready" element={<PayReady />} />
-    </Routes> */}
+    <Routes>
+      {/* <Route path="/" element={<Detail />} /> */}
+      <Route path="/" element={<PayReady />} />
+      <Route path="/payresult" element={<PayResult />} />
+      <Route path="/paycancel" element={<PayCancel />} />
+    </Routes>
 
     {/* <Detail/> */}
     {/* <Login /> */}
     <br/>
-    <Sign/>
+    {/* <Sign/> */}
     </>
   );
 }

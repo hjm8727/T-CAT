@@ -9,7 +9,7 @@ const PayCancel = () => {
         params: {
             cid: "TC0ONETIME",
             tid: window.localStorage.getItem("tid"),
-            cancel_amount: "300000",
+            cancel_amount: "100000",
             cancel_tax_free_amount:"20000",
         }
     });
@@ -18,7 +18,7 @@ const PayCancel = () => {
         const { params } = data;
 
         axios({
-            url: "/v1/payment/cancel",
+            url: "https://kapi.kakao.com/v1/payment/cancel",
             method: "POST",
             headers: {
                 Authorization: "KakaoAK d853cf82728147a7a985cfeb193f4b8d",

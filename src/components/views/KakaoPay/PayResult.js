@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 
 const PayResult = props => {
-    const [data, setData] = useState({
+    
+    let search = window.location.search;
+    const [state, setState] = useState({
         params: {
             cid: "TC0ONETIME",
             tid : window.localStorage.getItem("tid"),
@@ -10,23 +12,15 @@ const PayResult = props => {
             // 가맹점 회원 id
             partner_user_id: "partner_user_id",
             // 결제승인 요청을 인정하는 토큰
-            pg_token: "",
+            pg_token: search.split("=")[1],
         }
     });
-    let { params } = data;
-    let {
-        location: { search }
-    } = props;
-
-    // URl에 붙어서 온 pg_toket을 결제 API에 줄 params에 할당
-    params.pg_token = search.split("=")[1];
-    console.log(params.pg_token);
     
     useEffect(() => {
-        const { params } = data;
+        const { params } = state;
 
         axios({
-            url: "/v1/payment/approve",
+            url: "https://kapi.kakao.com/v1/payment/approve",
             method: "POST",
             headers: {
                 Authorization: "KakaoAK d853cf82728147a7a985cfeb193f4b8d",
