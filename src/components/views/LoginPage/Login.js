@@ -197,7 +197,7 @@ function Login() {
                       </svg></span><input type="password" id="login-password" data-lpignore="true" />
           </div>
           </div>
-          <div className="btn-group"><button className="btn btn--primary">Sign in</button><a className="btn--text" href="#0">Forgot password?</a></div>
+          <div className="btn-group"><button className="btn btn--primary">LOGIN</button><a className="btn--text" href="#0">Forgot password?</a></div>
           <div className='btn-group' style={{width: '369.1px'}}><button className='btn btn--primary'>KAKAO Login</button></div>
           </div>
       </form>

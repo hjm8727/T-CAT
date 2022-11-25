@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubOutlined} from '@ant-design/icons';
+import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
 import { Route, Routes, useNavigate } from 'react-router-dom';
@@ -28,7 +28,7 @@ const items = [
     getItem('문의 하기', '/MyPage/Contact'),
     getItem('문의 조회', '/MyPage/IqList'),
   ]),
-  getItem('관리자와 채팅', 'sub2', <GithubOutlined />, [
+  getItem('관리자와 채팅', 'sub2', <GithubFilled />, [
     getItem('정경수', '5'),
     getItem('김성탁', '6'),
   ])
@@ -52,7 +52,7 @@ const items = [
           <div className="site-layout-background">
             <div className='userInfo' style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
               {/* <div className='userIcon'style={{width: '25%', height: '40%', border: '1px solid black', borderRadius: '50%', margin: '2rem' }}> */}
-              <GithubOutlined style={{width: '25%', height: '40%',margin: '2rem', fontSize: '8rem' }}/>
+              <GithubFilled style={{width: '25%', height: '40%',margin: '2rem', fontSize: '7.5rem' }}/>
               {/* </div> */}
             </div>
           </div>
