@@ -8,12 +8,6 @@ import CList from './section/CList';
 import Contact from './section/Iquiry/Contact';
 import IqList from './section/Iquiry/IqList';
 
-// function xxx(items) {
-//   if(items.key === '2') {
-//     alert("dmfkdkdk");
-//   } 
-// };
-
 function MyPage() {
   const { Content, Footer, Sider } = Layout;
 
@@ -57,9 +51,9 @@ const items = [
         <Content style={{margin: '0 16px' }}>
           <div className="site-layout-background">
             <div className='userInfo' style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
-              <div className='userIcon'style={{width: '25%', height: '40%', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} >
-
-              </div>
+              {/* <div className='userIcon'style={{width: '25%', height: '40%', border: '1px solid black', borderRadius: '50%', margin: '2rem' }}> */}
+              <GithubOutlined style={{width: '25%', height: '40%',margin: '2rem', fontSize: '8rem' }}/>
+              {/* </div> */}
             </div>
           </div>
         </Content>
