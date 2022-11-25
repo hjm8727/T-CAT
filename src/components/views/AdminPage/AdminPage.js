@@ -1,5 +1,5 @@
 import React, { Children } from 'react'
-import {BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
+import {Routes, Route, useNavigate} from "react-router-dom";
 import {Menu} from 'antd';
 // import "antd/dist/antd.min.css";
 import {HomeOutlined, PoweroffOutlined,UserOutlined,SolutionOutlined,LayoutOutlined,BulbOutlined} from "@ant-design/icons/lib/icons";
@@ -100,13 +100,13 @@ function Content() {
   return(
     <>
     <Routes>
-      <Route path='/admin/home' element={<AdminHome/>}/>
-      <Route path='/admin/normal' element={<MemberList/>}/>
-      <Route path='/admin/black' element={<BlackList/>}/>
-      <Route path='/admin/enroll' element={<PostManagement/>}/>
-      <Route path='/admin/ad' element={<Banner/>}/>
-      <Route path='/admin/notice' element={<Notice/>}/>
-      <Route path='/admin/inquiry' element={<Inquiry/>}/>
+      <Route path='/home' element={<AdminHome/>}/>
+      <Route path='/normal' element={<MemberList/>}/>
+      <Route path='/black' element={<BlackList/>}/>
+      <Route path='/enroll' element={<PostManagement/>}/>
+      <Route path='/ad' element={<Banner/>}/>
+      <Route path='/notice' element={<Notice/>}/>
+      <Route path='/inquiry' element={<Inquiry/>}/>
     </Routes>
     </>
   );

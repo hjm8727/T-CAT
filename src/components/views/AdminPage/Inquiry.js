@@ -23,7 +23,7 @@ const Inquiry=()=>{
     return(
         <InquiryBlock>
         <NavBar name="큐앤에이 관리"/>
-         <div className="container">
+          <div className="container">
               <table>
                 <thead>
                   <tr>

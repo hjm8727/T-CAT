@@ -38,8 +38,8 @@ const PayReady = () => {
             headers: {
                 Authorization: "KakaoAK d853cf82728147a7a985cfeb193f4b8d",
                 "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-              },
-              params,
+                },
+                params,
         }).then(response => {
             const {
                 data: { next_redirect_pc_url, tid },
@@ -54,12 +54,12 @@ const PayReady = () => {
     })
     const { next_redirect_pc_url } = data;
 
-    return(
+    return (
             <div className="container">
                 <h2 className="head-line">카카오페이 결제하기</h2>
                 <a href={ next_redirect_pc_url }><img className="kakao" src="images/test.png" alt="카카오페이" /></a>
             </div>
-      )
+        )
 }
 
 export default PayReady;

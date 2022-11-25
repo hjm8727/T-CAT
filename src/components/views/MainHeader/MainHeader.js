@@ -98,7 +98,8 @@ const MainHeader = () =>{
 
         <Navbar expand="lg">
         <Container fluid>
-            <Navbar.Brand href="#" ><img className="Logo" src="images/TCat.jpg"></img></Navbar.Brand>
+            {/* 어드민용으로 잠시만 쓸게요 */}
+            <Navbar.Brand href="/admin" ><img className="Logo" src="images/TCat.jpg" alt=""></img></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0"navbarScroll>

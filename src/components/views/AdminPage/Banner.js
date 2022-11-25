@@ -84,7 +84,7 @@ const Banner=()=>{
         </table>
         <h3>이미지 미리보기</h3>
         <div className="preview">
-        {imageList.map((url)=>{return <img src={url}/>;})}
+        {imageList.map((url)=>{return <img src={url} alt=''/>;})}
         </div>
         </BannerBlock>
     );

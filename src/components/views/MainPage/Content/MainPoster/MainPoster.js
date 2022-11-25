@@ -8,7 +8,7 @@ const PosterContainer = styled.div`
     margin: 0 10px ;
     display: inline-block;
     /* border: solid 1px black; */
-    a{
+    a {
         float: right;
         text-decoration:none;
         color: #1a1a1a;
@@ -17,7 +17,7 @@ const PosterContainer = styled.div`
     @media (max-width : 1441px){
         width: 100%;
         min-width: 0px;
-        a{
+        a {
             font-size: 0.5em;
         }
     }
