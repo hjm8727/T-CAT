@@ -8,15 +8,16 @@ import PayReady from "./components/views/KakaoPay/PayReady";
 import PayResult from "./components/views/KakaoPay/PayResult";
 import PaySelect from "./components/views/KakaoPay/PaySelect";
 import PayCancel from "./components/views/KakaoPay/PayCancel";
+import Sign from "./components/views/SignPage/Sign";
 
 function App() {
   return (
     <>
-    <Routes>
+    {/* <Routes>
       <Route path='/' element={<MainPage/>}/>
       <Route path='/admin/*' element={<AdminPage/>}/>
       <Route path='/MyPage/*' element={<MyPage/>}/>
-    </Routes>
+    </Routes> */}
 
     {/* <Routes>
       <Route path="/" element={<Detail />} />
@@ -25,6 +26,8 @@ function App() {
 
     {/* <Detail/> */}
     {/* <Login /> */}
+    <br/>
+    <Sign/>
     </>
   );
 }
