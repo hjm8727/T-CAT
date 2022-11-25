@@ -2,15 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 
 const InfoStyle = styled.div`
+    div {
+        margin-top: 4rem;
+    }
+    .infoDesc {
+        margin: 0;
+        margin-left: 1.5rem;
+    }
+    .price {
+        color: #ED4037;
+        margin-left: 1.5rem;
+    }
+    .priceA {
+        color: #ED4037;
+        margin-left: 2.25rem;
+    }
+    .hr {
+        border-bottom: 1px solid black;
+        width: 20rem;
+        margin: 0;
+        margin-right: 15rem;
+        margin:1.5rem 0;
+    }
 `;
 
 function Info() {
     return (
         <InfoStyle>
-    <div>
-        <br />
-        <br />
-        <br />
+        <div>
     <ul class="info" style={{listStyle: 'none'}}>
         <li class="infoItem">
             <strong class="infoLabel">장소</strong>
@@ -44,9 +63,10 @@ function Info() {
             </span>
         </li>
         <p />
-        
-        <hr style={{backgroundColor: 'black', width: '35rem'}} />
+        <div className='hr'>
 
+        </div>
+        
         <li class="infoItem infoPrice">
             <strong class="infoLabel">가격</strong>
         <div class="infoDesc">
@@ -63,15 +83,15 @@ function Info() {
                 </li> <p />
                 <li class="infoPriceItem">
                     <span class="name">R석</span>
-                    <span class="price">130,000원</span>
+                    <span class="priceA">130,000원</span>
                 </li> <p />
                 <li class="infoPriceItem">
                     <span class="name">S석</span>
-                    <span class="price">100,000원</span>
+                    <span class="priceA">100,000원</span>
                 </li> <p />
                 <li class="infoPriceItem">
                     <span class="name">A석</span>
-                    <span class="price">70,000원</span>
+                    <span class="priceA">70,000원</span>
                 </li> <p />
             </ul>
         </div>
