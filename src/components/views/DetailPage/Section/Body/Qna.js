@@ -28,6 +28,7 @@ const QnaStyle = styled.div `
 
 `;
 
+// Q & A
 function Qna() {
   return (
     <QnaStyle>
@@ -49,6 +50,6 @@ function Qna() {
     </QnaStyle>
     
   )
-}
+};
 
 export default Qna;

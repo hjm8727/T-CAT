@@ -3,15 +3,16 @@ import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubOutlined} fro
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import AdminHome from '../AdminPage/AdminHome';
+import RList from './section/RList';
+import CList from './section/CList';
+import Contact from './section/Iquiry/Contact';
+import IqList from './section/Iquiry/IqList';
 
 // function xxx(items) {
 //   if(items.key === '2') {
 //     alert("dmfkdkdk");
 //   } 
 // };
-
-
 
 function MyPage() {
   const { Content, Footer, Sider } = Layout;
@@ -27,11 +28,11 @@ function getItem(label, key, icon, children) {
 
 
 const items = [
-  getItem('예매 내역', '/admin/home', <ScheduleOutlined />),
-  getItem('취소 내역', '2', <DeleteOutlined />),
+  getItem('예매 내역', '/MyPage/RList', <ScheduleOutlined />),
+  getItem('취소 내역', '/MyPage/CList', <DeleteOutlined />),
   getItem('문의 관련', 'sub1', <WhatsAppOutlined />, [
-    getItem('문의 하기', '3'),
-    getItem('문의 조회', '4'),
+    getItem('문의 하기', '/MyPage/Contact'),
+    getItem('문의 조회', '/MyPage/IqList'),
   ]),
   getItem('관리자와 채팅', 'sub2', <GithubOutlined />, [
     getItem('정경수', '5'),
@@ -56,7 +57,7 @@ const items = [
         <Content style={{margin: '0 16px' }}>
           <div className="site-layout-background">
             <div className='userInfo' style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
-              <div className='userIcon'style={{width: '170px', height: '170px', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} >
+              <div className='userIcon'style={{width: '25%', height: '40%', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} >
 
               </div>
             </div>
@@ -74,16 +75,15 @@ const items = [
   );
 }
 
-function MyBody() {
-  return(
+const MyBody = () => (
     <>
     <Routes>
-      {/* <Route path='/admin/home' element={<AdminHome/>}/> */}
-
+      <Route path='/RList' element={<RList/>}/>
+      <Route path='/CList' element={<CList/>}/>
+      <Route path='/Contact' element={<Contact/>}/>
+      <Route path='/IqLIst' element={<IqList/>}/>
     </Routes>
     </>
-  );
-}
-
+);
 
 export default MyPage;
