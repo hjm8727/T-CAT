@@ -1,24 +1,26 @@
 import {Routes, Route} from "react-router-dom";
-import MainPage from "./components/views/MainPage/MainPage";
-import AdminPage from "./components/views/AdminPage/AdminPage";
-import MyPage from "./components/views/MyPage/MyPage";
-import Detail from "./components/views/DetailPage/Detail";
+// import MainPage from "./components/views/MainPage/MainPage";
+// import AdminPage from "./components/views/AdminPage/AdminPage";
+// import MyPage from "./components/views/MyPage/MyPage";
+// import Detail from "./components/views/DetailPage/Detail";
+// import KakaoPay from "./components/views/KakaoPay/KakaoPay";
+// import PayReady from "./components/views/KakaoPay/PayReady";
+// import PayResult from "./components/views/KakaoPay/PayResult";
+// import PaySelect from "./components/views/KakaoPay/PaySelect";
+// import PayCancel from "./components/views/KakaoPay/PayCancel";
 import Login from "./components/views/LoginPage/";
-import PayReady from "./components/views/KakaoPay/PayReady";
-import PayResult from "./components/views/KakaoPay/PayResult";
-import PaySelect from "./components/views/KakaoPay/PaySelect";
-import PayCancel from "./components/views/KakaoPay/PayCancel";
 import Sign from "./components/views/SignPage/Sign";
-import KakaoPay from "./components/views/KakaoPay/KakaoPay";
 
 function App() {
   return (
     <>
     <Routes>
-      <Route path='/' element={<MainPage/>}/>
+      {/* <Route path='/' element={<MainPage/>}/>
       <Route path='/admin/*' element={<AdminPage/>}/>
       <Route path='/MyPage/*' element={<MyPage/>}/>
-      <Route path='/*' element={<PayReady/>}/>
+      <Route path='/*' element={<PayReady/>}/> */}
+      <Route path='/' element={<Login />} />
+      <Route path='/Sign' element={<Sign />} />
     </Routes>
 
     {/* <Routes>
@@ -30,7 +32,6 @@ function App() {
 
     {/* <Detail/> */}
     {/* <Login /> */}
-    <br/>
     {/* <Sign/> */}
     </>
   );
