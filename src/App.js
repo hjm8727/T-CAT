@@ -22,6 +22,7 @@ function App() {
       <Route path='/*' element={<PayReady/>}/> */}
       <Route path='/' element={<Login />} />
       <Route path='/sign' element={<Sign />} />
+      {/* 카카오 주소 api 쓰는 것. 테스트 */}
       <Route path='/test' element={<Test />} />
     </Routes>
 

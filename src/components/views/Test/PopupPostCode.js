@@ -16,12 +16,23 @@ const PopupPostCode = (props) => {
           }
           fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
         }
-        console.log(data)
-        console.log(fullAddress)
-        console.log(data.zonecode)
-        props.onClose()
+        console.log(data);
+        // 주소
+        console.log(fullAddress);
+        // 우편번호
+        console.log(data.zonecode);
+        // 도
+        console.log(data.sido);
+        // 군 시
+        console.log(data.sigungu);
+        // 동
+        console.log(data.bname);
+        // 도로명 주소
+        console.log(data.roadAddress);
+        // 팝업 닫기
+        props.onClose();
     }
- 
+
     const postCodeStyle = {
         display: "block",
         position: "absolute",
@@ -37,7 +48,7 @@ const PopupPostCode = (props) => {
              {/* 닫기 버튼 생성 */}
             <button type='button' onClick={() => {props.onClose()}} className='postCode_btn'>닫기</button>
         </div>
-    )
+    );
 }
- 
+
 export default PopupPostCode;

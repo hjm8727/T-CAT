@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PopupDom from '../Test/PopupDom';
+import PopupPostCode from '../Test/PopupPostCode';
 import './Sign.css';
 
 const SignWrap = styled.div`
@@ -226,6 +228,13 @@ function Sign() {
   const [isEmail, setIsEmail] = useState(false);
   const [submit, setSubmit] = useState(false);
 
+  // 카카오주소 api 입력
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openPostCode = () => setIsOpen(true);
+
+  const closePostCode = () => setIsOpen(false);
+
   const onChangeId = e => {
     const value = e.target.value;
     setInputId(value);
@@ -320,6 +329,15 @@ function Sign() {
               <path d="M455.466,49.6h-409.6C20.267,49.6,0,69.867,0,95.466v310.4c0,25.6,20.267,45.867,45.867,45.867h409.6 c25.6,0,45.867-21.333,45.867-45.867v-310.4C501.333,69.867,481.066,49.6,455.466,49.6z M430.933,91.2L250.666,252.267 L71.466,91.2H430.933z M459.733,405.867c0,2.133-2.133,4.267-4.266,4.267h-409.6c-2.133,0-4.267-2.133-4.267-4.267V122.133 L236.8,296c4.267,3.2,8.533,5.333,13.867,5.333c5.333,0,9.6-2.133,13.867-5.333l195.2-173.867V405.867z"/>
               </svg></span><input type="email" id="email" value={inputEmail} onChange={onChangeEmail} data-lpignore="true" />
           </div>
+          </div>
+          <div className="btn-group"><button className="btn btn--primary" onClick={openPostCode}>Address</button></div>
+          {/* 모달이 사라지는 이유라.... */}
+          <div id='popupDom'>
+                {isOpen && (
+                    <PopupDom>
+                        <PopupPostCode onClose={closePostCode} />
+                    </PopupDom>
+                )}
           </div>
           <div className="btn-group"><button className="btn btn--primary" disabled={submit} onClick={onClickSign}>Sign in</button><a className="btn--text" href="#0">Forgot password?</a></div>
           </div>
