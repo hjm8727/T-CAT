@@ -1,4 +1,6 @@
 import {Routes, Route} from "react-router-dom";
+import FindId from "./components/views/FindIdPage/FindId";
+import FindPwd from "./components/views/FindPwdPage/FindPwd";
 // import MainPage from "./components/views/MainPage/MainPage";
 // import AdminPage from "./components/views/AdminPage/AdminPage";
 // import MyPage from "./components/views/MyPage/MyPage";
@@ -24,6 +26,8 @@ function App() {
       <Route path='/sign' element={<Sign />} />
       {/* 카카오 주소 api 쓰는 것. 테스트 */}
       <Route path='/test' element={<Test />} />
+      <Route path='/findid' element={<FindId />} />
+      <Route path='/findpwd' element={<FindPwd />} />
     </Routes>
 
     {/* <Routes>
