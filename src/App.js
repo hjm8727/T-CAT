@@ -10,6 +10,7 @@ import {Routes, Route} from "react-router-dom";
 // import PayCancel from "./components/views/KakaoPay/PayCancel";
 import Login from "./components/views/LoginPage/";
 import Sign from "./components/views/SignPage/Sign";
+import Test from "./components/views/Test/Test";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
       <Route path='/MyPage/*' element={<MyPage/>}/>
       <Route path='/*' element={<PayReady/>}/> */}
       <Route path='/' element={<Login />} />
-      <Route path='/Sign' element={<Sign />} />
+      <Route path='/sign' element={<Sign />} />
+      <Route path='/test' element={<Test />} />
     </Routes>
 
     {/* <Routes>

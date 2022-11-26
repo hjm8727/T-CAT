@@ -7,7 +7,7 @@ const SignWrap = styled.div`
   display: grid;
   place-items: center;
   margin: 0;
-  height: 100vh;
+  height: 135vh;
   padding: var(--space-m);
   font-size: var(--font-size);
   font-family: var(--font-family);
