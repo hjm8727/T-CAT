@@ -41,20 +41,151 @@ const Styleside = styled.div`
     }
 `;
 
+const HeaderContainer = styled.div`
+    h1{
+        margin: 0;
+        padding: 0;
+    }
+    .HederDiv{
+        display: flex;
+        justify-content: space-between;        
+        margin: 0 auto;
+    }
+    li{
+        display: flex;
+        justify-content: center;
+        /* float: left; */
+        list-style: none;
+        width: 150px;
+        font-size: 18px;
+    }
+`
 const Header = () => {
     return(
-        <div>
-            <h1>헤더</h1>
-        </div>
+        <HeaderContainer>
+            <h2>T-Cat 예매</h2>
+            <div className='HederDiv'>
+                <li>01 좌석선택</li>
+                <li>02 가격/할인선택</li>
+                <li>03 결제하기</li>
+            </div>            
+        </HeaderContainer>
     )
 }
 
+const BodyContainer = styled.div`
+    table ,tr {
+        border: 1px solid black;
+    }
+    td{
+        width: 200px;
+        border-left: 1px solid silver;
+    }
+    th{
+        width: 100px;
+    }
+    .BorderBottom{
+        border-bottom: 1px solid silver;
+    }
+    .BorderBottom2{
+        display: flex;
+        justify-content: center;
+    }
+    .BuyOption{
+        opacity: 60%;
+    }
+    
+`
 const Body = () => {
     return(
+        <BodyContainer>
         <div>
-            <h1>바디입니따</h1>
+            <h2>가격</h2>
+            <table>
+                <tr>
+                <th className='BorderBottom'>기본가</th>
+                <td className='BorderBottom'>일반</td>
+                <td className='BorderBottom'>35.000</td>
+                <td className='BorderBottom2'>
+                    <select >
+                        <option>0매</option>
+                        <option>1매</option>
+                    </select>
+                </td>
+                </tr>
+                <tr>
+                <th rowSpan={3}>기본 할인</th>
+                <td>학생 할인</td>
+                <td>35.000</td>
+                <td><select>
+                        <option>0매</option>
+                        <option>1매</option>
+                    </select>
+                </td>
+                </tr>
+                <tr>
+                <td>더블 할인</td>
+                <td>35.000</td>
+                <td><select>
+                        <option>0매</option>
+                        <option>1매</option>
+                    </select>
+                </td>
+                </tr>
+                <tr>
+                <td>신규오픈 할인</td>
+                <td>35.000</td>
+                <td><select>
+                        <option>0매</option>
+                        <option>1매</option>
+                    </select>
+                </td>
+                </tr>
+            </table>
         </div>
-
+        <div className='BuyOption'>
+            <li>장애인, 국가유공자 할인가격 예매 시 현장수령만 가능하며 증빙된서류 미지참시 할인 불가능합니다.</li>
+            <li>관람일 전일 아래시간까지만 취소 가능하며 당일 관람 상품 예매 시에는 취소 불가능 합니다.</li>
+            <p> - 공연전일 평일/일요일/공휴일 오후 5시, 토요일 오전 11시단,토요일 공휴일인 경우는 오전 11시</p>
+            <p> - 당일관람 상품예매시는 취소불가능합니다.</p>
+            <p> - 취소수수료와 취소가능일자는 상품별로 다르니, 오른쪽 하단 My예매정보를 확인해주시기 바랍니다.</p>
+            <li>동일 상품에 대해서 회차, 좌석 가격, 결제 등 일부 변경을 원하시는 경우, 기존 예매 건을 취소하시고 재예매 하셔야 합니다.
+            단, 취소 시점에 따라 예매수수료가 환불 되지 않으며, 취소 수수료가 부과될 수 있습니다.</li>
+        </div>
+        <div>
+        <h2>My예매정보</h2>
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <td>뮤지컬</td>
+                    <th>일시</th>
+                    <td>2022년 11월 30일(수) 20:00</td>
+                </tr>
+                <tr>
+                    <th>선택좌석</th>
+                    <td>현좌석</td>
+                    <th>티켓금액</th>
+                    <td>3500</td>
+                </tr>
+                <tr>
+                    <th>비과세</th>
+                    <td>1000</td>
+                    <th>사용가능 포인트</th>
+                    <td>230</td>
+                </tr>
+                <tr>
+                    <th>취소기한</th>
+                    <td>오늘</td>
+                    <th>취소 수수료</th>
+                    <td>티켓금액의 0~30%</td>
+                </tr>
+                <tr>
+                    <th>총 결제금액</th>
+                    <td>1000000</td>
+                </tr>
+            </table>
+        </div>
+        </BodyContainer>
     );
 }
 
