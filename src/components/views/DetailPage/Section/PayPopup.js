@@ -88,13 +88,8 @@ const ModalStyle = styled.div`
 `;
 
 function PayPopup (props) {
-<<<<<<< HEAD
-    // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-    const { open, close, header } = props;
-=======
       // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header, body } = props;
->>>>>>> d0ce5bf78a4be41bee13fcfe8bd0ae8dbbeba624
 
     return (
     // 모달이 열릴때 openModal 클래스가 생성된다.

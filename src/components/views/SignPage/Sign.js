@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PopupDom from '../Test/PopupDom';
-import PopupPostCode from '../Test/PopupPostCode';
+import PopupPostCode from '../KakaoAdress/PopupPostCode';
+import PopupDom from '../KakaoAdress/PopupDom';
 import './Sign.css';
 
 const SignWrap = styled.div`
