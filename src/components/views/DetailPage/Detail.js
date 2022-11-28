@@ -5,6 +5,7 @@ import Poster from './Section/Summary/Poster';
 import Info from './Section/Summary/Info';
 import DBody from './Section/Body/DBody';
 import MainHeader from '../MainHeader/MainHeader';
+import { Link } from 'react-router-dom';
 const { Content, Footer, Sider } = Layout;
 
 // 상세페이지
@@ -25,7 +26,7 @@ function Detail() {
               <Info/>
             </Content>
 
-            <Sider className="site-layout-background" width={300} style={{borderRadius: '1.2rem', backgroundColor: '#872600', overflow: 'auto', height: '30rem', position: 'fixed', right: '10rem', top: '6.5rem', bottom: '0'}} >
+            <Sider className="site-layout-background" width={300} style={{borderRadius: '1.2rem', backgroundColor: 'silver', overflow: 'auto', height: '35rem', position: 'fixed', right: '10rem', top: '6.5rem', bottom: '0'}} >
               <TCalendar/>
             </Sider>
 
