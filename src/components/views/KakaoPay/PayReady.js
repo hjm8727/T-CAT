@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import KakaoPay from "./KakaoPay";
 
-const PayReady = () => {
+const PayReady = props => {
+    console.log(props.item_name);
     let [data, setData] = useState({
         next_redirect_pc_url: "",
         tid: "",
@@ -14,11 +15,12 @@ const PayReady = () => {
             // 가맹점 회원 id
             partner_user_id: "partner_user_id",
             // 상품 이름
-            item_name: "태양의서커스 <뉴 알레그리아> (VIP석)",
+            item_name: props.item_name,
+            // item_name: "태양의서커스 <뉴 알레그리아> (VIP석)",
             // 상품 수량
             quantity: 1,
             // 총 가격
-            total_amount: 150000,
+            total_amount: props.money,
             // 상품 비과세
             tax_free_amount: 20000,
             // 결제 성공 URL
