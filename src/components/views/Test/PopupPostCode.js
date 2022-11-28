@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DaumPostcode from "react-daum-postcode";
  
-const PopupPostCode = (props) => {
-	// 우편번호 검색 후 주소 클릭 시 실행될 함수, data callback 용
-    const handlePostCode = (data) => {
-        let fullAddress = data.address;
-        let extraAddress = ''; 
+const PopupPostCode = ( props ) => {
+  // 우편번호 검색 후 주소 클릭 시 실행될 함수, data callback 용
+  let [fullAddress, setFullAddress] = useState("");
+  const [address, setAddress] = useState("");
+  const onChangeAddress = e => setAddress(e.target.value);
+  const handlePostCode = (data) => {
+        // let fullAddress = data.address;
+        setFullAddress(data.address);
+        let extraAddress = '';
         
         if (data.addressType === 'R') {
           if (data.bname !== '') {
@@ -16,7 +20,8 @@ const PopupPostCode = (props) => {
           }
           fullAddress += (extraAddress !== '' ? ` (${extraAddress})` : '');
         }
-        console.log(data);
+
+        console.log(`데이터 ${data.address}`);
         // 주소
         console.log(fullAddress);
         // 우편번호
@@ -30,15 +35,16 @@ const PopupPostCode = (props) => {
         // 도로명 주소
         console.log(data.roadAddress);
         // 팝업 닫기
-        props.onClose();
+        // props.onClose();
+
     }
 
     const postCodeStyle = {
         display: "block",
         position: "absolute",
-        top: "10%",
-        width: "600px",
-        height: "600px",
+        top: "2%",
+        width: "500px",
+        height: "500px",
         padding: "7px",
       };
  
@@ -46,7 +52,10 @@ const PopupPostCode = (props) => {
         <div>
             <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
              {/* 닫기 버튼 생성 */}
-            <button type='button' onClick={() => {props.onClose()}} className='postCode_btn'>닫기</button>
+            {/* <button type='button' onClick={() => {props.onClose()}} className='postCode_btn'>닫기</button> */}
+            <input type='text' readOnly value={fullAddress}/>
+            <p />
+            <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력' />
         </div>
     );
 }

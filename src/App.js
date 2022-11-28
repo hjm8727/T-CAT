@@ -2,7 +2,7 @@ import {Routes, Route} from "react-router-dom";
 import FindId from "./components/views/FindIdPage/FindId";
 import FindPwd from "./components/views/FindPwdPage/FindPwd";
 // import MainPage from "./components/views/MainPage/MainPage";
-import AdminPage from "./components/views/AdminPage/AdminPage";
+// import AdminPage from "./components/views/AdminPage/AdminPage";
 // import MyPage from "./components/views/MyPage/MyPage";
 // import Detail from "./components/views/DetailPage/Detail";
 import KakaoPay from "./components/views/KakaoPay/KakaoPay";
