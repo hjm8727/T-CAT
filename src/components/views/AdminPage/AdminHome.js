@@ -5,9 +5,9 @@ import Chart from "./Tool/Chart";
 const AdminHome=()=>{
     return(
         <div className="home">
-            <Chart/>
+            {/* <Chart/>
             <RecentComment/>
-            <Profile/>
+            <Profile/> */}
         </div>
     )
 }

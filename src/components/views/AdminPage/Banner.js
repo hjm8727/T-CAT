@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
-import NavBar from "./Tool/NavBar";
+import NavBar from "./Tool/TopBar";
 import styled from "styled-components";
 import {storage} from "./Tool/Firebase";
-import {ref, uploadBytes, listAll, getDownloadURL,deleteObject} from "firebase/storage";
+import {ref, uploadBytes, listAll, getDownloadURL,deleteObject, getStorage} from "firebase/storage";
 import {v4} from "uuid";
 
 const BannerBlock=styled.div`
+    margin:0 auto;
+    box-sizing: border-box;
+    width: 100vw;
 .tableContainer{
     border: 2px solid gray;
     margin: 30px 30px;
@@ -82,9 +85,7 @@ const Banner=()=>{
         const desertRef = ref(storage, `image/${image.name + v4()}`);
         deleteObject(desertRef).then(() => {
             console.log("파이어베이스 삭제");
-            // File deleted successfully
           }).catch((error) => {
-            // Uh-oh, an error occurred!
           });
           alert("삭제되었습니다")
     }
@@ -112,8 +113,6 @@ const Banner=()=>{
             </tbody>
         </table>
         </div>
-
-        {/* 클릭하면 제목 주소 파베 주소값 저장되게 */}
         <button className="uploadAd">배너 등록하기</button>
         <h3>이미지 미리보기</h3>
         <div className="preview">

@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import SearchBar from "./Tool/SearchBar";
-import NavBar from "./Tool/NavBar";
+import TopBar from "./Tool/TopBar";
 import { useState } from "react";
+import PaginationAdmin from "./Tool/Pagination/Paging";
+import { Pagination } from "react-bootstrap";
 
 const MemberBlock=styled.div`
   margin:0 auto;
   box-sizing: border-box;
-  
+  width: 100vw;
   .container {
     margin : 10px;
     display: flex;
     border: 1px solid black;
-    width: 100vw;
     height: 60%;
     flex-direction: column;
     text-align: center;
@@ -74,8 +75,8 @@ const MemberList=()=>{
   }
     return(
         <MemberBlock>
-          <NavBar name="일반회원관리"/>
-          <SearchBar/>
+          <TopBar name="일반회원관리"/>
+          {/* <SearchBar/> */}
           <div className="container">
               <table>
                 <thead>
@@ -108,6 +109,7 @@ const MemberList=()=>{
                 </tbody>
               </table> 
             </div>
+            <PaginationAdmin/>
         </MemberBlock>
     );
 }
