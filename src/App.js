@@ -10,12 +10,12 @@ import MyPage from "./components/views/MyPage/MyPage";
 function App() {
   return (
     <>
-    {/* <Routes>
+    <Routes>
       <Route path='/' element={<MainPage/>}/>
       <Route path='/admin' element={<AdminPage/>}/>
-    </Routes> */}
+    </Routes>
     {/* <AdminPage/> */}
-    <MyPage/>
+    {/* <MyPage/> */}
     {/* <Detail/> */}
     <br/>
     {/* <Login /> */}

@@ -4,8 +4,13 @@ import Carousel from 'react-bootstrap/Carousel';
 const BackContainer = styled.div`
     img{
         width: 100%;
-        height: 30vh;
-        min-height: 170px;
+        height: 35vh;
+        /* min-height: 170px; */
+    }
+    @media (max-width : 1023px){
+        img{
+            height: 15vh;
+        }
     }
 `
     const mainWrap = [

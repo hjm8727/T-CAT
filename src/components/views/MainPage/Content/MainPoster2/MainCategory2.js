@@ -7,6 +7,8 @@ const PosterCategoryContainer = styled.div`
     .PosterTitle{
         /* min-width: 540px; */
         margin: 5px;
+        display: flex;
+        justify-content: center;
     }
     h2{
         display: inline-block;
@@ -16,35 +18,43 @@ const PosterCategoryContainer = styled.div`
     }
     li{
         font-size: 1.2em;
-        display: inline-block;
         list-style: none;
         padding : 0.5em;
+        margin: 0 50px;
         cursor: pointer;
-        margin: 0 5px;
     }
+    /* @media (max-width : 1025px){
+        h2{
+            font-size: 1em;
+        }
+        li{
+            font-size: 0.8em;
+            margin: 0 1;
+        }
+    } */
     `
 
 const categories = [
         {
-            name : 'musical',
-            text : '뮤지컬'
+            name : 'popularity',
+            text : '인기공연'
         },
         {
-            name : 'classic',
-            text : '클래식 / 무용'
+            name : 'concert',
+            text : '공연장공연'
         },
         {
-            name : 'act',
-            text : '연극'
+            name : 'soon',
+            text : '개막예정'
         },
         {
-            name : 'show',
-            text : '전시회'
+            name : 'comming',
+            text : '종료임박'
         }
     ]
 
-const PosterCategory = (props) =>{
-    const [category , setCategory] = useState('musical');
+const PosterCategory2 = () =>{
+    const [category , setCategory] = useState('popularity');
     const onSelect = (e) =>{
         setCategory(e)
     }
@@ -52,7 +62,6 @@ const PosterCategory = (props) =>{
     return(
         <PosterCategoryContainer>
             <div className="PosterTitle">
-                <h2>{props.name}</h2>
             {categories.map(c=>(
                 <li 
                     key={c.name}
@@ -64,4 +73,4 @@ const PosterCategory = (props) =>{
         </PosterCategoryContainer>
     )
 }
-export default PosterCategory;
+export default PosterCategory2;

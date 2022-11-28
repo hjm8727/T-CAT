@@ -3,9 +3,8 @@ import PosterImg from "./PosterImg";
 import styled from "styled-components";
 
 const PosterContainer = styled.div`
-    width: 45%;
-    min-width: 600px;
-    margin: 0 10px ;
+    width: 50%;
+    align-items: center;
     display: inline-block;
     /* border: solid 1px black; */
     a{
@@ -14,11 +13,12 @@ const PosterContainer = styled.div`
         color: #1a1a1a;
         /* cursor: pointer; */
     }
-    @media (max-width : 1441px){
+    @media (max-width : 1440px){
         width: 100%;
         min-width: 0px;
+        margin: 0 0 ;
         a{
-            font-size: 0.5em;
+            /* font-size: 0.7em; */
         }
     }
     `
