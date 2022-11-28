@@ -21,13 +21,13 @@ function App() {
       {/* <Route path='/' element={<MainPage/>}/>
       <Route path='/admin/*' element={<AdminPage/>}/>
       <Route path='/MyPage/*' element={<MyPage/>}/> */}
-      <Route path='/kakaopay/*' element={<KakaoPay/>}/>
+      {/* <Route path='/kakaopay/*' element={<KakaoPay/>}/>
       <Route path='/' element={<Login />} />
-      <Route path='/sign' element={<Sign />} />
+      <Route path='/sign' element={<Sign />} /> */}
       {/* 카카오 주소 api 쓰는 것. 테스트 */}
       <Route path='/test' element={<Test />} />
       <Route path='/findid' element={<FindId />} />
-      <Route path='/findpwd' element={<FindPwd />} />
+      <Route path='/findpwd' element={<FindPwd />} /> 
     </Routes>
 
     {/* <Routes>
