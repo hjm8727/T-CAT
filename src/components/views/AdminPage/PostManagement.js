@@ -1,4 +1,4 @@
-import NavBar from "./Tool/TopBar";
+import TopBar from "./Tool/TopBar";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -64,7 +64,7 @@ const PostManagement=()=>{
   }
     return(
         <PostBlock>
-        <NavBar name="전시회 게시물 관리"/>
+        <TopBar name="전시회 게시물 관리"/>
         <div className="container">
           <table>
                 <thead>

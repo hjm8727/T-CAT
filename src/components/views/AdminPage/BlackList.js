@@ -15,8 +15,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const MemberBlock=styled.div`
   margin:0 auto;
   box-sizing: border-box;
-  width: 100vw;
+  /* width: 100vw; */
   .container {
+    width: 100vw;
     margin : 10px;
     display: flex;
     border: 1px solid black;
@@ -42,23 +43,7 @@ table,th,td {
 
 `;
 
-const onClickModal=()=>{
-  
-}
-
 const BlackList=()=>{
-  const [products, setProducts] = useState([]);  // 리스트에 나타낼 아이템들
-  const [count, setCount] = useState(0); // 아이템 총 개수
-  const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1
-  const [postPerPage] = useState(5); // 한 페이지에 보여질 아이템 수 
-  const [indexOfLastPost, setIndexOfLastPost] = useState(0); // 현재 페이지의 마지막 아이템 인덱스
-  const [indexOfFirstPost, setIndexOfFirstPost] = useState(0); // 현재 페이지의 첫번째 아이템 인덱스
-  const [currentPosts, setCurrentPosts] = useState(0); // 현재 페이지에서 보여지는 아이템들
-  const [openModal, setOpenModal] = useState(false);
-
-  const setPage = (error) => {
-    setCurrentPage(error);
-  };
   const data = [
     {id: 0, user: '선택 1', name: '곰돌이', date:'2022-12-02',email:'gg@naver.com',report:'5'},
     {id: 1, user: '선택 2', name: '토끼', date:'2022-10-02',email:'rabit@naver.com',report:'25'},
@@ -67,11 +52,7 @@ const BlackList=()=>{
     {id: 4, user: '선택 5', name: '곰돌이', date:'2022-12-02',email:'gg@naver.com',report:'5'},
     {id: 4, user: '선택 5', name: '곰돌이', date:'2022-12-02',email:'gg@naver.com',report:'5'},
     {id: 4, user: '선택 5', name: '곰돌이', date:'2022-12-02',email:'gg@naver.com',report:'5'},
-   
-
-
   ];
-
 
 
   const [lists, setLists] = useState('');
@@ -102,13 +83,10 @@ const BlackList=()=>{
     }
   }
   const onClickDelete=()=>{
+    alert("탈퇴시키시겠습니까?")
 
 
   }
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  
 
     return(
         <MemberBlock>
@@ -139,20 +117,13 @@ const BlackList=()=>{
                     <td>{data.name}</td>
                     <td>{data.date}</td>
                     <td>{data.email}</td>
-                    <td onClick={() => handleShow()}>{data.report}</td>
+                    <td>{data.report}</td>
                 </tr>
                 ))}
                 </tbody>
               </table>
-              <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>신고사유</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>생각해보니까 신고사유가 없네 모달창 없애도 될</Modal.Body>
-      </Modal>
             </div>
             <div className="delete"><button onClick={onClickDelete}>탈퇴하기</button></div>
-            <Paging page={currentPage} count={count} setPage={setPage} />
         </MemberBlock>
     );
 

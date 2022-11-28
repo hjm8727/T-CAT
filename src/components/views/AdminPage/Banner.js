@@ -41,7 +41,7 @@ const BannerBlock=styled.div`
 }
 }
     img{
-        width: 300px;
+        width: 200px;
         height: 200px;
         margin: 10px;
     }
@@ -55,18 +55,24 @@ const Banner=()=>{
     // 사진 업로드 하고 담는 값
     const[imageList, setImageList] = useState([]);
     const imageListReg= ref(storage, "image/")
+    // image폴더 안에 사진명+고유식별자로 저장
     const imageRef = ref(storage,`image/${image.name + v4()}`);
 
     // 파이어베이스에 등록
     const uploadImage=(e)=>{
-        if(image == null) return;
+        if(image){
         uploadBytes(imageRef, image).then((snap)=>{
             getDownloadURL(snap.ref).then((url)=>{
                 // alert("이미지 업로드")
                 setImageList((prev)=>[...prev, url])
+                console.log("사진 주소값 : " + imageRef);
             })
         })
+    } else {
+        alert("사진을 등록하세요")
     }
+}
+
     useEffect(()=>{
         listAll(imageListReg).then((response)=>{
             console.log(response);
@@ -79,15 +85,16 @@ const Banner=()=>{
 
     },[])
 
-    // 파이어베이스 삭제
     const onClickDelete=()=>{
-        // 파일삭제용 변수, 저 jpg 주소를 어떻게 가져오지 삭제 404에러 
-        const desertRef = ref(storage, `image/${image.name + v4()}`);
-        deleteObject(desertRef).then(() => {
-            console.log("파이어베이스 삭제");
-          }).catch((error) => {
-          });
-          alert("삭제되었습니다")
+        // setImageList([]);
+        const storage = getStorage();
+        const desertRef = ref(storage,`image/study.png`)
+        deleteObject(desertRef).then(()=>{
+            console.log("삭제 성공");
+        }).catch((error)=>{
+            console.log("삭제 에러");
+            console.log(storage);
+        })
     }
     
     return(
@@ -116,7 +123,7 @@ const Banner=()=>{
         <button className="uploadAd">배너 등록하기</button>
         <h3>이미지 미리보기</h3>
         <div className="preview">
-        {imageList.map((url) => ( <ul>
+        {imageList.map((url) => ( <ul key={url}>
             <li><img src={url} alt="사용자 첨부 이미지"/>
             <button className="deleteImage" onClick={onClickDelete}>삭제하기</button>
             </li></ul>

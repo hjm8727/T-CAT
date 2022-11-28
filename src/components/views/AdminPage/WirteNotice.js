@@ -1,21 +1,13 @@
 import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
+import TopBar from "./Tool/TopBar";
 
 
 const WriteBlock=styled.div`
-margin:0 auto;
+    margin:0 auto;
     box-sizing: border-box;
-    width: 80vw;
-.boardTitle {
-    margin: 30px 0;
-    strong {
-    font-size: 3rem;
-    }
-}
-.buttonWrap {
-    margin-top: 30px;
-    text-align: center;
-}
+    width: 100vw;
+
 .boardWrite {
     border-top: 2px solid #000;
 }
@@ -33,7 +25,7 @@ margin:0 auto;
     input{
     padding: 10px;
     width: 700px;
-    /* width: 80%; */
+    height: 30px;
     }
 }
 .content{ border-bottom: 1px solid #000;}
@@ -63,11 +55,8 @@ const WriteNotice=()=>{
     return(
         <>
         <WriteBlock>
-            <div className="boardWrap">
-                <div className="boardTitle">
-                    <strong>공지사항</strong>
-                </div>
-                <div className="boardWriteWrap">
+            <TopBar name="공지사항 작성하기"/>
+                <div className="boardContainer">
                     <div className="boardWrite">
                         <div className="title">
                             <dl>
@@ -81,11 +70,10 @@ const WriteNotice=()=>{
                     </div>
                     <div className="buttonWrap">
                         <button onClick={()=>{navigate('/admin/Notice')}}>뒤로가기</button>
-                        <button onClick={()=>{navigate('/admin/Notice')}}>등록하기</button>
+                        <button onClick={()=>{navigate('/admin/noticeDetail')}}>등록하기</button>
 
                     </div>
                 </div>
-            </div>
         </WriteBlock>
         </>
     )
