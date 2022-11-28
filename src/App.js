@@ -45,7 +45,7 @@ function App() {
       <Route path="/paycancel" element={<PayCancel />} />
     </Routes> */}
     {/* <AdminPage/> */}
-
+    {/* <MyPage/> */}
     {/* <Detail/> */}
     {/* <Login /> */}
     {/* <Sign/> */}

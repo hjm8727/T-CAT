@@ -3,30 +3,59 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ContentWarp from "./Content/ContentWarp";
 import MainHeader from "../MainHeader/MainHeader";
 import MainPoster from "./Content/MainPoster/MainPoster";
+import MainIcon from "./Content/MainIcon/MainIcon";
+import MainNotice from "./Content/MainNotice/MainNotice";
+import MainBanner from "./Content/MainBanner/MainBanner";
+import Footer from "../Footer/Footer";
+import MainPoster2 from "./Content/MainPoster2/MainPoster2";
+import PosterCategory from "./Content/MainPoster/PosterCategory";
+import PosterCategory2 from "./Content/MainPoster2/MainCategory2";
+import MainReview from "./Content/MainReview/MainReview";
 
 const ItemContainer = styled.div`
     width: 75%;
-    /* min-width:1024px; */
     padding: 0px;
-    /* align-items: center; */
-    /* justify-content: center; */
     margin: 0 auto;
-    
+    /* justify-content: center; */
+    @media (max-width :1024px ){
+        min-width: 600px;
+    }
     `
 const MainContainer = styled.div`
     width : 100%;
     margin: 0px;
     padding: 0px;
+    
 `
+
 const MainPage = () =>{
     return(
         <MainContainer>
             <MainHeader/>
                 <ContentWarp/>
                     <ItemContainer>
+
                         <MainPoster name = "주간 랭킹"/>
                         <MainPoster name = "일간 랭킹"/>
+                        
+                        <MainNotice/>
+                        <hr></hr>
+
                     </ItemContainer>
+                        <MainBanner/>
+
+                        <PosterCategory2/>
+                        <MainPoster2/>
+                        <MainPoster2/>
+                        <hr></hr>
+
+                    <ItemContainer>
+                        <MainReview/>
+                        <hr></hr>
+                        <MainIcon/>
+                        <hr></hr>
+                    </ItemContainer>
+                    <Footer/>
         </MainContainer>
     )
 }

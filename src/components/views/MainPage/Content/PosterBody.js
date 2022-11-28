@@ -3,7 +3,7 @@ import styled from "styled-components";
 const PosterContainer = styled.div`
     margin: 5px;
     border: solid 1px black;
-`
+ `
 const PosterBody = () =>{
 
     return(

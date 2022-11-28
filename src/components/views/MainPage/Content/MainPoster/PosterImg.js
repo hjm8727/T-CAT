@@ -1,46 +1,34 @@
 import styled from "styled-components";
 
 const PosterImgContainer = styled.div`
-    width: 100%;
-    /* min-width: 720px; */
     background-color: #f5f5f5;
-    margin-left: 3%;
+    display: flex;
+    justify-content: center;
     /* border: solid 1px black; */
     img{
-        position: relative;
         width: 110px;
-        height: 13vh;
+        height: 130px;
     }
     ul{
         display: flex;
         list-style: none;
         margin: 0px;
+        padding: 0px;
     }
     li{
-        margin:5px;
         list-style: none;
         display: inline-block;
-        width: 20%;
+        margin:5px 10px;
     }
     p{
-        position: relative;
         width: 110px;
         margin-top:10px;
-        font-size: 0.8em;
+        font-size: 1em;
     }
-    
-    @media (max-width : 1023px){
-        
-        img{
-            width: 60px;
-            height: 80px;
+    @media (max-width : 1440px){
+        li{
+            margin: 0 2.5em;
         }
-        p{
-            font-size: 0.5em;
-            width: 60px;
-        }
-        
-        
     }   
 `
 const posterInfo = [
@@ -71,8 +59,8 @@ const PosterImg = () =>{
         <PosterImgContainer>
             <ul>
                 {posterInfo.map(c=>(
-                    <li>
-                        <img key={c.id} src={c.img}></img>
+                    <li key={c.id} >
+                        <img src={c.img}/>
                         <p>{c.name}</p>
                     </li>
                 ))}
