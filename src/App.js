@@ -12,7 +12,7 @@ import KakaoPay from "./components/views/KakaoPay/KakaoPay";
 // import PayCancel from "./components/views/KakaoPay/PayCancel";
 import Login from "./components/views/LoginPage/";
 import Sign from "./components/views/SignPage/Sign";
-import Test from "./components/views/Test/Test";
+import KakaoAddress from "./components/views/KakaoAdressPage/KakaoAddress";
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
       <Route path='/' element={<Login />} />
       <Route path='/sign' element={<Sign />} />
       {/* 카카오 주소 api 쓰는 것. 테스트 */}
-      <Route path='/test' element={<Test />} />
+      <Route path='/kakaoaddress' element={<KakaoAddress />} />
       <Route path='/findid' element={<FindId />} />
       <Route path="/detail" element={<Detail />} />
       <Route path='/findpwd' element={<FindPwd />} /> 

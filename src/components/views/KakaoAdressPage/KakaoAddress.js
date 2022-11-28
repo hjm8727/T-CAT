@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PopupDom from './PopupDom';
 import PopupPostCode from './PopupPostCode';
  
-const Test = () => {
+const KakaoAddress = () => {
 	// 팝업창 상태 관리
     const [isPopupOpen, setIsPopupOpen] = useState(false)
  
@@ -34,4 +34,4 @@ const Test = () => {
     )
 }
  
-export default Test;
+export default KakaoAddress;
