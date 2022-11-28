@@ -37,7 +37,7 @@ const ContentWarp = () =>{
                     <img 
                         key={c.name}
                         src={c.img}
-                    ></img>
+                    alt=''></img>
                 </Carousel.Item>
                 ))}
             </Carousel>            

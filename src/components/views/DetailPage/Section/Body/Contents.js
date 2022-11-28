@@ -1,8 +1,11 @@
 import React from 'react';
 
+// 공연 정보
 function Contents() {
   return (
-    <div>기본 정보</div>
+    <div>
+      
+    </div>
   )
 }
 
