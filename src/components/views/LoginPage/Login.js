@@ -3,16 +3,18 @@ import './Login.css';
 import styled from 'styled-components';
 
 const LoginWrap = styled.div`
+  width: 100%;
+  background-color: var(--color-tertiary);
 .loginwrap {
   display: grid;
   place-items: center;
-  margin: 0;
-  height: 100vh;
+  margin: 0 auto;
+  width: 50%;
+  height: 969px;
   padding: var(--space-m);
   font-size: var(--font-size);
   font-family: var(--font-family);
   line-height: 1.2;
-  background-color: var(--color-tertiary);
 }
 a {
   color: var(--color-primary);
