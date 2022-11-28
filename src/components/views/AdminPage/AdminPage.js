@@ -67,8 +67,12 @@ function AdminPage() {
 function Header() {
   return(
     <HeaderBlock>
+<<<<<<< HEAD
+      <div className='logoContainer'><img className="Logo" src="/images/TCat.jpg" alt=''></img></div>
+=======
       {/* <div className='logoContainer'><img className="Logo" src={require("/images/TCat.jpg").default} alt='고양이'/></div> */}
       <div className='logoContainer'><img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/></div>
+>>>>>>> b134d9db869115062617c48e571340d91d5921ac
     </HeaderBlock>
   );
 }

@@ -183,7 +183,7 @@ function Login() {
   const [Login, setLogin] = useState(false);
 
   const onChangeId = e => setInputId(e.target.value);
-  const onChangePwd = e => setInputPwd(e.traget.value);
+  const onChangePwd = e => setInputPwd(e.target.value);
 
 
   return (

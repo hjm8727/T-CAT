@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 
-const PayResult = props => {
+const PayResult = () => {
     
     let search = window.location.search;
     const [state, setState] = useState({

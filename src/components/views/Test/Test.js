@@ -27,6 +27,8 @@ const Test = () => {
                         <PopupPostCode onClose={closePostCode} />
                     </PopupDom>
                 )}
+            <input type='text'/>
+            <input type='text' placeholder='상세 주소 입력' />
             </div>
         </div>
     )
