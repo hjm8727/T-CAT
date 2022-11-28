@@ -280,6 +280,7 @@ function Sign() {
     if(isId && isPwd && isCheck && isName && isEmail) {
       setSubmit(true);
       alert('회원가입을 축하드립니다.');
+      e.preventDefualt();
     } else {
       setSubmit(false);
       alert('회원가입 실패 다시 확인 부탁드립니다.');
@@ -342,7 +343,7 @@ function Sign() {
           </div>
           <div>
           </div>
-          <div className="btn-group"><button className="btn btn--primary" disabled={submit} onClick={onClickSign}>Sign in</button><a className="btn--text" href="#0">Forgot password?</a></div>
+          <div className="btn-group"><button className="btn btn--primary" type='button' disabled={submit} onClick={onClickSign}>Sign in</button><a className="btn--text" href="#0">Forgot password?</a></div>
           </div>
       </form>
     </div>
