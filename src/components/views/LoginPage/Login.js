@@ -209,7 +209,7 @@ function Login() {
           </div>
           </div>
           <div className="btn-group"><button className="btn btn--primary">LOGIN</button><a className="btn--text" href="#0">Forgot password?</a></div>
-          <div className='btn-group' style={{width: '369.1px'}}><button className='btn btn--primary'><img src='/images/test.png' alt='카카오 로그인'/></button></div>
+          <div className='btn-group' style={{width: '369.1px'}}><button className='btn btn--primary' >카카오<img src='/images/test.png' alt='카카오 로그인'/></button></div>
           </div>
       </form>
     </div>
