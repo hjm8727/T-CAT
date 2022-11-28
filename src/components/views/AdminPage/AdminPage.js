@@ -1,15 +1,15 @@
-import React, { Children } from 'react'
+import React from 'react'
 import {Routes, Route, useNavigate} from "react-router-dom";
 import {Menu} from 'antd';
-// import "antd/dist/antd.min.css";
 import {HomeOutlined, PoweroffOutlined,UserOutlined,SolutionOutlined,LayoutOutlined,BulbOutlined} from "@ant-design/icons/lib/icons";
-import MemberList from './MemberList';
-import AdminHome from './AdminHome';
-import BlackList from './BlackList';
 import styled from 'styled-components';
+import AdminHome from './AdminHome';
+import MemberList from './MemberList';
+import BlackList from './BlackList';
+import Banner from './Banner';
 import Notice from './Notice';
 import PostManagement from './PostManagement';
-import Banner from './Banner';
+import WriteNotice from './WirteNotice';
 import Inquiry from './Inquiry';
 
 const AdminBlock=styled.div`
@@ -26,9 +26,9 @@ const AdminBlock=styled.div`
   }
 `;
 const HeaderBlock=styled.div`
+  width: 100%;
   height: 65px;
   background-color: #E3CAA5;
-  color: black;
   /* display: flex; */
   justify-content: center;
   align-items: center;
@@ -41,6 +41,13 @@ const HeaderBlock=styled.div`
         margin: 3px 15px;
         padding: 0px;
     }
+`;
+const FooterBlock=styled.div`
+  height: 65px;
+  background-color: #E3CAA5;
+  bottom: 0;
+  padding: 0;
+  margin: 0;
 `;
 function AdminPage() {
   return (
@@ -59,14 +66,14 @@ function AdminPage() {
 function Header() {
   return(
     <HeaderBlock>
-      <div className='logoContainer'><img className="Logo" src="/imges/TCat.jpg" alt=''></img></div>
+      {/* <div className='logoContainer'><img className="Logo" src={require("/images/TCat.jpg").default} alt='고양이'/></div> */}
+      <div className='logoContainer'><img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/></div>
     </HeaderBlock>
-    // <HeaderBlock/>
   );
 }
 function Footer() {
   return(
-    <HeaderBlock/>
+    <FooterBlock/>
   );
 }
 function SideMenu() {
@@ -75,7 +82,8 @@ function SideMenu() {
     <Menu 
       onClick={({key})=>{
         if(key === "로그아웃"){
-          // 로그아웃일 때 
+          console.log("관리자 로그아웃");
+          // 로그아웃일 때 로그인페이지로 이동
         } else{
           navigate(key);
         }
@@ -100,13 +108,14 @@ function Content() {
   return(
     <>
     <Routes>
-      <Route path='/home' element={<AdminHome/>}/>
-      <Route path='/normal' element={<MemberList/>}/>
-      <Route path='/black' element={<BlackList/>}/>
-      <Route path='/enroll' element={<PostManagement/>}/>
-      <Route path='/ad' element={<Banner/>}/>
-      <Route path='/notice' element={<Notice/>}/>
-      <Route path='/inquiry' element={<Inquiry/>}/>
+      <Route path='/admin/home' element={<AdminHome/>}/>
+      <Route path='/admin/normal' element={<MemberList/>}/>
+      <Route path='/admin/black' element={<BlackList/>}/>
+      <Route path='/admin/enroll' element={<PostManagement/>}/>
+      <Route path='/admin/ad' element={<Banner/>}/>
+      <Route path='/admin/notice' element={<Notice/>}/>
+      <Route path='/admin/inquiry' element={<Inquiry/>}/>
+      <Route path='/admin/writeNotice' element={<WriteNotice/>}/>
     </Routes>
     </>
   );

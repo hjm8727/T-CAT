@@ -1,13 +1,15 @@
-import NavBar from "./Tool/NavBar";
+import NavBar from "./Tool/TopBar";
 import styled from "styled-components";
 import { useState } from "react";
 
 const PostBlock=styled.div`
+  margin:0 auto;
+  box-sizing: border-box;
+  width: 100vw;
     .container {
     margin : 10px;
     display: flex;
     border: 1px solid black;
-    width: 100vw;
     height: 60%;
     flex-direction: column;
     text-align: center;
@@ -19,12 +21,12 @@ table,th,td {
 .delete{
   float: right;
   button{
-  border: none;
-        margin-top: 15px;
-        background-color: #E3CAA5;
-        border-radius: 5px;
-        width: 130px;
-        height: 35px;
+    border: none;
+      margin: 20px 10px;
+      background-color: #E3CAA5;
+      border-radius: 5px;
+      width: 150px;
+      height: 40px;
 }  
 }
 `;
@@ -60,10 +62,6 @@ const PostManagement=()=>{
   const onClickDelete=()=>{
 
   }
-
-
-
-
     return(
         <PostBlock>
         <NavBar name="전시회 게시물 관리"/>
@@ -71,15 +69,15 @@ const PostManagement=()=>{
           <table>
                 <thead>
                   <tr>
-                  <th>
+                  <th width="150px">
                     <input type='checkbox' name='select-all' onChange={(e) => handleAllCheck(e.target.checked)}
                     // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
                     checked={checkItems.length === lists.length ? true : false} />
                     </th>
-                    <th>번호</th>
+                    <th width="150px">번호</th>
                     <th>전시명</th>
-                    <th>전시기간</th>
-                    <th>조회수</th>
+                    <th width="250px">전시기간</th>
+                    <th width="150px">조회수</th>
                   </tr>
                 </thead>
                 <tbody>

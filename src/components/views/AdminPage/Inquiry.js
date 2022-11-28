@@ -1,14 +1,15 @@
 import styled from "styled-components";
-import NavBar from "./Tool/NavBar";
+import NavBar from "./Tool/TopBar";
 
 const InquiryBlock=styled.div`
 margin:0 auto;
   box-sizing: border-box;
+  width: 100vw;
+
   .container {
     margin : 10px;
     display: flex;
     border: 1px solid black;
-    width: 100vw;
     height: 60%;
     flex-direction: column;
     text-align: center;
