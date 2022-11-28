@@ -37,8 +37,27 @@ const Styleside = styled.div`
         text-align: center;
         box-sizing: border-box;
         color: #fff;
+        margin-top: 1rem;
     }
 `;
+
+const Header = () => {
+    return(
+        <div>
+            <h1>헤더</h1>
+        </div>
+    )
+}
+
+const Body = () => {
+    return(
+        <div>
+            <h1>바디입니따</h1>
+        </div>
+
+    );
+}
+
 
 // 달력
 function TCalendar () {
@@ -67,8 +86,8 @@ function TCalendar () {
                     <div className='side-content'><button className='button select' type='button'>1회 20:00</button><button className='button no' type='button'>1회 20:00</button></div>
                     <small className='seat'>잔석 70</small>
                     <button className='pay-button' onClick={openModal}>예매하기</button>
-                    <PayPopup open={modalOpen} close={closeModal} header="Modal Heading">
-                        결제 팝업창입니다. 쉽게 만들 수 있어요. 같이 해봅시다.
+                    <PayPopup open={modalOpen} close={closeModal} header={<Header />} body={<Body />}>
+
                     </PayPopup>
                 </div>
             </Styleside>
