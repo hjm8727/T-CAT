@@ -22,7 +22,7 @@ const PayReady = () => {
             // 상품 비과세
             tax_free_amount: 20000,
             // 결제 성공 URL
-            approval_url: "http://localhost:3000/payresult",
+            approval_url: "http://localhost:3000/kakaopay/payresult",
             // 결제 실패 URL
             fail_url: "http://localhost:3000/resultfalse",
             // 결제 취소 URL
@@ -58,7 +58,7 @@ const PayReady = () => {
     return (
             <div className="container">
                 <h2 className="head-line">카카오페이 결제하기</h2>
-                <a href={ next_redirect_pc_url }><img className="kakao" src="images/test.png" alt="카카오페이" /></a>
+                <a href={ next_redirect_pc_url }><img className="kakao" src="../images/test.png" alt="카카오페이" /></a>
                 <div>
                     <KakaoPay/>
                 </div>
