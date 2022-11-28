@@ -11,6 +11,7 @@ import Notice from './Notice';
 import PostManagement from './PostManagement';
 import WriteNotice from './WirteNotice';
 import Inquiry from './Inquiry';
+import NoticeDetail from './NoticeDetail';
 
 const AdminBlock=styled.div`
   .top {
@@ -116,6 +117,8 @@ function Content() {
       <Route path='/admin/notice' element={<Notice/>}/>
       <Route path='/admin/inquiry' element={<Inquiry/>}/>
       <Route path='/admin/writeNotice' element={<WriteNotice/>}/>
+      <Route path='/admin/noticeDetail' element={<NoticeDetail/>}/>
+
     </Routes>
     </>
   );

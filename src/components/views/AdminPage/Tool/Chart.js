@@ -1,49 +1,63 @@
-import styled from "styled-components";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, CartesianGrid, ResponsiveContainer, LineChart } from 'recharts';
+import React, { PureComponent } from 'react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+const data = [
+  {
+    name: 'Page A',
+    uv: 4000,
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    name: 'Page B',
+    uv: 3000,
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    name: 'Page C',
+    uv: 2000,
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    name: 'Page D',
+    uv: 2780,
+    pv: 3908,
+    amt: 2000,
+  },
+  {
+    name: 'Page E',
+    uv: 2780,
+    pv: 3908,
+    amt: 2000,
+  },
+];
 
-const ChartBlock=styled.div`
-    .chartTitle{
-        margin-bottom: 30px;
-    }
-`;
+export default class Example extends PureComponent {
+  static demoUrl = 'https://codesandbox.io/s/simple-area-chart-4ujxw';
 
-const Chart=()=>{
-    const data = [
-        {
-            name: 'Page A',
-            uv: 4000,
-            pv: 2400,
-            amt: 2400,
-        },
-        {
-            name: 'Page B',
-            uv: 3000,
-            pv: 1398,
-            amt: 2210,
-        },
-        {
-            name: 'Page C',
-            uv: 2000,
-            pv: 9800,
-            amt: 2290,
-        },
-    ];
-
-    return(
-        <ChartBlock>
-        <div className="chart">
-            <h3 className="chartTitle">하단차트</h3>
-            <BarChart width={600} height={300} data={data}>
-                <XAxis dataKey="name" stroke="#8884d8" />
-                <YAxis />
-                <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
-                <Legend width={100} wrapperStyle={{ top: 40, right: 20, backgroundColor: '#f5f5f5', border: '1px solid #d5d5d5', borderRadius: 3, lineHeight: '40px' }} />
-                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                <Bar dataKey="uv" fill="#8884d8" barSize={30} />
-            </BarChart>
-        </div>
-        </ChartBlock>
+  render() {
+    return (
+      <ResponsiveContainer width="100%" height="25%">
+        <AreaChart
+          width={500}
+          height={400}
+          data={data}
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+        </AreaChart>
+      </ResponsiveContainer>
     );
+  }
 }
-export default Chart;
