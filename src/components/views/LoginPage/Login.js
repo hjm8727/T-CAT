@@ -5,7 +5,8 @@ import { KAKAO_AUTH_URL } from '../../Config';
 
 const LoginWrap = styled.div`
   width: 100%;
-  background-color: var(--color-tertiary);
+  // 전체 배경 색
+  background-color: #EEE3CB;
 .loginwrap {
   display: grid;
   place-items: center;
@@ -13,19 +14,20 @@ const LoginWrap = styled.div`
   width: 50%;
   height: 969px;
   padding: var(--space-m);
-  font-size: var(--font-size);
+  font-size: 16px;
   font-family: var(--font-family);
   line-height: 1.2;
 }
 a {
-  color: var(--color-primary);
+  color: #FFF8EA;
 }
 a:focus {
-  color: var(--color-secondary);
+  color: #815b81
 }
 h2 {
   font-weight: 700;
-  font-size: calc(var(--font-size) * 1.5);
+  font-size: calc(var(--font-size) * 1.25);
+  color: #FFF8EA;
 }
 .form {
   position: relative;
@@ -39,7 +41,9 @@ h2 {
   content: "";
   position: absolute;
   pointer-events: none;
-  background-color: #ebebeb;
+  // 접히기 전 종이 색
+  background-color: white;
+  background-color: #815B5B;
   width: 25%;
   height: 100%;
   transition: background-color var(--duration) var(--ease), transform var(--duration) var(--ease);
@@ -63,32 +67,39 @@ h2 {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
 }
 .form:hover:before, .form:hover:after, .form:focus-within:before, .form:focus-within:after {
+  // 펴지는 색상
   background-color: white;
+  background-color: #815B5B;
   transform: skewY(0);
 }
 .form-inner {
   padding: var(--space-xl);
-  background-color: white;
+  background-color: #9E7676;
   z-index: 1;
 }
 .form-inner > * + * {
   margin-top: var(--space-xl);
 }
+// 인풋 박스 클릭 변하는 라벨 색
 .input-wrapper:focus-within label {
-  color: var(--color-secondary);
+  color: #594545;
 }
+// 클릭 시 변하는 아이콘 색
 .input-wrapper:focus-within .icon {
-  background-color: var(--color-secondary);
+  background-color: #594545;
 }
+// == 박스 테두리
 .input-wrapper:focus-within input {
-  border-color: var(--color-secondary);
+  border-color: #594545;
 }
+// 모름
 .input-wrapper + .input-wrapper {
   margin-top: var(--space-l);
 }
 .input-group {
   position: relative;
 }
+// 인풋 스타일
 .input-group input {
   border-radius: var(--base-border-radius);
   padding-left: calc(var(--space-s) + 60px);
@@ -103,20 +114,22 @@ h2 {
   pointer-events: none;
 }
 label {
-  font-size: calc(var(--font-size) / 1.65);
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.065rem;
   display: block;
   margin-bottom: var(--space-xs);
-  color: var(--color-primary);
+  // 라벨 컬러
+  /* color: var(--color-primary); */
+  color: #FFF8EA;
 }
 .icon {
   display: flex;
   align-items: center;
   flex: 0 1 auto;
   padding: var(--space-m);
-  background-color: var(--color-primary);
+  background-color: #815B5B;
 }
 .icon svg {
   width: 1.25em;
@@ -131,13 +144,12 @@ input {
   width: 100%;
   outline: none;
   padding: var(--space-m);
-  font-size: var(--font-size);
+  font-size: 15px;
   font-family: var(--font-family);
-  color: var(--color-secondary);
-  border: 2px solid var(--color-primary);
+  border: 2px solid burlywood;
 }
 input:focus {
-  color: var(--color-primary);
+  color: brown;
 }
 .btn-group {
   display: flex;
@@ -159,19 +171,20 @@ input:focus {
   border: 2px solid transparent;
   border-radius: var(--base-border-radius);
 }
+// 버튼
 .btn--primary {
   font-size: calc(var(--font-size) / 1.65);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.065rem;
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
+  border-color: #815B5B;
+  background-color: #815B5B;
+  color: #FFF8EA;
   justify-content: center;
 }
 .btn--primary:focus {
-  background-color: var(--color-secondary);
-  border-color: var(--color-secondary);
+  border-color: #594545;
+  background-color: #594545;
 }
 .btn--text {
   font-size: calc(var(--font-size) / 1.5);
@@ -214,10 +227,12 @@ function Login() {
           </div>
           </div>
           <div className="btn-group"><button className="btn btn--primary">LOGIN</button><a className="btn--text" href="#0">Forgot password?</a></div>
+          <div className='btn-group'>
+          <button type='button' className="btn btn--primary" onClick={handleLogin}><img src='/images/test.png' alt='카카오 로그인'/></button>
+          </div>
           </div>
       </form>
           {/* form 태그 안에 있을때 동작을 안함 */}
-          <button onClick={handleLogin}><img src='/images/test.png' alt='카카오 로그인'/></button>
     </div>
     </LoginWrap>
   )
