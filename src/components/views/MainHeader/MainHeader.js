@@ -82,7 +82,15 @@ const HeaderContainer = styled.div`
     width: 100%;
     background-color: #f5f5f5;
     `;
-    
+const LoginTag = styled.div`
+    ul{
+        margin: 0;
+    }
+    a{
+        display: inline-block;
+        margin: 0 10px;     
+    }
+`    
 const MainHeader = () =>{
 
     const[categoryvalue,setcategoryvalue] = useState("");
@@ -94,36 +102,42 @@ const MainHeader = () =>{
     console.log(categoryvalue);
 
     return(
-    <HeaderContainer>
-        <Navbar expand="lg">
-        <Container fluid>
-            {/* 어드민용으로 잠시만 쓸게요 */}
-            {/* <Navbar.Brand href="/admin" ><img className="Logo" src="images/TCat.jpg" alt=""></img></Navbar.Brand> */}
-            {/* 마이페이지용으로도... 미안... */}
-            <Navbar.Brand href="/Mypage" ><img className="Logo" src="images/TCat.jpg" alt=""></img></Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0"navbarScroll>
-                <Nav.Link className="HederMenu" href="#action1">뮤지컬</Nav.Link>
-                <Nav.Link className="HederMenu" href="#action2">클래식/무용</Nav.Link>
-                <Nav.Link className="HederMenu" href="#action3">연극</Nav.Link>
-                <Nav.Link className="HederMenu" href="#action4">전시회</Nav.Link>
-            </Nav>
-            {/* title={categoryvalue} */}
-                {/* <NavDropdown className="HederCategory" title="카테고리"  id="navbarScrollingDropdown">
-                        <li className="optionItem" value="작품명">작품명</li>
-                        <li className="optionItem" value="배우명">배우명</li>
-                        <li className="optionItem" value="감독명">감독명</li>
-                </NavDropdown> */}
-            <Form className="d-flex">
-                <Form.Control onChange={onClickValue} type="search" placeholder="Search" className="me-2" aria-label="Search"/>
-                <Button className="SearchBtn" variant="outline-success">Search</Button>
-                <UserOutlined className="User"/>
-            </Form>    
-            </Navbar.Collapse>
-        </Container>
-        </Navbar>
-    </HeaderContainer>
+        <>
+        <LoginTag>
+            {/* 여기에 추가해서 사용하시면 될거같습니다 ! 나중에 삭제할 예정이라 막 추가하셔도 될거같습니다. */}
+                <a href="/Login">로그인</a>
+                <a href="/sign">회원가입</a>
+                <a href="/adminhome">관리자페이지</a>
+                <a href="/MyPage">MyPage</a>
+        </LoginTag>    
+            <HeaderContainer>
+                <Navbar expand="lg">
+                <Container fluid>
+                    <Navbar.Brand href="/" ><img className="Logo" src="images/TCat.jpg" alt=""></img></Navbar.Brand>
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll">
+                    <Nav className="me-auto my-2 my-lg-0"navbarScroll>
+                        <Nav.Link className="HederMenu" href="#action1">뮤지컬</Nav.Link>
+                        <Nav.Link className="HederMenu" href="#action2">클래식/무용</Nav.Link>
+                        <Nav.Link className="HederMenu" href="#action3">연극</Nav.Link>
+                        <Nav.Link className="HederMenu" href="#action4">전시회</Nav.Link>
+                    </Nav>
+                    {/* title={categoryvalue} */}
+                        {/* <NavDropdown className="HederCategory" title="카테고리"  id="navbarScrollingDropdown">
+                                <li className="optionItem" value="작품명">작품명</li>
+                                <li className="optionItem" value="배우명">배우명</li>
+                                <li className="optionItem" value="감독명">감독명</li>
+                        </NavDropdown> */}
+                    <Form className="d-flex">
+                        <Form.Control onChange={onClickValue} type="search" placeholder="Search" className="me-2" aria-label="Search"/>
+                        <Button className="SearchBtn" variant="outline-success">Search</Button>
+                        <UserOutlined className="User"/>
+                    </Form>    
+                    </Navbar.Collapse>
+                </Container>
+                </Navbar>
+            </HeaderContainer>
+    </>
     )
 }
 

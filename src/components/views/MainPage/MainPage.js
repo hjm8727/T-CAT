@@ -8,7 +8,6 @@ import MainNotice from "./Content/MainNotice/MainNotice";
 import MainBanner from "./Content/MainBanner/MainBanner";
 import Footer from "../Footer/Footer";
 import MainPoster2 from "./Content/MainPoster2/MainPoster2";
-import PosterCategory from "./Content/MainPoster/PosterCategory";
 import PosterCategory2 from "./Content/MainPoster2/MainCategory2";
 import MainReview from "./Content/MainReview/MainReview";
 
@@ -27,8 +26,8 @@ const MainContainer = styled.div`
 
 const MainPage = () =>{
     return(
-        <MainContainer>
-            
+        
+        <MainContainer>    
             <MainHeader/>
                 
                 <ContentWarp/>
