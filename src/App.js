@@ -13,19 +13,20 @@ import KakaoPay from "./components/views/KakaoPay/KakaoPay";
 
 import Login from "./components/views/LoginPage/Login";
 import Sign from "./components/views/SignPage/Sign";
+import KLT from "./components/views/KakaoLogin/KLT";
 
 
 function App() {
   return (
     <>
     <Routes>
-      <Route path='/' element={<MainPage/>}/>
+      {/* <Route path='/' element={<MainPage/>}/>
       <Route path='/admin/*' element={<AdminPage/>}/>
-      <Route path='/MyPage/*' element={<MyPage/>}/>
-{/* 
+      <Route path='/MyPage/*' element={<MyPage/>}/> */}
+
       <Route path='/kakaopay/*' element={<KakaoPay/>}/>
       <Route path='/' element={<Login />} />
-      <Route path='/sign' element={<Sign />} /> */}
+      <Route path='/sign' element={<Sign />} />
 
       {/* 카카오 주소 api 쓰는 것. 테스트 */}
       {/* <Route path='/findid' element={<FindId />} />
@@ -33,6 +34,7 @@ function App() {
       <Route path='/findpwd' element={<FindPwd />} /> */}
       
       {/* 카카오 로그인 */}
+    {/* <Route path='/' element={<KLT />} /> */}
     </Routes>
 
     {/* <Routes>
