@@ -20,7 +20,7 @@ const ModalStyle = styled.div`
         width: 90%;
         max-width: 4500px;
         width: 700px;
-        height: 850px;
+        height: 700px;
         margin: 0 auto;
         border-radius: 0.3rem;
         background-color: #fff;
@@ -91,7 +91,7 @@ function PayPopup (props) {
       // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header, body } = props;
 
-  return (
+    return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <ModalStyle>
         <div className={open ? 'openModal modal' : 'modal'}>
@@ -113,8 +113,7 @@ function PayPopup (props) {
         ) : null}
         </div>
     </ModalStyle>
-  );
-
+    );
 }
 
 export default PayPopup;

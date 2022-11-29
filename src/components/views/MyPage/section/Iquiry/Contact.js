@@ -14,7 +14,7 @@ const Contact = () => {
         >
         <Form.Item label="문의 항목">
         <Select
-        defaultValue="기본 값"
+        defaultValue="항목"
         style={{ width: 120 }}
         options={[
                 {

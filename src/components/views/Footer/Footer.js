@@ -59,11 +59,11 @@ const Footer =()=> {
         </div>
         <div className="box">
         <div>
-          <li><img src="/imges/TCat.jpg"></img></li>
+          <li><img src="/imges/TCat.jpg" alt=''></img></li>
         </div>
         <div>
           <h4>Team T-Cat</h4>
-          <p>김성탁 하정목 박하린 지민 김승렬</p>
+          <p>하정목 김승렬 김성탁 박하린 지민</p>
           <p>주소 : 서울시 강남구 테헤란로 14길 6 kh 정보교육원</p>
           <p>Copyright 2022 T-Cat All rights reserved.</p>
         </div>

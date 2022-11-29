@@ -67,12 +67,8 @@ function AdminPage() {
 function Header() {
   return(
     <HeaderBlock>
-<<<<<<< HEAD
-      <div className='logoContainer'><img className="Logo" src="/images/TCat.jpg" alt=''></img></div>
-=======
       {/* <div className='logoContainer'><img className="Logo" src={require("/images/TCat.jpg").default} alt='고양이'/></div> */}
-      <div className='logoContainer'><img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/></div>
->>>>>>> b134d9db869115062617c48e571340d91d5921ac
+      <div className='logoContainer'><img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'} alt=''/></div>
     </HeaderBlock>
   );
 }
@@ -89,7 +85,7 @@ function SideMenu() {
         if(key === "로그아웃"){
           console.log("관리자 로그아웃");
           // 로그아웃일 때 로그인페이지로 이동
-        } else{
+        } else {
           navigate(key);
         }
       }}
