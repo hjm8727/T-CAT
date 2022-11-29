@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
-import KakaoPay from "./KakaoPay";
 
 const PayReady = props => {
-    console.log(props.item_name);
     let [data, setData] = useState({
         next_redirect_pc_url: "",
         tid: "",
@@ -61,9 +59,6 @@ const PayReady = props => {
             <div className="container">
                 <h2 className="head-line">카카오페이 결제하기</h2>
                 <a href={ next_redirect_pc_url }><img className="kakao" src="../images/test.png" alt="카카오페이" /></a>
-                <div>
-                    <KakaoPay/>
-                </div>
             </div>
         )
 }
