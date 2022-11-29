@@ -14,7 +14,7 @@ const LoginWrap = styled.div`
   width: 50%;
   height: 969px;
   padding: var(--space-m);
-  font-size: var(--font-size);
+  font-size: 16px;
   font-family: var(--font-family);
   line-height: 1.2;
 }
@@ -230,8 +230,6 @@ function Login() {
           <div className='btn-group'>
           <button type='button' className="btn btn--primary" onClick={handleLogin}><img src='/images/test.png' alt='카카오 로그인'/></button>
           </div>
-          {/* form 태그 안에 있을때 동작을 안함 */}
-          <div className="btn-group"><button type='button' onClick={handleLogin}><img src='/images/test.png' alt='카카오 로그인'/></button></div>
           </div>
       </form>
           {/* form 태그 안에 있을때 동작을 안함 */}
