@@ -3,7 +3,9 @@ import Calendar from 'react-calendar';
 import './calendar.css';
 import 'react-calendar/dist/Calendar.css';
 import styled from 'styled-components';
-import PayPopup from '../PayPopup';
+import PayPopup from '../Popup/PayPopup';
+import PayPopup2 from '../Popup/PayPopup2'
+import PayPopup3 from '../Popup/PayPopup3';
 
 const Styleside = styled.div`
     .side-header{
@@ -87,9 +89,10 @@ const BodyContainer = styled.div`
     .BorderBottom{
         border-bottom: 1px solid silver;
     }
-    .BorderBottom2{
+    .select-box{
         display: flex;
         justify-content: center;
+        width: 125px;
     }
     .BuyOption{
         opacity: 60%;
@@ -106,7 +109,7 @@ const Body = () => {
                 <th className='BorderBottom'>기본가</th>
                 <td className='BorderBottom'>일반</td>
                 <td className='BorderBottom'>35.000</td>
-                <td className='BorderBottom2'>
+                <td className='select-box'>
                     <select >
                         <option>0매</option>
                         <option>1매</option>
@@ -117,7 +120,8 @@ const Body = () => {
                 <th rowSpan={3}>기본 할인</th>
                 <td>학생 할인</td>
                 <td>35.000</td>
-                <td><select>
+                <td className='select-box'>
+                    <select>
                         <option>0매</option>
                         <option>1매</option>
                     </select>
@@ -126,7 +130,8 @@ const Body = () => {
                 <tr>
                 <td>더블 할인</td>
                 <td>35.000</td>
-                <td><select>
+                <td className='select-box'>
+                    <select>
                         <option>0매</option>
                         <option>1매</option>
                     </select>
@@ -135,7 +140,8 @@ const Body = () => {
                 <tr>
                 <td>신규오픈 할인</td>
                 <td>35.000</td>
-                <td><select>
+                <td className='select-box'>
+                    <select>
                         <option>0매</option>
                         <option>1매</option>
                     </select>
@@ -189,20 +195,49 @@ const Body = () => {
     );
 }
 
+const Body2 = () => {
+    return(
+        <div>
+            <h2>2번 바디입니다.</h2>
+        </div>
+    );
+}
+
+const Body3 = () => {
+    return(
+        <div>
+            <h3>3번 바디입니다.</h3>
+        </div>
+    );
+}
 
 // 달력
 function TCalendar () {
     const [date, setDate] = useState(new Date());
     const [modalOpen, setModalOpen] = useState(false);
+    const [number, setNumber] = useState(0);
+
+    const plusNumber = () => setNumber(number + 1);
+    const minusNumber = () => setNumber(number - 1);
 
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
+
+    const ModalList = () => {
+        return(
+            <div>
+                {number === 0 && <PayPopup open={modalOpen} plusNumber={plusNumber} close={closeModal} header={<Header />} body={<Body />} />}
+                {number === 1 && <PayPopup2 open={modalOpen} plusNumber={plusNumber} header={<Header />} minusNumber={minusNumber} close={closeModal} body={<Body2 />} />}
+                {number === 2 && <PayPopup3 open={modalOpen} minusNumber={minusNumber} header={<Header />} close={closeModal} body={<Body3 />} />}
+            </div>
+        );
+    }
 
     return (
         <div>
             <h3 className='text-center'>관람일</h3>
             <div className='calendar-container'>
-            <Calendar onChange={setDate} value={date} 
+            <Calendar onChange={setDate} value={date}
             formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}
             />
             </div>
@@ -217,9 +252,8 @@ function TCalendar () {
                     <div className='side-content'><button className='button select' type='button'>1회 20:00</button><button className='button no' type='button'>1회 20:00</button></div>
                     <small className='seat'>잔석 70</small>
                     <button className='pay-button' onClick={openModal}>예매하기</button>
-                    <PayPopup open={modalOpen} close={closeModal} header={<Header />} body={<Body />}>
-
-                    </PayPopup>
+                    <ModalList />
+                    {/* <PayPopup open={modalOpen} close={closeModal} header={<Header />} body={<Body />} /> */}
                 </div>
             </Styleside>
         </div>

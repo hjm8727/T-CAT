@@ -111,15 +111,15 @@ function SideMenu() {
 function Content() {
   return(
     <Routes>
-      <Route path='/admin/home' element={<AdminHome/>}/>
-      <Route path='/admin/normal' element={<MemberList/>}/>
-      <Route path='/admin/black' element={<BlackList/>}/>
-      <Route path='/admin/enroll' element={<PostManagement/>}/>
-      <Route path='/admin/ad' element={<Banner/>}/>
-      <Route path='/admin/noticeList' element={<NoticeList/>}/>
-      <Route path='/admin/inquiry' element={<Inquiry/>}/>
-      <Route path='/admin/writeNotice' element={<WriteNotice/>}/>
-      <Route path='/admin/noticeDetail' element={<NoticeDetail/>}/>
+      <Route path='/home' element={<AdminHome/>}/>
+      <Route path='/normal' element={<MemberList/>}/>
+      <Route path='/black' element={<BlackList/>}/>
+      <Route path='/enroll' element={<PostManagement/>}/>
+      <Route path='/ad' element={<Banner/>}/>
+      <Route path='/noticeList' element={<NoticeList/>}/>
+      <Route path='/inquiry' element={<Inquiry/>}/>
+      <Route path='/writeNotice' element={<WriteNotice/>}/>
+      <Route path='/noticeDetail' element={<NoticeDetail/>}/>
     </Routes>
 
   );

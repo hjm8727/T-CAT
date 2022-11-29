@@ -35,7 +35,7 @@ function Info() {
                 <li class="infoItem">
                     <strong class="infoLabel">장소</strong>
                 <span class="infoDesc">
-                    <a class="infoBtn" data-popup="info-place" role="button" href="#">
+                    <a class="infoBtn" data-popup="info-place" role="button" href="/">
                     대성 디큐브아트센터
                     </a>
                 </span>

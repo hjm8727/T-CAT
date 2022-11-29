@@ -20,7 +20,7 @@ const ModalStyle = styled.div`
         width: 90%;
         max-width: 4500px;
         width: 700px;
-        height: 700px;
+        height: 740px;
         margin: 0 auto;
         border-radius: 0.3rem;
         background-color: #fff;
@@ -87,9 +87,9 @@ const ModalStyle = styled.div`
     }
 `;
 
-function PayPopup (props) {
+function PayPopup2 (props) {
       // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header, body } = props;
+  const { open, close, header, plusNumber, minusNumber, body } = props;
 
     return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -105,8 +105,11 @@ function PayPopup (props) {
             </header>
             <main>{body}</main>
             <footer className='modal-footer'>
-                <button className="close" onClick={close}>
-                close
+                <button className='close' onClick={plusNumber}>
+                다음 단계
+                </button>
+                <button className="close" onClick={minusNumber}>
+                이전
                 </button>
             </footer>
             </section>
@@ -116,4 +119,4 @@ function PayPopup (props) {
     );
 }
 
-export default PayPopup;
+export default PayPopup2;
