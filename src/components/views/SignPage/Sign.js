@@ -300,8 +300,12 @@ function Sign() {
   const onChangeName = e => {
     const value = e.target.value;
     setInputName(value);
-    const regEx = /[ㄱ-힣]{2, 7}/;
-    if(regEx.test(value)) setIsName(true);
+    const regEx = /^[ㄱ-ㅎ|가-힣]+$/;
+    if(regEx.test(value)) {
+      if(value.length > 1) {
+        setIsName(true);
+      }
+    }
     else setIsName(false);
   }
 
@@ -319,6 +323,11 @@ function Sign() {
       alert('회원가입을 축하드립니다.');
       e.preventDefualt();
     } else {
+      console.log(isId)
+      console.log(isPwd)
+      console.log(isCheck)
+      console.log(isName)
+      console.log(isEmail)
       setSubmit(false);
       alert('회원가입 실패 다시 확인 부탁드립니다.');
       e.preventDefualt();

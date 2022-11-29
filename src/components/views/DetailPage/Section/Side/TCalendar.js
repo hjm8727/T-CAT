@@ -216,20 +216,33 @@ function TCalendar () {
     const [date, setDate] = useState(new Date());
     const [modalOpen, setModalOpen] = useState(false);
     const [number, setNumber] = useState(0);
+    const [id, setId] = useState(1);
 
-    const plusNumber = () => setNumber(number + 1);
-    const minusNumber = () => setNumber(number - 1);
+    const plusId = () => setId(id + 1);
+    const minusId = () => setId(id - 1);
 
     const openModal = () => setModalOpen(true);
-    const closeModal = () => setModalOpen(false);
+    const closeModal = () => {
+        setModalOpen(false);
+        setId(1);
+    }
 
-    const ModalList = () => {
+    const topics = [
+        {id:1, title: <PayPopup plus={plusId} open={openModal} close={closeModal} header={<Header />} body={<Body />}/>},
+        {id:2, title:<PayPopup2 plus={plusId} minus={minusId} open={openModal} close={closeModal} header={<Header />} body={<Body2 />}/>},
+        {id:3, title:<PayPopup3 minus={minusId} open={openModal} close={closeModal} header={<Header />} body={<Body3 />}/>}
+    ];
+
+    const ModalList = props => {
+        const popup = [...props.topics];
         return(
-            <div>
-                {number === 0 && <PayPopup open={modalOpen} plusNumber={plusNumber} close={closeModal} header={<Header />} body={<Body />} />}
-                {number === 1 && <PayPopup2 open={modalOpen} plusNumber={plusNumber} header={<Header />} minusNumber={minusNumber} close={closeModal} body={<Body2 />} />}
-                {number === 2 && <PayPopup3 open={modalOpen} minusNumber={minusNumber} header={<Header />} close={closeModal} body={<Body3 />} />}
-            </div>
+            <>
+            {popup && popup.map((list) => (
+                <div key={list.id}>
+                    {list.id === id && modalOpen && list.title}
+                </div>
+            ))}
+            </>
         );
     }
 
@@ -252,8 +265,7 @@ function TCalendar () {
                     <div className='side-content'><button className='button select' type='button'>1회 20:00</button><button className='button no' type='button'>1회 20:00</button></div>
                     <small className='seat'>잔석 70</small>
                     <button className='pay-button' onClick={openModal}>예매하기</button>
-                    <ModalList />
-                    {/* <PayPopup open={modalOpen} close={closeModal} header={<Header />} body={<Body />} /> */}
+                    <ModalList topics={topics} />
                 </div>
             </Styleside>
         </div>
