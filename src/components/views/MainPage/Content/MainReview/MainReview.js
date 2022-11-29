@@ -2,21 +2,18 @@ import styled from "styled-components"
 
 const MainReviewContainer = styled.div`
     width: 100%;
-    margin: 0 auto;
-    height: 300px;
-    /* border: 1px solid black; */
+    margin: 30px 0;
     .ReviewBox{
         display: flex;
         justify-content: center;
     }
     .MainReviewContents{
-        border: 1px solid black;
-        width: 300px;
-        height: 200px;
-        border: 1px solid #f5f5f5;
+        /* border: 1px solid black; */
+        border: 1px solid silver;
         margin: 0 5px;
     }
     li{
+        width: 23%;
         list-style: none;
         float: left;
     }
@@ -25,39 +22,51 @@ const MainReviewContainer = styled.div`
         padding: 0px;
     }
     .ReviewContents{
-        display: block;
-        background-color: #f5f5f5;
         margin:5px;
-        height: 200px;
-        opacity: 70%;
-        overflow:hidden;
-        text-overflow: initial;
+        opacity: 60%;
+    }
+    .con{
+        white-space: normal;
+        word-wrap: break-word;
+        display: -webkit-box;
+        -webkit-line-clamp: 8;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
     .minititle{
-        display: flex;
-        justify-content: center;
+        background-color: #f5f5f5;
+        margin: 0;
+        text-align: center;
         opacity: 90%;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        white-space: nowrap;
     }
     h2{
         font-size: 1.5em;
         font-weight: bold;
-}
+        margin-bottom: 30px;
+    }
     @media(max-width : 1024px){
-        .ReviewBox{
-            min-width: 600px;
+        .ReviewContents{
+            margin: 5px;
+        }
+        .con{
+            -webkit-line-clamp: 3;
+            height: 100px;
         }
 }
 `
 const Review =[
     {
         id : "1",
-        title : "첫번째 후기 제목입니다.",
+        title : "첫번째 후기 제목입니다.첫번째 후기 제목입니다.첫번째 후기 제목입니다.첫번째 후기 제목입니다.",
         contents : "재미있습니다."
     },
     {   
         id : "2",
         title : "첫번째 후기 제목입니다.",
-        contents : "재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다"
+        contents : "재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다"
     },
     {
         id : "3",
@@ -81,10 +90,10 @@ const MainReview = () =>{
             <div className="ReviewBox">
             {Review.map (c => (
                 <li className="MainReviewContents" key={c.id}>
-                <p className="minititle">{c.title}</p>
+                    <p className="minititle">{c.title}</p>
                 <hr></hr>
                 <div className="ReviewContents">
-                    <p>{c.contents}</p>
+                    <p className="con">{c.contents}</p>
                 </div>
             </li>
             ))}

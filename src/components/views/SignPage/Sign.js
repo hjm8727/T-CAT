@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PopupPostCode from '../KakaoAdress/PopupPostCode';
-import PopupDom from '../KakaoAdress/PopupDom';
+import PopupDom from './PopupDom';
+import DaumPostcode from "react-daum-postcode";
 import './Sign.css';
 
 const SignWrap = styled.div`
 width: 100%;
-background-color: var(--color-tertiary);
+height: 1150px;
+background-color: #EEE3CB;
 
 .signwrap {
   display: grid;
   place-items: center;
   margin: 0 auto;
   width: 50%;
-  height: 1200px;
   padding: var(--space-m);
-  font-size: var(--font-size);
+  font-size: 16px;
   font-family: var(--font-family);
   line-height: 1.2;
 }
@@ -27,13 +27,15 @@ a:focus {
 }
 h2 {
   font-weight: 700;
-  font-size: calc(var(--font-size) * 1.5);
+  font-size: calc(var(--font-size) * 1.25);
+  color: #FFF8EA;
 }
 .form {
   position: relative;
   width: 100%;
   max-width: 550px;
   margin: 0 auto;
+  margin: 50px 0;
   transform: skewY(-5deg) translateY(10%) scale(0.94);
   transition: box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease);
 }
@@ -41,7 +43,7 @@ h2 {
   content: "";
   position: absolute;
   pointer-events: none;
-  background-color: #ebebeb;
+  background-color: #815B5B;
   width: 25%;
   height: 100%;
   transition: background-color var(--duration) var(--ease), transform var(--duration) var(--ease);
@@ -66,21 +68,25 @@ h2 {
 }
 .form:hover:before, .form:hover:after, .form:focus-within:before, .form:focus-within:after {
   background-color: white;
+  background-color: #815B5B;
   transform: skewY(0);
 }
 .form-inner {
   padding: var(--space-xl);
-  background-color: white;
+  background-color: #9E7676;
   z-index: 1;
 }
 .form-inner > * + * {
   margin-top: var(--space-xl);
 }
+.input-wrapper:focus-within label {
+  color: #594545;
+}
 .input-wrapper:focus-within .icon {
-  /* background-color: var(--color-secondary); */
+  background-color: #594545;
 }
 .input-wrapper:focus-within input {
-  /* border-color: var(--color-secondary); */
+  border-color: #594545;
 }
 .input-wrapper + .input-wrapper {
   margin-top: var(--space-l);
@@ -108,13 +114,14 @@ label {
   letter-spacing: 0.065rem;
   display: block;
   margin-bottom: var(--space-xs);
+  color: #FFF8EA;
 }
 .icon {
   display: flex;
   align-items: center;
   flex: 0 1 auto;
   padding: var(--space-m);
-  background-color: var(--color-primary);
+  background-color: #815B5B;
 }
 .icon svg {
   width: 1.25em;
@@ -127,16 +134,15 @@ label {
 input {
   flex: 1 1 0;
   width: 100%;
-  height: 50px;
   outline: none;
+  height: 45px;
   padding: var(--space-m);
-  font-size: 16px;
+  font-size: 15px;
   font-family: var(--font-family);
-  color: var(--color-secondary);
-  border: 2px solid var(--color-primary);
+  border: 2px solid burlywood;
 }
 input:focus {
-  color: var(--color-primary);
+  color: brown;
 }
 .btn-group {
   display: flex;
@@ -163,14 +169,14 @@ input:focus {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.065rem;
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
+  border-color: #815B5B;
+  background-color: #815B5B;
+  color: #FFF8EA;
   justify-content: center;
 }
 .btn--primary:focus {
-  background-color: var(--color-secondary);
-  border-color: var(--color-secondary);
+  border-color: #594545;
+  background-color: #594545;
 }
 .btn--text {
   font-size: calc(var(--font-size) / 1.5);
@@ -189,7 +195,6 @@ input:focus {
   top: 10;
   left: 0;
 }
-
 
 .form-control.success input {
   border-color: #2ecc71;
@@ -228,12 +233,44 @@ function Sign() {
   const [isEmail, setIsEmail] = useState(false);
   const [submit, setSubmit] = useState(false);
 
-  // 카카오주소 api 입력
+  // 모달 스타일
+  const postCodeStyle = {
+    display: "block",
+    position: "absolute",
+    top: "2%",
+    width: "500px",
+    height: "500px",
+    padding: "7px",
+  };
+
+  // 카카오주소 api
   const [isOpen, setIsOpen] = useState(false);
+  // 주소 
+  let [fullAddress, setFullAddress] = useState("");
 
+  // 상세 주소 값
+  const [address, setAddress] = useState("");
+  // 우편 번호
+  const [postCode, setPostCode] = useState("");
+  // 지번, 도로명 구분
+  let [type, setType] = useState("");
+  // 팝업 열기
   const openPostCode = () => setIsOpen(true);
-
+  // 팝업 닫기
   const closePostCode = () => setIsOpen(false);
+  // 값 담기
+  const onChangeAddress = e => setAddress(e.target.value);
+
+  // 데이터 담기
+  const handlePostCode = (data) => {
+    setFullAddress(data.address);
+    // 우편번호
+    setPostCode(data.zonecode);
+
+    console.log(isOpen);
+    setIsOpen(false);
+    data.preventDefualt();
+  }
 
   const onChangeId = e => {
     const value = e.target.value;
@@ -333,17 +370,22 @@ function Sign() {
           </div>
           </div>
           <div className="btn-group"><button className="btn btn--primary" type='button' onClick={openPostCode}>Address</button></div>
-
           <div id='popupDom'>
                 {isOpen && (
+                  <div>
                     <PopupDom>
-                        <PopupPostCode onClose={closePostCode} />
+                      <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
+                    <button onClick={closePostCode} type='button'>닫기</button>
                     </PopupDom>
+                  </div>
                 )}
+                <input type='text' readOnly placeholder='선택된 주소' value={fullAddress}  />
+                <p />
+                <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력'/>
           </div>
           <div>
           </div>
-          <div className="btn-group"><button className="btn btn--primary" type='button' disabled={submit} onClick={onClickSign}>Sign in</button><a className="btn--text" href="#0">Forgot password?</a></div>
+          <div className="btn-group"><button className="btn btn--primary" type='button' disabled={submit} onClick={onClickSign}>Sign in</button></div>
           </div>
       </form>
     </div>

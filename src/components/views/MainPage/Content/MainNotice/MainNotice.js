@@ -1,4 +1,3 @@
-import { useState } from "react"
 import styled, { keyframes } from "styled-components"
 
 const MainNoticeContainer = styled.div` 
@@ -19,20 +18,25 @@ const MainNoticeContainer = styled.div`
             transform: translateY(0px);
         }
     }
-    height: 25px;
-    display: block;
+    height: 30px;
     overflow: hidden;
-    /* background-color: #f5f5f5 ; */
     font-family: sans-serif;
-    
+    margin: 15px 0;
+    .MainNotice{
+        margin: 0;
+        padding: 0;
+    }
     .Notice1{
+        display: flex;
+        align-items: center;
         animation: slide 20s ease-out infinite;
         height: 30px;
         margin: 0px;
         padding: 0px;
     }
     a{
-        padding : 0 3px;
+        /* padding : 1px; */
+        width: 48px;
         margin-right: 5px;
         border-radius: 5px;
         background-color: #fae100;
@@ -41,12 +45,10 @@ const MainNoticeContainer = styled.div`
         width: 25px;
         height: 20px;
         margin: 0 10px;
-        /* margin-left: 10px;
-        margin-right: 10px; */
     }
     @media (max-width : 1440px){
         /* font-size: 0.9em; */
-        height: 20px;
+        /* height: 20px; */
         .Noticeimg{
             width: 20px;
             height: 15px;

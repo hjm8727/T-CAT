@@ -4,8 +4,8 @@ import styled from "styled-components";
 const PosterCategoryContainer = styled.div`
     width: 100%;
     /* border: solid 1px black; */
+    margin: 30px 0;
     .PosterTitle{
-        /* min-width: 540px; */
         margin: 5px;
     }
     h2{

@@ -14,11 +14,12 @@ const PosterImgContainer = styled.div`
         list-style: none;
         margin: 0px;
         padding: 0px;
+        overflow: hidden;
     }
     li{
         list-style: none;
-        display: inline-block;
-        margin:5px 10px;
+        /* display: inline-block; */
+        margin:10px;
     }
     p{
         width: 110px;
@@ -27,7 +28,7 @@ const PosterImgContainer = styled.div`
     }
     @media (max-width : 1440px){
         li{
-            margin: 0 2.5em;
+            margin:10px 2.5em;
         }
     }   
 `

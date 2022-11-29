@@ -3,30 +3,25 @@ import styled from "styled-components";
 
 const PosterCategoryContainer = styled.div`
     width: 100%;
+    margin: 30px 0;
     /* border: solid 1px black; */
     .PosterTitle{
         /* min-width: 540px; */
-        margin: 5px;
+        /* margin: 0 6em; */
         display: flex;
         justify-content: center;
-    }
-    h2{
-        display: inline-block;
-        font-size: 1.5em;
-        font-weight: bold;
-        margin-right: 10px;
+        /* justify-content: space-between */
+        
     }
     li{
+        min-width: 120px;
         font-size: 1.2em;
         list-style: none;
         padding : 0.5em;
-        margin: 0 50px;
+        margin: 0 1em;
         cursor: pointer;
     }
     /* @media (max-width : 1025px){
-        h2{
-            font-size: 1em;
-        }
         li{
             font-size: 0.8em;
             margin: 0 1;

@@ -69,7 +69,9 @@ function AdminPage() {
 function Header() {
   return(
     <HeaderBlock>
-      <div className='logoContainer'><img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/></div>
+      <div className='logoContainer'>
+        {/* <img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/> */}
+      </div>
     </HeaderBlock>
   );
 }
@@ -86,7 +88,7 @@ function SideMenu() {
         if(key === "로그아웃"){
           console.log("관리자 로그아웃");
           // 로그아웃일 때 로그인페이지로 이동
-        } else{
+        } else {
           navigate(key);
         }
       }}
