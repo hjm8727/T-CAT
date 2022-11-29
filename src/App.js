@@ -44,7 +44,7 @@ function App() {
       <Route path="/payresult" element={<PayResult />} />
       <Route path="/paycancel" element={<PayCancel />} />
     </Routes> */}
-    <AdminPage/>
+    {/* <AdminPage/> */}
       {/* <Route path='/' element={<MainPage/>}/> */}
       {/* <Route path='/admin/*' element={<AdminPage/>}/>
       <Route path='/MyPage/*' element={<MyPage/>}/> */}
