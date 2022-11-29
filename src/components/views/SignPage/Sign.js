@@ -265,7 +265,9 @@ function Sign() {
     // 우편번호
     setPostCode(data.zonecode);
 
-    closePostCode();
+    console.log(isOpen);
+    setIsOpen(false);
+    data.preventDefualt();
   }
 
   const onChangeId = e => {
@@ -371,8 +373,9 @@ function Sign() {
                 {isOpen && (
                   <div>
                     <PopupDom>
+                      {/* 닫는 것이 안댐 */}
                       <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
-                    {/* <button onClick={closePostCode} type='button'>닫기</button> */}
+                    <button onClick={closePostCode} type='button'>닫기</button>
                     </PopupDom>
                   </div>
                 )}
