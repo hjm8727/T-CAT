@@ -7,17 +7,16 @@ const LoginWrap = styled.div`
   width: 100%;
   // 전체 배경 색
   background-color: #EEE3CB;
+  height: 750px;
 .loginwrap {
-  width: 70%;
   display: grid;
   place-items: center;
-  margin: 0;
-  height: 100vh;
+  margin: 0 auto;
+  width: 50%;
   padding: var(--space-m);
   font-size: 16px;
   font-family: var(--font-family);
   line-height: 1.2;
-  background-color: var(--color-tertiary);
 }
 a {
   color: #FFF8EA;
@@ -35,6 +34,7 @@ h2 {
   width: 100%;
   max-width: 550px;
   margin: 0 auto;
+  margin: 50px 0;
   transform: skewY(-5deg) translateY(10%) scale(0.94);
   transition: box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease);
 }
@@ -143,6 +143,7 @@ input {
   flex: 1 1 0;
   width: 100%;
   outline: none;
+  height: 45px;
   padding: var(--space-m);
   font-size: 15px;
   font-family: var(--font-family);

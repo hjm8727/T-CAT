@@ -6,6 +6,7 @@ import './Sign.css';
 
 const SignWrap = styled.div`
 width: 100%;
+height: 1150px;
 background-color: #EEE3CB;
 
 .signwrap {
@@ -13,7 +14,6 @@ background-color: #EEE3CB;
   place-items: center;
   margin: 0 auto;
   width: 50%;
-  height: 1200px;
   padding: var(--space-m);
   font-size: 16px;
   font-family: var(--font-family);
@@ -35,6 +35,7 @@ h2 {
   width: 100%;
   max-width: 550px;
   margin: 0 auto;
+  margin: 50px 0;
   transform: skewY(-5deg) translateY(10%) scale(0.94);
   transition: box-shadow var(--duration) var(--ease), transform var(--duration) var(--ease);
 }
@@ -134,6 +135,7 @@ input {
   flex: 1 1 0;
   width: 100%;
   outline: none;
+  height: 45px;
   padding: var(--space-m);
   font-size: 15px;
   font-family: var(--font-family);
@@ -367,21 +369,19 @@ function Sign() {
               </svg></span><input type="email" id="sign-email" value={inputEmail} onChange={onChangeEmail} data-lpignore="true" />
           </div>
           </div>
-          {/* 버튼 클릭 시 팝업 생성 */}
           <div className="btn-group"><button className="btn btn--primary" type='button' onClick={openPostCode}>Address</button></div>
           <div id='popupDom'>
                 {isOpen && (
                   <div>
                     <PopupDom>
-                      {/* 닫는 것이 안댐 */}
                       <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
                     <button onClick={closePostCode} type='button'>닫기</button>
                     </PopupDom>
                   </div>
                 )}
-                <input type='text' readOnly placeholder='선택된 주소 값' value={fullAddress}/>
+                <input type='text' readOnly placeholder='선택된 주소' value={fullAddress}  />
                 <p />
-                <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력' />
+                <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력'/>
           </div>
           <div>
           </div>

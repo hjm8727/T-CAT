@@ -16,18 +16,16 @@ function App() {
     <>
       {/* JM 지민 */}
     <Routes>
-      {/* <Route path='/' element={<MainPage/>}/>
-      <Route path='/admin/*' element={<AdminPage/>}/>
-      <Route path='/MyPage/*' element={<MyPage/>}/> */}
       <Route path='/kakaopay/*' element={<KakaoPay/>}/>
       <Route path='/' element={<Login />} />
       <Route path='/sign' element={<Sign />} />
-      {/* 카카오 주소 api 쓰는 것. 테스트 */}
-      <Route path='/test' element={<Test />} />
       <Route path='/findid' element={<FindId />} />
       <Route path="/detail" element={<Detail />} />
       <Route path='/findpwd' element={<FindPwd />} /> 
+      <Route path='/MyPage/*' element={<MyPage/>}/>
     </Routes>
+      {/* <Route path='/' element={<MainPage/>}/>
+      <Route path='/admin/*' element={<AdminPage/>}/> */}
       {/* <Route path='/' element={<MainPage/>}/>
       <Route path='/admin/*' element={<AdminPage/>}/>
 
