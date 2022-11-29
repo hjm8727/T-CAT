@@ -214,10 +214,10 @@ function Login() {
           </div>
           </div>
           <div className="btn-group"><button className="btn btn--primary">LOGIN</button><a className="btn--text" href="#0">Forgot password?</a></div>
+          {/* form 태그 안에 있을때 동작을 안함 */}
+          <div className="btn-group"><button type='button' onClick={handleLogin}><img src='/images/test.png' alt='카카오 로그인'/></button></div>
           </div>
       </form>
-          {/* form 태그 안에 있을때 동작을 안함 */}
-          <button onClick={handleLogin}><img src='/images/test.png' alt='카카오 로그인'/></button>
     </div>
     </LoginWrap>
   )

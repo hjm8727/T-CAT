@@ -31,11 +31,6 @@ function App() {
       {/* <Route path='/admin/*' element={<AdminPage/>}/>
       <Route path='/MyPage/*' element={<MyPage/>}/> */}
       
-
-      
-      {/* 카카오 로그인 */}
-    {/* <Route path='/' element={<KLT />} /> */}
-
     {/* <AdminPage/> */}
     {/* <MyPage/> */}
     {/* <Detail/> */}
