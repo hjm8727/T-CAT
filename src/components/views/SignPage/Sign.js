@@ -6,7 +6,7 @@ import './Sign.css';
 
 const SignWrap = styled.div`
 width: 100%;
-background-color: var(--color-tertiary);
+background-color: #EEE3CB;
 
 .signwrap {
   display: grid;
@@ -15,7 +15,7 @@ background-color: var(--color-tertiary);
   width: 50%;
   height: 1200px;
   padding: var(--space-m);
-  font-size: var(--font-size);
+  font-size: 16px;
   font-family: var(--font-family);
   line-height: 1.2;
 }
@@ -27,7 +27,8 @@ a:focus {
 }
 h2 {
   font-weight: 700;
-  font-size: calc(var(--font-size) * 1.5);
+  font-size: calc(var(--font-size) * 1.25);
+  color: #FFF8EA;
 }
 .form {
   position: relative;
@@ -41,7 +42,7 @@ h2 {
   content: "";
   position: absolute;
   pointer-events: none;
-  background-color: #ebebeb;
+  background-color: #815B5B;
   width: 25%;
   height: 100%;
   transition: background-color var(--duration) var(--ease), transform var(--duration) var(--ease);
@@ -66,21 +67,25 @@ h2 {
 }
 .form:hover:before, .form:hover:after, .form:focus-within:before, .form:focus-within:after {
   background-color: white;
+  background-color: #815B5B;
   transform: skewY(0);
 }
 .form-inner {
   padding: var(--space-xl);
-  background-color: white;
+  background-color: #9E7676;
   z-index: 1;
 }
 .form-inner > * + * {
   margin-top: var(--space-xl);
 }
+.input-wrapper:focus-within label {
+  color: #594545;
+}
 .input-wrapper:focus-within .icon {
-  /* background-color: var(--color-secondary); */
+  background-color: #594545;
 }
 .input-wrapper:focus-within input {
-  /* border-color: var(--color-secondary); */
+  border-color: #594545;
 }
 .input-wrapper + .input-wrapper {
   margin-top: var(--space-l);
@@ -108,13 +113,14 @@ label {
   letter-spacing: 0.065rem;
   display: block;
   margin-bottom: var(--space-xs);
+  color: #FFF8EA;
 }
 .icon {
   display: flex;
   align-items: center;
   flex: 0 1 auto;
   padding: var(--space-m);
-  background-color: var(--color-primary);
+  background-color: #815B5B;
 }
 .icon svg {
   width: 1.25em;
@@ -127,16 +133,14 @@ label {
 input {
   flex: 1 1 0;
   width: 100%;
-  height: 50px;
   outline: none;
   padding: var(--space-m);
-  font-size: 16px;
+  font-size: 15px;
   font-family: var(--font-family);
-  color: var(--color-secondary);
-  border: 2px solid var(--color-primary);
+  border: 2px solid burlywood;
 }
 input:focus {
-  color: var(--color-primary);
+  color: brown;
 }
 .btn-group {
   display: flex;
@@ -163,14 +167,14 @@ input:focus {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.065rem;
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
+  border-color: #815B5B;
+  background-color: #815B5B;
+  color: #FFF8EA;
   justify-content: center;
 }
 .btn--primary:focus {
-  background-color: var(--color-secondary);
-  border-color: var(--color-secondary);
+  border-color: #594545;
+  background-color: #594545;
 }
 .btn--text {
   font-size: calc(var(--font-size) / 1.5);
@@ -189,7 +193,6 @@ input:focus {
   top: 10;
   left: 0;
 }
-
 
 .form-control.success input {
   border-color: #2ecc71;
@@ -379,7 +382,7 @@ function Sign() {
           </div>
           <div>
           </div>
-          <div className="btn-group"><button className="btn btn--primary" type='button' disabled={submit} onClick={onClickSign}>Sign in</button><a className="btn--text" href="#0">Forgot password?</a></div>
+          <div className="btn-group"><button className="btn btn--primary" type='button' disabled={submit} onClick={onClickSign}>Sign in</button></div>
           </div>
       </form>
     </div>

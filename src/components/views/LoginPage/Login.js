@@ -121,7 +121,6 @@ label {
   display: block;
   margin-bottom: var(--space-xs);
   // 라벨 컬러
-  /* color: var(--color-primary); */
   color: #FFF8EA;
 }
 .icon {
