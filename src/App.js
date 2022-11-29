@@ -1,7 +1,7 @@
 import {Routes, Route} from "react-router-dom";
 import FindId from "./components/views/FindIdPage/FindId";
 import FindPwd from "./components/views/FindPwdPage/FindPwd";
-// import MainPage from "./components/views/MainPage/MainPage";
+import MainPage from "./components/views/MainPage/MainPage";
 // import AdminPage from "./components/views/AdminPage/AdminPage";
 // import MyPage from "./components/views/MyPage/MyPage";
 import Detail from "./components/views/DetailPage/Detail";
@@ -18,16 +18,16 @@ function App() {
   return (
     <>
     <Routes>
-      {/* <Route path='/' element={<MainPage/>}/>
-      <Route path='/admin/*' element={<AdminPage/>}/>
-      <Route path='/MyPage/*' element={<MyPage/>}/> */}
+      <Route path='/' element={<MainPage/>}/>
+      {/* <Route path='/admin/*' element={<AdminPage/>}/>
+      <Route path='/MyPage/*' element={<MyPage/>}/>
       <Route path='/kakaopay/*' element={<KakaoPay/>}/>
       <Route path='/' element={<Login />} />
-      <Route path='/sign' element={<Sign />} />
+      <Route path='/sign' element={<Sign />} /> */}
       {/* 카카오 주소 api 쓰는 것. 테스트 */}
       <Route path='/test' element={<Test />} />
       <Route path='/findid' element={<FindId />} />
-      <Route path="/detail" element={<Detail />} />
+      {/* <Route path="/detail" element={<Detail />} /> */}
       <Route path='/findpwd' element={<FindPwd />} /> 
     </Routes>
 

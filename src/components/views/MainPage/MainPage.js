@@ -16,38 +16,34 @@ const ItemContainer = styled.div`
     width: 75%;
     padding: 0px;
     margin: 0 auto;
-    /* justify-content: center; */
-    @media (max-width :1024px ){
-        min-width: 600px;
-    }
+    min-width: 900px;
     `
 const MainContainer = styled.div`
     width : 100%;
     margin: 0px;
     padding: 0px;
-    
+    min-width: 900px;
 `
 
 const MainPage = () =>{
     return(
         <MainContainer>
+            
             <MainHeader/>
+                
                 <ContentWarp/>
-                    <ItemContainer>
 
+                    <ItemContainer>
                         <MainPoster name = "주간 랭킹"/>
                         <MainPoster name = "일간 랭킹"/>
                         
                         <MainNotice/>
                         <hr></hr>
-
-                    </ItemContainer>
                         <MainBanner/>
-
                         <PosterCategory2/>
                         <MainPoster2/>
-                        <MainPoster2/>
-                        <hr></hr>
+                    </ItemContainer>
+
 
                     <ItemContainer>
                         <MainReview/>

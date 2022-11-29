@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const PosterContainer = styled.div`
     width: 50%;
+    margin: 30px 0;
     align-items: center;
     display: inline-block;
     /* border: solid 1px black; */
@@ -15,10 +16,7 @@ const PosterContainer = styled.div`
     }
     @media (max-width : 1440px){
         width: 100%;
-        min-width: 0px;
-        a{
-            font-size: 0.5em;
-        }
+        margin: 15px 0;
     }
     `
 

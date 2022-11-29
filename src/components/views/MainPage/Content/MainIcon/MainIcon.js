@@ -14,6 +14,7 @@ const MainIconContainer = styled.div`
     display: flex;
     justify-content:space-between;
     align-items: center;
+    margin: 30px 0;
     /* min-width: 600px; */
     .MainIcon{
         display: flex;
@@ -27,6 +28,7 @@ const MainIconContainer = styled.div`
         margin: 0px;
         margin-top: 5px;
         color:#33333b;
+        /* min-width: 64px; */
     }
     h2{
         margin:0px;
@@ -60,7 +62,7 @@ const MainIconContainer = styled.div`
         }
         .IconContainer{
             /* min-width: 96px; */
-            margin: 0 1em;
+            margin: 0 0.5em;
         }
     }
 `

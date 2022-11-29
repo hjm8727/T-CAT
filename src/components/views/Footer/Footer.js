@@ -3,6 +3,7 @@ import styled from "styled-components";
 const FooterContainer = styled.div`
   width: 100%;
   background-color: #f5f5f5;
+  /* min-width: 920px; */
   .ContentsContainer{
     width: 80%;
     display: flex;
@@ -10,16 +11,15 @@ const FooterContainer = styled.div`
     margin-top: 50px;
     justify-content: space-between;
   }
+  a{
+  }
   li{
-    /* min-width: ; */
     list-style: none;
     margin:10px;
   }
   img{
-
     width: 150px;
     height: 100px;
-    /* margin : 0 50px; */
     margin-right: 50px;
   }
   .box{
@@ -41,15 +41,9 @@ const FooterContainer = styled.div`
     border: solid 1px black;
     width: 100%;
   }
-  /* @media (max-width : 1024px){
-    min-width: 600px;
-    hr{font-size : 1em}
-    p{font-size : 0.7em}
-    li{
-      font-size : 0.7em;
-      margin: 5px 10px;
-    }
-  } */
+  @media (max-width : 1024px){
+
+  }
 `
 
 const Footer =()=> {

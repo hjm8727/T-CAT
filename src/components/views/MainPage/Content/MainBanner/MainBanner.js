@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const BannerContainer = styled.div`
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -10,12 +10,6 @@ const BannerContainer = styled.div`
     img{
         width: 100%;
         height: 120px;
-    }
-    @media ( max-width : 1024px){
-        width: 100%;
-        img{
-            height: 5vh;
-        }
     }
 `
 

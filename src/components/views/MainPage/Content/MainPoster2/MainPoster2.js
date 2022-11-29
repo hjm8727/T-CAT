@@ -1,18 +1,10 @@
 import styled from "styled-components"
 
 const MainPoster2Container = styled.div`
-     width: 100%;
-    /* min-width: 720px; */
+    width: 100%;
     background-color: #f5f5f5;
-    display: flex;
-    /* justify-content:space-between; */
-    justify-content: center;
-    /* border: solid 1px black; */
     font-family: sans-serif;
-    .MainPoster2Contan{
-        display: flex;
-        justify-content: center;
-    }
+    
     .PosterCategory{
         font-weight: bold;
         font-size: 1.2em;
@@ -26,16 +18,17 @@ const MainPoster2Container = styled.div`
         height: 230px;
     }
     ul{
-        margin: 0;
-        padding: 0;
+        overflow: hidden;
         display: flex;
+        justify-content: space-between;
+        margin: 30px;
+        padding: 0;
         list-style: none;
-        /* width: 100%; */
     }
     li{   
         list-style: none;
-        margin:20px 20px;
-        width: 180px;
+        width:180px;
+        margin: 0 5px;
     }
     p{
         text-align: center;
@@ -44,23 +37,14 @@ const MainPoster2Container = styled.div`
         font-size: 1.2em;
     }
     
-    @media (max-width : 1024px){
-        
+    @media (max-width : 1024px){    
         img{
-            width: 160px;
-            height: 200px;
+            width: 120px;
+            height: 160px;
         }
         li{
             margin: 0 5px;
-        }
-    }
-    @media (max-width : 1023px){
-        /* min-width: 600px; */
-        li{
-            /* margin: 0 5px; */
-        }
-        p{
-            margin: 5px 0;
+            width: 120px;
         }
     }
 `
