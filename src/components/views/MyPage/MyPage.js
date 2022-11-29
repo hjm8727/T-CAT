@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
@@ -28,16 +28,14 @@ const items = [
   ])
 ];
   const navigate = useNavigate();
-  // const [collapsed, setCollapsed] = useState(false);
-  // collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} 사이드 안에 있었
   
   return (
     <div>
     <MainHeader/>
     <Layout>
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider style={{height: '350px'}}>
         <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        <Menu theme="dark" mode="inline" items={items} onClick={({key}) => navigate(key)}/>
       </Sider>
       <Layout className="site-layout">
         <Content style={{margin: '0 16px' }}>
@@ -47,6 +45,9 @@ const items = [
 
               </div>
             </div>
+          </div>
+          <div style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
+            <MyBody/>
           </div>
         </Content>
         <Footer
@@ -74,15 +75,3 @@ const MyBody = () => (
 );
 
 export default MyPage;
-        //     <div className='userInfo' style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
-        //       <div className='userIcon'style={{width: '170px', height: '170px', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} >
-
-        //       </div>
-        //     </div>
-        // <Footer
-        //   style={{
-        //     textAlign: 'center',
-        //   }}
-        // >
-        //   Ant Design ©2018 Created by Ant UED
-        // </Footer>
