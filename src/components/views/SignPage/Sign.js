@@ -261,6 +261,8 @@ function Sign() {
     setFullAddress(data.address);
     // 우편번호
     setPostCode(data.zonecode);
+
+    closePostCode();
   }
 
   const onChangeId = e => {
@@ -367,13 +369,13 @@ function Sign() {
                   <div>
                     <PopupDom>
                       <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
-                        <button onClick={closePostCode} type='button'>닫기</button>
-                        <input type='text' readOnly value={fullAddress}/>
-                        <p />
-                        <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력' />
+                    {/* <button onClick={closePostCode} type='button'>닫기</button> */}
                     </PopupDom>
                   </div>
                 )}
+                <input type='text' readOnly placeholder='선택된 주소 값' value={fullAddress}/>
+                <p />
+                <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력' />
           </div>
           <div>
           </div>

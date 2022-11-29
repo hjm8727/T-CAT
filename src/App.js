@@ -1,24 +1,28 @@
 import {Routes, Route} from "react-router-dom";
-// import FindId from "./components/views/FindIdPage/FindId";
-// import FindPwd from "./components/views/FindPwdPage/FindPwd";
+import FindId from "./components/views/FindIdPage/FindId";
+import FindPwd from "./components/views/FindPwdPage/FindPwd";
+import Login from "./components/views/LoginPage/Login";
+import Sign from "./components/views/SignPage/Sign";
+import KakaoPay from "./components/views/KakaoPay/KakaoPay";
+import Detail from "./components/views/DetailPage/Detail";
 // import MainPage from "./components/views/MainPage/MainPage";
 // import AdminPage from "./components/views/AdminPage/AdminPage";
 // import MyPage from "./components/views/MyPage/MyPage";
-// import Detail from "./components/views/DetailPage/Detail";
-import KakaoPay from "./components/views/KakaoPay/KakaoPay";
-// import PayReady from "./components/views/KakaoPay/PayReady";
-// import PayResult from "./components/views/KakaoPay/PayResult";
-// import PaySelect from "./components/views/KakaoPay/PaySelect";
-// import PayCancel from "./components/views/KakaoPay/PayCancel";
-import Login from "./components/views/LoginPage/Login";
-import Sign from "./components/views/SignPage/Sign";
-import KLT from "./components/views/KakaoLogin/KLT";
+// import KLT from "./components/views/KakaoLogin/KLT";
 
 
 function App() {
   return (
     <>
+      {/* JM 지민 */}
     <Routes>
+      <Route path='/' element={<Login />} />
+      <Route path='/sign' element={<Sign />} />
+      <Route path='/findid' element={<FindId />} />
+      <Route path='/findpwd' element={<FindPwd />} />
+      <Route path='/detail' element={<Detail />} />
+      <Route path='/kakaopay/*' element={<KakaoPay />} />
+    </Routes>
       {/* <Route path='/' element={<MainPage/>}/>
       <Route path='/admin/*' element={<AdminPage/>}/>
       <Route path='/MyPage/*' element={<MyPage/>}/> */}
@@ -27,26 +31,11 @@ function App() {
       {/* <Route path='/admin/*' element={<AdminPage/>}/>
       <Route path='/MyPage/*' element={<MyPage/>}/> */}
       
-      <Route path='/kakaopay/*' element={<KakaoPay/>}/>
-      <Route path='/' element={<Login />} />
-      <Route path='/sign' element={<Sign />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/' element={<Sign />} />
 
-      {/* 카카오 주소 api 쓰는 것. 테스트 */}
-      {/* <Route path='/findid' element={<FindId />} />
-      <Route path="/detail" element={<Detail />} />
-      <Route path='/findpwd' element={<FindPwd />} /> */}
       
       {/* 카카오 로그인 */}
     {/* <Route path='/' element={<KLT />} /> */}
-    </Routes>
 
-    {/* <Routes>
-      <Route path="/" element={<PayReady />} />
-      <Route path="/payresult" element={<PayResult />} />
-      <Route path="/paycancel" element={<PayCancel />} />
-    </Routes> */}
     {/* <AdminPage/> */}
     {/* <MyPage/> */}
     {/* <Detail/> */}
