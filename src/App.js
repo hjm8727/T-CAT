@@ -12,17 +12,24 @@ import KakaoPay from "./components/views/KakaoPay/KakaoPay";
 // import PayCancel from "./components/views/KakaoPay/PayCancel";
 import Login from "./components/views/LoginPage/Login";
 import Sign from "./components/views/SignPage/Sign";
+import KLT from "./components/views/KakaoLogin/KLT";
 
 
 function App() {
   return (
     <>
     <Routes>
+      {/* <Route path='/' element={<MainPage/>}/>
+      <Route path='/admin/*' element={<AdminPage/>}/>
+      <Route path='/MyPage/*' element={<MyPage/>}/> */}
+
       {/* <Route path='/' element={<MainPage/>}/> */}
       {/* <Route path='/admin/*' element={<AdminPage/>}/>
       <Route path='/MyPage/*' element={<MyPage/>}/> */}
       
       <Route path='/kakaopay/*' element={<KakaoPay/>}/>
+      <Route path='/' element={<Login />} />
+      <Route path='/sign' element={<Sign />} />
       <Route path='/login' element={<Login />} />
       <Route path='/' element={<Sign />} />
 
@@ -32,6 +39,7 @@ function App() {
       <Route path='/findpwd' element={<FindPwd />} /> */}
       
       {/* 카카오 로그인 */}
+    {/* <Route path='/' element={<KLT />} /> */}
     </Routes>
 
     {/* <Routes>
