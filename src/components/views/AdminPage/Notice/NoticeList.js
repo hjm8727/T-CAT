@@ -1,10 +1,10 @@
-import TopBar from "./Tool/TopBar";
+import TopBar from "../Tool/TopBar";
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate} from "react-router-dom";
 
 const NoticeBlock=styled.div`
-  margin:0 auto;
+    margin:0 auto;
     box-sizing: border-box;
     width: 100vw;
 .container {
@@ -20,6 +20,7 @@ table,th,td {
   border: 1px solid black;
 }
 .noticeButton{
+  text-align: center;
   border: none;
       margin-bottom: 5px;
       /* margin: 20px 10px; */
@@ -29,9 +30,8 @@ table,th,td {
       height: 40px;
 
 }
-
 `;
-const Notice=()=>{
+const NoticeList=()=>{
   const navigate = useNavigate();
   const [noticeList, setNoticeList] = useState("");
 
@@ -40,17 +40,17 @@ const Notice=()=>{
       // 클릭하면 공지 내용 볼 수 있게
     }
     return(
-        <NoticeBlock>
+        <NoticeBlock style={{width : '100vw'}}>
         <TopBar name="공지사항 관리"/>
           <div className="container">
           <table>
               <thead>
                 <tr>
-                  <th width="150px">글번호</th>
+                  <th width = "150px">글번호</th>
                   <th>제목</th>
-                  <th width="150px">작성자</th>
-                  <th width="150px">작성일</th>
-                  <th width="150px">조회수</th>
+                  <th width = "150px">작성자</th>
+                  <th width = "150px">작성일</th>
+                  <th width = "150px">조회수</th>
                 </tr>
               </thead>
               <tbody>
@@ -71,4 +71,4 @@ const Notice=()=>{
         </NoticeBlock>
     );
 }
-export default Notice;
+export default NoticeList;

@@ -1,17 +1,18 @@
 import React from 'react'
 import {Routes, Route, useNavigate} from "react-router-dom";
 import {Menu} from 'antd';
-import {HomeOutlined, PoweroffOutlined,UserOutlined,SolutionOutlined,LayoutOutlined,BulbOutlined} from "@ant-design/icons/lib/icons";
+import {HomeOutlined, PoweroffOutlined,UserOutlined,SolutionOutlined,LayoutOutlined,BulbOutlined,WhatsAppOutlined} from "@ant-design/icons/lib/icons";
 import styled from 'styled-components';
 import AdminHome from './AdminHome';
 import MemberList from './MemberList';
 import BlackList from './BlackList';
 import Banner from './Banner';
-import Notice from './Notice';
+import Notice from './Notice/NoticeList';
 import PostManagement from './PostManagement';
-import WriteNotice from './WirteNotice';
+import WriteNotice from './Notice/WirteNotice';
 import Inquiry from './Inquiry';
-import NoticeDetail from './NoticeDetail';
+import NoticeDetail from './Notice/NoticeDetail';
+import NoticeList from './Notice/NoticeList';
 
 const AdminBlock=styled.div`
   .top {
@@ -50,6 +51,7 @@ const FooterBlock=styled.div`
   padding: 0;
   margin: 0;
 `;
+
 function AdminPage() {
   return (
     <AdminBlock>
@@ -67,8 +69,9 @@ function AdminPage() {
 function Header() {
   return(
     <HeaderBlock>
-      {/* <div className='logoContainer'><img className="Logo" src={require("/images/TCat.jpg").default} alt='고양이'/></div> */}
-      <div className='logoContainer'><img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'} alt=''/></div>
+      <div className='logoContainer'>
+        {/* <img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/> */}
+      </div>
     </HeaderBlock>
   );
 }
@@ -98,8 +101,8 @@ function SideMenu() {
                     {label : "블랙리스트", key:"/admin/black"}], icon:<UserOutlined/>},
         {label:"게시물관리", key:"/admin/enroll", icon:<LayoutOutlined />},
         {label:"광고관리", key:"/admin/ad", icon:<BulbOutlined />},
-        {label:"공지사항 관리", key:"/admin/notice", icon:<SolutionOutlined/>},
-        {label:"1대1 문의", key:"/admin/inquiry", icon:<SolutionOutlined/>},
+        {label:"공지사항 관리", key:"/admin/noticeList", icon:<SolutionOutlined/>},
+        {label:"1대1 문의", key:"/admin/inquiry", icon:<WhatsAppOutlined />},
         {label:"로그아웃", key:'로그아웃', icon:<PoweroffOutlined/>,danger:true},
     ]}>
       </Menu>
@@ -107,20 +110,18 @@ function SideMenu() {
 }
 function Content() {
   return(
-    <>
     <Routes>
       <Route path='/admin/home' element={<AdminHome/>}/>
       <Route path='/admin/normal' element={<MemberList/>}/>
       <Route path='/admin/black' element={<BlackList/>}/>
       <Route path='/admin/enroll' element={<PostManagement/>}/>
       <Route path='/admin/ad' element={<Banner/>}/>
-      <Route path='/admin/notice' element={<Notice/>}/>
+      <Route path='/admin/noticeList' element={<NoticeList/>}/>
       <Route path='/admin/inquiry' element={<Inquiry/>}/>
       <Route path='/admin/writeNotice' element={<WriteNotice/>}/>
       <Route path='/admin/noticeDetail' element={<NoticeDetail/>}/>
-
     </Routes>
-    </>
+
   );
 }
 export default AdminPage;

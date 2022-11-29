@@ -10,6 +10,7 @@ import Paging from "./Tool/Pagination/Paging";
 // import Modal from "../../../util/./Modal/ModalPop";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
+import DataSearch from "./Tool/DataSearch";
 
 
 const MemberBlock=styled.div`
@@ -54,7 +55,6 @@ const BlackList=()=>{
     {id: 4, user: '선택 5', name: '곰돌이', date:'2022-12-02',email:'gg@naver.com',report:'5'},
   ];
 
-
   const [lists, setLists] = useState('');
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
@@ -87,11 +87,16 @@ const BlackList=()=>{
 
 
   }
+  const [query, setQuery] = useState("");
+  console.log(query);
+  console.log(data.filter(data=>data.name.includes("곰")));
 
     return(
         <MemberBlock>
         <NavBar name="블랙리스트 관리"/>
+        <input type="text" onChange={e=>setQuery(e.target.value)}/>
           <div className="container">
+          {/* <DataSearch refreshFunction={updateSearchItem}/> */}
           <table>
                 <thead>
                   <tr>

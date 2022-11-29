@@ -3,7 +3,6 @@ import styled from "styled-components";
 const BarBlock=styled.div`
     .block{
         float: right;
-
     }
     .bar{
     border-radius: 10px;
