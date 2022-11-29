@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PopupPostCode from '../KakaoAdress/PopupPostCode';
-import PopupDom from '../KakaoAdress/PopupDom';
+import PopupDom from './PopupDom';
+import DaumPostcode from "react-daum-postcode";
 import './Sign.css';
 
 const SignWrap = styled.div`
@@ -228,12 +228,40 @@ function Sign() {
   const [isEmail, setIsEmail] = useState(false);
   const [submit, setSubmit] = useState(false);
 
-  // 카카오주소 api 입력
+  // 모달 스타일
+  const postCodeStyle = {
+    display: "block",
+    position: "absolute",
+    top: "2%",
+    width: "500px",
+    height: "500px",
+    padding: "7px",
+  };
+
+  // 카카오주소 api
   const [isOpen, setIsOpen] = useState(false);
+  // 주소 
+  let [fullAddress, setFullAddress] = useState("");
 
+  // 상세 주소 값
+  const [address, setAddress] = useState("");
+  // 우편 번호
+  const [postCode, setPostCode] = useState("");
+  // 지번, 도로명 구분
+  let [type, setType] = useState("");
+  // 팝업 열기
   const openPostCode = () => setIsOpen(true);
-
+  // 팝업 닫기
   const closePostCode = () => setIsOpen(false);
+  // 값 담기
+  const onChangeAddress = e => setAddress(e.target.value);
+
+  // 데이터 담기
+  const handlePostCode = (data) => {
+    setFullAddress(data.address);
+    // 우편번호
+    setPostCode(data.zonecode);
+  }
 
   const onChangeId = e => {
     const value = e.target.value;
@@ -332,13 +360,19 @@ function Sign() {
               </svg></span><input type="email" id="sign-email" value={inputEmail} onChange={onChangeEmail} data-lpignore="true" />
           </div>
           </div>
+          {/* 버튼 클릭 시 팝업 생성 */}
           <div className="btn-group"><button className="btn btn--primary" type='button' onClick={openPostCode}>Address</button></div>
-
           <div id='popupDom'>
                 {isOpen && (
+                  <div>
                     <PopupDom>
-                        <PopupPostCode onClose={closePostCode} />
+                      <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
+                        <button onClick={closePostCode} type='button'>닫기</button>
+                        <input type='text' readOnly value={fullAddress}/>
+                        <p />
+                        <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력' />
                     </PopupDom>
+                  </div>
                 )}
           </div>
           <div>
