@@ -11,6 +11,7 @@ const PosterStyle = styled.div `
 
 // 상세페이지 상단 포스터
 function Poster() {
+    const item_name = '태양의서커스 <뉴 알레그리아>';
     const [like, setLike] = useState(0);
     const [style, setStyle] = useState(false);
     const onClickLike = e => {
@@ -28,7 +29,7 @@ function Poster() {
     return (
         <PosterStyle>
         <div>
-        <h2 className='summary-top'>태양의서커스 ＜뉴 알레그리아＞</h2>
+        <h3 className='summary-top'>{item_name}</h3>
             <div className='summary-body'>
                 <div className='poster-box' style={{margin: '0'}}>
                     <img className='poster-box-top' src='test.gif' alt='포스터 이미지'/>

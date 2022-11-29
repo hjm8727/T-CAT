@@ -5,7 +5,6 @@ import Poster from './Section/Summary/Poster';
 import Info from './Section/Summary/Info';
 import DBody from './Section/Body/DBody';
 import MainHeader from '../MainHeader/MainHeader';
-import { Link } from 'react-router-dom';
 const { Content, Footer, Sider } = Layout;
 
 // 상세페이지

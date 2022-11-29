@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import PayCancel from './PayCancel';
 import PayReady from './PayReady';
