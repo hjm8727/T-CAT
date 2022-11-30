@@ -101,8 +101,9 @@ const BodyContainer = styled.div`
 const Body = () => {
     // 수량 선택
     const [value, setValue] = useState(0);
+    const [price, setPrice] = useState(35000);
     // 티켓 금액
-    const price = 35000;
+    const ticket = price * value;
     // 비과세
     const tax = (value * price) / 20;
     // 총 결제금액
@@ -199,7 +200,7 @@ const Body = () => {
                     <th>선택좌석</th>
                     <td>현좌석</td>
                     <th>티켓금액</th>
-                    <td>{price}</td>
+                    <td>{ticket}</td>
                 </tr>
                 <tr>
                     <th>비과세(5%)</th>
