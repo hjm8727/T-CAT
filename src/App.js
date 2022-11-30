@@ -7,6 +7,9 @@ import AdminPage from "./components/views/AdminPage/AdminPage";
 import Detail from "./components/views/DetailPage/Detail";
 import MyPage from "./components/views/MyPage/MyPage";
 
+import Seat from "./components/views/DetailPage/Section/Seat/Seat";
+import Screen from "./components/views/DetailPage/Section/Seat/Screen";
+
 
 function App() {
   return (
@@ -20,6 +23,12 @@ function App() {
       <Route path='/sign' element={<Sign />} />
       <Route path="/detail" element={<Detail />} />
     </Routes>
+
+    {/* 정리 해놨는데 죄송... 좌석 테스트 좀 할게요 */}
+    {/* <Routes>
+          <Route path="/" element={<Seat />} />
+          <Route path="/Screen/:selected/:totalprice" element={<Screen />} />
+    </Routes> */}
     </>
   );
 }
