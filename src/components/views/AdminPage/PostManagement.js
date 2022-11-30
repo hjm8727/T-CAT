@@ -5,8 +5,9 @@ import { useState } from "react";
 const PostBlock=styled.div`
   margin:0 auto;
   box-sizing: border-box;
-  width: 100vw;
-    .container {
+  /* width: 100vw; */
+  .container {
+    width: 100vw;
     margin : 10px;
     display: flex;
     border: 1px solid black;
@@ -21,18 +22,25 @@ table,th,td {
 .delete{
   float: right;
   button{
-    border: none;
-      margin: 20px 10px;
-      background-color: #E3CAA5;
-      border-radius: 5px;
-      width: 150px;
-      height: 40px;
+   border: none;
+   margin: 20px 10px;
+        background-color: #E3CAA5;
+        border-radius: 5px;
+        width: 340px;
+        height: 50px;
 }  
 }
+  
 `;
 
 const PostManagement=()=>{
-    const [lists, setLists] = useState('');
+  const data = [
+    {id: 0, num: '1', title: '태양의서커스', date:'2022-12-02-2023-01-15'},
+    {id: 1, num: '2', title: '태양의서커스', date:'2022-12-02-2023-01-15'},
+    {id: 2, num: '3', title: '태양의서커스', date:'2022-12-02-2023-01-15'},
+  ];
+
+  const [lists, setLists] = useState('');
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
   // 체크박스 단일 선택
@@ -51,7 +59,7 @@ const PostManagement=()=>{
     if(checked) {
       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
-      lists.forEach((el) => idArray.push(el.id));
+      data.forEach((el) => idArray.push(el.id));
       setCheckItems(idArray);
     }
     else {
@@ -60,36 +68,35 @@ const PostManagement=()=>{
     }
   }
   const onClickDelete=()=>{
-
+    alert("전시글을 삭제하시겠습니까?")
   }
+    
     return(
         <PostBlock>
         <TopBar name="전시회 게시물 관리"/>
-        <div className="container">
+          <div className="container">
           <table>
                 <thead>
                   <tr>
-                  <th width="150px">
+                  <th>
                     <input type='checkbox' name='select-all' onChange={(e) => handleAllCheck(e.target.checked)}
                     // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
-                    checked={checkItems.length === lists.length ? true : false} />
+                    checked={checkItems.length === data.length ? true : false} />
                     </th>
-                    <th width="150px">번호</th>
+                    <th>글번호</th>
                     <th>전시명</th>
-                    <th width="250px">전시기간</th>
-                    <th width="150px">조회수</th>
+                    <th>전시기간</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {lists && lists.map(({num, title, date, views}) => (<tr>
-                  <td><input type='checkbox' name={`select-${num}`} onChange={(e) => handleSingleCheck(e.target.checked, num)}
+                  {data && data.map((data,key) => (<tr key={key}>
+                  <td><input type='checkbox' name={`select-${data.id}`} onChange={(e) => handleSingleCheck(e.target.checked, data.id)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                  checked={checkItems.includes(num) ? true : false} />
+                  checked={checkItems.includes(data.id) ? true : false} />
                   </td>
-                    <td>{num}</td>
-                    <td>{title}</td>
-                    <td>{date}</td>
-                    <td>{views}</td>
+                    <td>{data.num}</td>
+                    <td>{data.title}</td>
+                    <td>{data.date}</td>
                 </tr>
                 ))}
                 </tbody>

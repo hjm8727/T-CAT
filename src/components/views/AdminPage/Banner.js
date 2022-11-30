@@ -8,7 +8,6 @@ import {v4} from "uuid";
 const BannerBlock=styled.div`
     margin:0 auto;
     box-sizing: border-box;
-    width: 100vw;
 .tableContainer{
     border: 2px solid gray;
     margin: 30px 30px;

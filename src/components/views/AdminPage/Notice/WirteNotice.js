@@ -5,8 +5,8 @@ import { useState } from "react";
 
 
 const WriteBlock=styled.div`
-     margin : 0 auto;
-    width: 100vw;
+     margin:0 auto;
+  box-sizing: border-box;
     .container{
         position: relative;
     }

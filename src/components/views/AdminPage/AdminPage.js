@@ -28,6 +28,7 @@ const AdminBlock=styled.div`
   }
 `;
 const HeaderBlock=styled.div`
+  /* position: fixed; */
   width: 100%;
   height: 65px;
   background-color: #E3CAA5;
@@ -58,7 +59,7 @@ function AdminPage() {
     <div className='top'>
       <Header/>
       <div className='center'>
-        <SideMenu/>
+        <SideMenu styled={{position : "fixed"}}/>
         <Content/>
       </div>
       <Footer/>
@@ -70,7 +71,7 @@ function Header() {
   return(
     <HeaderBlock>
       <div className='logoContainer'>
-        {/* <img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/> */}
+        <img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/>
       </div>
     </HeaderBlock>
   );
