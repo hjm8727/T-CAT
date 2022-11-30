@@ -215,7 +215,6 @@ const Body3 = () => {
 function TCalendar () {
     const [date, setDate] = useState(new Date());
     const [modalOpen, setModalOpen] = useState(false);
-    const [number, setNumber] = useState(0);
     const [id, setId] = useState(1);
 
     const plusId = () => setId(id + 1);

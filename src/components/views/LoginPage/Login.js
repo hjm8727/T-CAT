@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Login.css';
 import styled from 'styled-components';
 import { KAKAO_AUTH_URL } from '../../Config';
+import FindModal from './FindModal';
 
 const LoginWrap = styled.div`
   width: 100%;
@@ -18,10 +19,12 @@ const LoginWrap = styled.div`
   font-family: var(--font-family);
   line-height: 1.2;
 }
-a {
+.btn--text {
+  font-size: 14px;
+  margin-left: 30px;
   color: #FFF8EA;
 }
-a:focus {
+.btn--text:focus {
   color: #815b81
 }
 h2 {
@@ -187,27 +190,93 @@ input:focus {
   border-color: #594545;
   background-color: #594545;
 }
-.btn--text {
-  font-size: calc(var(--font-size) / 1.5);
-  padding: 0;
-}
 `
+const IdStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  .modal-input {
+    width: 250px;
+  }
+`;
+
+const FindIdHeader = () => {
+  return(
+    <h4 style={{textAlign: 'center'}}>아이디 찾기</h4>
+  );
+}
+
+const FindIdBody = () => {
+  return(
+    <IdStyle>
+      <div>
+        <input className='modal-input' type='text' placeholder='이름 입력'></input>
+        <p />
+        <input className='modal-input' type='email' placeholder='이메일 입력'></input>
+      </div>
+    </IdStyle>
+  );
+}
+
+const FindIdFooter = () => {
+  return(
+    <div>
+      <h5>00님의 아이디는 [wlals1234]입니다.</h5>
+    </div>
+  )
+}
+
+const FindPwdHeader = () => {
+  return(
+    <h4 style={{textAlign: 'center'}}>비밀번호 찾기</h4>
+  );
+}
+
+const FindPwdBody = () => {
+  return(
+    <IdStyle>
+      <div>
+        <input className='modal-input' type='text' placeholder='아이디 입력'></input>
+        <p />
+        <input className='modal-input' type='text' placeholder='이름 입력'></input>
+        <p />
+        <input className='modal-input' type='email' placeholder='이메일 입력'></input>
+      </div>
+    </IdStyle>
+  );
+}
+
+const FindPwdFooter = () => {
+  return(
+    <div>
+      <h5>00님의 아이디는 [wlals1234]입니다.</h5>
+    </div>
+  )
+}
 
 function Login() {
   // 카카오 로그인
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
-};
+  };
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const openModal = e => {
+    setModalOpen(true);
+    console.log(e.target.className);
+  }
+  const closeModal = () => setModalOpen(false);
 
   const [inputId, setInputId] = useState("");
   const [inputPwd, setInputPwd] = useState("");
-  const [Login, setLogin] = useState(false);
+  const [login, setLogin] = useState(false);
 
   const onChangeId = e => setInputId(e.target.value);
   const onChangePwd = e => setInputPwd(e.target.value);
 
-
   return (
+    <>
     <LoginWrap>
     <div className='loginwrap'>
       <form className="form" onsubmit="return false" autocomplete="off">
@@ -227,15 +296,18 @@ function Login() {
                       </svg></span><input type="password" value={inputPwd} onChange={onChangePwd} id="login-password" data-lpignore="true" />
           </div>
           </div>
-          <div className="btn-group"><button className="btn btn--primary">LOGIN</button><a className="btn--text" href="#0">Forgot password?</a></div>
+          <div className="btn-group"><button className="btn btn--primary">LOGIN</button></div>
           <div className='btn-group'>
           <button type='button' className="btn btn--primary" onClick={handleLogin}><img src='/images/test.png' alt='카카오 로그인'/></button>
           </div>
+          <span className="btn--text" onClick={openModal}>Forgot id?</span><span className="btn--text" onClick={openModal}>Forgot password?</span>
           </div>
       </form>
-          {/* form 태그 안에 있을때 동작을 안함 */}
     </div>
     </LoginWrap>
+    {/* {modalOpen && <FindModal open={openModal} close={closeModal} header={<FindIdHeader />} body={<FindIdBody />} footer={<FindIdFooter />}/>} */}
+    {modalOpen && <FindModal open={openModal} close={closeModal} header={<FindPwdHeader />} body={<FindPwdBody />} footer={<FindPwdFooter />}/>}
+    </>
   )
 }
 
