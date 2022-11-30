@@ -7,7 +7,6 @@ import AdminHome from './AdminHome';
 import MemberList from './MemberList';
 import BlackList from './BlackList';
 import Banner from './Banner';
-import Notice from './Notice/NoticeList';
 import PostManagement from './PostManagement';
 import WriteNotice from './Notice/WirteNotice';
 import Inquiry from './Inquiry';
