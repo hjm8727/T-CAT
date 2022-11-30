@@ -13,8 +13,13 @@ const ReplyBlock=styled.div`
 const ReplyForm=()=> {
     const [ inputReply, setInputReply] = useState("");
 
+    console.log(inputReply);
+    const onChangeReply=(e)=>{
+      setInputReply(e.target.value);
+    }
+
     const submitReply=async()=>{
-        console.log(setInputReply);
+        console.log(inputReply);
     }
   return (
     <ReplyBlock>
@@ -24,7 +29,7 @@ const ReplyForm=()=> {
       </Form.Group>
       <Form.Group className="title">
         <Form.Label >
-            <div value={inputReply}>
+            <div value={inputReply} onChange={onChangeReply}>
                 답장
             </div>
             답변하기</Form.Label>

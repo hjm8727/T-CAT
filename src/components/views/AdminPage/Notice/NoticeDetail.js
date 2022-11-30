@@ -28,6 +28,10 @@ const DetailBlock=styled.div`
     }
     .title{
         float: left;
+        hover{
+            cursor: pointer;
+            background-color: red;
+        }
     }
     .date{
         float: right;

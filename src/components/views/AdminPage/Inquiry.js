@@ -43,7 +43,9 @@ const Inquiry=()=>{
       </div>
     );
   }
-  const onClick2 = () => {
+  const onClickButton = (title) => {
+    console.log("버튼 클릭");
+    console.log(data.title);
     setOpen(!open);
   }
 
@@ -72,7 +74,7 @@ const Inquiry=()=>{
                     <td>{data.title}</td>
                     <td>{data.userId}</td>
                     <td>{data.date}</td>
-                    <td><button type="button" onClick={onClick2}>답장</button></td>
+                    <td><button type="button" onClick={onClickButton}>답장</button></td>
                     {/* <div className="reply">
                 {open && <Test />}
               </div> */}
@@ -80,6 +82,7 @@ const Inquiry=()=>{
                 ))}
                 </tbody>
                 <tbody style={{height : "20px"}}> 
+                  <tr>
                   <td colSpan = "5">
                   {/* {open && 
                     <input value={inputReply}/>
@@ -87,6 +90,7 @@ const Inquiry=()=>{
                   } */}
                   {open && <Test/>}
                   </td>
+                  </tr>
                 </tbody>
 
                 {/* <tbody>
