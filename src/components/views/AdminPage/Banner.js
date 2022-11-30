@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import NavBar from "./Tool/TopBar";
 import styled from "styled-components";
-import {storage} from "./Tool/Firebase";
-import {ref, uploadBytes, listAll, getDownloadURL,deleteObject, getStorage} from "firebase/storage";
-import {v4} from "uuid";
+import { storage } from "./Tool/Firebase";
+import {ref, uploadBytes, listAll, getDownloadURL,deleteObject, getStorage, uploadString} from "firebase/storage";
+import {v4, v4 as uuidv4} from "uuid";
+// import { ref, uploadString, getDownloadURL, deleteObject } from "@firebase/storage";
 
 const BannerBlock=styled.div`
     margin:0 auto;
     box-sizing: border-box;
+    width: 100vw;
 .tableContainer{
     border: 2px solid gray;
     margin: 30px 30px;
@@ -27,9 +29,6 @@ const BannerBlock=styled.div`
     }
 }
 .preview{
-    /* width: 100vw; */
-    /* height: auto; */
-    /* display: flex; */
     align-items: center;
     flex-direction: column;
     ul{
@@ -40,7 +39,7 @@ const BannerBlock=styled.div`
 }
 }
     img{
-        width: 200px;
+        width: 300px;
         height: 200px;
         margin: 10px;
     }
@@ -52,56 +51,90 @@ const Banner=()=>{
     const [adUrl, setAdUrl] = useState("");
     const[image, setImage] = useState("");
     // 사진 업로드 하고 담는 값
-    const[imageList, setImageList] = useState([]);
-    const imageListReg= ref(storage, "image/")
-    // image폴더 안에 사진명+고유식별자로 저장
-    const imageRef = ref(storage,`image/${image.name + v4()}`);
 
-    // 파이어베이스에 등록
-    const uploadImage=(e)=>{
-        if(image){
-        uploadBytes(imageRef, image).then((snap)=>{
-            getDownloadURL(snap.ref).then((url)=>{
-                // alert("이미지 업로드")
-                setImageList((prev)=>[...prev, url])
-                console.log("사진 주소값 : " + imageRef);
+    // const StudyWrite = (studyObj) => {
+        const [attachment, setAttachment] = useState("");
+        const [imageList, setImageList] =useState([]);
+        let attachmentUrl = "";
+        //사진 첨부 없이 텍스트만 트윗하고 싶을 때도 있으므로 기본 값을 ""로 해야한다.
+        //트윗할 때 텍스트만 입력시 이미지 url ""로 비워두기 위함
+      
+        const imgChange = (e) => {
+          const {
+            target: { files },
+          } = e;
+          const theFile = files[0];
+          console.log(theFile);
+      
+          const reader = new FileReader();
+          reader.onloadend = (finishedEvent) => {
+            const {
+              currentTarget: { result },
+            } = finishedEvent;
+            setAttachment(result);
+          }
+          reader.readAsDataURL(theFile);
+        };
+      
+      
+        const onSubmit = async (e) => {
+          e.preventDefault();
+          //이미지 첨부하지 않고 텍스트만 올리고 싶을 때도 있기 때문에 attachment가 있을때만 아래 코드 실행
+          //이미지 첨부하지 않은 경우엔 attachmentUrl=""이 된다.
+          if (attachment !== "") {
+            //파일 경로 참조 만들기
+            const attachmentRef = ref(storage, `/image/${uuidv4()}`); //const fileRef = ref(storageService, `${ studyObj.studyId } / ${ uuidv4() }`);
+            //storage 참조 경로로 파일 업로드 하기                                            위의 거로 바꿔주어야 스터디 아이디에 맞게 저장됨
+            const response = await uploadString(attachmentRef, attachment, "data_url");
+            //storage 참조 경로에 있는 파일의 URL을 다운로드해서 attachmentUrl 변수에 넣어서 업데이트
+            attachmentUrl = await getDownloadURL(response.ref);
+            console.log(attachmentUrl);
+            getDownloadURL(response.ref).then((url)=>{
+                setImageList((prev)=>[...prev,url])
             })
-        })
-    } else {
-        alert("사진을 등록하세요")
-    }
-}
+          }
+        };
+    
+        const imageListReg=ref(storage,"image/");
 
-    useEffect(()=>{
-        listAll(imageListReg).then((response)=>{
-            console.log(response);
-            response.items.forEach((item)=>{
-                getDownloadURL(item).then((url)=>{
-                    setImageList((prev)=>[...prev,url])
+        useEffect(()=>{
+            listAll(imageListReg).then((response)=>{
+                console.log(response);
+                response.items.forEach((item)=>{
+                    getDownloadURL(item).then((url)=>{
+                        setImageList((prev)=>[...prev,url])
+                    })
                 })
             })
-        })
+    
+        },[])
 
-    },[])
+        const onIndex=()=>{
+        }
 
-    const onClickDelete=()=>{
-        // setImageList([]);
-        const storage = getStorage();
-        const desertRef = ref(storage,`image/study.png`)
-        deleteObject(desertRef).then(()=>{
-            console.log("삭제 성공");
-        }).catch((error)=>{
-            console.log("삭제 에러");
-            console.log(storage);
-        })
-    }
+        const onDelete = async () => {
+            console.log(imageList.map);
+            console.log("왜 안찍히지");
+            console.log(attachmentUrl);
+          const urlRef = ref(storage, attachmentUrl);
+          try {
+            if (attachmentUrl !== "") {
+              await deleteObject(urlRef);
+              console.log("삭제성공");
+              alert("삭제 성공")
+            }
+          } catch (error) {
+            window.alert("이미지를 삭제하는 데 실패했습니다!");
+            console.log("삭제실패");
+          }
+        }
     
     return(
         <BannerBlock>
         <NavBar name="광고/배너 관리"/>
         <div className="tableContainer">
             <table className="tableWrap">
-            <tbody>
+            {/* <tbody>
                 <tr>
                     <th>배너 제목</th>
                     <td><input type="text" value={title}/></td>
@@ -112,22 +145,31 @@ const Banner=()=>{
                 </tr>
                 <tr>
                     <th>배너 이미지</th>
-                    <td><input type="file" onChange={(e)=>{setImage(e.target.files[0])}}/>
-                    <button onClick={uploadImage}>이미지 올리기</button>
+                    <td><input type="file"/>
+                    <button onClick={onSubmit}>이미지 올리기</button>
                     </td>
                 </tr>
-            </tbody>
+            </tbody> */}
         </table>
         </div>
-        <button className="uploadAd">배너 등록하기</button>
-        <h3>이미지 미리보기</h3>
+        {/* <button className="uploadAd">배너 등록하기</button>
+        <h3>이미지 미리보기</h3> */}
+
+        <input className="form-control" type="file" id="formFile" onChange={imgChange} />
+        <button type="button" className="btn btn-light" style={{ "float": "right" }} onClick={onSubmit}>업로드하기</button>
+
         <div className="preview">
-        {imageList.map((url) => ( <ul key={url}>
-            <li><img src={url} alt="사용자 첨부 이미지"/>
-            <button className="deleteImage" onClick={onClickDelete}>삭제하기</button>
+            
+        {imageList.map((url,idx) => (<ul>
+            <li><img src={url} alt=""/>
+             <button value={idx} onClick= {idx===imageList ? {onDelete} : {onIndex} }>삭제</button>
+            {/* <button value={idx} onClick={onDelete}/>
+            <button value={idx} className="deleteImage">삭제하기</button> */}
             </li></ul>
           ))}
+
         </div>
+        
         </BannerBlock>
     );
 }

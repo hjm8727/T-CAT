@@ -6,7 +6,6 @@ import { useNavigate} from "react-router-dom";
 const NoticeBlock=styled.div`
     margin:0 auto;
   box-sizing: border-box;
-  /* width: 100vw; */
   .container {
     width: 100vw;
     margin : 10px;
@@ -20,18 +19,19 @@ const NoticeBlock=styled.div`
 table,th,td {
   border: 1px solid black;
 }
-
-  button{
-   border: none;
-   margin: 20px 10px;
-  background-color: #E3CAA5;
-        border-radius: 5px;
-        width: 340px;
-        height: 50px;
-}  
-.delete {
-  float: right;
-}
+    .buttonWrap{
+        text-align: center;
+        justify-content: center;
+    }
+    button{
+      border: none;
+      margin: 15px 0;
+      margin: 20px 10px;
+      background-color: #E3CAA5;
+      border-radius: 5px;
+      width: 150px;
+      height: 50px;
+    }
 
 `;
 const NoticeList=()=>{
@@ -70,7 +70,6 @@ const NoticeList=()=>{
   const onClickDelete=()=>{
     alert("공지사항을 삭제하시겠습니까?")
   }
-
     const onClickNotice=()=>{
       navigate('/admin/noticeDetail')
       // 클릭하면 공지 내용 볼 수 있게
@@ -111,8 +110,10 @@ const NoticeList=()=>{
                 </tbody>
               </table>
             </div>
-            <button className="noticeButton" onClick={()=>{navigate('/admin/writeNotice')}}>작성하기</button>
-            <div className="delete"><button onClick={onClickDelete}>삭제하기</button></div>
+            <div className="buttonWrap">
+                <button onClick={()=>{navigate('/admin/writeNotice')}}>작성하기</button>
+                <button onClick={onClickDelete}>삭제하기</button>
+            </div>
           
         </NoticeBlock>
     );

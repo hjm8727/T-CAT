@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const WriteBlock=styled.div`
      margin:0 auto;
-  box-sizing: border-box;
+     box-sizing: border-box;
     .container{
         position: relative;
     }
@@ -39,16 +39,18 @@ const WriteBlock=styled.div`
             margin-top: 20px;
         }
     }
-    button{
+    .buttonWrap{
         text-align: center;
         justify-content: center;
-        border: none;
+    }
+    button{
+      border: none;
       margin: 15px 0;
       margin: 20px 10px;
       background-color: #E3CAA5;
       border-radius: 5px;
       width: 150px;
-      height: 40px;
+      height: 50px;
     }
 
 `;

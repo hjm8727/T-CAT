@@ -37,16 +37,20 @@ const DetailBlock=styled.div`
         height: 500px;
         border-bottom: 1px solid #dae0e9;
     }
-    .noticeButton{
+    .buttonWrap{
         text-align: center;
-        border: none;
-       margin: 15px 0;
-      /* margin: 20px 10px; */
+        justify-content: center;
+    }
+    button{
+      border: none;
+      margin: 15px 0;
+      margin: 20px 10px;
       background-color: #E3CAA5;
       border-radius: 5px;
       width: 150px;
-      height: 40px;
+      height: 50px;
     }
+   
 `;
 
 const NoticeDetail=()=>{
@@ -91,7 +95,9 @@ const NoticeDetail=()=>{
 감사합니다.
 
                     </div>
-                    <button className="noticeButton" onClick={()=>{navigate('/admin/noticeList')}}>목록으로</button>
+                </div>
+                <div className="buttonWrap">
+                    <button onClick={()=>{navigate('/admin/noticeList')}}>목록으로</button>
                 </div>
         </DetailBlock>
         </>
