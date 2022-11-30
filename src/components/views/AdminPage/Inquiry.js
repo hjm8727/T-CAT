@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import TopBar from "./Tool/TopBar";
+import ReplyForm from "./Tool/Form";
 
 const InquiryBlock=styled.div`
       margin:0 auto;
@@ -22,20 +23,32 @@ table,th,td {
   button{
     width: 80px;
   }
-
 `;
 
 const Inquiry=()=>{
+  const data = [
+    {num: '1', title: '환불요청', userId:'blackuser',date:'2022-11-30'},
+    {num: '2', title: '게시글 삭제 요청', userId:'qwerty',date:'2022-11-30'},
+  ];
+  
   const [open, setOpen] = useState(false);
+  const [ inputReply, setInputReply] = useState("");
+
   const Test = () => {
     return(
       <div>
-        <h1>답장하기 테스트</h1>
+        {/* <input value={inputReply}/>
+        <button onClick={submit}/> */}
+        <ReplyForm/>
       </div>
     );
   }
   const onClick2 = () => {
     setOpen(!open);
+  }
+
+  const submit=()=>{
+
   }
   return(
     <InquiryBlock>
@@ -49,9 +62,34 @@ const Inquiry=()=>{
                     <th>작성자</th>
                     <th>작성일</th>
                     <th style={{width : "80px"}}/>
+
                   </tr>
                 </thead>
+
                 <tbody>
+                  {data && data.map((data,key) => (<tr key={key}>
+                    <td>{data.num}</td>
+                    <td>{data.title}</td>
+                    <td>{data.userId}</td>
+                    <td>{data.date}</td>
+                    <td><button type="button" onClick={onClick2}>답장</button></td>
+                    {/* <div className="reply">
+                {open && <Test />}
+              </div> */}
+                </tr>
+                ))}
+                </tbody>
+                <tbody style={{height : "20px"}}> 
+                  <td colSpan = "5">
+                  {/* {open && 
+                    <input value={inputReply}/>
+                    <button onClick={submit}/>
+                  } */}
+                  {open && <Test/>}
+                  </td>
+                </tbody>
+
+                {/* <tbody>
                 <tr>
                     <td>1</td>
                     <td>환불해주세요 제발요</td>
@@ -59,14 +97,15 @@ const Inquiry=()=>{
                     <td>2022.11.23</td>
                     <td><button type="button" onClick={onClick2}>답장</button></td>
                 </tr>
-                </tbody>
+                </tbody> */}
               </table> 
-              <div className="reply">
+              {/* <div className="reply">
                 {open && <Test />}
-              </div>
+              </div> */}
             </div>
+            
+            
         </InquiryBlock>
     );
-
 }
 export default Inquiry;
