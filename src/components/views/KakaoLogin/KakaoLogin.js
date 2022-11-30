@@ -15,7 +15,6 @@ function KakaoLogin() {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data.scope.account_email);
         if(data.access_token) {
             localStorage.setItem('token', data.access_token);
         } else {
@@ -24,12 +23,12 @@ function KakaoLogin() {
     });
 };
 
+
     useEffect(() => {
         if(!location.search) return;
         getKakaoToken();
     }, []);
 
-    console.log('token');
 return (
     <div>
         KakaoLogin
