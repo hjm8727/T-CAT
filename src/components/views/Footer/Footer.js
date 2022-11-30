@@ -59,7 +59,7 @@ const Footer =()=> {
         </div>
         <div className="box">
         <div>
-          <li><img src="/imges/TCat.jpg" alt=''></img></li>
+          <li><img src="/images/TCat.jpg" alt=''></img></li>
         </div>
         <div>
           <h4>Team T-Cat</h4>
