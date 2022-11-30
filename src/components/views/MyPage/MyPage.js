@@ -7,9 +7,10 @@ import RList from './section/RList';
 import CList from './section/CList';
 import Contact from './section/Iquiry/Contact';
 import IqList from './section/Iquiry/IqList';
+import Footer from '../Footer/Footer';
 
 function MyPage() {
-  const { Content, Footer, Sider } = Layout;
+  const { Content, Sider } = Layout;
 
 function getItem(label, key, icon, children) {
   return { key, icon, children,label };
@@ -50,13 +51,7 @@ const items = [
             <MyBody/>
           </div>
         </Content>
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        <Footer/>
       </Layout>
     </Layout>
     </div>
