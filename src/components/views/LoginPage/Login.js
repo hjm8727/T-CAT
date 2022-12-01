@@ -262,9 +262,15 @@ function Login() {
   };
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [id, setId] = useState(1);
   const openModal = e => {
     setModalOpen(true);
-    console.log(e.target.className);
+    let test = e.target.id;
+    if(test === 'id') {
+      setId(1);
+    } else if(test === 'pwd') {
+      setId(2);
+    }
   }
   const closeModal = () => setModalOpen(false);
 
@@ -274,6 +280,24 @@ function Login() {
 
   const onChangeId = e => setInputId(e.target.value);
   const onChangePwd = e => setInputPwd(e.target.value);
+
+  const topics = [
+    {id:1, title: <FindModal open={openModal} close={closeModal} header={<FindIdHeader />} body={<FindIdBody />} footer={<FindIdFooter />}/>},
+    {id:2, title:<FindModal open={openModal} close={closeModal} header={<FindPwdHeader />} body={<FindPwdBody />} footer={<FindPwdFooter />}/>},
+  ];
+
+  const FindModalList = props => {
+    const t = [...props.topics];
+        return(
+            <>
+            {t && t.map((list) => (
+                <div key={list.id}>
+                    {list.id === id && modalOpen && list.title}
+                </div>
+            ))}
+            </>
+        );
+  }
 
   return (
     <>
@@ -300,13 +324,12 @@ function Login() {
           <div className='btn-group'>
           <button type='button' className="btn btn--primary" onClick={handleLogin}><img src='/images/test.png' alt='카카오 로그인'/></button>
           </div>
-          <span className="btn--text" onClick={openModal}>Forgot id?</span><span className="btn--text" onClick={openModal}>Forgot password?</span>
+          <span className="btn--text" id='id' onClick={openModal}>Forgot id?</span><span className="btn--text" id='pwd' onClick={openModal}>Forgot password?</span>
           </div>
       </form>
     </div>
     </LoginWrap>
-    {/* {modalOpen && <FindModal open={openModal} close={closeModal} header={<FindIdHeader />} body={<FindIdBody />} footer={<FindIdFooter />}/>} */}
-    {modalOpen && <FindModal open={openModal} close={closeModal} header={<FindPwdHeader />} body={<FindPwdBody />} footer={<FindPwdFooter />}/>}
+    {modalOpen &&<FindModalList topics={topics} />}
     </>
   )
 }
