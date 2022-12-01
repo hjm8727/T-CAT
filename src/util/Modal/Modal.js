@@ -1,9 +1,10 @@
-import React from 'react';
-import '../App';
+import React, { useState } from 'react';
+// import '../App';
 import './Modal.css';
 
 const Modal = (props) => {
-    const { open, close, header } = props;
+    const { open, close, header , submit } = props;
+    
     return (
         <div className={open ? 'openModal modal' : 'modal'}>
             {open && 
@@ -16,6 +17,9 @@ const Modal = (props) => {
                     </header>
                     <main>{props.children}</main>
                     <footer>
+                    {submit &&
+                        <button className='submit' onClick={submit}>Submit</button>
+                    }
                         <button className='close' onClick={close}>close</button>
                     </footer>
                 </section>
