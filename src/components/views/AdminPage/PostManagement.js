@@ -30,7 +30,6 @@ table,th,td {
         height: 50px;
 }  
 }
-  
 `;
 
 const PostManagement=()=>{

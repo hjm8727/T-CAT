@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const ChartBlock=styled.div`
+    
     .container{
         justify-content: center;
         display: flex;

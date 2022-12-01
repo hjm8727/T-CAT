@@ -2,7 +2,10 @@ import styled from "styled-components"
 
 const TopChartContainer = styled.div`
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    border-radius: 20px;
+    background-color: white;
+    margin: 10px;
     ul{
         margin:0;
     }

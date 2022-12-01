@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
 import TopBar from "../Tool/TopBar";
 import { useState } from "react";
-
+import AdminApi from "../../../../api/AdminApi";
 
 const WriteBlock=styled.div`
      margin:0 auto;
@@ -59,18 +59,12 @@ const WriteNotice=()=>{
   const [inputTitle, setInputTitle] = useState("");
   const [inputDetail, setInputDetail] = useState("");
 
-  const onChangeTitle=(e)=>{
-    setInputTitle(e.target.value);
-    console.log(inputTitle);
-
-  }
-  const onChangeDetail=(e)=>{
-    setInputDetail(e.target.value);
-  }
+  const onChangeTitle=(e)=>{setInputTitle(e.target.value);}
+  const onChangeDetail=(e)=>{setInputDetail(e.target.value);}
 
   const onClickSubmit=async()=>{
-
-
+    const write = await AdminApi.writing(inputTitle, inputDetail);
+    console.log(write);
   }
     return(
         <>
