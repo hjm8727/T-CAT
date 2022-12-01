@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import './calendar.css';
 import 'react-calendar/dist/Calendar.css';
 import styled from 'styled-components';
 import PayPopup from '../Popup/PayPopup';
-import PayPopup2 from '../Popup/PayPopup2'
-import PayPopup3 from '../Popup/PayPopup3';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import PayReady from '../../../KakaoPay/PayReady';
 
 const Styleside = styled.div`
     .side-header{
@@ -353,12 +353,14 @@ const Body1 = props => {
 }
 
 const Body3 = () => {
+    PayReady();
+    const payUrl = window.localStorage.getItem('url'); 
     return(
         <Body1Style>
             <MyInfo />
             <hr />
             <div>
-                <Link to='/kakaopay/payready'><button className='pay-button'>카카오페이로 결제하기</button></Link>
+                <a href={payUrl}><button className='pay-button'>카카오페이로 결제하기</button></a>
             </div>
         </Body1Style>
     );
@@ -371,8 +373,8 @@ function TCalendar () {
     const [id, setId] = useState(1);
 
     const plusId = () => setId(id + 1);
-    const minusId = () => setId(id - 1);
-
+    const minusId =() => setId(id - 1);
+    
     const openModal = () => setModalOpen(true);
     const closeModal = () => {
         setModalOpen(false);
@@ -380,9 +382,9 @@ function TCalendar () {
     }
 
     const topics = [
-        {id:1, title: <PayPopup plus={plusId} open={openModal} close={closeModal} header={<Header />} body={<Body1 />}/>},
-        {id:2, title:<PayPopup2 plus={plusId} minus={minusId} open={openModal} close={closeModal} header={<Header />} body={<Body2 />}/>},
-        {id:3, title:<PayPopup3 minus={minusId} open={openModal} close={closeModal} header={<Header />} body={<Body3 />}/>}
+        {id:1, title: <PayPopup id={id} plus={plusId} open={openModal} minus={minusId} close={closeModal} header={<Header />} body={<Body1 />}/>},
+        {id:2, title:<PayPopup id={id} plus={plusId} minus={minusId} open={openModal} close={closeModal} header={<Header />} body={<Body2 />}/>},
+        {id:3, title:<PayPopup id={id} minus={minusId} open={openModal} close={closeModal} header={<Header />} body={<Body3 />}/>}
     ];
 
     const ModalList = props => {
@@ -397,6 +399,8 @@ function TCalendar () {
             </>
         );
     }
+
+    
 
     return (
         <div>
