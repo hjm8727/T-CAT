@@ -11,7 +11,8 @@ import RecentComment from "./srBoard/RecentComment";
 
 const AdminBlock=styled.div`
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    background-color: #E3CAA5;
     .topchart{
         /* top: 0%; */
         width: 100vw;

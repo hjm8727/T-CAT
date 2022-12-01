@@ -5,7 +5,7 @@ import Profile from "./AdminBody/ProFile"
 const AdminBodyContainer = styled.div`
     display: flex;
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 500px;
 `
 const AdminBody = () =>{
@@ -14,7 +14,6 @@ const AdminBody = () =>{
             <Chart/>
             <Profile/>
         </AdminBodyContainer>
-        
     )
 }
 

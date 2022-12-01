@@ -3,7 +3,7 @@ import styled from "styled-components";
 const TopBlock=styled.div`
     .tarContainer{
         border: none;
-        margin: 20px 10px;
+        margin: 30px 10px;
         background-color: #E3CAA5;
         border-radius: 5px;
         width: 340px;
