@@ -13,9 +13,11 @@ const ProfileContainer = styled.div`
         overflow: hidden;
         display: flex;
     }
+    //올라가는지 확인
     .team-list{
 
     }
+    
     img{
         width: 30px;
         height: 30px;
