@@ -4,6 +4,7 @@ import PayCancel from './PayCancel';
 import PayReady from './PayReady';
 import PayResult from './PayResult';
 import PaySelcet from './PaySelect';
+import ResultFalse from './ResultFalse';
 
 function KakaoPay() {
     return (
@@ -14,6 +15,7 @@ function KakaoPay() {
                 <Route path="/payresult" element={<PayResult />} />
                 <Route path="/paycancel" element={<PayCancel />} />
                 <Route path="/payselect" element={<PaySelcet />} />
+                <Route path="/resultfalse" element={<ResultFalse />} />
             </Routes>
         </div>
     )
