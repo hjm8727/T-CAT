@@ -18,9 +18,9 @@ const ModalStyle = styled.div`
     }
     .modal > section {
         width: 90%;
-        max-width: 4500px;
+        max-width: 450px;
         width: 525px;
-        height: 275px;
+        height: 350px;
         margin: 0 auto;
         border-radius: 0.3rem;
         background-color: #fff;

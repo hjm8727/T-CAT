@@ -196,12 +196,17 @@ const IdStyle = styled.div`
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  .show-00 {
+    border: 2px solid #232323;
+    width: 250px;
+  }
   .modal-input {
     width: 250px;
   }
   .modal-input:focus {
   }
 `;
+
 
 const FindIdHeader = () => {
   return(
@@ -216,17 +221,13 @@ const FindIdBody = () => {
         <input className='modal-input' type='text' placeholder='이름 입력'></input>
         <p />
         <input className='modal-input' type='email' placeholder='이메일 입력'></input>
+        <p />
+        <div className='show-00'>
+          <h5>00님의 아이디는 <strong><u>[wlals1234]</u></strong>입니다.</h5>
+        </div>
       </div>
     </IdStyle>
   );
-}
-
-const FindIdFooter = () => {
-  return(
-    <div>
-      <h5>00님의 아이디는 [wlals1234]입니다.</h5>
-    </div>
-  )
 }
 
 const FindPwdHeader = () => {
@@ -244,17 +245,13 @@ const FindPwdBody = () => {
         <input className='modal-input' type='text' placeholder='이름 입력'></input>
         <p />
         <input className='modal-input' type='email' placeholder='이메일 입력'></input>
+        <p />
+        <div className='show-00'>
+          <h5>00님의 아이디는 <strong><u>[wlals1234]</u></strong>입니다.</h5>
+        </div>
       </div>
     </IdStyle>
   );
-}
-
-const FindPwdFooter = () => {
-  return(
-    <div>
-      <h5>00님의 아이디는 [wlals1234]입니다.</h5>
-    </div>
-  )
 }
 
 function Login() {
@@ -284,8 +281,8 @@ function Login() {
   const onChangePwd = e => setInputPwd(e.target.value);
 
   const topics = [
-    {id:1, title: <FindModal open={openModal} close={closeModal} header={<FindIdHeader />} body={<FindIdBody />} footer={<FindIdFooter />}/>},
-    {id:2, title:<FindModal open={openModal} close={closeModal} header={<FindPwdHeader />} body={<FindPwdBody />} footer={<FindPwdFooter />}/>},
+    {id:1, title: <FindModal open={openModal} close={closeModal} header={<FindIdHeader />} body={<FindIdBody />}/>},
+    {id:2, title:<FindModal open={openModal} close={closeModal} header={<FindPwdHeader />} body={<FindPwdBody />}/>},
   ];
 
   const FindModalList = props => {
