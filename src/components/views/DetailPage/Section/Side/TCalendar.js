@@ -136,11 +136,12 @@ const Body2 = () => {
             setTax(taxs);
             totals = tickets + taxs;
             setTotal(totals);
+            // '12.01 가격 중복 x 수정 hardcoding... 수정 예정..'
         } else if(name === 'student') {
             setStuValue(values);
+            setValue(0);
             setDouValue(0);
             setEveValue(0);
-            setStuValue(0);
             tickets = values * price;
             setTicket(tickets);
             taxs = Math.floor(tickets / 20);
@@ -149,7 +150,7 @@ const Body2 = () => {
             setTotal(totals);
         } else if(name === 'double') {
             setDouValue(values);
-            setDouValue(0);
+            setValue(0);
             setEveValue(0);
             setStuValue(0);
             tickets = values * price;
@@ -160,8 +161,8 @@ const Body2 = () => {
             setTotal(totals);
         } else if(name === 'event') {
             setEveValue(values);
+            setValue(0);
             setDouValue(0);
-            setEveValue(0);
             setStuValue(0);
             tickets = values * price;
             setTicket(tickets);
