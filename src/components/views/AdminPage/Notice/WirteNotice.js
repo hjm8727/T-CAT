@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useNavigate} from "react-router-dom";
 import TopBar from "../Tool/TopBar";
 import { useState } from "react";
-
+import AdminApi from "../../../../api/AdminApi";
 
 const WriteBlock=styled.div`
      margin:0 auto;
@@ -59,8 +59,12 @@ const WriteNotice=()=>{
   const [inputTitle, setInputTitle] = useState("");
   const [inputDetail, setInputDetail] = useState("");
 
-  const onClickSubmit=()=>{
+  const onChangeTitle=(e)=>{setInputTitle(e.target.value);}
+  const onChangeDetail=(e)=>{setInputDetail(e.target.value);}
 
+  const onClickSubmit=async()=>{
+    const write = await AdminApi.writing(inputTitle, inputDetail);
+    console.log(write);
   }
     return(
         <>
@@ -69,11 +73,11 @@ const WriteNotice=()=>{
                  <div className="container">
                     <div className="topTitle">
                         <p className="title">제목
-                            <input type="text" placeholder="제목을 입력하세요" value={inputTitle}/>
+                            <input type="text" placeholder="제목을 입력하세요" value={inputTitle} onChange={onChangeTitle}/>
                         </p>
                     </div>
                     <div className="content">
-                        <textarea placeholder="내용 입력" value={inputDetail}/>
+                        <textarea placeholder="내용 입력" value={inputDetail} onChange={onChangeDetail}/>
                     </div>
                     <div className="buttonWrap">
                         <button onClick={()=>{navigate('/admin/noticeList')}}>뒤로가기</button>

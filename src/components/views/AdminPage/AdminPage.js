@@ -7,7 +7,6 @@ import AdminHome from './AdminHome';
 import MemberList from './MemberList';
 import BlackList from './BlackList';
 import Banner from './Banner';
-import Notice from './Notice/NoticeList';
 import PostManagement from './PostManagement';
 import WriteNotice from './Notice/WirteNotice';
 import Inquiry from './Inquiry';
@@ -28,7 +27,6 @@ const AdminBlock=styled.div`
   }
 `;
 const HeaderBlock=styled.div`
-  /* position: fixed; */
   width: 100%;
   height: 65px;
   background-color: #E3CAA5;
@@ -45,14 +43,6 @@ const HeaderBlock=styled.div`
         padding: 0px;
     }
 `;
-const FooterBlock=styled.div`
-  height: 65px;
-  background-color: #E3CAA5;
-  bottom: 0;
-  padding: 0;
-  margin: 0;
-`;
-
 function AdminPage() {
   return (
     <AdminBlock>
@@ -62,7 +52,6 @@ function AdminPage() {
         <SideMenu styled={{position : "fixed"}}/>
         <Content/>
       </div>
-      <Footer/>
     </div>
     </AdminBlock>
   );
@@ -76,15 +65,10 @@ function Header() {
     </HeaderBlock>
   );
 }
-function Footer() {
-  return(
-    <FooterBlock/>
-  );
-}
 function SideMenu() {
   const navigate = useNavigate();
   return(
-    <Menu 
+    <Menu style={{backgroundColor : "#E3CAA5"}}
       onClick={({key})=>{
         if(key === "로그아웃"){
           console.log("관리자 로그아웃");

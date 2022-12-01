@@ -56,7 +56,6 @@ const HeaderContainer = styled.div`
     li{
         display: flex;
         justify-content: center;
-        /* float: left; */
         list-style: none;
         width: 150px;
         font-size: 18px;
@@ -100,6 +99,24 @@ const BodyContainer = styled.div`
     
 `
 const Body = () => {
+    // 수량 선택
+    const [value, setValue] = useState(0);
+    const [price, setPrice] = useState(35000);
+    // 티켓 금액
+    const ticket = price * value;
+    // 비과세
+    const tax = (value * price) / 20;
+    // 총 결제금액
+    const total = (value * price) + tax;
+    // 학생 할인 티켓 금액
+    const student = price - (price / 10);
+    // 더블 할인 티켓 금액
+    const double = price - (price / 20);
+    // 신규 오픈 티켓 금액
+    const openEvent = price- (price / 20);
+
+    const changeValue = e => setValue(e.target.value);
+
     return(
         <BodyContainer>
         <div>
@@ -108,43 +125,55 @@ const Body = () => {
                 <tr>
                 <th className='BorderBottom'>기본가</th>
                 <td className='BorderBottom'>일반</td>
-                <td className='BorderBottom'>35.000</td>
+                <td className='BorderBottom'>{price}</td>
                 <td className='select-box'>
-                    <select >
-                        <option>0매</option>
-                        <option>1매</option>
+                    <select name='basic' value={value} onChange={changeValue}>
+                        <option>{0}</option>
+                        <option>{1}</option>
+                        <option>{2}</option>
+                        <option>{3}</option>
                     </select>
+                    <span>수량</span>
                 </td>
                 </tr>
                 <tr>
                 <th rowSpan={3}>기본 할인</th>
-                <td>학생 할인</td>
-                <td>35.000</td>
+                <td>학생 할인(10%)</td>
+                <td>{student}</td>
                 <td className='select-box'>
-                    <select>
-                        <option>0매</option>
-                        <option>1매</option>
+                    <select name='student' value={value} onChange={changeValue}>
+                        <option>{0}</option>
+                        <option>{1}</option>
+                        <option>{2}</option>
+                        <option>{3}</option>
                     </select>
+                    <span>수량</span>
                 </td>
                 </tr>
                 <tr>
-                <td>더블 할인</td>
-                <td>35.000</td>
+                <td>더블 할인(5%)</td>
+                <td>{double}</td>
                 <td className='select-box'>
-                    <select>
-                        <option>0매</option>
-                        <option>1매</option>
+                    <select name='double' value={value} onChange={changeValue}>
+                        <option>{0}</option>
+                        <option>{1}</option>
+                        <option>{2}</option>
+                        <option>{3}</option>
                     </select>
+                    <span>수량</span>
                 </td>
                 </tr>
                 <tr>
-                <td>신규오픈 할인</td>
-                <td>35.000</td>
+                <td>신규오픈 할인(5%)</td>
+                <td>{openEvent}</td>
                 <td className='select-box'>
-                    <select>
-                        <option>0매</option>
-                        <option>1매</option>
+                    <select name='event' value={value} onChange={changeValue}>
+                        <option>{0}</option>
+                        <option>{1}</option>
+                        <option>{2}</option>
+                        <option>{3}</option>
                     </select>
+                    <span>수량</span>
                 </td>
                 </tr>
             </table>
@@ -171,11 +200,11 @@ const Body = () => {
                     <th>선택좌석</th>
                     <td>현좌석</td>
                     <th>티켓금액</th>
-                    <td>3500</td>
+                    <td>{ticket}</td>
                 </tr>
                 <tr>
-                    <th>비과세</th>
-                    <td>1000</td>
+                    <th>비과세(5%)</th>
+                    <td>{tax}</td>
                     <th>사용가능 포인트</th>
                     <td>230</td>
                 </tr>
@@ -187,7 +216,7 @@ const Body = () => {
                 </tr>
                 <tr>
                     <th>총 결제금액</th>
-                    <td>1000000</td>
+                    <td>{total}</td>
                 </tr>
             </table>
         </div>

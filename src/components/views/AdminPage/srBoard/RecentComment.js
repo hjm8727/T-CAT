@@ -5,9 +5,12 @@ const RecentBlock=styled.div`
         width:100%;
         height:100%;
         overflow: hidden;
+        border-radius: 20px;
+        background-color: white;
+        margin: 0 10px;
     .container{
         display: inline-block;
-        margin: 10px;
+        /* margin: 10px; */
         text-align: center;
         width:20%;
         height:200px;

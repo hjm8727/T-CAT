@@ -30,24 +30,24 @@ table,th,td {
         height: 50px;
 }  
 }
-  
 `;
 
 const PostManagement=()=>{
   const data = [
     {id: 0, num: '1', title: '태양의서커스', date:'2022-12-02-2023-01-15'},
-    {id: 1, num: '2', title: '태양의서커스', date:'2022-12-02-2023-01-15'},
-    {id: 2, num: '3', title: '태양의서커스', date:'2022-12-02-2023-01-15'},
+    {id: 1, num: '2', title: '지구의서커스', date:'2022-12-02-2023-01-15'},
+    {id: 2, num: '3', title: '달의서커스', date:'2022-12-02-2023-01-15'},
   ];
 
   const [lists, setLists] = useState('');
+
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
   // 체크박스 단일 선택
   const handleSingleCheck = (checked, id) => {
     if (checked) {
-      // 단일 선택 시 체크된 아이템을 배열에 추가
-      setCheckItems(prev => [...prev, id]);
+      console.log("개별체크 : "+ id);
+      setCheckItems(prev => [...prev, id]); // 단일 선택 시 체크된 아이템을 배열에 추가
     } else {
       // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
       setCheckItems(checkItems.filter((el) => el !== id));
@@ -67,10 +67,12 @@ const PostManagement=()=>{
       setCheckItems([]);
     }
   }
-  const onClickDelete=()=>{
-    alert("전시글을 삭제하시겠습니까?")
+  const onClickDelete=(checked)=>{
+    if(checked){
+      alert("전시글을 삭제하시겠습니까?")
+    }
   }
-    
+  
     return(
         <PostBlock>
         <TopBar name="전시회 게시물 관리"/>

@@ -1,9 +1,6 @@
 import styled from "styled-components";
-import SearchBar from "./Tool/SearchBar";
 import TopBar from "./Tool/TopBar";
 import { useState } from "react";
-import PaginationAdmin from "./Tool/Pagination/Paging";
-import { Pagination } from "react-bootstrap";
 
 const MemberBlock=styled.div`
   margin:0 auto;
