@@ -107,6 +107,7 @@ const Body2 = () => {
     const [stuValue, setStuValue] = useState(0);
     const [douValue, setDouValue] = useState(0);
     const [eveValue, setEveValue] = useState(0);
+    const [disabled, setDisabled] = useState(false);
     // 티켓 * 수량 = 총 티켓 금액
     const [ticket, setTicket] = useState(0);
     // 비과세 = 총 티켓 금액의 5%
@@ -126,6 +127,9 @@ const Body2 = () => {
         values = e.target.value;
         if(name === 'basic') {
             setValue(values);
+            setDouValue(0);
+            setEveValue(0);
+            setStuValue(0);
             tickets = values * price;
             setTicket(tickets);
             taxs = Math.floor(tickets / 20);
@@ -134,6 +138,9 @@ const Body2 = () => {
             setTotal(totals);
         } else if(name === 'student') {
             setStuValue(values);
+            setDouValue(0);
+            setEveValue(0);
+            setStuValue(0);
             tickets = values * price;
             setTicket(tickets);
             taxs = Math.floor(tickets / 20);
@@ -142,6 +149,9 @@ const Body2 = () => {
             setTotal(totals);
         } else if(name === 'double') {
             setDouValue(values);
+            setDouValue(0);
+            setEveValue(0);
+            setStuValue(0);
             tickets = values * price;
             setTicket(tickets);
             taxs = Math.floor(tickets / 20);
@@ -150,6 +160,9 @@ const Body2 = () => {
             setTotal(totals);
         } else if(name === 'event') {
             setEveValue(values);
+            setDouValue(0);
+            setEveValue(0);
+            setStuValue(0);
             tickets = values * price;
             setTicket(tickets);
             taxs = Math.floor(tickets / 20);
@@ -163,6 +176,9 @@ const Body2 = () => {
         <BodyContainer>
         <div>
             <h2>가격</h2>
+            <div>
+                <strong>중복 할인 불가입니다. 하나의 유형으로만 선택해주세요.</strong>
+            </div>
             <table>
                 <tr>
                 <th className='BorderBottom'>기본가</th>
