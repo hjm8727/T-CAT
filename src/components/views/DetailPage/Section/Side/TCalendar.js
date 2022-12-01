@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import PayPopup from '../Popup/PayPopup';
 import PayPopup2 from '../Popup/PayPopup2'
 import PayPopup3 from '../Popup/PayPopup3';
+import { Link } from 'react-router-dom';
 
 const Styleside = styled.div`
     .side-header{
@@ -96,9 +97,9 @@ const BodyContainer = styled.div`
     .BuyOption{
         opacity: 60%;
     }
-    
-`
-const Body = () => {
+`;
+
+const Body2 = () => {
     // 티켓 금액
     const price = 35000;
     // 기본가 수량 선택
@@ -118,7 +119,6 @@ const Body = () => {
     const double = price - (price / 20);
     // 신규 오픈 티켓 금액
     const openEvent = price - (price / 20);
-
     // 이름을 가지고 어떤 것을 선택하는지 구분..
     const changeValue = e => {
         const name = e.target.name;
@@ -158,8 +158,6 @@ const Body = () => {
             setTotal(totals);
         }
     };
-
-
 
     return(
         <BodyContainer>
@@ -231,6 +229,14 @@ const Body = () => {
             <li>동일 상품에 대해서 회차, 좌석 가격, 결제 등 일부 변경을 원하시는 경우, 기존 예매 건을 취소하시고 재예매 하셔야 합니다.
             단, 취소 시점에 따라 예매수수료가 환불 되지 않으며, 취소 수수료가 부과될 수 있습니다.</li>
         </div>
+        <MyInfo ticket={ticket} tax={tax} total={total}/>
+        </BodyContainer>
+    );
+}
+
+const MyInfo = props => {
+    const { ticket, tax, total } = props;
+    return(
         <div>
         <h2>My예매정보</h2>
             <table>
@@ -264,23 +270,97 @@ const Body = () => {
                 </tr>
             </table>
         </div>
-        </BodyContainer>
     );
 }
 
-const Body2 = () => {
+const Body1Style = styled.div`
+    table ,tr {
+        border: 1px solid black;
+    }
+    td{
+        width: 200px;
+        border-left: 1px solid silver;
+    }
+    th{
+        width: 100px;
+    }
+    .seat-container {
+        border: 1px solid black;
+        width: 400px;
+        margin-top: 10px;
+    }
+    li{
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .price-info {
+        float: right;
+        margin-right: 150px;
+        margin-top: 10px;
+    }
+    .seat {
+        float: left;
+        margin-right: 30px;
+        width: 20px;
+        height: 20px;
+        margin-top: 10px;
+    }
+    .seat-vip {
+        background-color: red;
+    }
+    .seat-r {
+        background-color: green;
+    }
+    .seat-s {
+        background-color: royalblue;
+    }
+    .seat-a {
+        background-color: aliceblue;
+    }
+    
+`;
+
+const Body1 = props => {
     return(
-        <div>
-            <h2>2번 바디입니다.</h2>
-        </div>
+        <Body1Style>
+            <div>
+                <h2>좌석 선택</h2>
+                <div className='seat-container'>
+                    <ul>
+                        <span className='seat seat-vip'/>
+                        <li>VIP석 0석</li>
+                        <span className='price-info'>180,000원</span>
+                        <p />
+                        <span className='seat seat-r'/>
+                        <li>R석 5석</li>
+                        <span className='price-info'>150,000원</span>
+                        <p />
+                        <span className='seat seat-s'/>
+                        <li>S석 28석</li>
+                        <span className='price-info'>120,000원</span>
+                        <p />
+                        <span className='seat seat-a'/>
+                        <li>A석 94석</li>
+                        <span className='price-info'>90,000원</span>
+                        <p />
+                    </ul>
+                </div>
+                <hr />
+            </div>
+            <MyInfo />
+        </Body1Style>
     );
 }
 
 const Body3 = () => {
     return(
-        <div>
-            <h3>3번 바디입니다.</h3>
-        </div>
+        <Body1Style>
+            <MyInfo />
+            <hr />
+            <div>
+                <Link to='/kakaopay/payready'><button className='pay-button'>카카오페이로 결제하기</button></Link>
+            </div>
+        </Body1Style>
     );
 }
 
@@ -300,7 +380,7 @@ function TCalendar () {
     }
 
     const topics = [
-        {id:1, title: <PayPopup plus={plusId} open={openModal} close={closeModal} header={<Header />} body={<Body />}/>},
+        {id:1, title: <PayPopup plus={plusId} open={openModal} close={closeModal} header={<Header />} body={<Body1 />}/>},
         {id:2, title:<PayPopup2 plus={plusId} minus={minusId} open={openModal} close={closeModal} header={<Header />} body={<Body2 />}/>},
         {id:3, title:<PayPopup3 minus={minusId} open={openModal} close={closeModal} header={<Header />} body={<Body3 />}/>}
     ];
