@@ -99,23 +99,67 @@ const BodyContainer = styled.div`
     
 `
 const Body = () => {
-    // 수량 선택
-    const [value, setValue] = useState(0);
-    const [price, setPrice] = useState(35000);
     // 티켓 금액
-    const ticket = price * value;
-    // 비과세
-    const tax = (value * price) / 20;
-    // 총 결제금액
-    const total = (value * price) + tax;
+    const price = 35000;
+    // 기본가 수량 선택
+    const [value, setValue] = useState(0);
+    const [stuValue, setStuValue] = useState(0);
+    const [douValue, setDouValue] = useState(0);
+    const [eveValue, setEveValue] = useState(0);
+    // 티켓 * 수량 = 총 티켓 금액
+    const [ticket, setTicket] = useState(0);
+    // 비과세 = 총 티켓 금액의 5%
+    const [tax,setTax] = useState(0);
+    // 총 결제금액(비과세 포함 금액)
+    const [total, setTotal] = useState(0);
     // 학생 할인 티켓 금액
     const student = price - (price / 10);
     // 더블 할인 티켓 금액
     const double = price - (price / 20);
     // 신규 오픈 티켓 금액
-    const openEvent = price- (price / 20);
+    const openEvent = price - (price / 20);
 
-    const changeValue = e => setValue(e.target.value);
+    // 이름을 가지고 어떤 것을 선택하는지 구분..
+    const changeValue = e => {
+        const name = e.target.name;
+        let values,tickets, totals, taxs = 0;
+        values = e.target.value;
+        if(name === 'basic') {
+            setValue(values);
+            tickets = values * price;
+            setTicket(tickets);
+            taxs = Math.floor(tickets / 20);
+            setTax(taxs);
+            totals = tickets + taxs;
+            setTotal(totals);
+        } else if(name === 'student') {
+            setStuValue(values);
+            tickets = stuValue * price;
+            setTicket(tickets);
+            taxs = Math.floor(tickets / 20);
+            setTax(taxs);
+            totals = tickets + taxs;
+            setTotal(totals);
+        } else if(name === 'double') {
+            setDouValue(values);
+            tickets = douValue * price;
+            setTicket(tickets);
+            taxs = Math.floor(tickets / 20);
+            setTax(taxs);
+            totals = tickets + taxs;
+            setTotal(totals);
+        } else if(name === 'event') {
+            setEveValue(values);
+            tickets = eveValue * price;
+            setTicket(tickets);
+            taxs = Math.floor(tickets / 20);
+            setTax(taxs);
+            totals = tickets + taxs;
+            setTotal(totals);
+        }
+    };
+
+
 
     return(
         <BodyContainer>
@@ -141,7 +185,7 @@ const Body = () => {
                 <td>학생 할인(10%)</td>
                 <td>{student}</td>
                 <td className='select-box'>
-                    <select name='student' value={value} onChange={changeValue}>
+                    <select name='student' value={stuValue} onChange={changeValue}>
                         <option>{0}</option>
                         <option>{1}</option>
                         <option>{2}</option>
@@ -154,7 +198,7 @@ const Body = () => {
                 <td>더블 할인(5%)</td>
                 <td>{double}</td>
                 <td className='select-box'>
-                    <select name='double' value={value} onChange={changeValue}>
+                    <select name='double' value={douValue} onChange={changeValue}>
                         <option>{0}</option>
                         <option>{1}</option>
                         <option>{2}</option>
@@ -167,7 +211,7 @@ const Body = () => {
                 <td>신규오픈 할인(5%)</td>
                 <td>{openEvent}</td>
                 <td className='select-box'>
-                    <select name='event' value={value} onChange={changeValue}>
+                    <select name='event' value={eveValue} onChange={changeValue}>
                         <option>{0}</option>
                         <option>{1}</option>
                         <option>{2}</option>
@@ -197,19 +241,19 @@ const Body = () => {
                     <td>2022년 11월 30일(수) 20:00</td>
                 </tr>
                 <tr>
-                    <th>선택좌석</th>
-                    <td>현좌석</td>
-                    <th>티켓금액</th>
+                    <th>선택 좌석</th>
+                    <td>현 좌석</td>
+                    <th>티켓 금액</th>
                     <td>{ticket}</td>
                 </tr>
                 <tr>
                     <th>비과세(5%)</th>
                     <td>{tax}</td>
-                    <th>사용가능 포인트</th>
+                    <th>사용 가능 포인트</th>
                     <td>230</td>
                 </tr>
                 <tr>
-                    <th>취소기한</th>
+                    <th>취소 기한</th>
                     <td>오늘</td>
                     <th>취소 수수료</th>
                     <td>티켓금액의 0~30%</td>
