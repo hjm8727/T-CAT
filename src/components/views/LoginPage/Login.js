@@ -199,6 +199,8 @@ const IdStyle = styled.div`
   .modal-input {
     width: 250px;
   }
+  .modal-input:focus {
+  }
 `;
 
 const FindIdHeader = () => {
