@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import Chart from "./AdminBody/Chart"
-import Profile from "./AdminBody/Profile"
+import Profile from "./AdminBody/ProFile"
 
 const AdminBodyContainer = styled.div`
     display: flex;
