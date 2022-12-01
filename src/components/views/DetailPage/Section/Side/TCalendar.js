@@ -134,7 +134,7 @@ const Body = () => {
             setTotal(totals);
         } else if(name === 'student') {
             setStuValue(values);
-            tickets = stuValue * price;
+            tickets = values * price;
             setTicket(tickets);
             taxs = Math.floor(tickets / 20);
             setTax(taxs);
@@ -142,7 +142,7 @@ const Body = () => {
             setTotal(totals);
         } else if(name === 'double') {
             setDouValue(values);
-            tickets = douValue * price;
+            tickets = values * price;
             setTicket(tickets);
             taxs = Math.floor(tickets / 20);
             setTax(taxs);
@@ -150,7 +150,7 @@ const Body = () => {
             setTotal(totals);
         } else if(name === 'event') {
             setEveValue(values);
-            tickets = eveValue * price;
+            tickets = values * price;
             setTicket(tickets);
             taxs = Math.floor(tickets / 20);
             setTax(taxs);
