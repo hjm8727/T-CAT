@@ -73,7 +73,7 @@ function TCalendar (props) {
     }
 
     const topics = [
-        {id:1, title: <PayPopup id={id} plus={plusId} open={openModal} minus={minusId} close={closeModal} header={<PopupHeader />} body={<PopupContent date={today} cancelday={cancelday} price={price} />}/>},
+        {id:1, title: <PayPopup id={id} plus={plusId} open={openModal} minus={minusId} close={closeModal} header={<PopupHeader />} body={<PopupContent date={today} item_name={item_name} cancelday={cancelday} price={price} />}/>},
         {id:2, title:<PayPopup id={id} plus={plusId} minus={minusId} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent2 date={today} cancelday={cancelday} item_name={item_name} price={price} />} />},
         {id:3, title:<PayPopup id={id} minus={minusId} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent3 date={today} cancelday={cancelday} item_name={item_name} />}/>}
     ];

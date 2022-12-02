@@ -48,7 +48,7 @@ const Body1Style = styled.div`
 `;
 
 function PopupContent(props) {
-  const { price, date, cancelday } = props;
+  const { item_name, price, date, cancelday } = props;
     return(
         <Body1Style>
           <div>
@@ -75,7 +75,7 @@ function PopupContent(props) {
               </div>
                 <hr />
             </div>
-            <MyInfo cancelday={cancelday} date={date}/>
+            <MyInfo item_name={item_name} cancelday={cancelday} date={date}/>
         </Body1Style>
     );
 }

@@ -38,7 +38,7 @@ const PayCancel = () => {
         <div>
             <h1>결제 취소 페이지 성공</h1>
         </div>
-    )
+    );
 }
 
 export default PayCancel;
