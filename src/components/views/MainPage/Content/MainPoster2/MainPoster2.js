@@ -4,7 +4,9 @@ const MainPoster2Container = styled.div`
     width: 100%;
     background-color: #f5f5f5;
     font-family: sans-serif;
-    
+    height: 360px;
+    display: flex;
+    align-items: center;
     .PosterCategory{
         font-weight: bold;
         font-size: 1.2em;
@@ -18,10 +20,11 @@ const MainPoster2Container = styled.div`
         height: 230px;
     }
     ul{
+        width: 100%;
         overflow: hidden;
         display: flex;
         justify-content: space-between;
-        margin: 30px;
+        margin: 0 20px;
         padding: 0;
         list-style: none;
     }

@@ -34,17 +34,19 @@ const MainNoticeContainer = styled.div`
         margin: 0px;
         padding: 0px;
     }
-    a{
-        /* padding : 1px; */
-        width: 48px;
-        margin-right: 5px;
+    p{
+        margin : 0 5px;
+        padding: 0 5px;
+        display: flex;
+        justify-content: center;
         border-radius: 5px;
         background-color: #fae100;
     }
     .Noticeimg{
         width: 25px;
         height: 20px;
-        margin: 0 10px;
+        margin-left: 20px;
+        margin-right: 10px;
     }
     @media (max-width : 1440px){
         /* font-size: 0.9em; */
@@ -88,7 +90,7 @@ const MainNotice = () =>{
                 {notice.map(c=>(
                     <div className="Notice1">
                         <img className="Noticeimg" src="https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/6562f7bc017800001.png?type=thumb&opt=C72x72.fwebp"></img>
-                        <a>{c.categories}</a>
+                        <p>{c.categories}</p>
                         <span key={c.id} >{c.text}</span>
                         <br></br>
                     </div>
@@ -99,15 +101,3 @@ const MainNotice = () =>{
 }
 
 export default MainNotice
-
-
-{/* <div className="PosterTitle">
-                <h2>{props.name}</h2>
-            {categories.map(c=>(
-                <li 
-                    key={c.name}
-                    active={category===c.name}
-                    onClick={()=>onSelect(c.name)}
-                >{c.text}</li>
-            ))}
-            </div> */}

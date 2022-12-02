@@ -17,11 +17,13 @@ import NoticeModalBody from "./IconModal/ModalBody/NoticeModalBody";
 const MainIconContainer = styled.div`
     /* border: 1px solid black; */
     width: 100%;
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
     margin: 30px 0;
-
+    .IconAllContainer{
+        margin: 0 20px;
+        align-items: center;
+        display: flex;
+        justify-content:space-between;
+    }
     .MainIcon{
         display: flex;
         justify-content: center;
@@ -71,36 +73,38 @@ const MainIcon = () => {
     
     return(
     <MainIconContainer>
-        <div className="IconContainer">
-            <Link to = "/MyPage/RList"><ClockCircleOutlined className="MainIcon" /></Link>
-            <p>예매내역</p>
-        </div>
-        <div className="IconContainer">
-            <DollarCircleOutlined className="MainIcon" />
-            <p>취소/환불</p>
-        </div>
-        <div className="IconContainer">
-            <Link to = "/MyPage/*"><UserOutlined className="MainIcon"/></Link>
-            <p>My Page</p>
-        </div>
-        <div className="IconContainer">
-            <SendOutlined className="MainIcon" onClick={()=>{openModal(4)}} />
-            <p>1:1문의</p>
-        </div>
-        <div className="IconContainer">
-            <NotificationOutlined className="MainIcon" onClick={()=>{openModal(5)}}/>
-            <p>공지사항</p>
-        </div>
-        <div className="IconContainer"> 
-            <QuestionCircleOutlined  className="MainIcon" onClick={()=>{openModal(6)}}/>
-            <p>자주묻는질문</p>
-        </div>
+        <div className="IconAllContainer">
+            <div className="IconContainer">
+                <Link to = "/MyPage/RList"><ClockCircleOutlined className="MainIcon" /></Link>
+                <p>예매내역</p>
+            </div>
+            <div className="IconContainer">
+                <DollarCircleOutlined className="MainIcon" />
+                <p>취소/환불</p>
+            </div>
+            <div className="IconContainer">
+                <Link to = "/MyPage/*"><UserOutlined className="MainIcon"/></Link>
+                <p>My Page</p>
+            </div>
+            <div className="IconContainer">
+                <SendOutlined className="MainIcon" onClick={()=>{openModal(4)}} />
+                <p>1:1문의</p>
+            </div>
+            <div className="IconContainer">
+                <NotificationOutlined className="MainIcon" onClick={()=>{openModal(5)}}/>
+                <p>공지사항</p>
+            </div>
+            <div className="IconContainer"> 
+                <QuestionCircleOutlined  className="MainIcon" onClick={()=>{openModal(6)}}/>
+                <p>자주묻는질문</p>
+            </div>
 
-        <div className="IconContainer2">
-            <h2>02-1541-1633</h2>
-            <h5>평일</h5><span> AM 09:00 ~ PM 06:00</span>
-            <br></br>
-            <h5>휴일</h5><span> AM 09:00 ~ PM 12:00</span>
+            <div className="IconContainer2">
+                <h2>02-1541-1633</h2>
+                <h5>평일</h5><span> AM 09:00 ~ PM 06:00</span>
+                <br></br>
+                <h5>휴일</h5><span> AM 09:00 ~ PM 12:00</span>
+            </div>
         </div>
         
         {selectModal === 4 && <Modal open={modalOpen} close={closeModal} submit = {true} header={<IconModalHeader title = "1:1문의"/>}><div>{<AskModalBody/>}</div></Modal>}

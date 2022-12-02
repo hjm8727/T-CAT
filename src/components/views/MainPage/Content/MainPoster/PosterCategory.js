@@ -11,15 +11,21 @@ const PosterCategoryContainer = styled.div`
         display: inline-block;
         font-size: 1.5em;
         font-weight: bold;
-        margin-right: 10px;
+        margin: 0 1 0px;
     }
     li{
         font-size: 1.2em;
         display: inline-block;
         list-style: none;
-        padding : 0.5em;
+        border-radius: 10px;
+        padding :0.5em;
         cursor: pointer;
+        transition: all 0.4s;
         margin: 0 5px;
+    }
+    li:hover{
+        background-color: #86868b;
+        color: white;
     }
     `
 
