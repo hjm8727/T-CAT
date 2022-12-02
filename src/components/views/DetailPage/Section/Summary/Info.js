@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Modal from '../../../../../util/Modal/Modal';
+import MapModalBody from './MapModal';
 
 const InfoStyle = styled.div`
     div {
@@ -28,6 +30,15 @@ const InfoStyle = styled.div`
 
 // 상세페이지 상단 공연 정보
 function Info() {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () =>{
+        setModalOpen(true)
+    }
+    const closeModal = () =>{
+        setModalOpen(false)
+    }
+
     return (
         <InfoStyle>
         <div>
@@ -35,7 +46,7 @@ function Info() {
                 <li class="infoItem">
                     <strong class="infoLabel">장소</strong>
                 <span class="infoDesc">
-                    <a class="infoBtn" data-popup="info-place" role="button" href="/">
+                    <a class="infoBtn" data-popup="info-place" role="button" onClick={openModal}>
                     대성 디큐브아트센터
                     </a>
                 </span>
@@ -98,6 +109,7 @@ function Info() {
                 </li>
             </ul>
         </div>
+        <Modal open={modalOpen} close={closeModal} header={"찾아오시는 길"}><div>{<MapModalBody/>}</div></Modal>
         </InfoStyle>
     )
 }

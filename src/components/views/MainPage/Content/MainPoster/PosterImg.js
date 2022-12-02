@@ -4,22 +4,27 @@ const PosterImgContainer = styled.div`
     background-color: #f5f5f5;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 250px;
     /* border: solid 1px black; */
+    
     img{
         width: 110px;
         height: 130px;
     }
     ul{
         display: flex;
+        /* width: 100%; */
         list-style: none;
         margin: 0px;
         padding: 0px;
         overflow: hidden;
     }
     li{
+        align-items: center;
         list-style: none;
         /* display: inline-block; */
-        margin:10px;
+        margin:0 20px;
     }
     p{
         width: 110px;
@@ -28,7 +33,7 @@ const PosterImgContainer = styled.div`
     }
     @media (max-width : 1440px){
         li{
-            margin:10px 2.5em;
+            margin:10px 60px;
         }
     }   
 `
@@ -49,8 +54,8 @@ const posterInfo = [
             img : 'http://ticketimage.interpark.com/rz/image/play/goods/poster/22/22009029_p_s.jpg'
         },
         {
-            id : "1",
-            name : '1번작품',
+            id : "4",
+            name : '4번작품',
             img : 'http://ticketimage.interpark.com/rz/image/play/goods/poster/22/22012184_p_s.jpg'
         },
     ]
