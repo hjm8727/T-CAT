@@ -27,7 +27,7 @@ th{
 
 const MyInfo = props => {
     
-  const { item_name, ticket, tax, total } = props;
+  const { item_name, date, ticket, tax, total, cancelday } = props;
   return(
       <div>
       <h2>My예매정보</h2>
@@ -36,7 +36,7 @@ const MyInfo = props => {
                   <th>제목</th>
                   <td>{item_name}</td>
                   <th>일시</th>
-                  <td>2022년 11월 30일(수) 20:00</td>
+                  <td>{date}</td>
               </tr>
               <tr>
                   <th>선택 좌석</th>
@@ -47,12 +47,12 @@ const MyInfo = props => {
               <tr>
                   <th>비과세(5%)</th>
                   <td>{tax}</td>
-                  <th>사용 가능 포인트</th>
-                  <td>230</td>
+                  <th>현재 포인트</th>
+                  <td>230 <span><button>포인트 사용하기</button></span></td>
               </tr>
               <tr>
                   <th>취소 기한</th>
-                  <td>오늘</td>
+                  <td>{cancelday}까지</td>
                   <th>취소 수수료</th>
                   <td>티켓금액의 0~30%</td>
               </tr>
@@ -66,7 +66,7 @@ const MyInfo = props => {
 }
 
   function PopupContent2(props) {
-  const { item_name, price } = props;
+  const { item_name, price, date, cancelday } = props;
 	// 기본가 수량 선택
 	const [value, setValue] = useState(0);
 	const [stuValue, setStuValue] = useState(0);
@@ -213,7 +213,7 @@ const MyInfo = props => {
             <li>동일 상품에 대해서 회차, 좌석 가격, 결제 등 일부 변경을 원하시는 경우, 기존 예매 건을 취소하시고 재예매 하셔야 합니다.
             단, 취소 시점에 따라 예매수수료가 환불 되지 않으며, 취소 수수료가 부과될 수 있습니다.</li>
         </div>
-        <MyInfo item_name={item_name} ticket={ticket} tax={tax} total={total} />
+        <MyInfo item_name={item_name} cancelday={cancelday} date={date} ticket={ticket} tax={tax} total={total} />
         </BodyContainer>
     );
 }

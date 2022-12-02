@@ -28,7 +28,7 @@ import { MyInfo } from "./PopupContent2";
 `;
 
 function PopupContent3(props) {
-  const { item_name } = props;
+  const { item_name, date, cancelday } = props;
   const ticket = window.localStorage.getItem('ticket');
   const tax = window.localStorage.getItem('tax');
   const total = window.localStorage.getItem('total');
@@ -38,7 +38,7 @@ function PopupContent3(props) {
   
     return(
         <BodyContainer>
-          <MyInfo item_name={item_name} ticket={ticket} tax={tax} total={total} />
+          <MyInfo cancelday={cancelday} item_name={item_name} date={date} ticket={ticket} tax={tax} total={total} />
             <hr />
             <div>
                 <a href={payUrl}><button className='pay-button'>카카오페이로 결제하기</button></a>

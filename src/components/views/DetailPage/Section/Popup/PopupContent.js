@@ -48,35 +48,34 @@ const Body1Style = styled.div`
 `;
 
 function PopupContent(props) {
-
-  const { price } = props;
+  const { price, date, cancelday } = props;
     return(
         <Body1Style>
-            <div>
-                <h2>좌석 선택</h2>
-                <div className='seat-container'>
-                    <ul>
-                        <span className='seat seat-vip'/>
-                        <li>VIP석 0석</li>
-                        <span className='price-info'>{price}원</span>
-                        <p />
-                        <span className='seat seat-r'/>
-                        <li>R석 5석</li>
-                        <span className='price-info'>{price}원</span>
-                        <p />
-                        <span className='seat seat-s'/>
-                        <li>S석 28석</li>
-                        <span className='price-info'>{price}원</span>
-                        <p />
-                        <span className='seat seat-a'/>
-                        <li>A석 94석</li>
-                        <span className='price-info'>{price}원</span>
-                        <p />
-                    </ul>
-                </div>
+          <div>
+            <h2>좌석 선택</h2>
+            <div className='seat-container'>
+              <ul>
+                <span className='seat seat-vip'/>
+                <li>VIP석 0석</li>
+                <span className='price-info'>{price}원</span>
+                <p />
+                <span className='seat seat-r'/>
+                <li>R석 5석</li>
+                <span className='price-info'>{price}원</span>
+                <p />
+                <span className='seat seat-s'/>
+                <li>S석 28석</li>
+                <span className='price-info'>{price}원</span>
+                <p />
+                <span className='seat seat-a'/>
+                <li>A석 94석</li>
+                <span className='price-info'>{price}원</span>
+                <p />
+              </ul>
+              </div>
                 <hr />
             </div>
-            <MyInfo />
+            <MyInfo cancelday={cancelday} date={date}/>
         </Body1Style>
     );
 }

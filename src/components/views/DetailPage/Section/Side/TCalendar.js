@@ -8,6 +8,7 @@ import PopupHeader from '../Popup/PopupHeader';
 import PopupContent from '../Popup/PopupContent';
 import {PopupContent2} from '../Popup/PopupContent2';
 import PopupContent3 from '../Popup/PopupContent3';
+import moment from 'moment';
 
 const Styleside = styled.div`
     .side-header{
@@ -51,10 +52,16 @@ const Styleside = styled.div`
  */
 function TCalendar (props) {
 	const { item_name, price } = props;
-
     const [date, setDate] = useState(new Date());
     const [modalOpen, setModalOpen] = useState(false);
     const [id, setId] = useState(1);
+
+    let tat = date;
+    const tas = moment(tat);
+    // 현재 일
+    const today = tas.format('YYYY-MM-DD');
+    // 7일 전
+    const cancelday = moment(tat, 'YYYY-MM-DD').subtract(7, 'day')._d.toLocaleDateString();
 
     const plusId = () => setId(id + 1);
     const minusId =() => setId(id - 1);
@@ -66,9 +73,9 @@ function TCalendar (props) {
     }
 
     const topics = [
-        {id:1, title: <PayPopup id={id} plus={plusId} open={openModal} minus={minusId} close={closeModal} header={<PopupHeader />} body={<PopupContent price={price} />}/>},
-        {id:2, title:<PayPopup id={id} plus={plusId} minus={minusId} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent2 item_name={item_name} price={price} />} />},
-        {id:3, title:<PayPopup id={id} minus={minusId} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent3 item_name={item_name} />}/>}
+        {id:1, title: <PayPopup id={id} plus={plusId} open={openModal} minus={minusId} close={closeModal} header={<PopupHeader />} body={<PopupContent date={today} cancelday={cancelday} price={price} />}/>},
+        {id:2, title:<PayPopup id={id} plus={plusId} minus={minusId} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent2 date={today} cancelday={cancelday} item_name={item_name} price={price} />} />},
+        {id:3, title:<PayPopup id={id} minus={minusId} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent3 date={today} cancelday={cancelday} item_name={item_name} />}/>}
     ];
 
     const ModalList = props => {
