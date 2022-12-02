@@ -1,20 +1,28 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
+import styled from "styled-components";
 
+const SelectStyle = styled.div`
+  table, th, tr, td {
+    border: 1px solid black;
+  }
+`;
 
 const PaySelcet = () => {
-    const [data, setData] = useState({
-        next_redirect_pc_url: "",
-        tid:"",
-        params: {
-            cid: "TC0ONETIME",
-            tid: window.localStorage.getItem("tid")
-        },
-    });
-
-    useEffect(() => {
+  
+  const [list, setList] = useState({});
+  const [data, setData] = useState({
+    next_redirect_pc_url: "",
+    tid:"",
+    params: {
+      cid: "TC0ONETIME",
+      tid: window.localStorage.getItem("tid")
+    },
+  });
+  
+  useEffect(() => {
         const { params } = data;
-
+        
         axios({
             url: "/v1/payment/order",
             method: "GET",
@@ -24,28 +32,53 @@ const PaySelcet = () => {
             },
             params
         }).then(response => {
-            let data = [
+            const data = [
                 response.data.cid,
-                response.data.item_name,
-                response.data.payment_method_type,
-                response.data.quantity,
-                response.data.amount.total
             ];
-            console.log(data);
+            const datas = response.data;
+            setList(
+              {
+                item_name : datas.item_name,
+                quantity : datas.quantity,
+                amount_total : datas.amount.total,
+                payment_method_type: datas.payment_method_type,
+                status : datas.status,
+                approved_at : datas.approved_at
+              }
+            );
             console.log(response);
-            // 결제 승인에 대한 응답 출력
-            console.log(`조회 데이터 : 가맹점 고유 번호${response.data.cid}`);
-            console.log(`조회 데이터 : 결제한 상품 이름${response.data.item_name}`);
-            console.log(`조회 데이터 : 결제 방법${response.data.payment_method_type}`);
-            console.log(`조회 데이터 : 결제 총 개수${response.data.quantity}`);
-            console.log(`조회 데이터 : 결제 총 금액${response.data.amount.total}`);
+            console.log(data);
+            console.log(list);
         });
-    });
-
+      }, []);
+    
     return(
-        <div>
-            <h2>결제 내역 조회 페이지</h2>
-        </div>
+      <SelectStyle>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>상품 이름</th>
+              <th>상품 수량</th>
+              <th>상품 총 가격</th>
+              <th>결제 수단</th>
+              <th>결제 상태</th>
+              <th>결제 완료 시간</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{list.item_name}</td>
+              <td>{list.quantity}</td>
+              <td>{list.amount_total}</td>
+              <td>{list.payment_method_type}</td>
+              <td>{list.status}</td>
+              <td>{list.approved_at}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </SelectStyle>
     )
 }
 
