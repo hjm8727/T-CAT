@@ -6,7 +6,8 @@ import styled from 'styled-components';
 import PayPopup from '../Popup/PayPopup';
 import PopupHeader from '../Popup/PopupHeader';
 import PopupContent from '../Popup/PopupContent';
-import {PopupContent2, PopupContent3} from '../Popup/PopupContent2';
+import {PopupContent2} from '../Popup/PopupContent2';
+import PopupContent3 from '../Popup/PopupContent3';
 
 const Styleside = styled.div`
     .side-header{

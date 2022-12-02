@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 
-const PayReady = (item_name, total) => {
+const PayReady = (item_name, total, tax, value) => {
     let [data, setData] = useState({
         next_redirect_pc_url: "",
         tid: "",
@@ -14,14 +14,12 @@ const PayReady = (item_name, total) => {
             partner_user_id: "partner_user_id",
             // 상품 이름
             item_name: item_name,
-            // item_name: "태양의서커스 <뉴 알레그리아> (VIP석)",
             // 상품 수량
-            quantity: 1,
+            quantity: value,
             // 총 가격
-            // total_amount: 300000,
             total_amount: total,
             // 상품 비과세
-            tax_free_amount: 20000,
+            tax_free_amount: tax,
             // 결제 성공 URL
             approval_url: "http://localhost:3000/payresult",
             // 결제 실패 URL
@@ -33,7 +31,6 @@ const PayReady = (item_name, total) => {
     
     useEffect(() => {
         const { params } = data;
-
         axios({
             url: "/v1/payment/ready",
             method: "POST",
@@ -55,7 +52,7 @@ const PayReady = (item_name, total) => {
             console.log(error);
         })
     })
-    const { next_redirect_pc_url } = data;
+    // const { next_redirect_pc_url } = data;
     return (
             <div className="container">
                 {/* <h2 className="head-line">카카오페이 결제하기</h2>

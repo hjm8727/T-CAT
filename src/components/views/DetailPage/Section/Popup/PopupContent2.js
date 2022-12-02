@@ -1,7 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import PayReady from "../../../KakaoPay/PayReady";
-
 
 const BodyContainer = styled.div`
 table ,tr {
@@ -67,22 +65,6 @@ const MyInfo = props => {
   );
 }
 
-function PopupContent3(props) {
-    const { item_name, price } = props;
-      PayReady(item_name, price);
-      const payUrl = window.localStorage.getItem('url');
-    
-      return(
-          <BodyContainer>
-            <MyInfo item_name={item_name} total={price} />
-              <hr />
-              <div>
-                  <a href={payUrl}><button className='pay-button'>카카오페이로 결제하기</button></a>
-              </div>
-          </BodyContainer>
-      );
-  }
-
   function PopupContent2(props) {
   const { item_name, price } = props;
 	// 기본가 수량 선택
@@ -124,7 +106,7 @@ function PopupContent3(props) {
       setValue(0);
       setDouValue(0);
       setEveValue(0);
-      tickets = values * price;
+      tickets = values * student;
       setTicket(tickets);
       taxs = Math.floor(tickets / 20);
       setTax(taxs);
@@ -135,7 +117,7 @@ function PopupContent3(props) {
       setValue(0);
       setEveValue(0);
       setStuValue(0);
-      tickets = values * price;
+      tickets = values * double;
       setTicket(tickets);
       taxs = Math.floor(tickets / 20);
       setTax(taxs);
@@ -146,13 +128,17 @@ function PopupContent3(props) {
       setValue(0);
       setDouValue(0);
       setStuValue(0);
-      tickets = values * price;
+      tickets = values * openEvent;
       setTicket(tickets);
       taxs = Math.floor(tickets / 20);
       setTax(taxs);
       totals = tickets + taxs;
-          setTotal(totals);
+      setTotal(totals);
 		}
+    window.localStorage.setItem('value', values);
+    window.localStorage.setItem('ticket', tickets)
+    window.localStorage.setItem('tax', taxs);
+    window.localStorage.setItem('total', totals);
 	};
     return(
         <BodyContainer>
@@ -233,4 +219,4 @@ function PopupContent3(props) {
 }
 
 
-export {PopupContent2, MyInfo, PopupContent3 };
+export {PopupContent2, MyInfo };
