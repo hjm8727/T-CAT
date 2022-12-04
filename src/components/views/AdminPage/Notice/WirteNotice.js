@@ -9,9 +9,11 @@ const WriteBlock=styled.div`
      box-sizing: border-box;
     .container{
         position: relative;
+    width: 100vw;
+
     }
     .topTitle{
-        overflow: hidden;
+        /* overflow: hidden; */
         border-top: 1px solid black;
         border-bottom: 1px solid #dae0e9;
         height: 70px;
@@ -22,8 +24,9 @@ const WriteBlock=styled.div`
         float: left;
         input{
             margin-left: 20px;
-            width: 1000px;
+            /* width: 1000px; */
             height: 40px;
+            width: auto;
         }
     }
     .date{
@@ -65,6 +68,8 @@ const WriteNotice=()=>{
   const onClickSubmit=async()=>{
     const write = await AdminApi.writing(inputTitle, inputDetail);
     console.log(write);
+    window.location.replace('/admin/noticeDetail');
+    
   }
     return(
         <>
@@ -72,9 +77,9 @@ const WriteNotice=()=>{
             <TopBar name="공지사항 작성하기"/>
                  <div className="container">
                     <div className="topTitle">
-                        <p className="title">제목
+                        <div className="title">제목
                             <input type="text" placeholder="제목을 입력하세요" value={inputTitle} onChange={onChangeTitle}/>
-                        </p>
+                        </div>
                     </div>
                     <div className="content">
                         <textarea placeholder="내용 입력" value={inputDetail} onChange={onChangeDetail}/>

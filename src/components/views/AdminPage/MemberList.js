@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import TopBar from "./Tool/TopBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AdminApi from "../../../api/AdminApi";
 
 const MemberBlock=styled.div`
   margin:0 auto;
@@ -23,11 +24,9 @@ table,th,td {
 `;
 
 const MemberList=()=>{
-  const data = [
-    {id: 0, userId: 'bear', name: '곰돌이', date:'2022-12-02',email:'bear@naver.com',phone:'010-3255-7894'},
-  ];
+  const [memberList, setMemberList] = useState('');
 
-  const [lists, setLists] = useState('');
+  
   // 체크된 아이템을 담을 배열
   const [checkItems, setCheckItems] = useState([]);
   // 체크박스 단일 선택
@@ -46,7 +45,7 @@ const MemberList=()=>{
     if(checked) {
       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
-      data.forEach((el) => idArray.push(el.id));
+      memberList.forEach((el) => idArray.push(el.id));
       setCheckItems(idArray);
     }
     else {
@@ -54,6 +53,18 @@ const MemberList=()=>{
       setCheckItems([]);
     }
   }
+  useEffect(() => {
+    const noticeData = async()=> {
+      try {
+        const response = await AdminApi.noticeInfo(); // 전체 리스트 조회
+        setMemberList(response.data);
+        console.log(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    noticeData();
+  }, []);
  
     return(
         <MemberBlock>
@@ -65,26 +76,26 @@ const MemberList=()=>{
                   <th>
                     <input type='checkbox' name='select-all' onChange={(e) => handleAllCheck(e.target.checked)}
                     // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
-                    checked={checkItems.length === data.length ? true : false} />
+                    checked={checkItems.length === memberList.length ? true : false} />
                     </th>
                     <th>아이디</th>
                     <th>이름</th>
                     <th>가입일</th>
                     <th>이메일</th>
-                    <th>연락처</th>
+                    <th>주소</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {data && data.map((data,key) => (<tr key={key}>
-                  <td><input type='checkbox' name={`select-${data.id}`} onChange={(e) => handleSingleCheck(e.target.checked, data.id)}
+                  {memberList && memberList.map((data,key) => (<tr key={key}>
+                  <td><input type='checkbox' name={`select-${data.id}`} onChange={(e) => handleSingleCheck(e.target.checked, data)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                  checked={checkItems.includes(data.id) ? true : false} />
+                  checked={checkItems.includes(data) ? true : false} />
                   </td>
-                    <td>{data.userId}</td>
+                    <td>{data.Id}</td>
                     <td>{data.name}</td>
                     <td>{data.date}</td>
                     <td>{data.email}</td>
-                    <td>{data.phone}</td>
+                    <td>{data.address}</td>
                 </tr>
                 ))}
                 </tbody>
