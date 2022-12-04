@@ -338,7 +338,7 @@ function Sign() {
   return (
     <SignWrap>
     <div className='signwrap'>
-      <form className="form" onsubmit="return false" autocomplete="off">
+      <form className="form">
       <div className="form-inner">
           <h2>Sign in</h2>
           <div className="input-wrapper">
@@ -380,17 +380,17 @@ function Sign() {
           </div>
           <div className="btn-group"><button className="btn btn--primary" type='button' onClick={openPostCode}>Address</button></div>
           <div id='popupDom'>
-                {isOpen && (
-                  <div>
-                    <PopupDom>
-                      <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
-                    <button onClick={closePostCode} type='button'>닫기</button>
-                    </PopupDom>
-                  </div>
-                )}
-                <input type='text' readOnly placeholder='선택된 주소' value={fullAddress}  />
-                <p />
-                <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력'/>
+              {isOpen && (
+                <div>
+                  <PopupDom>
+                    <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
+                  <button onClick={closePostCode} type='button'>닫기</button>
+                  </PopupDom>
+                </div>
+              )}
+              <input type='text' readOnly placeholder='선택된 주소' value={fullAddress}  />
+              <p />
+              <input type='text' value={address} onChange={onChangeAddress} placeholder='상세 주소 입력'/>
           </div>
           <div>
           </div>

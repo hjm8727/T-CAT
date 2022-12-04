@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const PosterContainer = styled.div`
     width: 50%;
-    margin: 30px 0;
     align-items: center;
     display: inline-block;
     /* border: solid 1px black; */
@@ -12,7 +11,11 @@ const PosterContainer = styled.div`
         float: right;
         text-decoration:none;
         color: #1a1a1a;
-        /* cursor: pointer; */
+        margin-right:30px;
+        opacity: 80%;
+    }
+    a:hover{
+        opacity: 100%;
     }
     @media (max-width : 1440px){
         width: 100%;

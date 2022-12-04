@@ -12,10 +12,14 @@ import PosterCategory2 from "./Content/MainPoster2/MainCategory2";
 import MainReview from "./Content/MainReview/MainReview";
 
 const ItemContainer = styled.div`
-    width: 75%;
+    width: 80%;
     padding: 0px;
     margin: 0 auto;
-    min-width: 900px;
+    min-width: 930px;
+    /* background-color: #f5f5f7; */
+    hr{
+        margin: 0;
+    }
     `
 const MainContainer = styled.div`
     width : 100%;

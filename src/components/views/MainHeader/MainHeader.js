@@ -28,16 +28,27 @@ const HeaderContainer = styled.div`
     .HederMenu{
         font-family: sans-serif;
         font-weight: bold;
-        /* color:#3F4E4F; */
-
+        border-radius: 10px;
+        transition: all 0.4s;
+    }
+    .HederMenu:hover{
+        background-color: #86868b;
+        color: white;
     }
     /* 검색버튼 */
     .SearchBtn{
-        
+        color: black;
+        border: 1px solid #367E18;
+        margin-right: 8px;
+    }
+    .SearchBtn:hover{
+        background-color: #367E18;
+        color: white;
     }
     /* 로그인 로고 */
     .User{
         font-size: 2.5em;
+        margin-right: 8px;
     }
     /* 드롭박스 */
     .HederCategory{
@@ -50,7 +61,7 @@ const HeaderContainer = styled.div`
     .optionBox{
         position: relative;
         cursor: pointer;
-
+        
     }
     .optionLabel{
         display: flex;
@@ -77,7 +88,7 @@ const HeaderContainer = styled.div`
         cursor: pointer;
     }
     .optionItem:hover{
-        /* background-color: ; */
+        
     }
     width: 100%;
     background-color: #f5f5f5;
@@ -109,6 +120,7 @@ const MainHeader = () =>{
                 <a href="/sign">회원가입</a>
                 <a href="/admin/home">관리자페이지</a>
                 <a href="/MyPage">MyPage</a>
+                <a href="/detail">상세페이지</a>
         </LoginTag>    
             <HeaderContainer>
                 <Navbar expand="lg">

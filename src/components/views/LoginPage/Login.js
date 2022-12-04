@@ -218,9 +218,11 @@ const FindIdBody = () => {
   return(
     <IdStyle>
       <div>
-        <input className='modal-input' type='text' placeholder='이름 입력'></input>
+        <label name='id'>아이디 입력</label>
+        <input className='modal-input' name='id' type='text' />
         <p />
-        <input className='modal-input' type='email' placeholder='이메일 입력'></input>
+        <label name='email'>이메일 입력</label>
+        <input className='modal-input' name='email' type='email' />
         <p />
         <div className='show-00'>
           <h5>00님의 아이디는 <strong><u>[wlals1234]</u></strong>입니다.</h5>
@@ -240,11 +242,14 @@ const FindPwdBody = () => {
   return(
     <IdStyle>
       <div>
-        <input className='modal-input' type='text' placeholder='아이디 입력'></input>
+        <label name='id'>아이디 입력</label>
+        <input className='modal-input' name='id'  type='text' />
         <p />
-        <input className='modal-input' type='text' placeholder='이름 입력'></input>
+        <label name='name'>이름 입력</label>
+        <input className='modal-input' name='name' type='text' />
         <p />
-        <input className='modal-input' type='email' placeholder='이메일 입력'></input>
+        <label name='email'>이메일 입력</label>
+        <input className='modal-input'name='email'  type='email' />
         <p />
         <div className='show-00'>
           <h5>00님의 아이디는 <strong><u>[wlals1234]</u></strong>입니다.</h5>

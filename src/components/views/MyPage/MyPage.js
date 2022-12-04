@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import RList from './section/RList';
 import CList from './section/CList';
 import Contact from './section/Iquiry/Contact';
 import IqList from './section/Iquiry/IqList';
 import Footer from '../Footer/Footer';
+import InfoUpdate from './section/InfoUpdate';
 
 function MyPage() {
   const { Content, Sider } = Layout;
@@ -43,8 +44,8 @@ const items = [
           <div className="site-layout-background">
             <div className='userInfo' style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
               <div className='userIcon'style={{width: '170px', height: '170px', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} >
-
               </div>
+              <Link to='MyPage/update'>회원 정보 수정</Link>
             </div>
           </div>
           <div style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
@@ -61,6 +62,7 @@ const items = [
 const MyBody = () => (
     <>
     <Routes>
+      <Route path='MyPage/update' element={<InfoUpdate />} />
       <Route path='/RList' element={<RList/>}/>
       <Route path='/CList' element={<CList/>}/>
       <Route path='/Contact' element={<Contact/>}/>

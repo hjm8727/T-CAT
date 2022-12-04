@@ -2,10 +2,10 @@ import styled from "styled-components"
 
 const MainReviewContainer = styled.div`
     width: 100%;
-    margin: 30px 0;
     .ReviewBox{
         display: flex;
         justify-content: center;
+        margin: 20px 0;
     }
     .MainReviewContents{
         /* border: 1px solid black; */
@@ -45,7 +45,7 @@ const MainReviewContainer = styled.div`
     h2{
         font-size: 1.5em;
         font-weight: bold;
-        margin-bottom: 30px;
+        margin:20px 0 20px 20px ;
     }
     @media(max-width : 1024px){
         .ReviewContents{

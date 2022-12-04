@@ -6,27 +6,25 @@ const PosterCategoryContainer = styled.div`
     margin: 30px 0;
     /* border: solid 1px black; */
     .PosterTitle{
-        /* min-width: 540px; */
-        /* margin: 0 6em; */
         display: flex;
-        justify-content: center;
-        /* justify-content: space-between */
-        
+        justify-content: center;        
     }
     li{
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
         min-width: 120px;
         font-size: 1.2em;
         list-style: none;
         padding : 0.5em;
         margin: 0 1em;
         cursor: pointer;
+        transition: all 0.4s;
     }
-    /* @media (max-width : 1025px){
-        li{
-            font-size: 0.8em;
-            margin: 0 1;
-        }
-    } */
+    li:hover{
+        background-color: #86868b;
+        color: white;
+    }
     `
 
 const categories = [
