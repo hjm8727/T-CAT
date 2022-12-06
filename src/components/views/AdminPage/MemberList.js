@@ -34,6 +34,7 @@ const MemberList=()=>{
     if (checked) {
       // 단일 선택 시 체크된 아이템을 배열에 추가
       setCheckItems(prev => [...prev, id]);
+      console.log(id);
     } else {
       // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
       setCheckItems(checkItems.filter((el) => el !== id));
@@ -45,7 +46,7 @@ const MemberList=()=>{
     if(checked) {
       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
-      memberList.forEach((el) => idArray.push(el.id));
+      memberList.forEach((el) => idArray.push(el));
       setCheckItems(idArray);
     }
     else {
@@ -54,16 +55,16 @@ const MemberList=()=>{
     }
   }
   useEffect(() => {
-    const noticeData = async()=> {
+    const memberData = async()=> {
       try {
-        const response = await AdminApi.noticeInfo(); // 전체 리스트 조회
+        const response = await AdminApi.totalMember(); // 전체 멤버 조회
         setMemberList(response.data);
         console.log(response.data);
       } catch (e) {
         console.log(e);
       }
     };
-    noticeData();
+    memberData();
   }, []);
  
     return(
@@ -87,11 +88,11 @@ const MemberList=()=>{
                 </thead>
                 <tbody>
                   {memberList && memberList.map((data,key) => (<tr key={key}>
-                  <td><input type='checkbox' name={`select-${data.id}`} onChange={(e) => handleSingleCheck(e.target.checked, data)}
+                  <td><input type='checkbox' name={`select-${data}`} onChange={(e) => handleSingleCheck(e.target.checked, data)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                   checked={checkItems.includes(data) ? true : false} />
                   </td>
-                    <td>{data.Id}</td>
+                    <td>{data.id}</td>
                     <td>{data.name}</td>
                     <td>{data.date}</td>
                     <td>{data.email}</td>

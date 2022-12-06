@@ -16,10 +16,30 @@ const AdminApi={
     noticeInfo : async function(){
         return await axios.post(TCAT_DOMAIN + "/notice/list", HEADER)
     },
+    // 공지사항 상세페이지
+    noticeDetail : async function(index){
+
+        return await axios.get(TCAT_DOMAIN + `/notice/post?index=${index}`, HEADER)
+    },
+    // 공지사항 삭제 
+    noticeDelete : async function(index){
+        return await axios.post(TCAT_DOMAIN + "/notice/delete/"+ index, HEADER)
+    },
+    // 공지사항 수정
+    noticeEdit : async function(inputTitle, inputDetail){
+        const editing = {
+            title : inputTitle,
+            content : inputDetail
+        }
+        return await axios.post(TCAT_DOMAIN + "/notice/edit", editing, HEADER)
+        
+    },
+ 
     // 회원 전체 조회
     totalMember : async function(){
         return await axios.post(TCAT_DOMAIN + "/member/list", HEADER)
     },
+    // 고
 
 }
 export default AdminApi;

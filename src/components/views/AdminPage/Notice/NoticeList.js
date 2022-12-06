@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useState, useEffect} from "react";
 import { useNavigate} from "react-router-dom";
 import AdminApi from "../../../../api/AdminApi";
+import { async } from "@firebase/util";
+import { ApiFilled } from "@ant-design/icons";
 
 const NoticeBlock=styled.div`
     margin:0 auto;
@@ -72,7 +74,19 @@ const NoticeList=()=>{
   }
   const onClickDelete=()=>{
     alert("공지사항을 삭제하시겠습니까?")
+    const deleteNotice=async(index)=>{
+      try{
+        const response = await AdminApi.noticeDelete(index);
+        setNoticeList(response.data);
+        console.log(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    deleteNotice();
+    setCheckItems([]);
   }
+  // 공지 제목 클릭하면 공지 상세페이지로 이동
     const onClickNotice=()=>{
       navigate('/admin/noticeDetail')
       // 클릭하면 공지 내용 볼 수 있게
@@ -81,7 +95,7 @@ const NoticeList=()=>{
     /** 문의 내용을 가져오는 useEffect */
   useEffect(() => {
     const noticeData = async()=> {
-     setLoading(true);
+    //  setLoading(true);
       try {
         const response = await AdminApi.noticeInfo(); // 전체 리스트 조회
         setNoticeList(response.data);
@@ -89,7 +103,7 @@ const NoticeList=()=>{
       } catch (e) {
         console.log(e);
       }
-      setLoading(false);
+      // setLoading(false);
     };
     noticeData();
   }, []);
@@ -113,8 +127,8 @@ const NoticeList=()=>{
                     <th width = "100px">글번호</th>
                     <th>제목</th>
                     <th width = "150px">작성자</th>
-                    {/* <th width = "150px">작성일</th> */}
-                    {/* <th width = "150px">조회수</th> */}
+                    <th width = "150px">작성일</th>
+                    <th width = "150px">조회수</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -126,8 +140,8 @@ const NoticeList=()=>{
                     <td>{info.index}</td>
                     <td onClick={onClickNotice}>{info.title}</td>
                     <td>관리자</td>
-                    {/* <td>{info.create_time}</td> */}
-                    {/* <td>{data.views}</td> */}
+                    <td>{info.create_time}</td>
+                    <td>{info.views}</td>
                 </tr>
                 ))}
                 </tbody>

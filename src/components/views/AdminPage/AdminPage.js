@@ -9,9 +9,9 @@ import BlackList from './BlackList';
 import Banner from './Banner';
 import PostManagement from './PostManagement';
 import WriteNotice from './Notice/WirteNotice';
-import Inquiry from './Inquiry';
 import NoticeDetail from './Notice/NoticeDetail';
 import NoticeList from './Notice/NoticeList';
+import Inquiry from './Inquiry/Inquiry';
 
 const HeaderBlock=styled.div`
   /* width: 100%; */
@@ -45,7 +45,7 @@ function Header() {
   return(
     <HeaderBlock>
       <div className='logoContainer'>
-        <img className="logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/>
+        <img className="logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'} alt = ""/>
       </div>
     </HeaderBlock>
   );

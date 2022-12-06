@@ -85,7 +85,7 @@ const PostManagement=()=>{
                     // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
                     checked={checkItems.length === data.length ? true : false} />
                     </th>
-                    <th>글번호</th>
+                    <th width = "80px">글번호</th>
                     <th>전시명</th>
                     <th>전시기간</th>
                   </tr>

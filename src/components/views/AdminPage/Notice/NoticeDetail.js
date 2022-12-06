@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import TopBar from "../Tool/TopBar";
 import { useNavigate} from "react-router-dom";
-import { useState, useEffect} from "react";
+import { useState, useEffect, useHistory} from "react";
 import AdminApi from "../../../../api/AdminApi";
 import { InfoCircleFilled } from "@ant-design/icons";
+import { useParams } from "react-router-dom";
 
 
 
@@ -23,7 +24,7 @@ const DetailBlock=styled.div`
     padding: 3rem;
     }
     .topTitle{
-        overflow: hidden;
+        /* overflow: hidden; */
         border-top: 1px solid black;
         border-bottom: 1px solid #dae0e9;
         height: 70px;
@@ -31,7 +32,7 @@ const DetailBlock=styled.div`
         line-height: 70px;
     }
     .title{
-        float: left;
+        /* float: left; */
         hover{
             cursor: pointer;
             background-color: red;
@@ -40,7 +41,7 @@ const DetailBlock=styled.div`
     .date{
         float: right;
     }
-    .content{
+    .notice-content{
         display: block;
         height: 500px;
         border-bottom: 1px solid #dae0e9;
@@ -63,13 +64,15 @@ const DetailBlock=styled.div`
 
 const NoticeDetail=()=>{
   const navigate = useNavigate();
-  const [noticeContent, setNoticeContent] = useState('');
+  // const params = useParams().title;
+  const history = useHistory();
+  const [noticeDetail, setNoticeDetail] = useState('');
 
   useEffect(() => {
     const noticeData = async()=> {
       try {
-        const response = await AdminApi.noticeInfo(); // 전체 리스트 조회
-        setNoticeContent(response.data);
+        const response = await AdminApi.noticeDetail();
+        setNoticeDetail(response.data);
         console.log(response.data);
       } catch (e) {
         console.log(e);
@@ -78,23 +81,27 @@ const NoticeDetail=()=>{
     noticeData();
   }, []);
 
+  const onClickUpdate=()=>{
+    // history.pushState(`/edit/${params?.index ?? 0}`)
+  }
+
     return(
         <>
         <DetailBlock>
             <TopBar name="공지사항 상세보기"/>
-                <div className="container">
-                    {noticeContent && noticeContent.map((Info)=>(
-                    <div className="topTitle">
-                            <div key={Info.index}>
-                                <p className="title">{Info.title}</p>
-                    </div>
-                                <p className="date"> 관리자 | 작성날짜</p>
-                                <div className="content">{Info.content}</div>
-                            </div>
-                        ))}
-
+              {noticeDetail && noticeDetail.map((Info)=>(
+              <div className="container">
+                <div className="topTitle">
+                  <div key={Info.index}>
+                      <p className="date"> 관리자 | 작성날짜</p>
+                      <p className="title">{Info.title}</p>
+                  </div>
                 </div>
+                  <div className="notice-content">{Info.content}</div>
+              </div>
+              ))}
                 <div className="buttonWrap">
+                    <button onClick={onClickUpdate}>수정하기</button>
                     <button onClick={()=>{navigate('/admin/noticeList')}}>목록으로</button>
                 </div>
         </DetailBlock>
