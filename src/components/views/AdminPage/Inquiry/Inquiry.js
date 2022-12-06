@@ -31,8 +31,18 @@ const Inquiry=()=>{
     {id: '1', title: '환불요청', userId:'blackuser',date:'2022-11-30'},
     {id: '2', title: '문의', userId:'qwerty',date:'2022-11-30'},
   ];
+  const [inputReply, setInputReply] = useState("");
   
-
+    // 모달
+    const [modalOpen, setModalOpen] = useState(false);
+    // 모달 내용
+    const [modalText, setModalText] = useState('');
+    // 문의 내용을 가져와서 담기 위한 변수
+    const [inquireInfo, setInquireInfo] = useState('');
+  
+  const closeModal = () => {
+    setModalOpen(false);
+  }
 
 
   return(
@@ -60,16 +70,16 @@ const Inquiry=()=>{
                     <td>{data.date}</td>
                     <td>{data.date}</td>
                     <td><button onClick={()=>{setModalText(data); setModalOpen(true);}}>답장</button>
-                      {modalOpen && <ReplyModal setModalOpen={setModalOpen}/>}
+                      {modalOpen && <Modal setModalOpen={setModalOpen}/>}
                     </td>
                   </tr>
                   </tbody>
                   ))}
 
               </table> 
-              <ReplyModal open={modalOpen} close={closeModal} header="문의 내용"><div style={{color: 'white'}}>{modalText.title}</div>
+              <Modal open={modalOpen} close={closeModal} header="문의 내용"><div style={{color: 'white'}}>{modalText.title}</div>
               <div>{modalText.userId}</div>
-              </ReplyModal>
+              </Modal>
             </div>
         </InquiryBlock>
         
