@@ -43,8 +43,9 @@ const items = [
         <Content style={{margin: '0 16px' }}>
           <div className="site-layout-background">
             <div className='userInfo' style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
-              <div className='userIcon'style={{width: '170px', height: '170px', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} >
-              </div>
+            <GithubFilled style={{fontSize: '10rem', margin: '2rem'}} />
+              {/* <div className='userIcon'style={{width: '170px', height: '170px', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} > */}
+              {/* </div> */}
               <Link to='MyPage/update'>회원 정보 수정</Link>
             </div>
           </div>
