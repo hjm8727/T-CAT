@@ -92,28 +92,27 @@ function TCalendar (props) {
     }
 
     return (
-        <div>
-            <h3 className='text-center'>관람일</h3>
-            <div className='calendar-container'>
-            <Calendar onChange={setDate} value={date}
-            formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}
-            />
-            </div>
-            <p className='text-center'>
-            <span className='bold'>선택한 날짜:</span>{' '}
-            {date.toDateString()}
-            <hr />
-            </p>
-            <Styleside>
-                <div className='side-container'>
-                    <h4 className='side-header'>회차</h4>
-                    <div className='side-content'><button className='button select' type='button'>1회 20:00</button><button className='button no' type='button'>1회 20:00</button></div>
-                    <small className='seat'>잔석 70</small>
-                    <button className='pay-button' onClick={openModal}>예매하기</button>
-                    <ModalList topics={topics} />
+            <div>
+                <h3 className='text-center'>관람일</h3>
+                <div className='calendar-container'>
+                    <Calendar onChange={setDate} value={date}
+                    formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}/>
                 </div>
-            </Styleside>
-        </div>
+                <p className='text-center'>
+                    <span className='bold'>선택한 날짜:</span>{' '}
+                    {date.toDateString()}
+                    <hr />
+                </p>
+                <Styleside>
+                    <div className='side-container'>
+                        <h4 className='side-header'>회차</h4>
+                        <div className='side-content'><button className='button select' type='button'>1회 20:00</button><button className='button no' type='button'>1회 20:00</button></div>
+                        <small className='seat'>잔석 70</small>
+                        <button className='pay-button' onClick={openModal}>예매하기</button>
+                        <ModalList topics={topics} />
+                    </div>
+                </Styleside>
+            </div>
     );
 }
 

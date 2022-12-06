@@ -7,7 +7,8 @@ const BodyContainer = styled.div`
     td{
         cursor: pointer;
         width: 600px;
-        height: 60px;
+        height: 40px;
+        border-bottom: 1px solid silver;
     }
     th{
         width: 100px;
