@@ -1,8 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 // import TopBar from "./Tool/TopBar";
-import ReplyModal from "./replyModal";
-import { Button, Modal } from "react-bootstrap";
+import Modal from "../../../../util/Modal/Modal"
 import TopBar from "../Tool/TopBar";
 
 const InquiryBlock=styled.div`
@@ -71,16 +70,16 @@ const Inquiry=()=>{
                     <td>{data.date}</td>
                     <td>{data.date}</td>
                     <td><button onClick={()=>{setModalText(data); setModalOpen(true);}}>답장</button>
-                      {modalOpen && <ReplyModal setModalOpen={setModalOpen}/>}
+                      {modalOpen && <Modal setModalOpen={setModalOpen}/>}
                     </td>
                   </tr>
                   </tbody>
                   ))}
 
               </table> 
-              <ReplyModal open={modalOpen} close={closeModal} header="문의 내용"><div style={{color: 'white'}}>{modalText.title}</div>
+              <Modal open={modalOpen} close={closeModal} header="문의 내용"><div style={{color: 'white'}}>{modalText.title}</div>
               <div>{modalText.userId}</div>
-              </ReplyModal>
+              </Modal>
             </div>
         </InquiryBlock>
         

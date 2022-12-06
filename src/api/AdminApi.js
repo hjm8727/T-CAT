@@ -18,7 +18,7 @@ const AdminApi={
     },
     // 공지사항 상세페이지
     noticeDetail : async function(){
-        return await axios.get(TCAT_DOMAIN + "/notice/post/7" , HEADER)
+        return await axios.get(TCAT_DOMAIN + "/notice/post/" , HEADER)
     },
     // 공지사항 삭제 
     noticeDelete : async function(index){
@@ -33,7 +33,7 @@ const AdminApi={
         return await axios.post(TCAT_DOMAIN + "/notice/edit", editing, HEADER)
         
     },
- 
+
     // 회원 전체 조회
     totalMember : async function(){
         return await axios.post(TCAT_DOMAIN + "/member/list", HEADER)

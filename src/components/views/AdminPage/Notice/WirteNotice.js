@@ -5,8 +5,8 @@ import { useState } from "react";
 import AdminApi from "../../../../api/AdminApi";
 
 const WriteBlock=styled.div`
-     margin:0 auto;
-     box-sizing: border-box;
+    margin:0 auto;
+    box-sizing: border-box;
     .container{
         position: relative;
     width: 100vw;
@@ -47,35 +47,36 @@ const WriteBlock=styled.div`
         justify-content: center;
     }
     button{
-      border: none;
-      margin: 15px 0;
-      margin: 20px 10px;
-      background-color: #E3CAA5;
-      border-radius: 5px;
-      width: 150px;
-      height: 50px;
+        border: none;
+        margin: 15px 0;
+        margin: 20px 10px;
+        background-color: #E3CAA5;
+        border-radius: 5px;
+        width: 150px;
+        height: 50px;
     }
 
 `;
 const WriteNotice=()=>{
-  const navigate = useNavigate();
-  const [inputTitle, setInputTitle] = useState("");
-  const [inputDetail, setInputDetail] = useState("");
+    const navigate = useNavigate();
+    const [inputTitle, setInputTitle] = useState("");
+    const [inputDetail, setInputDetail] = useState("");
 
-  const onChangeTitle=(e)=>{setInputTitle(e.target.value);}
-  const onChangeDetail=(e)=>{setInputDetail(e.target.value);}
+    const onChangeTitle=(e)=>{setInputTitle(e.target.value);}
+    const onChangeDetail=(e)=>{setInputDetail(e.target.value);}
 
-  const onClickSubmit=async()=>{
+    const onClickSubmit=async()=>{
     const write = await AdminApi.writing(inputTitle, inputDetail);
     console.log(write);
     window.location.replace('/admin/noticeDetail');
     
-  }
+    }
+    
     return(
         <>
         <WriteBlock>
             <TopBar name="공지사항 작성하기"/>
-                 <div className="container">
+                <div className="container">
                     <div className="topTitle">
                         <div className="title">제목
                             <input type="text" placeholder="제목을 입력하세요" value={inputTitle} onChange={onChangeTitle}/>

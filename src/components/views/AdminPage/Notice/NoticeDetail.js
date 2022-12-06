@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import TopBar from "../Tool/TopBar";
 import { useNavigate} from "react-router-dom";
-import { useState, useEffect, useHistory} from "react";
+import React, { useState, useEffect, useHistory} from "react";
 import AdminApi from "../../../../api/AdminApi";
 import { InfoCircleFilled } from "@ant-design/icons";
 import { useParams } from "react-router-dom";
@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 
 const DetailBlock=styled.div`
-   margin:0 auto;
+  margin:0 auto;
   box-sizing: border-box;
     .container{
         margin: 0 auto;

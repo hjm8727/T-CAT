@@ -40,7 +40,7 @@ table,th,td {
 const NoticeList=()=>{
   const navigate = useNavigate();
    // 문의 내용을 가져와서 담기 위한 변수
-   const [noticeList, setNoticeList] = useState('');
+  const [noticeList, setNoticeList] = useState('');
   const [loading, setLoading] = useState(false);
 
 
