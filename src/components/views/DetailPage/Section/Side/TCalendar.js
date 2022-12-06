@@ -91,12 +91,17 @@ function TCalendar (props) {
         );
     }
 
+    const tileDisabled = ({ activeStartDate, date, view }) => {
+        return date < new Date()
+     }
+
     return (
         <div>
             <h3 className='text-center'>관람일</h3>
             <div className='calendar-container'>
             <Calendar onChange={setDate} value={date}
             formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}
+            tileDisabled={tileDisabled}
             />
             </div>
             <p className='text-center'>
