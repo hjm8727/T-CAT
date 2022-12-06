@@ -17,10 +17,10 @@ function Poster() {
     const onClickLike = e => {
         setStyle(!style);
         if(style === false){
-            e.target.style.backgroundColor = 'red';
+            e.target.style.color = 'red';
             setLike(like + 1);
         } else {
-            e.target.style.backgroundColor = 'unset';
+            e.target.style.color = 'unset';
             setLike(like - 1);
         }
         e.preventDefault();
