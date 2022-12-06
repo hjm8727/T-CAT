@@ -73,7 +73,7 @@ function TCalendar (props) {
     }
 
     const topics = [
-        {id:1, title: <PayPopup id={id} plus={plusId} open={openModal} minus={minusId} close={closeModal} header={<PopupHeader />} body={<PopupContent date={today} item_name={item_name} cancelday={cancelday} price={price} />}/>},
+        {id:1, title:<PayPopup id={id} plus={plusId} open={openModal} minus={minusId} close={closeModal} header={<PopupHeader />} body={<PopupContent date={today} item_name={item_name} cancelday={cancelday} price={price} />}/>},
         {id:2, title:<PayPopup id={id} plus={plusId} minus={minusId} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent2 date={today} cancelday={cancelday} item_name={item_name} price={price} />} />},
         {id:3, title:<PayPopup id={id} minus={minusId} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent3 date={today} cancelday={cancelday} item_name={item_name} />}/>}
     ];
@@ -92,27 +92,29 @@ function TCalendar (props) {
     }
 
     return (
-            <div>
-                <h3 className='text-center'>관람일</h3>
-                <div className='calendar-container'>
-                    <Calendar onChange={setDate} value={date}
-                    formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}/>
-                </div>
-                <p className='text-center'>
-                    <span className='bold'>선택한 날짜:</span>{' '}
-                    {date.toDateString()}
-                    <hr />
-                </p>
-                <Styleside>
-                    <div className='side-container'>
-                        <h4 className='side-header'>회차</h4>
-                        <div className='side-content'><button className='button select' type='button'>1회 20:00</button><button className='button no' type='button'>1회 20:00</button></div>
-                        <small className='seat'>잔석 70</small>
-                        <button className='pay-button' onClick={openModal}>예매하기</button>
-                        <ModalList topics={topics} />
-                    </div>
-                </Styleside>
+        <div>
+            <h3 className='text-center'>관람일</h3>
+            <div className='calendar-container'>
+            <Calendar onChange={setDate} value={date}
+            formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}
+            minDate={new Date()}
+            />
             </div>
+            <p className='text-center'>
+            <span className='bold'>선택한 날짜:</span>{' '}
+            {date.toDateString()}
+            <hr />
+            </p>
+            <Styleside>
+                <div className='side-container'>
+                    <h4 className='side-header'>회차</h4>
+                    <div className='side-content'><button className='button select' type='button'>1회 20:00</button><button className='button no' type='button'>1회 20:00</button></div>
+                    <small className='remain'>잔여석 70</small>
+                    <button className='pay-button' onClick={openModal}>예매하기</button>
+                    <ModalList topics={topics} />
+                </div>
+            </Styleside>
+        </div>
     );
 }
 

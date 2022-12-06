@@ -1,0 +1,31 @@
+.featured{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.featuredItem{
+    flex: 1;
+    margin: 0 20px;
+    padding: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    -webkit-box-shadow: 0px 0px 12px -1px #000000; 
+    box-shadow: 0px 0px 12px -1px #000000;
+}
+.featureTitle{
+    font-size: 31px;
+    font-weight: bold;  
+}
+.featuredContainer{
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+.rate{
+    font-size: 50px;
+    font-weight: 600;
+}
+.content{
+    float: right;
+    display: inline-block;
+}

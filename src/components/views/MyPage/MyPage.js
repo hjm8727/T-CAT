@@ -9,6 +9,40 @@ import Contact from './section/Iquiry/Contact';
 import IqList from './section/Iquiry/IqList';
 import Footer from '../Footer/Footer';
 import InfoUpdate from './section/InfoUpdate';
+import styled from 'styled-components';
+
+const MyInfoStyle = styled.div`
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  .userInfo {
+    display: flex;
+    border: 1px solid black;
+    width: 60%;
+    height: 350px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .my-info {
+    display: flex;
+  }
+  .info-des {
+    margin: 1.5rem 0 1.5rem 0;
+    font-size: 17px;
+    border-left: 2px solid black;
+  }
+  .description {
+    margin-left: 1.5rem;
+  }
+  .point-box {
+    border: 1px solid brown;
+    border-radius: 12rem;
+  }
+  .up-button {
+    border: none; 
+  }
+`;
 
 function MyPage() {
   const { Content, Sider } = Layout;
@@ -42,11 +76,22 @@ const items = [
       <Layout className="site-layout">
         <Content style={{margin: '0 16px' }}>
           <div className="site-layout-background">
-            <div className='userInfo' style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
-              <div className='userIcon'style={{width: '170px', height: '170px', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} >
+            <MyInfoStyle>
+              <div className='userInfo'>
+                  <GithubFilled style={{fontSize: '10rem', margin: '2rem'}} />
+                  <div className='info-des'>
+                    <div className='description'>
+                      <p><h4><strong>지민</strong>님 오늘도 TCat을 방문해주셔 감사합니다. 좋은 하루 되세요</h4></p>
+                      <p>나의 아이디는 jimin0601</p>
+                      <p>나의 이메일은 jimin600155@naver.com</p>
+                      <p>현재 회원님의 포인트는 <input className='point-box' readOnly value={50000}/></p>
+                    </div>
+                  </div>
+                  <div className='up-wrap'>
+                    <Link to='MyPage/update'><button className='up-button'>회원 정보 수정</button></Link>
+                  </div>
               </div>
-              <Link to='MyPage/update'>회원 정보 수정</Link>
-            </div>
+          </MyInfoStyle>
           </div>
           <div style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
             <MyBody/>

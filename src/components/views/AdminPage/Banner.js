@@ -59,7 +59,7 @@ const Banner=()=>{
         //사진 첨부 없이 텍스트만 트윗하고 싶을 때도 있으므로 기본 값을 ""로 해야한다.
         //트윗할 때 텍스트만 입력시 이미지 url ""로 비워두기 위함
       
-        const imgChange = (e) => {
+        const onChangeImg = (e) => {
           const {
             target: { files },
           } = e;
@@ -96,7 +96,6 @@ const Banner=()=>{
         };
     
         const imageListReg=ref(storage,"image/");
-
         useEffect(()=>{
             listAll(imageListReg).then((response)=>{
                 console.log(response);
@@ -113,8 +112,6 @@ const Banner=()=>{
         }
 
         const onDelete = async () => {
-            console.log(imageList.map);
-            console.log("왜 안찍히지");
             console.log(attachmentUrl);
           const urlRef = ref(storage, attachmentUrl);
           try {
@@ -152,23 +149,32 @@ const Banner=()=>{
             </tbody> */}
         </table>
         </div>
+        <input type="file" onChange={onChangeImg}/>
+        {attachment && (
+            <div>
+                <img src={attachment} width="30px" height="30px"/>
+            </div>
+            )}
+            <button onClick={onSubmit}> 업로드하기</button>
+            <button onClick={onDelete}>삭제하기</button>
+            {imageList.map((url) => (<ul>
+            <li><img src={url} alt=""/>
+            </li></ul>
+          ))} 
         {/* <button className="uploadAd">배너 등록하기</button>
         <h3>이미지 미리보기</h3> */}
 
-        <input className="form-control" type="file" id="formFile" onChange={imgChange} />
+        {/* <input className="form-control" type="file" id="formFile" onChange={imgChange} />
         <button type="button" className="btn btn-light" style={{ "float": "right" }} onClick={onSubmit}>업로드하기</button>
 
         <div className="preview">
             
         {imageList.map((url,idx) => (<ul>
             <li><img src={url} alt=""/>
-             <button value={idx} onClick= {idx===imageList ? {onDelete} : {onIndex} }>삭제</button>
-            {/* <button value={idx} onClick={onDelete}/>
-            <button value={idx} className="deleteImage">삭제하기</button> */}
             </li></ul>
-          ))}
+          ))} 
 
-        </div>
+        {/* </div> */}
         
         </BannerBlock>
     );
