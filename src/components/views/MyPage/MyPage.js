@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled} from '@ant-design/icons';
-import { Layout, Menu, Slider } from 'antd';
+import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import RList from './section/RList';
@@ -45,7 +45,7 @@ const items = [
             <div className='userInfo' style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
               <div className='userIcon'style={{width: '170px', height: '170px', border: '1px solid black', borderRadius: '50%', margin: '2rem' }} >
               </div>
-              <Link to='MyPage/update'><button style={{border: 'none', marginLeft: '60px', height: '35px', backgroundColor: 'beige', fontWeight: '750', color: '#232323' }}>회원 정보 수정</button></Link>
+              <Link to='MyPage/update'>회원 정보 수정</Link>
             </div>
           </div>
           <div style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
