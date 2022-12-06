@@ -9,8 +9,8 @@ const PayCancel = () => {
         params: {
             cid: "TC0ONETIME",
             tid: window.localStorage.getItem("tid"),
-            cancel_amount: "100000",
-            cancel_tax_free_amount:"20000",
+            cancel_amount: "50000",
+            cancel_tax_free_amount:"10000",
         }
     });
 
