@@ -93,7 +93,7 @@ function TCalendar (props) {
 
     const tileDisabled = ({ activeStartDate, date, view }) => {
         return date < new Date()
-     }
+    }
 
     return (
         <div>
