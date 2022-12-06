@@ -4,7 +4,7 @@ import './Modal.css';
 
 const Modal = (props) => {
     const { open, close, header , submit } = props;
-    
+
     return (
         <div className={open ? 'openModal modal' : 'modal'}>
             {open && 

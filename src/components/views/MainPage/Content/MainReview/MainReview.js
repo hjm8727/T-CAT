@@ -6,6 +6,7 @@ const MainReviewContainer = styled.div`
         display: flex;
         justify-content: center;
         margin: 20px 0;
+        height: 240px;
     }
     .MainReviewContents{
         /* border: 1px solid black; */
@@ -37,10 +38,10 @@ const MainReviewContainer = styled.div`
         background-color: #f5f5f5;
         margin: 0;
         text-align: center;
-        opacity: 90%;
         text-overflow: ellipsis;
         overflow:hidden;
         white-space: nowrap;
+        opacity: 90%;
     }
     h2{
         font-size: 1.5em;
