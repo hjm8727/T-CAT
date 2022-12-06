@@ -384,7 +384,7 @@ function Sign() {
                 <div>
                   <PopupDom>
                     <DaumPostcode style={postCodeStyle} onComplete={handlePostCode} />
-                  <button onClick={closePostCode} type='button'>닫기</button>
+                  <button className='btn btn--primary' onClick={closePostCode} type='button'>닫기</button>
                   </PopupDom>
                 </div>
               )}

@@ -20,7 +20,7 @@ const ModalStyle = styled.div`
         width: 90%;
         max-width: 450px;
         width: 525px;
-        height: 350px;
+        height: 450px;
         margin: 0 auto;
         border-radius: 0.3rem;
         background-color: #fff;
@@ -108,7 +108,7 @@ function FindModal (props) {
                 <button className='close' >
                 확인
                 </button>
-                <button className="close" >
+                <button className="close" onClick={close} >
                 취소
                 </button>
             </footer>
