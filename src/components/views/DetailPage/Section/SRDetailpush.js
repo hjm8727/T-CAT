@@ -16,7 +16,7 @@ function Detail() {
       <Layout style={{width: '100%'}}>
       <MainHeader/>
       <hr/>
-        <Content style={{width: '70rem', marginLeft: '10rem ', marginRight: '15rem', padding: '0 50px'}}>
+        <Content style={{width: '70rem', marginLeft: '10rem ', marginRight: '15rem', padding: '0 50px',border :'1px solid black'}}>
           <Layout className="site-layout-background" style={{padding: '24px 0'}}>
             <Content style={{width: '30rem', padding: '0 24px', minHeight: 280 ,border:'1px solid blakc'}}>
               <Poster/>
@@ -45,4 +45,3 @@ function Detail() {
 }
   
 export default Detail;
-
