@@ -91,11 +91,12 @@ function TCalendar (props) {
         );
     }
 
+    // 이전 날짜 선택 안되게
     const tileDisabled = ({ activeStartDate, date, view }) => {
         console.log(date);
         console.log(new Date());
         return date < new Date()
-     }
+    }
 
     return (
         <div>
