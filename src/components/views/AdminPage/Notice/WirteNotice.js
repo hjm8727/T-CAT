@@ -32,7 +32,7 @@ const WriteBlock=styled.div`
     .date{
         float: right;
     }
-    .content{
+    .content2{
         display: block;
         height: 520px;
         border-bottom: 1px solid #dae0e9;
@@ -81,7 +81,7 @@ const WriteNotice=()=>{
                             <input type="text" placeholder="제목을 입력하세요" value={inputTitle} onChange={onChangeTitle}/>
                         </div>
                     </div>
-                    <div className="content">
+                    <div className="content2">
                         <textarea placeholder="내용 입력" value={inputDetail} onChange={onChangeDetail}/>
                     </div>
                     <div className="buttonWrap">

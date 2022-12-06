@@ -3,7 +3,11 @@ import './replyModal.css';
 
 const ReplyModal=(props)=>{
   const [input, setInput] = useState("");
-  console.log(input);
+  
+  const onChangeInput = (e) =>{
+      setInput(e.target.value)
+      console.log(input);
+  }
   const { open, close, header } = props;
   return (
       <div className={open ? 'openModal modal' : 'modal'}>
@@ -16,7 +20,7 @@ const ReplyModal=(props)=>{
                       </button>
                   </header>
                   <main>{props.children}
-                  <input type="text" value={input}/>
+                  <input type="text" value={input} onChange={onChangeInput}/>
                   
                   </main>
                   <footer>

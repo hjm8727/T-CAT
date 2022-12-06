@@ -17,9 +17,8 @@ const AdminApi={
         return await axios.post(TCAT_DOMAIN + "/notice/list", HEADER)
     },
     // 공지사항 상세페이지
-    noticeDetail : async function(index){
-
-        return await axios.get(TCAT_DOMAIN + `/notice/post?index=${index}`, HEADER)
+    noticeDetail : async function(){
+        return await axios.get(TCAT_DOMAIN + "/notice/post/7" , HEADER)
     },
     // 공지사항 삭제 
     noticeDelete : async function(index){

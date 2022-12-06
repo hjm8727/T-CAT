@@ -65,12 +65,13 @@ const DetailBlock=styled.div`
 const NoticeDetail=()=>{
   const navigate = useNavigate();
   // const params = useParams().title;
-  const history = useHistory();
+  // const history = useHistory();
   const [noticeDetail, setNoticeDetail] = useState('');
 
   useEffect(() => {
     const noticeData = async()=> {
       try {
+        // const number = 
         const response = await AdminApi.noticeDetail();
         setNoticeDetail(response.data);
         console.log(response.data);
@@ -84,7 +85,7 @@ const NoticeDetail=()=>{
   const onClickUpdate=()=>{
     // history.pushState(`/edit/${params?.index ?? 0}`)
   }
-
+  
     return(
         <>
         <DetailBlock>
