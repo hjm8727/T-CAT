@@ -24,7 +24,7 @@ const QnaStyle = styled.div `
     color: brown;
   }
 
-    position: absolute;
+  position: absolute;
 
 `;
 
