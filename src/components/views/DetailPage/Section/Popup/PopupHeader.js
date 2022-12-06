@@ -20,7 +20,7 @@ const HeaderContainer = styled.div`
 `;
 
 function PopupHeader() {
-  return(
+    return(
     <HeaderContainer>
         <h2>T-Cat 예매</h2>
         <div className='HederDiv'>
@@ -29,7 +29,7 @@ function PopupHeader() {
             <li>03 결제하기</li>
         </div>            
     </HeaderContainer>
-  );
+    );
 }
 
 export default PopupHeader;
