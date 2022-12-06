@@ -3,31 +3,18 @@ import {Routes, Route, useNavigate} from "react-router-dom";
 import {Menu} from 'antd';
 import {HomeOutlined, PoweroffOutlined,UserOutlined,SolutionOutlined,LayoutOutlined,BulbOutlined,WhatsAppOutlined} from "@ant-design/icons/lib/icons";
 import styled from 'styled-components';
-import AdminHome from './AdminHome';
+import AdminHome from './Dashboard/AdminHome';
 import MemberList from './MemberList';
 import BlackList from './BlackList';
 import Banner from './Banner';
 import PostManagement from './PostManagement';
 import WriteNotice from './Notice/WirteNotice';
-import Inquiry from './Inquiry';
 import NoticeDetail from './Notice/NoticeDetail';
 import NoticeList from './Notice/NoticeList';
+import Inquiry from './Inquiry/Inquiry';
 
-const AdminBlock=styled.div`
-  .top {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    height: 100vh;
-  }
-  .center{
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-  }
-`;
 const HeaderBlock=styled.div`
-  width: 100%;
+  /* width: 100%; */
   height: 65px;
   background-color: #E3CAA5;
   /* display: flex; */
@@ -36,7 +23,7 @@ const HeaderBlock=styled.div`
   .logoContainer{
     float: left;
   }
-  .Logo{
+  .logo{
         width   :150px;
         height: 50px;
         margin: 3px 15px;
@@ -45,22 +32,20 @@ const HeaderBlock=styled.div`
 `;
 function AdminPage() {
   return (
-    <AdminBlock>
-    <div className='top'>
+    <div style={{display : "flex", flexDirection:"column", flex : 1, height : '100vh'}}>
       <Header/>
-      <div className='center'>
-        <SideMenu styled={{position : "fixed"}}/>
+      <div style={{display : "flex", flexDirection:"row", flex : 1}}>
+        <SideMenu/>
         <Content/>
       </div>
     </div>
-    </AdminBlock>
   );
 }
 function Header() {
   return(
     <HeaderBlock>
       <div className='logoContainer'>
-        <img className="Logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'}/>
+        <img className="logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'} alt = ""/>
       </div>
     </HeaderBlock>
   );
