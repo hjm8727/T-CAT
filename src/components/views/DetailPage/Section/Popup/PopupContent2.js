@@ -27,46 +27,46 @@ th{
 
 const MyInfo = props => {
     
-  const { item_name, date, ticket, tax, total, cancelday } = props;
-  return(
-      <div>
-      <h2>My예매정보</h2>
-          <table>
-              <tr>
-                  <th>제목</th>
-                  <td>{item_name}</td>
-                  <th>일시</th>
-                  <td>{date}</td>
-              </tr>
-              <tr>
-                  <th>선택 좌석</th>
-                  <td>현 좌석</td>
-                  <th>티켓 금액</th>
-                  <td>{ticket}</td>
-              </tr>
-              <tr>
-                  <th>비과세(5%)</th>
-                  <td>{tax}</td>
-                  <th>현재 포인트</th>
-                  <td>230 <span><button>포인트 사용하기</button></span></td>
-              </tr>
-              <tr>
-                  <th>취소 기한</th>
-                  <td>{cancelday}까지</td>
-                  <th>취소 수수료</th>
-                  <td>티켓금액의 0~30%</td>
-              </tr>
-              <tr>
-                  <th>총 결제금액</th>
-                  <td>{total}</td>
-              </tr>
-          </table>
-      </div>
-  );
+    const { item_name, date, ticket, tax, total, cancelday } = props;
+    return(
+        <div>
+        <h2>My예매정보</h2>
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <td>{item_name}</td>
+                    <th>일시</th>
+                    <td>{date}</td>
+                </tr>
+                <tr>
+                    <th>선택 좌석</th>
+                    <td>현 좌석</td>
+                    <th>티켓 금액</th>
+                    <td>{ticket}</td>
+                </tr>
+                <tr>
+                    <th>비과세(5%)</th>
+                    <td>{tax}</td>
+                    <th>현재 포인트</th>
+                    <td>230 <span><button>포인트 사용하기</button></span></td>
+                </tr>
+                <tr>
+                    <th>취소 기한</th>
+                    <td>{cancelday}까지</td>
+                    <th>취소 수수료</th>
+                    <td>티켓금액의 0~30%</td>
+                </tr>
+                <tr>
+                    <th>총 결제금액</th>
+                    <td>{total}</td>
+                </tr>
+            </table>
+        </div>
+    );
 }
 
-  function PopupContent2(props) {
-  const { item_name, price, date, cancelday } = props;
+    function PopupContent2(props) {
+    const { item_name, price, date, cancelday } = props;
 	// 기본가 수량 선택
 	const [value, setValue] = useState(0);
 	const [stuValue, setStuValue] = useState(0);
@@ -90,50 +90,50 @@ const MyInfo = props => {
 		let values,tickets, totals, taxs = 0;
 		values = e.target.value;
 		if(name === 'basic') {
-      setValue(values);
-      setDouValue(0);
-      setEveValue(0);
-      setStuValue(0);
-      tickets = values * price;
-      setTicket(tickets);
-      taxs = Math.floor(tickets / 20);
-      setTax(taxs);
-      totals = tickets + taxs;
-      setTotal(totals);
-      // '12.01 가격 중복 x 수정 hardcoding... 수정 예정..'
-		} else if(name === 'student') {
-      setStuValue(values);
-      setValue(0);
-      setDouValue(0);
-      setEveValue(0);
-      tickets = values * student;
-      setTicket(tickets);
-      taxs = Math.floor(tickets / 20);
-      setTax(taxs);
-      totals = tickets + taxs;
-      setTotal(totals);
-		} else if(name === 'double') {
-      setDouValue(values);
-      setValue(0);
-      setEveValue(0);
-      setStuValue(0);
-      tickets = values * double;
-      setTicket(tickets);
-      taxs = Math.floor(tickets / 20);
-      setTax(taxs);
-      totals = tickets + taxs;
-      setTotal(totals);
-		} else if(name === 'event') {
-      setEveValue(values);
-      setValue(0);
-      setDouValue(0);
-      setStuValue(0);
-      tickets = values * openEvent;
-      setTicket(tickets);
-      taxs = Math.floor(tickets / 20);
-      setTax(taxs);
-      totals = tickets + taxs;
-      setTotal(totals);
+        setValue(values);
+        setDouValue(0);
+        setEveValue(0);
+        setStuValue(0);
+        tickets = values * price;
+        setTicket(tickets);
+                    taxs = Math.floor(tickets / 20);
+        setTax(taxs);
+        totals = tickets + taxs;
+        setTotal(totals);
+        // '12.01 가격 중복 x 수정 hardcoding... 수정 예정..'
+            } else if(name === 'student') {
+        setStuValue(values);
+        setValue(0);
+        setDouValue(0);
+        setEveValue(0);
+        tickets = values * student;
+        setTicket(tickets);
+        taxs = Math.floor(tickets / 20);
+        setTax(taxs);
+        totals = tickets + taxs;
+        setTotal(totals);
+            } else if(name === 'double') {
+        setDouValue(values);
+        setValue(0);
+        setEveValue(0);
+        setStuValue(0);
+        tickets = values * double;    
+        setTicket(tickets);
+        taxs = Math.floor(tickets / 20);
+        setTax(taxs);
+        totals = tickets + taxs;
+        setTotal(totals);
+            } else if(name === 'event') {
+        setEveValue(values);
+        setValue(0);
+        setDouValue(0);
+        setStuValue(0);
+        tickets = values * openEvent;
+        setTicket(tickets);
+        taxs = Math.floor(tickets / 20);
+        setTax(taxs);
+        totals = tickets + taxs;
+        setTotal(totals);
 		}
     window.localStorage.setItem('value', values);
     window.localStorage.setItem('ticket', tickets)
