@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.div`
     h1{
-        margin: 0;
+        margin: 20000px;
         padding: 0;
     }
     .HederDiv{

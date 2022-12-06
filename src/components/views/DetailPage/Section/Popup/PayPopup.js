@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ModalStyle = styled.div`
+const ModalStyle2 = styled.div`
     .modal {
         display: none;
         position: fixed;
@@ -92,7 +92,7 @@ function PayPopup (props) {
     const { open, close, header, plus, minus, body, id } = props;
     return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
-    <ModalStyle>
+    <ModalStyle2>
         <div className={open ? 'openModal modal' : 'modal'}>
         {open ? (
             <section>
@@ -114,7 +114,7 @@ function PayPopup (props) {
             </section>
         ) : null}
         </div>
-    </ModalStyle>
+    </ModalStyle2>
     );
 }
 

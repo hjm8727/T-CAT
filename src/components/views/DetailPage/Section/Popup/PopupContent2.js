@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const BodyContainer = styled.div`
+const BodyContainer2 = styled.div`
 table ,tr {
     border: 1px solid black;
 }
@@ -141,7 +141,7 @@ const MyInfo = props => {
     window.localStorage.setItem('total', totals);
 	};
     return(
-        <BodyContainer>
+        <BodyContainer2>
         <div>
             <h2>가격</h2>
             <div>
@@ -214,7 +214,7 @@ const MyInfo = props => {
             단, 취소 시점에 따라 예매수수료가 환불 되지 않으며, 취소 수수료가 부과될 수 있습니다.</li>
         </div>
         <MyInfo item_name={item_name} cancelday={cancelday} date={date} ticket={ticket} tax={tax} total={total} />
-        </BodyContainer>
+        </BodyContainer2>
     );
 }
 
