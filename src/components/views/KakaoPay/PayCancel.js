@@ -1,3 +1,4 @@
+import Link from "antd/es/typography/Link";
 import axios from "axios";
 import { useEffect, useState } from "react"
 
@@ -39,7 +40,9 @@ const PayCancel = () => {
 
     return(
         <div>
-            <h1>결제 취소 페이지 성공</h1>
+            <h1>결제 취소가 완료 되었습니다.</h1>
+            <Link to='/MyPage/CList'>취소 내역 확인하러 가기</Link>
+            <Link to='/'>메인으로 돌아가기</Link>
         </div>
     );
 }
