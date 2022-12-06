@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import Modal from '../../../.././util/Modal/Modal';
 
-const ModalStyle = styled.div`
+const ModalStyle2 = styled.div`
     .modal {
         display: none;
         position: fixed;
@@ -8,7 +10,7 @@ const ModalStyle = styled.div`
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: 99;
+        z-index: 30;
         background-color: rgba(0, 0, 0, 0.6);
     }
     .modal button {
@@ -18,9 +20,9 @@ const ModalStyle = styled.div`
     }
     .modal > section {
         width: 90%;
-        max-width: 450px;
-        width: 525px;
-        height: 450px;
+        max-width: 4500px;
+        width: 450px;
+        height: 300px;
         margin: 0 auto;
         border-radius: 0.3rem;
         background-color: #fff;
@@ -67,6 +69,10 @@ const ModalStyle = styled.div`
         /* 팝업이 열릴때 스르륵 열리는 효과 */
         animation: modal-bg-show 0.3s;
     }
+    .cancel-button {
+        font-weight: bold;
+        color: black;
+    }
     @keyframes modal-show {
         from {
             opacity: 0;
@@ -87,12 +93,12 @@ const ModalStyle = styled.div`
     }
 `;
 
-function FindModal (props) {
+function CancelModal (props) {
       // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, footer, header, body } = props;
+    const { open, close, header, body, cancel } = props;
     return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
-    <ModalStyle>
+    <ModalStyle2>
         <div className={open ? 'openModal modal' : 'modal'}>
         {open ? (
             <section>
@@ -104,19 +110,18 @@ function FindModal (props) {
             </header>
             <main>{body}</main>
             <footer className='modal-footer'>
-                {footer}
-                <button className='close' onClick={close} >
-                확인
+                <button className='close' onClick={cancel}>
+                <span className='cancel-button'>취소 완료</span>
                 </button>
-                <button className="close" onClick={close} >
-                취소
+                <button className="close" onClick={close}>
+                돌아가기
                 </button>
             </footer>
             </section>
         ) : null}
         </div>
-    </ModalStyle>
+    </ModalStyle2>
     );
 }
 
-export default FindModal;
+export default CancelModal;

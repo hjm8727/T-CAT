@@ -3,14 +3,17 @@ import { useEffect, useState } from "react"
 
 
 const PayCancel = () => {
+    const total = window.localStorage.getItem('total');
+    const cancelTotal = Math.floor(total - (total / 10));
+    const tax = window.localStorage.getItem('tax');
     const[data, setData] = useState({
         next_redirect_pc_url : "",
         tid: "",
         params: {
             cid: "TC0ONETIME",
             tid: window.localStorage.getItem("tid"),
-            cancel_amount: "50000",
-            cancel_tax_free_amount:"10000",
+            cancel_amount: cancelTotal,
+            cancel_tax_free_amount:tax,
         }
     });
 

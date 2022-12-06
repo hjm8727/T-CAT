@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Table, Divider } from 'antd';
 import styled from 'styled-components';
 import ReserveDetailModal from '../section/ReserveDetailModal';
-import PayCancel from '../../KakaoPay/PayCancel';
 import { useNavigate } from 'react-router-dom';
 
 // 컬럼명 맞춰서 API 문서 만들면 됨
@@ -51,8 +50,6 @@ const RList = () => {
   const close = () => setModalOpen(false);
   const navigate = useNavigate();
   const cancelClick = () => navigate('/paycancel');
-  
-
 
   const columns = [
     {
