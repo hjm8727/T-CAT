@@ -2,11 +2,13 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const ACWrap = styled.div`
+width: 100%;
+// 아래작성란
 .add-comment {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 90%;
+  /* width: 90%; */
   padding: 20px;
   background: white;
   border-radius: 10px;

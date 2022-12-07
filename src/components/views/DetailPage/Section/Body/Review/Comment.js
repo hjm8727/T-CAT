@@ -10,6 +10,7 @@ import styled from "styled-components";
 const CWrap = styled.div`
 width: 100%;
 .comment-container {
+  margin: 20px;
   display: flex;
   flex-direction: column;
   width: 100%;

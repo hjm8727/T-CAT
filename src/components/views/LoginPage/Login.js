@@ -199,14 +199,17 @@ const IdStyle = styled.div`
     flex-flow: column;
   }
   .show-00 {
-    border: 2px solid #232323;
-    width: 250px;
+    border: 2px solid brown;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    border-radius: 3rem;
   }
   .modal-input {
-    width: 250px;
+    width: 200px;
     margin-top: 3px;
     padding: 3px;
-    border: 1px solid #232323;
+    border: 1px solid brown;
     border-radius: 12rem;
   }
   .modal-input:focus {
@@ -227,12 +230,12 @@ const FindIdBody = () => {
       <div className='container'>
         <label name='id'>아이디</label>
         <input className='modal-input' name='id' type='text' />
-        <p />
+          <p />
         <label name='email'>이메일</label>
         <input className='modal-input' name='email' type='email' />
-        <p />
+          <p />
         <div className='show-00'>
-          <h5>00님의 아이디는 <strong><u>[wlals1234]</u></strong>입니다.</h5>
+          <h5>[이름]님의 아이디는<br /> <u>[아이디]</u>입니다.</h5>
         </div>
       </div>
     </IdStyle>
@@ -251,15 +254,15 @@ const FindPwdBody = () => {
       <div className='container'>
         <label name='id'>아이디 입력 </label>
         <input className='modal-input' name='id'  type='text' />
-        <p />
+          <p />
         <label name='name'>이름 입력 </label>
         <input className='modal-input' name='name' type='text' />
-        <p />
+          <p />
         <label name='email'>이메일 입력 </label>
         <input className='modal-input'name='email'  type='email' />
-        <p />
+          <p />
         <div className='show-00'>
-          <h5>00님의 비밀번호는 <strong><u>[wlals1234]</u></strong>입니다.</h5>
+        <h5>[이름]님의 비밀번호는<br /> <u>[비밀번호]</u>입니다.</h5>
         </div>
       </div>
     </IdStyle>

@@ -261,7 +261,10 @@ function Sign() {
   // 값 담기
   const onChangeAddress = e => setAddress(e.target.value);
 
-  // 데이터 담기
+  /**
+   * 
+   * @param {Address..} data 
+   */
   const handlePostCode = (data) => {
     setFullAddress(data.address);
     // 우편번호

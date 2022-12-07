@@ -32,7 +32,7 @@ const HeaderBlock=styled.div`
 `;
 function AdminPage() {
   return (
-    <div style={{display : "flex", flexDirection:"column", flex : 1, height : '100vh'}}>
+    <div style={{display : "flex", flexDirection:"column", flex : 1, height : '100vh', width : "100%"}}>
       <Header/>
       <div style={{display : "flex", flexDirection:"row", flex : 1}}>
         <SideMenu/>
