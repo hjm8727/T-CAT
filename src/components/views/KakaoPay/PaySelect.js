@@ -8,7 +8,7 @@ const SelectStyle = styled.div`
   }
 `;
 
-const PaySelcet = () => {
+const PaySelect = () => {
   
   const [list, setList] = useState({});
   const [data, setData] = useState({
@@ -82,4 +82,4 @@ const PaySelcet = () => {
     )
 }
 
-export default PaySelcet;
+export default PaySelect;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const QnaStyle = styled.div `
   .qna-top {
-    position: relative;
+    /* position: relative; */
     padding: 1.5rem 2rem;
     margin-bottom: 2.5rem;
     background-color: lightgreen;
@@ -24,7 +24,7 @@ const QnaStyle = styled.div `
     color: brown;
   }
 
-  position: absolute;
+  /* position: absolute; */
 
 `;
 

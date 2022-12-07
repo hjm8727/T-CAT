@@ -6,12 +6,10 @@ import AdminPage from "./components/views/AdminPage/AdminPage";
 import Detail from "./components/views/DetailPage/Detail";
 import MyPage from "./components/views/MyPage/MyPage";
 
-import Seat from "./components/views/DetailPage/Section/Seat/Seat";
-import Screen from "./components/views/DetailPage/Section/Seat/Screen";
 import PayReady from "./components/views/KakaoPay/PayReady";
 import PayResult from "./components/views/KakaoPay/PayResult";
 import PayCancel from "./components/views/KakaoPay/PayCancel";
-import PaySelcet from "./components/views/KakaoPay/PaySelect";
+import PaySelect from "./components/views/KakaoPay/PaySelect";
 import ResultFalse from "./components/views/KakaoPay/ResultFalse";
 
 
@@ -29,7 +27,7 @@ function App() {
       <Route path="/payready" element={<PayReady />} />
       <Route path="/payresult" element={<PayResult />} />
       <Route path="/paycancel" element={<PayCancel />} />
-      <Route path="/payselect" element={<PaySelcet />} />
+      <Route path="/payselect" element={<PaySelect />} />
       <Route path="/resultfalse" element={<ResultFalse />} />
     </Routes>
 
