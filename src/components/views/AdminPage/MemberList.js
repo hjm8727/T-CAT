@@ -3,25 +3,6 @@ import TopBar from "./Tool/TopBar";
 import { useState, useEffect } from "react";
 import AdminApi from "../../../api/AdminApi";
 
-const MemberBlock=styled.div`
-  margin:0 auto;
-  box-sizing: border-box;
-  /* width: 100vw; */
-  .container {
-    width: 100vw;
-    margin : 10px;
-    display: flex;
-    border: 1px solid black;
-    height: 60%;
-    flex-direction: column;
-    text-align: center;
-    padding: 3rem;
-  }
-table,th,td {
-  border: 1px solid black;
-}
-  
-`;
 
 const MemberList=()=>{
   const [memberList, setMemberList] = useState('');
@@ -106,3 +87,23 @@ const MemberList=()=>{
     );
 }
 export default MemberList;
+
+const MemberBlock=styled.div`
+  margin:0 auto;
+  box-sizing: border-box;
+  /* width: 100vw; */
+  .container {
+    width: 100vw;
+    margin : 10px;
+    display: flex;
+    border: 1px solid black;
+    height: 60%;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+  }
+table,th,td {
+  border: 1px solid black;
+}
+  
+`;

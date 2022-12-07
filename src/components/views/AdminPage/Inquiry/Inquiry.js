@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import styled from "styled-components";
-// import TopBar from "./Tool/TopBar";
-import Modal from "../../../../util/Modal/Modal"
 import TopBar from "../Tool/TopBar";
+import Modal from "../../../../util/Modal/Modal"
+import AdminApi from "../../../../api/AdminApi";
+import QnaModal from "./QnaModal";
+
 
 const InquiryBlock=styled.div`
     margin:0 auto;
@@ -27,11 +29,9 @@ table,th,td {
 `;
 
 const Inquiry=()=>{
-  const data = [
-    {id: '1', title: '환불요청', userId:'blackuser',date:'2022-11-30'},
-    {id: '2', title: '문의', userId:'qwerty',date:'2022-11-30'},
-  ];
   const [inputReply, setInputReply] = useState("");
+  const [qnaList, setQnaList] = useState('');
+
   
     // 모달
     const [modalOpen, setModalOpen] = useState(false);
@@ -44,6 +44,24 @@ const Inquiry=()=>{
     setModalOpen(false);
   }
 
+  useEffect(() => {
+    const noticeData = async()=> {
+      try {
+        const response = await AdminApi.qnaList();
+        setQnaList(response.data);
+        console.log(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    noticeData();
+  }, []);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
 
   return(
     <InquiryBlock>
@@ -52,7 +70,7 @@ const Inquiry=()=>{
               <table>
                 <thead>
                   <tr>
-                    <th width = "90px">글번호</th>
+                    <th width = "90px">문의상태</th>
                     <th width = "120px">문의유형</th>
                     <th width = "*">제목</th>
                     <th width = "120px">고객명</th>
@@ -61,25 +79,27 @@ const Inquiry=()=>{
                   </tr>
                 </thead>
                   
-              {data && data.map(data=>(
-                <tbody key={data.id}>
+              {qnaList && qnaList.map(data=>(
+                <tbody key={data.member_id}>
                   <tr>
-                    <td>{data.num}</td>
+                    <td>{data.status}</td>
+                    <td>{data.category}</td>
                     <td>{data.title}</td>
-                    <td>{data.userId}</td>
-                    <td>{data.date}</td>
+                    <td>{data.member_id}</td>
                     <td>{data.date}</td>
                     <td><button onClick={()=>{setModalText(data); setModalOpen(true);}}>답장</button>
-                      {modalOpen && <Modal setModalOpen={setModalOpen}/>}
+                      {modalOpen && <QnaModal setModalOpen={setModalOpen}/>}
                     </td>
+
                   </tr>
                   </tbody>
                   ))}
 
               </table> 
-              <Modal open={modalOpen} close={closeModal} header="문의 내용"><div style={{color: 'white'}}>{modalText.title}</div>
-              <div>{modalText.userId}</div>
-              </Modal>
+              <QnaModal open={modalOpen} close={closeModal} header="문의 답장하기">
+              <div>{modalText.title}</div>
+              <div>{modalText.content}</div>
+              </QnaModal>
             </div>
         </InquiryBlock>
         

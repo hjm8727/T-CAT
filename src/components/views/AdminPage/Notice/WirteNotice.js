@@ -1,8 +1,55 @@
 import styled from "styled-components";
-import { useNavigate} from "react-router-dom";
+import { useNavigate,useParams} from "react-router-dom";
 import TopBar from "../Tool/TopBar";
 import { useState } from "react";
 import AdminApi from "../../../../api/AdminApi";
+
+
+const WriteNotice=()=>{
+    const params = useParams().index;
+    const navigate = useNavigate();
+    const [inputTitle, setInputTitle] = useState("");
+    const [inputDetail, setInputDetail] = useState("");
+
+    const onChangeTitle=(e)=>{setInputTitle(e.target.value);}
+    const onChangeDetail=(e)=>{setInputDetail(e.target.value);}
+
+    const onClickSubmit=async()=>{
+        const write = await AdminApi.writing(inputTitle, inputDetail);
+        console.log(write);
+        navigate(`/admin/noticeDetail/${params}`)
+        // if (write.data === true) {
+        //     console.log("제출 완료 !!");
+        //     window.alert("Social 게시글 작성 완료 !");
+        //   } else {
+        //     console.log("제출 실패 ㅜㅜ");
+        //     console.log(write.data);
+        //   }
+    }
+    
+    return(
+        <>
+        <WriteBlock>
+            <TopBar name="공지사항 작성하기"/>
+                <div className="container">
+                    <div className="topTitle">
+                        <div className="title">제목
+                            <input type="text" placeholder="제목을 입력하세요" value={inputTitle} onChange={onChangeTitle}/>
+                        </div>
+                    </div>
+                    <div className="content2">
+                        <textarea placeholder="내용 입력" value={inputDetail} onChange={onChangeDetail}/>
+                    </div>
+                    <div className="buttonWrap">
+                        <button onClick={()=>{navigate('/admin/noticeList')}}>뒤로가기</button>
+                        <button onClick={onClickSubmit}>등록하기</button>
+                    </div>
+                </div>
+        </WriteBlock>
+        </>
+    )
+}
+export default WriteNotice;
 
 const WriteBlock=styled.div`
     margin:0 auto;
@@ -57,41 +104,3 @@ const WriteBlock=styled.div`
     }
 
 `;
-const WriteNotice=()=>{
-    const navigate = useNavigate();
-    const [inputTitle, setInputTitle] = useState("");
-    const [inputDetail, setInputDetail] = useState("");
-
-    const onChangeTitle=(e)=>{setInputTitle(e.target.value);}
-    const onChangeDetail=(e)=>{setInputDetail(e.target.value);}
-
-    const onClickSubmit=async()=>{
-    const write = await AdminApi.writing(inputTitle, inputDetail);
-    console.log(write);
-    window.location.replace('/admin/noticeDetail');
-    
-    }
-    
-    return(
-        <>
-        <WriteBlock>
-            <TopBar name="공지사항 작성하기"/>
-                <div className="container">
-                    <div className="topTitle">
-                        <div className="title">제목
-                            <input type="text" placeholder="제목을 입력하세요" value={inputTitle} onChange={onChangeTitle}/>
-                        </div>
-                    </div>
-                    <div className="content2">
-                        <textarea placeholder="내용 입력" value={inputDetail} onChange={onChangeDetail}/>
-                    </div>
-                    <div className="buttonWrap">
-                        <button onClick={()=>{navigate('/admin/noticeList')}}>뒤로가기</button>
-                        <button onClick={onClickSubmit}>등록하기</button>
-                    </div>
-                </div>
-        </WriteBlock>
-        </>
-    )
-}
-export default WriteNotice;

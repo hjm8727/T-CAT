@@ -12,6 +12,7 @@ import WriteNotice from './Notice/WirteNotice';
 import NoticeDetail from './Notice/NoticeDetail';
 import NoticeList from './Notice/NoticeList';
 import Inquiry from './Inquiry/Inquiry';
+import UpdateNotice from './Notice/UpdateNotice';
 
 const HeaderBlock=styled.div`
   /* width: 100%; */
@@ -89,9 +90,9 @@ function Content() {
       <Route path='/noticeList' element={<NoticeList/>}/>
       <Route path='/inquiry' element={<Inquiry/>}/>
       <Route path='/writeNotice' element={<WriteNotice/>}/>
-      <Route path='/noticeDetail' element={<NoticeDetail/>}/>
+      <Route exact path='/noticeDetail/:index' element={<NoticeDetail/>}/>
+      <Route exact path='/noticeUpdate/:index' element={<UpdateNotice/>}/>
     </Routes>
-
   );
 }
 export default AdminPage;

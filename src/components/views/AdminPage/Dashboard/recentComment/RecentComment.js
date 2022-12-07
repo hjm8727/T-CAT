@@ -32,10 +32,7 @@ const RecentComment=()=>{
             </li>
             ))}
             </div>
-
         </div>
     )
-
-
 }
 export default RecentComment;
