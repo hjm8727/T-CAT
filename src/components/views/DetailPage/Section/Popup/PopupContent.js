@@ -1,7 +1,8 @@
+import React, { useState } from "react";
 import styled from "styled-components";
-import {MyInfo} from './PopupContent2';
+import { PayReady } from "../../../KakaoPay/PayReady";
 
-const Body1Style = styled.div`
+const Body1Style2 = styled.div`
   table ,tr {
     border: 1px solid black;
   }
@@ -44,13 +45,24 @@ const Body1Style = styled.div`
   }
   .seat-a {
     background-color: aliceblue;
-  }  
+  }
+  .BorderBottom{
+    border-bottom: 1px solid silver;
+  }
+  .select-box{
+      display: flex;
+      justify-content: center;
+      width: 125px;
+  }
+  .BuyOption{
+      opacity: 60%;
+  }
 `;
 
 function PopupContent(props) {
   const { item_name, price, date, cancelday } = props;
     return(
-        <Body1Style>
+        <Body1Style2>
           <div>
             <h2>좌석 선택</h2>
             <div className='seat-container'>
@@ -76,8 +88,47 @@ function PopupContent(props) {
                 <hr />
             </div>
             <MyInfo item_name={item_name} cancelday={cancelday} date={date}/>
-        </Body1Style>
+        </Body1Style2>
     );
-}
+  }
 
+  const MyInfo = props => {
+    
+    const { item_name, date, ticket, tax, total,  cancelday } = props;
+    return(
+      <div>
+        <h2>My예매정보</h2>
+        <table>
+          <tr>
+            <th>제목</th>
+            <td>{item_name}</td>
+            <th>일시</th>
+            <td>{date}</td>
+          </tr>
+          <tr>
+            <th>선택 좌석</th>
+            <td>현 좌석</td>
+            <th>티켓 금액</th>
+            <td>{ticket}</td>
+          </tr>
+          <tr>
+            <th>비과세(5%)</th>
+            <td>{tax}</td>
+            <th>현재 포인트</th>
+            <td>230 <span><button>포인트 사용하기</button></span></td>
+          </tr>
+          <tr>
+            <th>취소 기한</th>
+            <td>{cancelday}까지</td>
+            <th>취소 수수료</th>
+            <td>티켓금액의 0~30%</td>
+          </tr>
+          <tr>
+            <th>총 결제금액</th>
+            <td>{total}</td>
+          </tr>
+        </table>
+      </div>
+    );
+  }
 export default PopupContent;

@@ -1,26 +1,35 @@
-import React from 'react';
-import { Tabs } from 'antd';
+import React, { useState } from 'react';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 import Contents from './Contents';
 import Qna from './Qna';
 import Reviews from './Reviews';
 
-// 상세 페이지 바디
+
 function DBody() {
-    return (
-        <div style={{width: '100%', height: '100rem' , position : 'none', display : 'block'}}>
-        <Tabs defaultActiveKey="1" style={{position: 'sticky', top: '0'}} >
-            <Tabs.TabPane tab="공연정보" key="1">
-                <Contents/>
-            </Tabs.TabPane>
-            <Tabs.TabPane tab="관람후기" key="2">
-                <Reviews/>
-            </Tabs.TabPane>
-            <Tabs.TabPane tab="Q&A" key="3">
-                <Qna/>
-            </Tabs.TabPane>
-        </Tabs>
-        </div>
-    )
+  const [key, setKey] = useState('home');
+
+  return (
+    <div style={{width: '70%', height: '100rem'}}>
+    <Tabs
+      id="controlled-tab-example"
+      activeKey={key}
+      onSelect={(k) => setKey(k)}
+      className="mb-3"
+
+    >
+      <Tab eventKey="home" title="공연정보">
+      <Contents/>
+      </Tab>
+      <Tab eventKey="profile" title="관람후기">
+      <Reviews/>
+      </Tab>
+      <Tab eventKey="contact" title="Q&A">
+      <Qna/>
+      </Tab>
+    </Tabs>
+    </div>
+  );
 }
 
 export default DBody;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Star from './Star';
 import { BsHeart } from "react-icons/bs";
+import { Rate } from 'antd';
 
 const PosterStyle = styled.div `
     .like {
@@ -26,6 +27,12 @@ function Poster() {
         e.preventDefault();
     }
 
+    const [value, setValue] = useState(3);
+
+    function handleChange(value) {
+        setValue(value);
+    }
+
     return (
         <PosterStyle>
         <div>
@@ -35,7 +42,8 @@ function Poster() {
                     <img className='poster-box-top' src='test.gif' alt='포스터 이미지'/>
                     <div className='poster-box-bottom'>
                         <span className='like'><BsHeart style={{fontSize: '20px'}} onClick={onClickLike}/>{like}</span>
-                        <Star/> <span>9.5</span>
+                        <Rate allowHalf value={value} onChange={handleChange} style={{ fontSize: '1.8rem'}}/>
+                        <span>{value}</span>
                     </div>
                 </div>
             </div>
