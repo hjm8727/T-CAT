@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {MyInfo} from './PopupContent2';
 
-const Body1Style2 = styled.div`
+const Body1Style = styled.div`
   table ,tr {
     border: 1px solid black;
   }
@@ -50,7 +50,7 @@ const Body1Style2 = styled.div`
 function PopupContent(props) {
   const { item_name, price, date, cancelday } = props;
     return(
-        <Body1Style2>
+        <Body1Style>
           <div>
             <h2>좌석 선택</h2>
             <div className='seat-container'>
@@ -76,7 +76,7 @@ function PopupContent(props) {
                 <hr />
             </div>
             <MyInfo item_name={item_name} cancelday={cancelday} date={date}/>
-        </Body1Style2>
+        </Body1Style>
     );
 }
 
