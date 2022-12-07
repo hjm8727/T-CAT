@@ -3,9 +3,8 @@ import {Layout} from 'antd';
 import TCalendar from './Section/Side/TCalendar'
 import Poster from './Section/Summary/Poster';
 import Info from './Section/Summary/Info';
-// import DBody from './Section/Body/DBody';
+import DBody from './Section/Body/DBody';
 import MainHeader from '../MainHeader/MainHeader';
-import DBody2 from './Section/Body/DBody2';
 const { Content, Footer, Sider } = Layout;
 
 // 상세페이지
@@ -34,7 +33,7 @@ function Detail() {
 
           </Layout>
           <Content style={{width: '70rem' }}>
-              <DBody2/>
+              <DBody/>
           </Content>
         </Content>
         <Footer style={{backgroundColor: 'skyblue'}}>

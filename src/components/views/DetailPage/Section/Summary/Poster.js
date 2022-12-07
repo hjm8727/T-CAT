@@ -42,7 +42,6 @@ function Poster() {
                     <img className='poster-box-top' src='test.gif' alt='포스터 이미지'/>
                     <div className='poster-box-bottom'>
                         <span className='like'><BsHeart style={{fontSize: '20px'}} onClick={onClickLike}/>{like}</span>
-                        {/* <Star/> <span>9.5</span> */}
                         <Rate allowHalf value={value} onChange={handleChange} style={{ fontSize: '1.8rem'}}/>
                         <span>{value}</span>
                     </div>
