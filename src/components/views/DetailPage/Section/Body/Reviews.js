@@ -1,64 +1,122 @@
-import { Rate } from 'antd';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import AddComment from "./Review/AddComment";
+import Comment from "./Review/Comment";
 
-// 관람 후기
-function Reviews() {
-    const [value, setValue] = useState(0);
+const Review = styled.div`
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 2rem 0;
+    background-color: lightgray;
+    
+    @include media-md() {
+        gap: 20px;
+        padding: 4rem 0;
+    }
+`
 
-    function handleChange(value) {
-        setValue(value);
+const Reviews = () => {
+    const [comments, updateComments] = useState([]);
+    const [deleteModalState, setDeleteModalState] = useState(false);
+
+    const getData = async () => {
+    const res = await fetch("./data/data.json");
+    const data = await res.json();
+    updateComments(data.comments);
+    };
+
+    useEffect(() => {
+    localStorage.getItem("comments") !== null
+        ? updateComments(JSON.parse(localStorage.getItem("comments")))
+        : getData();
+    }, []);
+
+    useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments));
+    deleteModalState
+        ? document.body.classList.add("overflow--hidden")
+        : document.body.classList.remove("overflow--hidden");
+    }, [comments, deleteModalState]);
+
+
+    // 댓글 추가
+    let addComments = (newComment) => {
+    let updatedComments = [...comments, newComment];
+    updateComments(updatedComments);
+    };
+
+    // 대댓글 추가
+    let updateReplies = (replies, id) => {
+    let updatedComments = [...comments];
+    updatedComments.forEach((data) => {
+    if (data.id === id) {
+        data.replies = [...replies];
+    }
+    });
+    updateComments(updatedComments);
+    };
+
+    // 댓글 수정
+    let editComment = (content, id, type) => {
+    let updatedComments = [...comments];
+
+    if (type === "comment") {
+        updatedComments.forEach((data) => {
+        if (data.id === id) {
+        data.content = content;
+        }
+    });
+    } else if (type === "reply") {
+        updatedComments.forEach((comment) => {
+        comment.replies.forEach((data) => {
+        if (data.id === id) {
+            data.content = content;
+        }
+        });
+    });
     }
 
+    updateComments(updatedComments);
+    };
+
+    // 댓글 삭제
+    let commentDelete = (id, type, parentComment) => {
+    let updatedComments = [...comments];
+    let updatedReplies = [];
+
+    if (type === "comment") {
+        updatedComments = updatedComments.filter((data) => data.id !== id);
+    } else if (type === "reply") {
+        comments.forEach((comment) => {
+        if (comment.id === parentComment) {
+            updatedReplies = comment.replies.filter((data) => data.id !== id);
+            comment.replies = updatedReplies;
+        }
+    });
+    }
+
+    updateComments(updatedComments);
+    };
+
     return (
-    <div className='content-area'>
-        <div className='review-box'>
-            <div className='tab-area'>
-                <div className='type-main'>
-                    <div>
-                        <ul role="tablist" className='tab-list'>
-                            <li className='tab' role='tab' aria-selected='true' data-tab='audience'>
-                                <a nocr onclick="goOtherTCR(this, 'a=nco_x0a*A.tabsubvisitor&r=1&i=1800009D_000001B8AA91');return false;" href='#'>
-                                    <span className='menu'>관람객</span>
-                                </a>
-                            </li>
-                            <li className='tab' role='tab' data-tab='my'>
-                                <a nocr onclick="goOtherTCR(this, 'a=nco_x0a*A.tabsubmy&r=1&i=1800009D_000001B8AA91');return false;" href='#'>
-                                <span className='menu'>MY</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div className='_content' data-tab='audience' style={{dispaly: 'block'}}>
-                <div className='review-wrap'>
-                    <p className='intro'>
-                        <strong className='intro-title'>
-                            <span className='bg'></span>
-                            <span className='intro-text'>후기</span>
-                        </strong>
-                        <span className='text-desc'>별점을 선택해 주세요.</span>
-                    </p>
-                    <div className='star-select'>
-                        <div className='icon-box'>
-                        <Rate allowHalf value={value} onChange={handleChange} style={{ fontSize: '1.8rem'}}/>
-                        <span> {value}</span>
-                        </div>
-                        <div className="text_box_star_text" style={{display: 'inline-block'}}></div>
-                    </div>
-                    <div className="form-intro-box">
-                        <div className="area_input_box">
-                            <input type="text" className="this_input_write" placeholder="감상평을 등록해주세요."/>
-                        </div> 
-                        <button type="button" class="this_button_write">등록</button> 
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-    )
-}
+    <Review>
+        {comments.map((comment) => (
+        <Comment
+        key={comment.id}
+        commentData={comment}
+        updateReplies={updateReplies}
+        editComment={editComment}
+        commentDelete={commentDelete}
+        setDeleteModalState={setDeleteModalState}
+        />
+    ))}
+    <AddComment buttonValue={"작성"} addComments={addComments} />
+    </Review>
+    );
+};
 
 export default Reviews;
