@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import PayReady from "../../../KakaoPay/PayReady";
+import { PayReady } from "../../../KakaoPay/PayReady";
 import { MyInfo } from "./PopupContent2";
-
 
 const BodyContainer = styled.div`
 table ,tr {
