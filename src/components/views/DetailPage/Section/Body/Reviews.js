@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import AddComment from "./Review/AddComment";
+// import AddComment from "./Review/AddComment";
 import Comment from "./Review/Comment";
+import WriteReview from "./Review/WriteReview";
 
 const Review = styled.div`
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
     padding: 2rem 0;
-    background-color: lightgray;
     
-    @include media-md() {
-        gap: 20px;
-        padding: 4rem 0;
-    }
 `
 
 const Reviews = () => {
@@ -102,7 +98,11 @@ const Reviews = () => {
     updateComments(updatedComments);
     };
 
+
     return (
+    <div>
+    <WriteReview buttonValue={"작성"} addComments={addComments} />
+    <br/>
     <Review>
         {comments.map((comment) => (
         <Comment
@@ -114,8 +114,9 @@ const Reviews = () => {
         setDeleteModalState={setDeleteModalState}
         />
     ))}
-    <AddComment buttonValue={"작성"} addComments={addComments} />
+    {/* <AddComment buttonValue={"작성"} addComments={addComments} /> */}
     </Review>
+    </div>
     );
 };
 
