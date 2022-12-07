@@ -10,7 +10,7 @@ const RWrap = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
-  /* background-color: black; */
+  
 
   .comment {
     display: flex;

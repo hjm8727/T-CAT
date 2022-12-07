@@ -11,7 +11,7 @@ const CWrap = styled.div`
 width: 100%;
 // 맨위
 .comment-container {
-  margin: 20px;
+  margin: 0 20px;
   display: flex;
   flex-direction: column;
   
