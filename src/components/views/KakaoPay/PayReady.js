@@ -3,7 +3,11 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import PayPopup from "../DetailPage/Section/Popup/PayPopup";
 
+let totals, taxs = 0;
+
 const PayReady = (item_name, total, tax, value) => {
+	totals = total;
+	taxs = tax;
   let [data, setData] = useState({
     next_redirect_pc_url: "",
     tid: "",
@@ -28,7 +32,7 @@ const PayReady = (item_name, total, tax, value) => {
       fail_url: "http://localhost:3000/resultfalse",
       // 결제 취소 URL
       cancel_url: "http://localhost:3000/resultfalse"
-      }
+		}
   });
     
     useEffect(() => {
@@ -52,15 +56,8 @@ const PayReady = (item_name, total, tax, value) => {
             setData({ next_redirect_pc_url, tid });
         }).catch(error => {
             console.log(error);
-        })
-    })
-    // const { next_redirect_pc_url } = data;
-    return (
-            <div className="container">
-                {/* <h2 className="head-line">카카오페이 결제하기</h2>
-                <a href={ next_redirect_pc_url }><img className="kakao" src="../images/test.png" alt="카카오페이" /></a> */}
-            </div>
-        );
+        });
+    });
 };
 
 const PayResult = () => {
@@ -118,17 +115,15 @@ const PayResult = () => {
 };
 
 const PayCancel = () => {
-    const total = window.localStorage.getItem('total');
-    const cancelTotal = Math.floor(total - (total / 10));
-    const tax = window.localStorage.getItem('tax');
+	 // 취소는 나중에 구현
     const[data, setData] = useState({
         next_redirect_pc_url : "",
         tid: "",
         params: {
             cid: "TC0ONETIME",
             tid: window.localStorage.getItem("tid"),
-            cancel_amount: cancelTotal,
-            cancel_tax_free_amount:tax,
+            cancel_amount: 350000,
+            cancel_tax_free_amount:10000,
         }
     });
 
