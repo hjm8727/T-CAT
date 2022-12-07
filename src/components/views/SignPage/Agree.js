@@ -3,23 +3,33 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const AgreeStyle = styled.div`
+  width: 100%;
+  height: 969px;
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
-
+  background-color: #d2d2d2;
+  img{
+    width: 200px;
+    height: 150px;
+    margin: 20px 0;
+  }
   .agree-container {
+    margin: 0 auto;
+    width: 45%;
+    height: 100%;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 5rem;
-    height: 1000px;
+    background-color: #f5f5f5;
   }
   .option {
-    margin-top: 2rem;
-    border: 3px solid black;
-    padding: 7px;
+    /* margin-top: 2rem; */
+    border: 1px solid black;
+    /* padding: 7px; */
     font-size: 14px;
+    resize: none;
   }
   .title {
     margin: 1rem;
@@ -30,10 +40,20 @@ const AgreeStyle = styled.div`
     color: lightgreen;
   }
   .back-button, .ok-button {
-    margin-top: 2rem;
-    margin-left: 3rem;
+    margin: 0 10px;
     width: 120px;
     height: 60px;
+  }
+  .box2{
+    width: 55%;
+    margin-top:20px;
+    font-size: 14px;
+  }
+  .buttonBox{
+    margin: 10px;
+  }
+  h4{
+    margin-bottom: 20px;
   }
 `
 
@@ -65,13 +85,18 @@ function Agree () {
   return(
     <AgreeStyle>
     <div className="agree-container">
-      <h4>약관 동의 필수 사항은 다 동의하셔야 회원가입 진행이 가능합니다.</h4>
       <div>
-        <p />
-      <h4 className="title" onClick={onCheckAll}><span><input type='radio' checked={check1} id="agree"/></span><u>TCat 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신(선택)에 모두 동의합니다.</u></h4>
+        <img src="images/TCat.jpg"/>
       </div>
-        <p />
-      <h4 className="title" onClick={onCheck2}><span><input type='radio'  checked={check2} id='agree'/></span>TCat 이용약관 동의<small className="small-font">(필수)</small></h4>
+
+      <div>
+        <h4>약관 동의 필수 사항은 다 동의하셔야 회원가입 진행이 가능합니다.</h4>
+      </div>
+      <div>
+        <h5 className="title" onClick={onCheckAll}><span><input type='radio' checked={check1} id="agree"/></span><u>TCat 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신(선택)에 모두 동의합니다.</u></h5>
+      </div>
+
+      <h5 className="title" onClick={onCheck2}><span><input type='radio'  checked={check2} id='agree'/></span>TCat 이용약관 동의<small className="small-font">(필수)</small></h5>
       <div>
         <textarea readOnly className="option" rows={5} cols={70}>여러분을 환영합니다.
 TCat 서비스 및 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한 TCat 서비스의 이용과 관련하여 TCat 서비스를 제공하는 TCat 주식회사(이하 TCat)와 이를 이용하는 TCat 서비스 회원(이하 ‘회원’) 또는 비회원과의 관계를 설명하며, 아울러 여러분의 TCat 서비스 이용에 도움이 될 수 있는 유익한 정보를 포함하고 있습니다.
@@ -193,7 +218,7 @@ TCat 서비스에는 기본적으로 본 약관이 적용됩니다만, 부득이
 TCat 서비스와 관련하여 궁금하신 사항이 있으시면 고객센터(대표번호: 1588 – 3820/ 평일 09:00~18:00)로 문의 주시기 바랍니다.
         </textarea>
       </div>
-      <h4 className="title" onClick={onCheck3}><span><input type='radio' checked={check3}id='agree'/></span>개인정보 수집 및 이용 동의<small className="small-font">(필수)</small></h4>
+      <h5 className="title" onClick={onCheck3}><span><input type='radio' checked={check3}id='agree'/></span>개인정보 수집 및 이용 동의<small className="small-font">(필수)</small></h5>
       <div>
         <textarea readOnly className="option" rows={5} cols={70}>
         개인정보보호법에 따라 TCat에 회원가입 신청하시는 분께 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적, 개인정보의 보유 및 이용기간, 동의 거부권 및 동의 거부 시 불이익에 관한 사항을 안내 드리오니 자세히 읽은 후 동의하여 주시기 바랍니다.
@@ -261,13 +286,13 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
 이용자는 개인정보의 수집 및 이용 동의를 거부할 권리가 있습니다. 회원가입 시 수집하는 최소한의 개인정보, 즉, 필수 항목에 대한 수집 및 이용 동의를 거부하실 경우, 회원가입이 어려울 수 있습니다.
         </textarea>
       </div>
-      <h4 className="title" onClick={onCheck4}><span><input type='radio' checked={check4} id='agree'/></span>프로모션 정보 수신 동의<small className="small-font">(선택)</small></h4>
-      <div className="option">
+      <h5 className="title" onClick={onCheck4}><span><input type='radio' checked={check4} id='agree'/></span>프로모션 정보 수신 동의<small className="small-font">(선택)</small></h5>
+      <div className="box2">
       TCat에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(TCat앱 알림 또는 문자),<p />
      이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 TCat 가입 이후 추가 가입하여 이용하는 서비스 등)의<p />
      경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다. <p  />
       </div>
-      <div>
+      <div className="buttonBox">
         <span><Link to='/login'><button className="back-button">취소</button></Link></span><span><button onClick={onClickSign} className="ok-button" disabled={check2 && check3 ? false : true}>확인</button></span>
       </div>
     </div>
