@@ -80,7 +80,6 @@ const PayResult = () => {
       setModalOpen(false);
       navigate('/', {replace:true});
     }
-
     
     useEffect(() => {
         const { params } = state;

@@ -7,6 +7,7 @@ import Detail from "./components/views/DetailPage/Detail";
 import MyPage from "./components/views/MyPage/MyPage";
 import ResultFalse from "./components/views/KakaoPay/ResultFalse";
 import { PayCancel, PayReady, PayResult } from "./components/views/KakaoPay/PayReady";
+import Agree from "./components/views/SignPage/Agree";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
       <Route path="/payresult" element={<PayResult />} />
       <Route path="/paycancel" element={<PayCancel />} />
       <Route path="/resultfalse" element={<ResultFalse />} />
+      <Route path="/test" element={<Agree />} />
     </Routes>
 
     {/* 정리 해놨는데 죄송... 좌석 테스트 좀 할게요 */}
