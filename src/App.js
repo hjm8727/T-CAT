@@ -25,7 +25,7 @@ function App() {
       <Route path="/payresult" element={<PayResult />} />
       <Route path="/paycancel" element={<PayCancel />} />
       <Route path="/resultfalse" element={<ResultFalse />} />
-      <Route path="/test" element={<Agree />} />
+      <Route path="/agree" element={<Agree />} />
     </Routes>
 
     {/* 정리 해놨는데 죄송... 좌석 테스트 좀 할게요 */}
