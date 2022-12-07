@@ -13,7 +13,7 @@ function Detail() {
   const price = 150000;
   return (
     <div>
-      <Layout style={{width: '100%'}}>
+      <Layout style={{width: '100%', height: '100%'}}>
       <MainHeader/>
       <hr/>
         <Content style={{width: '70rem', marginLeft: '10rem ', marginRight: '15rem', padding: '0 50px'}}>

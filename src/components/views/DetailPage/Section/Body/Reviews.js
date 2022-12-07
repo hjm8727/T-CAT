@@ -11,9 +11,7 @@ const Review = styled.div`
     justify-content: center;
     align-items: center;
     gap: 15px;
-    /* margin:20px; */
-    padding: 2rem 0;
-    
+    margin:20px;
 `
 
 const Reviews = () => {

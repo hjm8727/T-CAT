@@ -33,13 +33,13 @@ width: 100%;
     resize: none;
     scrollbar-width: none;
     &::placeholder {
-      color: darkblue;
+      color: black;
     }
     &::-webkit-scrollbar {
       width: 0;
     }
     &:focus {
-      outline: 1.5px solid blue;
+      outline: 1.5px solid #6c757d;
     }
   }
 
@@ -53,12 +53,18 @@ width: 100%;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
-    padding: 15px 30px;
-    background: blue;
+    /* padding: 15px 30px;
+    background: blue; */
     border: 0;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     transition: 0.3s;
     cursor: pointer;
+    padding: 6px 12px;
+    color: #fff;
+    background-color: #6c757d;
+    border-radius: 5px;
+    font-size: 13px;
+
     &:hover,
     &:focus{
       opacity: 0.65;
@@ -139,7 +145,7 @@ export default function WriteReview({ buttonValue, addComments, replyingTo }) {
       </Button>
       <Dialog open={open} onClose={handleClose} fullWidth >
       <DialogTitle style={{position: 'relative', padding: '16px 64px 16px 16px', backgroundColor: '#f1f1f1', fontWeight: '700'}} >작품명
-      <button style={{position: 'absolute', top: '15px', right: '15px', width: '30px', fontSize: '21px', fontWeight: '700', textAlign: 'center', color: '#999', backgroundColor: 'transparent'}} onClick={handleClose}>
+      <button style={{position: 'absolute', top: '15px', right: '15px', width: '30px', fontSize: '21px', fontWeight: '700', textAlign: 'center', color: '#999', backgroundColor: 'transparent', border: '0px'}} onClick={handleClose}>
         &times;
       </button></DialogTitle>
       <ACWrap>
