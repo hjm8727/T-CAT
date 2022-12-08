@@ -15,13 +15,17 @@ const UpdateNotice=()=>{
 
 
   const onClickSubmit = async () => {
-    const update = await AdminApi.noticeUpdate(params,inputTitle,inputDetail);
+    console.log("클릭 찍히는지");
+
+    const update = await AdminApi.noticeEdit(params,inputTitle,inputDetail);
+    console.log("클릭 찍히는지22 안찍히네");
+
     console.log(update.data);
-    if (update.data === true) {
-      console.log("수정성공");
-    } else {
-      console.log("수정안됨");
-    }
+    // if (update.data === true) {
+    //   console.log("수정성공");
+    // } else {
+    //   console.log("수정안됨");
+    // }
   };
   
   useEffect(() => {
@@ -53,8 +57,8 @@ const UpdateNotice=()=>{
                     <textarea placeholder="내용 입력" value={inputDetail} onChange={onChangeDetail}/>
                 </div>
                 <div className="buttonWrap">
-                    <button onClick={()=>{navigate(`/admin/noticeDetail/${params}`)}}>뒤로가기</button>
-                    <button onClick={onClickSubmit}>수정하기</button>
+                    <button className="noticeBtn" onClick={()=>{navigate(`/admin/noticeDetail/${params}`)}}>뒤로가기</button>
+                    <button className="noticeBtn" onClick={onClickSubmit}>수정하기</button>
                 </div>
             </div>
     </UpdateBlock>
@@ -105,7 +109,7 @@ const UpdateBlock=styled.div`
         text-align: center;
         justify-content: center;
     }
-    button{
+    .noticeBtn{
         border: none;
         margin: 15px 0;
         margin: 20px 10px;

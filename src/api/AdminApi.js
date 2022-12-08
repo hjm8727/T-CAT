@@ -1,6 +1,6 @@
 import axios from "axios";
 const HEADER = 'application/json';
-const TCAT_DOMAIN= "http://localhost:8117";
+const TCAT_DOMAIN= "http://localhost:8118";
 // "http://cokebear756.synology.me:33060";
 
 const AdminApi={
@@ -20,17 +20,21 @@ const AdminApi={
     noticeDetail : async function(index){
         return await axios.get(TCAT_DOMAIN + "/notice/detail/" + index, HEADER)
     },
+
     // 공지사항 삭제 
     noticeDelete : async function(index){
         return await axios.delete(TCAT_DOMAIN + "/notice/delete/"+ index, HEADER)
     },
+
     // 체크박스로 삭제
     noticeCheck : async function(obj){
+        console.log(obj);
         const noticeObj = {
             obj: obj
           };
-        return await axios.delete(TCAT_DOMAIN + "/notice/delete/", obj, HEADER)
+        return await axios.post(TCAT_DOMAIN + "/notice/delete/list",noticeObj, HEADER)
     },
+
     // 공지사항 수정
     noticeEdit : async function(inputTitle, inputDetail,index){
         const editing = {
@@ -64,5 +68,13 @@ const AdminApi={
         }
         return await axios.post(TCAT_DOMAIN + "/qna-reply", qna, HEADER);
     },
+
+    // deleteComment: async function (postId) {
+    //     console.log("댓글 번호 : " + postId);
+    //     const deleteObj = {
+    //       postId: String(postId),
+    //     };
+    //     return await axios.post(DOMAIN + "deleteComment", deleteObj, HEADER);
+    //   },
 }
 export default AdminApi;

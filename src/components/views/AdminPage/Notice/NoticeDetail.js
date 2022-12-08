@@ -51,9 +51,9 @@ const NoticeDetail=()=>{
               </React.Fragment>
               ))}
                 <div className="buttonWrap">
-                    <button onClick={()=>{navigate('/admin/noticeList')}}>목록으로</button>
-                    <button onClick={()=>{navigate(`/admin/noticeUpdate/${params}`)}}>수정하기</button>
-                    <button onClick={onClickDelete}>삭제하기</button>
+                    <button className="noticeBtn" onClick={()=>{navigate('/admin/noticeList')}}>목록으로</button>
+                    <button className="noticeBtn" onClick={()=>{navigate(`/admin/noticeUpdate/${params}`)}}>수정하기</button>
+                    <button className="noticeBtn" onClick={onClickDelete}>삭제하기</button>
                 </div>
         </DetailBlock>
         </>
@@ -103,7 +103,7 @@ const DetailBlock=styled.div`
         text-align: center;
         justify-content: center;
     }
-    button{
+    .noticeBtn{
       border: none;
       margin: 15px 0;
       margin: 20px 10px;

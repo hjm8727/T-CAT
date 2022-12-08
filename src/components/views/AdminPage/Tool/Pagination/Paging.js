@@ -1,5 +1,6 @@
-import { useState } from "react";
+import './Paging.css'
 
+// 1조에서 제공 ㅎㅎ
 
 const Pagination = ({total, limit, page,pageStart, setPage, setPageStart, setCheckItems}) => {
   const numPages = Math.ceil(total / limit);

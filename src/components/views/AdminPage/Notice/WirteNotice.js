@@ -6,12 +6,6 @@ import AdminApi from "../../../../api/AdminApi";
 
 
 const WriteNotice=()=>{
-
-    const [lists, setLists] = useState('');
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(1);
-  const offset = (page - 1) * limit;
-  const [pageStart, setPageStart] = useState(0);
   
     const params = useParams().index;
     const navigate = useNavigate();
@@ -43,12 +37,12 @@ const WriteNotice=()=>{
                             <input type="text" placeholder="제목을 입력하세요" value={inputTitle} onChange={onChangeTitle}/>
                         </div>
                     </div>
-                    <div className="content2">
+                    <div className="notice-write-content">
                         <textarea placeholder="내용 입력" value={inputDetail} onChange={onChangeDetail}/>
                     </div>
                     <div className="buttonWrap">
-                        <button onClick={()=>{navigate('/admin/noticeList')}}>뒤로가기</button>
-                        <button onClick={onClickSubmit}>등록하기</button>
+                        <button className="noticeBtn" onClick={()=>{navigate('/admin/noticeList')}}>뒤로가기</button>
+                        <button className="noticeBtn" onClick={onClickSubmit}>등록하기</button>
                     </div>
                 </div>
         </WriteBlock>
@@ -77,15 +71,14 @@ const WriteBlock=styled.div`
         float: left;
         input{
             margin-left: 20px;
-            /* width: 1000px; */
             height: 40px;
-            width: auto;
+            width: 800px;
         }
     }
     .date{
         float: right;
     }
-    .content2{
+    .notice-write-content{
         display: block;
         height: 520px;
         border-bottom: 1px solid #dae0e9;
@@ -99,7 +92,7 @@ const WriteBlock=styled.div`
         text-align: center;
         justify-content: center;
     }
-    button{
+    .noticeBtn{
         border: none;
         margin: 15px 0;
         margin: 20px 10px;

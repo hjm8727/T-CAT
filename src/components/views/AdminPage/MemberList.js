@@ -6,25 +6,25 @@ import Pagination from "./Tool/Pagination/Paging";
 
 
 const MemberList=()=>{
-  const [memberList, setMemberList] = useState('');
 
-  const [limit, setLimit] = useState(7); //한페이지에 몇개씩 보여줄지
-  const [page, setPage] = useState(10); 
-  const offset = (page - 1) * limit;
+  // 페이지네이션 변수
+  const [limit, setLimit] = useState(10); // 한페이지에 보여지는 게시물 갯수
+  const [page, setPage] = useState(1); // 현재 페이지 번호
+  const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
   const [pageStart, setPageStart] = useState(0);
 
-  
-  // 체크된 아이템을 담을 배열
-  const [checkItems, setCheckItems] = useState([]);
+  // 체크박스 변수
+  const [memberList, setMemberList] = useState('');
+  const [checkItems, setCheckItems] = useState([]); 
+
   // 체크박스 단일 선택
-  const handleSingleCheck = (checked, id) => {
+  const handleSingleCheck = (checked, obj) => {
     if (checked) {
-      // 단일 선택 시 체크된 아이템을 배열에 추가
-      setCheckItems(prev => [...prev, id]);
-      console.log(id);
+      setCheckItems(prev => [...prev, obj]);
+      console.log(obj);
     } else {
       // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-      setCheckItems(checkItems.filter((el) => el !== id));
+      setCheckItems(checkItems.filter((el) => el !== obj));
     }
   };
 
@@ -37,7 +37,6 @@ const MemberList=()=>{
       setCheckItems(idArray);
     }
     else {
-      // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
       setCheckItems([]);
     }
   }
