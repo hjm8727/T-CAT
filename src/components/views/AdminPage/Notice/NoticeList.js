@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState, useEffect} from "react";
 import { Link, useNavigate} from "react-router-dom";
 import AdminApi from "../../../../api/AdminApi";
+import Pagination from "../Tool/Pagination/Paging";
 
 
 const NoticeList=()=>{
@@ -10,6 +11,11 @@ const NoticeList=()=>{
    // 문의 내용을 가져와서 담기 위한 변수
   const [noticeList, setNoticeList] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const [limit, setLimit] = useState(7); //한페이지에 몇개씩 보여줄지
+  const [page, setPage] = useState(2); 
+  const offset = (page - 1) * limit;
+  const [pageStart, setPageStart] = useState(0);
 
 
   // 체크된 아이템을 담을 배열
@@ -40,20 +46,19 @@ const NoticeList=()=>{
       setCheckItems([]);
     }
   }
-  const onClickDelete=()=>{
-    alert("공지사항을 삭제하시겠습니까?")
-    const deleteNotice=async()=>{
-      try{
-        const response = await AdminApi.noticeDelete();
-        setNoticeList(response.data);
-        console.log(response.data);
-      } catch (e) {
-        console.log(e);
-      }
+  const onClickDelete=async()=>{
+    // alert("공지사항을 삭제하시겠습니까?")
+    console.log("체크박스삭제");
+    const response = await AdminApi.noticeCheck(checkItems);
+      // try{
+      //   setNoticeList(response.data);
+      //   console.log(response.data);
+      // } catch (e) {
+      //   console.log(e);
+      // }
     };
-    deleteNotice();
-    setCheckItems([]);
-  }
+    // deleteNotice();
+    // setCheckItems([]);
 
     /** 문의 내용을 가져오는 useEffect */
   useEffect(() => {
@@ -68,6 +73,7 @@ const NoticeList=()=>{
     };
     noticeData();
   }, []);
+  
 
     return(
         <NoticeBlock>
@@ -88,20 +94,31 @@ const NoticeList=()=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {noticeList && noticeList.map((info) => (<tr key={info.index}>
-                  <td><input type='checkbox' name={`select-${info}`} onChange={(e) => handleSingleCheck(e.target.checked,info)}
+                  {noticeList && noticeList.slice(offset, offset + limit)
+                  .map(({index,title,create_time}) => (
+                  <tr>
+                  <td><input type='checkbox' name={`select-${index}`} onChange={(e) => handleSingleCheck(e.target.checked,index)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                  checked={checkItems.includes(info) ? true : false} />
+                  checked={checkItems.includes(index) ? true : false} />
                   </td>
-                    <td>{info.index}</td>
-                    <td><Link to={`/admin/noticeDetail/${info.index}`}>{info.title}</Link></td>
+                    <td>{index}</td>
+                    <td><Link to={`/admin/noticeDetail/${index}`}>{title}</Link></td>
                     <td>관리자</td>
-                    <td>{info.create_time}</td>
+                    <td>{create_time}</td>
                 </tr>
                 ))}
                 </tbody>
               </table>
             </div>
+            <Pagination
+              total={noticeList.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+              pageStart={pageStart}
+              setPageStart={setPageStart}
+              />
+
             <div className="buttonWrap">
                 <button onClick={()=>{navigate('/admin/writeNotice')}}>작성하기</button>
                 <button onClick={onClickDelete}>삭제하기</button>

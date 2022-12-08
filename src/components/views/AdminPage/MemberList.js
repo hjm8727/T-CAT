@@ -2,10 +2,16 @@ import styled from "styled-components";
 import TopBar from "./Tool/TopBar";
 import { useState, useEffect } from "react";
 import AdminApi from "../../../api/AdminApi";
+import Pagination from "./Tool/Pagination/Paging";
 
 
 const MemberList=()=>{
   const [memberList, setMemberList] = useState('');
+
+  const [limit, setLimit] = useState(7); //한페이지에 몇개씩 보여줄지
+  const [page, setPage] = useState(10); 
+  const offset = (page - 1) * limit;
+  const [pageStart, setPageStart] = useState(0);
 
   
   // 체크된 아이템을 담을 배열
@@ -68,21 +74,29 @@ const MemberList=()=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {memberList && memberList.map((data,key) => (<tr key={key}>
-                  <td><input type='checkbox' name={`select-${data}`} onChange={(e) => handleSingleCheck(e.target.checked, data)}
+                  {memberList && memberList.slice(offset, offset + limit).map(({id, name, date, email, address}) => (<tr>
+                  <td><input type='checkbox' name={`select-${id}`} onChange={(e) => handleSingleCheck(e.target.checked, id)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                  checked={checkItems.includes(data) ? true : false} />
+                  checked={checkItems.includes(id) ? true : false} />
                   </td>
-                    <td>{data.id}</td>
-                    <td>{data.name}</td>
-                    <td>{data.date}</td>
-                    <td>{data.email}</td>
-                    <td>{data.address}</td>
+                    <td>{id}</td>
+                    <td>{name}</td>
+                    <td>{date}</td>
+                    <td>{email}</td>
+                    <td>{address}</td>
                 </tr>
                 ))}
                 </tbody>
               </table>
             </div>
+            <Pagination
+            total={memberList.length}
+            limit={limit}
+            page={page}
+            setPage={setPage}
+            pageStart={pageStart}
+            setPageStart={setPageStart}
+            />
         </MemberBlock>
     );
 }

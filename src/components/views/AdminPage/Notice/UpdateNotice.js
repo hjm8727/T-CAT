@@ -8,31 +8,30 @@ const UpdateNotice=()=>{
   const navigate = useNavigate();
   const params = useParams().index;
 
-  const [noticeDetail, setNoticeDetail] = useState("");
   const [inputTitle, setInputTitle] = useState("");
   const [inputDetail, setInputDetail] = useState("");
   const onChangeTitle=(e)=>{setInputTitle(e.target.value);}
   const onChangeDetail=(e)=>{setInputDetail(e.target.value);}
 
 
-
   const onClickSubmit = async () => {
     const update = await AdminApi.noticeUpdate(params,inputTitle,inputDetail);
+    console.log(update.data);
     if (update.data === true) {
       console.log("수정성공");
     } else {
       console.log("수정안됨");
     }
   };
-
+  
   useEffect(() => {
     const noticeData = async()=> {
       try {
-        console.log(params);
+        console.log(params); 
         const response = await AdminApi.noticeDetail(params);
-        setInputTitle(response.data.title);
-        setInputDetail(response.data.content);
-        console.log(response.data);
+        console.log(response.data); // 글 수정 들어가면 디테일에 저장된 값 찍힘
+        setInputTitle(response.data[0].title); // 작성한 제목 setinputtitle에 저장
+        setInputDetail(response.data[0].content);
       } catch (e) {
         console.log(e);
       }
@@ -61,7 +60,6 @@ const UpdateNotice=()=>{
     </UpdateBlock>
     </>
   )
-
 }
 export default UpdateNotice;
 

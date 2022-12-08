@@ -6,6 +6,13 @@ import AdminApi from "../../../../api/AdminApi";
 
 
 const WriteNotice=()=>{
+
+    const [lists, setLists] = useState('');
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
+  const [pageStart, setPageStart] = useState(0);
+  
     const params = useParams().index;
     const navigate = useNavigate();
     const [inputTitle, setInputTitle] = useState("");
@@ -23,7 +30,6 @@ const WriteNotice=()=>{
         //     window.alert("Social 게시글 작성 완료 !");
         //   } else {
         //     console.log("제출 실패 ㅜㅜ");
-        //     console.log(write.data);
         //   }
     }
     

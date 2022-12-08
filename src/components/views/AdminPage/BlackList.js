@@ -3,9 +3,14 @@ import TopBar from "./Tool/TopBar";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminApi from "../../../api/AdminApi";
+import Pagination_ from "./Tool/Pagination/Paging";
 
 
 const BlackList=()=>{
+  const [limit, setLimit] = useState(10); // 페이지당 게시물 수
+  const [page, setPage] = useState(1); // 현재 페이지 번호
+  const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
+
   const [memberList, setMemberList] = useState('');
   // 체크된 아이템을 담을 배열=> 이거 스프링으로 보내기
   const [checkItems, setCheckItems] = useState([]); 
@@ -73,7 +78,7 @@ const BlackList=()=>{
                   </tr>
                 </thead>
                 <tbody>
-                {memberList && memberList.map((data,key) => (<tr key={key}>
+                {memberList.map((data,key) => (<tr key={key}>
                   <td><input type='checkbox' name={`select-${data}`} onChange={(e) => handleSingleCheck(e.target.checked, data)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                   checked={checkItems.includes(data) ? true : false} />

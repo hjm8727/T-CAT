@@ -5,34 +5,10 @@ import Modal from "../../../../util/Modal/Modal"
 import AdminApi from "../../../../api/AdminApi";
 import QnaModal from "./QnaModal";
 
-
-const InquiryBlock=styled.div`
-    margin:0 auto;
-    box-sizing: border-box;
-  /* width: 100vw; */
-  .container {
-    width: 100vw;
-    margin : 10px;
-    display: flex;
-    border: 1px solid black;
-    height: 60%;
-    flex-direction: column;
-    text-align: center;
-    padding: 3rem;
-  }
-table,th,td {
-  border: 1px solid black;
-}
-  button{
-    width: 80px;
-  }
-`;
-
 const Inquiry=()=>{
   const [inputReply, setInputReply] = useState("");
   const [qnaList, setQnaList] = useState('');
 
-  
     // 모달
     const [modalOpen, setModalOpen] = useState(false);
     // 모달 내용
@@ -57,12 +33,6 @@ const Inquiry=()=>{
     noticeData();
   }, []);
 
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-
   return(
     <InquiryBlock>
         <TopBar name="큐앤에이 관리"/>
@@ -86,7 +56,7 @@ const Inquiry=()=>{
                     <td>{data.category}</td>
                     <td>{data.title}</td>
                     <td>{data.member_id}</td>
-                    <td>{data.date}</td>
+                    <td>{data.createTime}</td>
                     <td><button onClick={()=>{setModalText(data); setModalOpen(true);}}>답장</button>
                       {modalOpen && <QnaModal setModalOpen={setModalOpen}/>}
                     </td>
@@ -94,7 +64,6 @@ const Inquiry=()=>{
                   </tr>
                   </tbody>
                   ))}
-
               </table> 
               <QnaModal open={modalOpen} close={closeModal} header="문의 답장하기">
               <div>{modalText.title}</div>
@@ -106,3 +75,25 @@ const Inquiry=()=>{
     );
 }
 export default Inquiry;
+
+const InquiryBlock=styled.div`
+    margin:0 auto;
+    box-sizing: border-box;
+  /* width: 100vw; */
+  .container {
+    width: 100vw;
+    margin : 10px;
+    display: flex;
+    border: 1px solid black;
+    height: 60%;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+  }
+table,th,td {
+  border: 1px solid black;
+}
+  button{
+    width: 80px;
+  }
+`;
