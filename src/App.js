@@ -5,7 +5,7 @@ import MainPage from "./components/views/MainPage/MainPage";
 import AdminPage from "./components/views/AdminPage/AdminPage";
 import Detail from "./components/views/DetailPage/Detail";
 import MyPage from "./components/views/MyPage/MyPage";
-import ResultFalse from "./components/views/KakaoPay/ResultFalse";
+import ResultFalse from "./components/KakaoPay/ResultFalse";
 import { PayCancel, PayReady, PayResult } from "./components/KakaoPay/PayReady";
 import Agree from "./components/views/SignPage/Agree";
 
