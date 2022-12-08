@@ -4,12 +4,25 @@ const DModal = styled.div`
 .delete-confirmation-wrapper {
   position: fixed;
   z-index: 100;
-  top: 0; left: 0;
+  /* top: 0; left: 0; */
   height: 100vh;  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: grey;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* display: none; */
+  /* position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6); */
 }
 .delete-container {
   display: flex;
@@ -19,21 +32,44 @@ const DModal = styled.div`
   background: white;
   padding: 20px;
   border-radius: 10px;
+
+  /* width: 90%;
+  max-width: 4500px;
+  width: 700px;
+  height: 740px;
+  margin: 0 auto;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  /* 팝업이 열릴때 스르륵 열리는 효과 */
+  animation: modal-show 0.3s;
+  overflow: hidden;
 }
 .title {
-  color: blue;
-  font-size: 1.2rem;
+  /* color: blue;
+  font-size: 1.2rem; */
+
+  position: relative;
+  padding: 16px 64px 16px 16px;
+  background-color: #f1f1f1;
+  font-weight: 700;
 }
 .confirmation-message {
-  line-height: 1.5;
-  color: blue;
+  /* line-height: 1.5;
+  color: blue; */
+
+  padding: 16px;
+  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
 }
 .btn-container {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
+
+  padding: 12px 16px;
+  text-align: right;
 }
 button {
-  color: grey;
+  /* color: grey;
   padding: 15px 20px;
   border: none;
   border-radius: 10px;
@@ -41,7 +77,13 @@ button {
   cursor: pointer;
   &:hover{
     opacity: 0.65;
-  }
+  } */
+
+  padding: 6px 12px;
+  color: #fff;
+  background-color: #6c757d;
+  border-radius: 5px;
+  font-size: 13px;
 }
 .cancel-btn {
   background: blue;

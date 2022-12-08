@@ -33,6 +33,7 @@ const MainBanner = (props) =>{
             <img
                 key={c.id}
                 src={c.img}
+                alt=""
             ></img>
         ))}
         </BannerContainer>

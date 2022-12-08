@@ -86,7 +86,7 @@ function Agree () {
     <AgreeStyle>
     <div className="agree-container">
       <div>
-        <img src="images/TCat.jpg"/>
+        <img src="images/TCat.jpg" alt=""/>
       </div>
 
       <div>
@@ -289,8 +289,8 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
       <h5 className="title" onClick={onCheck4}><span><input type='radio' checked={check4} id='agree'/></span>프로모션 정보 수신 동의<small className="small-font">(선택)</small></h5>
       <div className="box2">
       TCat에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(TCat앱 알림 또는 문자),<p />
-     이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 TCat 가입 이후 추가 가입하여 이용하는 서비스 등)의<p />
-     경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다. <p  />
+      이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 TCat 가입 이후 추가 가입하여 이용하는 서비스 등)의<p />
+      경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다. <p  />
       </div>
       <div className="buttonBox">
         <span><Link to='/login'><button className="back-button">취소</button></Link></span><span><button onClick={onClickSign} className="ok-button" disabled={check2 && check3 ? false : true}>확인</button></span>

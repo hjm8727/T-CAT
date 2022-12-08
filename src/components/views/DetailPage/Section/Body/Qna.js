@@ -144,7 +144,7 @@ function Qna() {
         )
       })}
         <div className='qna-reply-wrap'>
-        <textarea className='qna-reply-text' onChange={onChnageText} value={reply} onKeyUp={onKeyValid} /><button type='button' disabled={isValid ? false : false} onClick={onReply} className='qna-reply-button'>등록</button>
+        <textarea className='qna-reply-text' onChange={onChnageText} value={reply} onKeyUp={onKeyValid} /><button type='button' disabled={isValid ? false : true} onClick={onReply} className='qna-reply-button'>등록</button>
         </div>
     </Alert>
     </div>

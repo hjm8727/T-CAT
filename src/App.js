@@ -6,7 +6,7 @@ import AdminPage from "./components/views/AdminPage/AdminPage";
 import Detail from "./components/views/DetailPage/Detail";
 import MyPage from "./components/views/MyPage/MyPage";
 import ResultFalse from "./components/views/KakaoPay/ResultFalse";
-import { PayCancel, PayReady, PayResult } from "./components/views/KakaoPay/PayReady";
+import { PayCancel, PayReady, PayResult } from "./components/KakaoPay/PayReady";
 import Agree from "./components/views/SignPage/Agree";
 
 
@@ -27,12 +27,6 @@ function App() {
       <Route path="/resultfalse" element={<ResultFalse />} />
       <Route path="/agree" element={<Agree />} />
     </Routes>
-
-    {/* 정리 해놨는데 죄송... 좌석 테스트 좀 할게요 */}
-    {/* <Routes>
-          <Route path="/" element={<Seat />} />
-          <Route path="/Screen/:selected/:totalprice" element={<Screen />} />
-    </Routes> */}
     </>
   );
 }

@@ -112,5 +112,4 @@ const DetailBlock=styled.div`
       width: 150px;
       height: 50px;
     }
-   
 `;

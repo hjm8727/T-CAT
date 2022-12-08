@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 // import AddComment from "./Review/AddComment";
 import Comment from "./Review/Comment";
+// import Comment2 from "./Review/Comment copy";
 import WriteReview from "./Review/WriteReview";
 
 const Review = styled.div`

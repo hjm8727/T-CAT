@@ -6,6 +6,7 @@ import CommentHeader from "./CommentHeader";
 import CommentFooter from "./CommentFooter";
 import { commentPostedTime } from "../../../../../../util";
 import styled from "styled-components";
+// import DeleteModal2 from "./DModal";
 
 const CWrap = styled.div`
 width: 100%;
