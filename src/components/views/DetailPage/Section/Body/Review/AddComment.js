@@ -3,73 +3,57 @@ import styled from "styled-components";
 
 const ACWrap = styled.div`
 width: 100%;
-// 아래작성란
 .add-comment {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* width: 90%; */
+  width: 100%;
   padding: 20px;
   background: white;
   border-radius: 10px;
-  animation: come-in 1.5s ease-in-out;
+  animation: come-in 0.7s ease-in-out;
 
   .comment-input {
     position: relative;
     height: 100px;
     border: 2px solid lightgray;
-    color: blue;
+    color: black;
     border-radius: 10px;
     padding: 15px 25px;
     resize: none;
     scrollbar-width: none;
     &::placeholder {
-      color: darkblue;
+      color: black;
     }
     &::-webkit-scrollbar {
       width: 0;
     }
     &:focus {
-      outline: 1.5px solid blue;
+      outline: 1.5px solid #6c757d;
     }
   }
-
   .send-btn-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-
   .add-btn {
     color: white;
     font-weight: bold;
-    text-transform: uppercase;
-    padding: 8px 16px;
-    background: #6c757d;
     border: 0;
-    border-radius: 10px;
     transition: 0.3s;
     cursor: pointer;
+    padding: 6px 12px;
+    color: #fff;
+    background-color: #6c757d;
+    border-radius: 5px;
+    font-size: 13px;
     &:hover,
     &:focus{
       opacity: 0.65;
     }
   }
-
-  @include media-md() {
-    width: 735px;
-    flex-direction: row;
-    padding: 25px;
-    gap: 25px;
-    .comment-input {
-      width: 100%;
-    }
-    .send-btn-container {
-      align-items: flex-start;
-    }
-  }
 }
-
 @keyframes come-in {
   0%{
     opacity: 0;

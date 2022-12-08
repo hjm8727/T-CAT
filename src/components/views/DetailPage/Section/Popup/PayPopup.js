@@ -20,7 +20,7 @@ const ModalStyle2 = styled.div`
         width: 90%;
         max-width: 4500px;
         width: 700px;
-        height: 750px;
+        height: auto;
         margin: 0 auto;
         border-radius: 0.3rem;
         background-color: #fff;
@@ -36,8 +36,8 @@ const ModalStyle2 = styled.div`
     }
     .modal > section > header button {
         position: absolute;
-        top: 15px;
-        right: 15px;
+        top: 0;
+        right: 0;
         width: 30px;
         font-size: 21px;
         font-weight: 700;

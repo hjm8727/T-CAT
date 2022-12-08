@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-// import AddComment from "./Review/AddComment";
 import Comment from "./Review/Comment";
-// import Comment2 from "./Review/Comment copy";
 import WriteReview from "./Review/WriteReview";
 
 const Review = styled.div`
@@ -101,7 +99,7 @@ const Reviews = () => {
 
     return (
     <div>
-    <WriteReview buttonValue={"작성"} addComments={addComments} />
+    <WriteReview buttonValue={"등록"} addComments={addComments} />
     <br/>
     <Review>
         {comments.map((comment) => (
@@ -114,7 +112,6 @@ const Reviews = () => {
         setDeleteModalState={setDeleteModalState}
         />
     ))}
-    {/* <AddComment buttonValue={"작성"} addComments={addComments} /> */}
     </Review>
     </div>
     );
