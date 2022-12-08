@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Alert } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const QnaStyle = styled.div `
@@ -23,13 +24,89 @@ const QnaStyle = styled.div `
     font-weight: bold;
     color: brown;
   }
-
+  .qna-info {
+    float: right;
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  .qna-content {
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .qna-recoment {
+    color: #0F5132;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .qna-reply-wrap {
+    margin-top: 2.5rem;
+  }
+  .qna-reply-text {
+    width: 650px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 75px;
+    resize: none;
+    border: none;
+  }
+  .qna-reply-text:focus {
+    outline: none;
+    border: 2px solid #0F5132;
+  }
+  .qna-reply-button {
+    float: right;
+    width: 80px;
+    height: 75px;
+    border: none;
+    background-color: yellowgreen;
+  }
+  .qna-reply-button:hover {
+    background-color: lightgreen;
+    border-radius: 12rem;
+    border: none;
+    color: black;
+    transition-property: background-color, border-radius;
+    transition-duration: 3s;
+  }
   z-index: 1;
 
 `;
 
+const ReplyList = props => {
+  const { userName, reply } = props;
+  return(
+    <div>
+      <hr />
+      <p className='qna-recoment'>{userName}님이 작성하신 답변입니다. | 2022.12.08</p>
+      <p className="mb-0">
+        {reply}
+      </p>
+    </div>
+  )
+} 
+
 // Q & A
 function Qna() {
+  const [open, setOpen] = useState(false);
+  const onClickContent = () => setOpen(!open);
+  const [userName, setUserName] = useState('unknown');
+  const [reply, setReply] = useState('');
+  const [replyList, setReplyList] = useState([]);
+  const [count, setCount] = useState(0);
+  const [isValid, setIsValid] = useState(false);
+
+  const onChnageText = e => setReply(e.target.value);
+  const onKeyValid = e => e.target.value.length > 0 ? setIsValid(true) : setIsValid(false);
+
+  const onReply = e => {
+    const copyReplyList = [...replyList];
+    copyReplyList.push(reply);
+    setReplyList(copyReplyList);
+    setReply('');
+    setCount(count + 1);
+    setOpen(true);
+  }
+
   return (
     <QnaStyle>
       <div className='qna'>
@@ -47,8 +124,31 @@ function Qna() {
           </p>
         </div>
       </div>
-    </QnaStyle>
-    
+  
+    <div>
+      <Alert variant="success">
+      <Alert.Heading>Hey, nice to see you <span className='qna-info'>wlals**** | 2022.12.08 | 답변 {count}</span></Alert.Heading>
+      <p className='qna-content' onClick={onClickContent}>
+        <i>Aww yeah, you successfully read this important alert message. This
+        example text is going to run a bit longer so that you can see how
+        spacing within an alert works with this kind of content.
+        </i>
+      </p>
+      {open && replyList.map((comment, i) => {
+        return(
+          <ReplyList
+            userName={userName}
+            reply={comment}
+            key={i}
+          />
+        )
+      })}
+        <div className='qna-reply-wrap'>
+        <textarea className='qna-reply-text' onChange={onChnageText} value={reply} onKeyUp={onKeyValid} /><button type='button' disabled={isValid ? false : false} onClick={onReply} className='qna-reply-button'>등록</button>
+        </div>
+    </Alert>
+    </div>
+  </QnaStyle>
   )
 };
 
