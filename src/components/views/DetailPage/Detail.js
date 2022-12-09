@@ -11,6 +11,7 @@ import { ArrowCircleUp } from '@mui/icons-material';
 const { Content, Sider } = Layout;
 
 const DWrap = styled.div`
+width: 100%;
 .topBtn {
   position: fixed; 
   opacity: 0; 
