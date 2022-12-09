@@ -19,7 +19,7 @@ width: 100%;
   right: 40px;
   z-index: -10; 
   border: 0 none;
-  background: #F5F5F5;
+  background: none;
   cursor: pointer;
   transition: opacity 0.3s ease-in;
 }

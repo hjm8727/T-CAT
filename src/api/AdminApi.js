@@ -26,13 +26,14 @@ const AdminApi={
         return await axios.delete(TCAT_DOMAIN + "/notice/delete/"+ index, HEADER)
     },
 
-    // 체크박스로 삭제
-    noticeCheck : async function(obj){
-        console.log(obj);
+    // (체크박스) 공지사항 삭제
+    noticeCheck : async function(myArr){
+        console.log("api 폴더에서 찍은 값 : " + myArr);
+        console.log(myArr);
         const noticeObj = {
-            obj: obj
-        };
-        return await axios.post(TCAT_DOMAIN + "/notice/delete/list",noticeObj, HEADER)
+            checkDTOList: myArr
+          };
+        return await axios.post(TCAT_DOMAIN + "/notice/delete/check",noticeObj, HEADER)
     },
 
     // 공지사항 수정
@@ -68,13 +69,5 @@ const AdminApi={
         }
         return await axios.post(TCAT_DOMAIN + "/qna-reply", qna, HEADER);
     },
-
-    // deleteComment: async function (postId) {
-    //     console.log("댓글 번호 : " + postId);
-    //     const deleteObj = {
-    //       postId: String(postId),
-    //     };
-    //     return await axios.post(DOMAIN + "deleteComment", deleteObj, HEADER);
-    //   },
 }
 export default AdminApi;

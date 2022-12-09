@@ -36,7 +36,7 @@ const MainContainer = styled.div`
     right: 40px;
     z-index: -10; 
     border: 0 none;
-    background: white;
+    background: none;
     cursor: pointer;
     transition: opacity 0.3s ease-in;
 }

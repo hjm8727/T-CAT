@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
@@ -52,9 +52,12 @@ const MyInfoStyle = styled.div`
 function MyPage() {
   const { Content, Sider } = Layout;
 
-  // const [collapsed, setCollapsed] = useState(false);
-  // const el = document.getElementsByClassName('ant-layout-sider-trigger');
-  // el[0].style.position = 'relative';
+  const [collapsed, setCollapsed] = useState(false);
+
+  useEffect(() => {
+    const el = document.getElementsByClassName('ant-layout-sider-trigger');
+    el[0].style.position = 'relative';
+  })
   
   function getItem(label, key, icon, children) {
     return { key, icon, children,label };
@@ -78,7 +81,7 @@ function MyPage() {
     <div> 
     <MainHeader/>
     <Layout>
-      <Sider>
+      <Sider  collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         {/* <div className="logo" /> */}
         <Menu theme="dark" mode="inline" items={items} onClick={({key}) => navigate(key)}/>
       </Sider>
