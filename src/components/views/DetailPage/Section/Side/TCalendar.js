@@ -49,7 +49,7 @@ const Styleside = styled.div`
  * Detail에서 props로 전달 받기 
  */
 function TCalendar (props) {
-   const { item_name, price } = props;
+    const { item_name, price } = props;
     const [date, setDate] = useState(new Date());
     const [modalOpen, setModalOpen] = useState(false);
     const [index, setIndex] = useState(1);

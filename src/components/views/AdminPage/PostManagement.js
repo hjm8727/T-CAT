@@ -22,8 +22,8 @@ table,th,td {
 .delete{
   float: right;
   button{
-   border: none;
-   margin: 20px 10px;
+    border: none;
+    margin: 20px 10px;
         background-color: #E3CAA5;
         border-radius: 5px;
         width: 340px;
@@ -72,6 +72,7 @@ const PostManagement=()=>{
       alert("전시글을 삭제하시겠습니까?")
     }
   }
+  
   
     return(
         <PostBlock>

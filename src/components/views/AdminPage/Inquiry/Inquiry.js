@@ -65,7 +65,9 @@ const Inquiry=()=>{
                   </tbody>
                   ))}
               </table> 
+              
               <QnaModal open={modalOpen} close={closeModal} header="문의 답장하기">
+              <div>{modalText.member_id}</div>
               <div>{modalText.title}</div>
               <div>{modalText.content}</div>
               </QnaModal>

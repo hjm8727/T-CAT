@@ -1,39 +1,39 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
-import PayPopup from "../DetailPage/Section/Popup/PayPopup";
+import PayPopup from "../views/DetailPage/Section/Popup/PayPopup";
 
 let totals, taxs = 0;
 
 const PayReady = (item_name, total, tax, value) => {
 	totals = total;
 	taxs = tax;
-  let [data, setData] = useState({
+    let [data, setData] = useState({
     next_redirect_pc_url: "",
     tid: "",
     params: {
-      // 가맹점 코드
-      cid: "TC0ONETIME",
-      // 가맹점 주문번호
-      partner_order_id: "partner_order_id",
-      // 가맹점 회원 id
-      partner_user_id: "partner_user_id",
-      // 상품 이름
-      item_name: item_name,
-      // 상품 수량
-      quantity: value,
-      // 총 가격
-      total_amount: total,
-      // 상품 비과세
-      tax_free_amount: tax,
-      // 결제 성공 URL
-      approval_url: "http://localhost:3000/payresult",
-      // 결제 실패 URL
-      fail_url: "http://localhost:3000/resultfalse",
-      // 결제 취소 URL
-      cancel_url: "http://localhost:3000/resultfalse"
+        // 가맹점 코드
+        cid: "TC0ONETIME",
+        // 가맹점 주문번호
+        partner_order_id: "partner_order_id",
+        // 가맹점 회원 id
+        partner_user_id: "partner_user_id",
+        // 상품 이름
+        item_name: item_name,
+        // 상품 수량
+        quantity: value,
+        // 총 가격
+        total_amount: total,
+        // 상품 비과세
+        tax_free_amount: tax,
+        // 결제 성공 URL
+        approval_url: "http://localhost:3000/payresult",
+        // 결제 실패 URL
+        fail_url: "http://localhost:3000/resultfalse",
+        // 결제 취소 URL
+        cancel_url: "http://localhost:3000/resultfalse"
 		}
-  });
+    });
     
     useEffect(() => {
         const { params } = data;
@@ -77,8 +77,8 @@ const PayResult = () => {
     const navigate = useNavigate();
     const openModal = () => setModalOpen(true);
     const closeModal = () => {
-      setModalOpen(false);
-      navigate('/', {replace:true});
+    setModalOpen(false);
+    navigate('/', {replace:true});
     }
     
     useEffect(() => {

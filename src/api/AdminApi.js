@@ -36,12 +36,12 @@ const AdminApi={
     },
 
     // 공지사항 수정
-    noticeEdit : async function(inputTitle, inputDetail,index){
+    noticeEdit : async function(inputTitle, inputDetail, index){
         const editing = {
             title : inputTitle,
             content : inputDetail
         }
-        return await axios.post(TCAT_DOMAIN + "/notice/edit" +index, editing, HEADER)
+        return await axios.put(TCAT_DOMAIN + "/notice/edit/" +index, editing, HEADER)
     },
 
     // 회원 전체 조회

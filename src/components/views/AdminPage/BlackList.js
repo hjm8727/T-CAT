@@ -127,12 +127,12 @@ table,th,td {
 .delete{
   float: right;
   button{
-   border: none;
-   margin: 20px 10px;
-        background-color: #E3CAA5;
-        border-radius: 5px;
-        width: 340px;
-        height: 50px;
+    border: none;
+    margin: 20px 10px;
+      background-color: #E3CAA5;
+      border-radius: 5px;
+      width: 340px;
+      height: 50px;
 }  
 }
 `;

@@ -7,10 +7,8 @@ import Pagination from "../Tool/Pagination/Paging";
 
 
 const NoticeList=()=>{
-
+  const [loading, setLoading] = useState(false);
   const params = useParams().index;
-
-
   const navigate = useNavigate();
    // 페이지네이션 변수
    const [limit, setLimit] = useState(10); // 한페이지에 보여지는 게시물 갯수
@@ -39,7 +37,7 @@ const NoticeList=()=>{
     if(checked) {
       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
-      noticeList.forEach((el) => idArray.push(el));
+      noticeList.forEach((el) => idArray.push(el.index));
       setCheckItems(idArray);
       console.log(idArray);
     }
@@ -48,65 +46,57 @@ const NoticeList=()=>{
       setCheckItems([]);
     }
   }
-  
     // 체크한거 배열로 담기
     useEffect(()=>{
       console.log(checkItems)
     }, [checkItems])
 
   const array = [checkItems];
+  console.log("체크값 개수 : " + checkItems.length);
   console.log("배열에 담은거 되는지");
   console.log(array);
   console.log(array.join(",")); //[]안에 있는걸 12,13 으로 변환
 
-  // useEffect(() => {
-  //   const checkData = async()=> {
-  //     try {
-  //       console.log(params); 
-  //       const response = await AdminApi.noticeDetail(params);
-  //       console.log(response.data); // 글 수정 들어가면 디테일에 저장된 값 찍힘
-  //       setInputTitle(response.data[0].title); // 작성한 제목 setinputtitle에 저장
-  //       setInputDetail(response.data[0].content);
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
-  //   noticeData();
-  // }, []);
-  
-
-    /** 문의 내용을 가져오는 useEffect */
+    /** 공지 목록을 가져오는 useEffect */
   useEffect(() => {
     const noticeData = async()=> {
+      setLoading(true);
       try {
-        const response = await AdminApi.noticeInfo(); // 전체 리스트 조회
-        setNoticeList(response.data);
-        console.log(response.data);
+        const res = await AdminApi.noticeInfo();
+        setNoticeList(res.data);
+        console.log(res.data);
       } catch (e) {
         console.log(e);
       }
+      setLoading(false);
     };
     noticeData();
   }, []);
+  if (loading) {
+    return <div>로딩 중...</div>;
+  }
+
+  const idList = [];
 
   const onClickDelete=async()=>{
+    idList.push()
     // const res = await AdminApi.noticeCheck(array.join(",")); //이제 이게 어디서 날라오는건지 헷갈린다 
     
     // const res = await AdminApi.noticeCheck(params);
     // console.log(res.data);
 
-    alert("공지사항을 삭제하시겠습니까?")
-    if(checkItems.length<1){
-      alert("체크박스 한개 이상 체크해주세요")
-    } else{
-      const response = await AdminApi.noticeCheck(checkItems);
-      try{
-        console.log(response.data);
-      }catch(e){
-        console.log(e);
-      }
-    } 
-    setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
+    // alert("공지사항을 삭제하시겠습니까?")
+    // if(checkItems.length<1){
+    //   alert("체크박스 한개 이상 체크해주세요")
+    // } else{
+    //   const response = await AdminApi.noticeCheck(checkItems);
+    //   try{
+    //     console.log(response.data);
+    //   }catch(e){
+    //     console.log(e);
+    //   }
+    // } 
+    // setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
     };
 
 

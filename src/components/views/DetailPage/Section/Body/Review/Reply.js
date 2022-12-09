@@ -83,7 +83,7 @@ width: 100%;
         width: max-content;
         color: white;
         font-weight: bold;
-        padding: 15px 30px;
+        padding: 8px 16px;
         background: #6c757d;
         border: 0;
         border-radius: 10px;
@@ -149,7 +149,7 @@ width: 100%;
     animation-duration: 0.5s;
   }
 
-  /* @include media-md() {
+  @include media-md() {
     width: 735px;
     .comment {
       flex-direction: row;
@@ -178,14 +178,14 @@ width: 100%;
       margin-left: 35px;
       gap: 20px;
     }
-  } */
+  }
 }
 
 .reply-container-gap .reply-container {
   margin-top: 15px;
-  /* @include media-md() {
+  @include media-md() {
     margin-top: 20px;
-  } */
+  }
 }
 
 @keyframes come-in {

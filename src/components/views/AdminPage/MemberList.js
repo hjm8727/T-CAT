@@ -52,7 +52,7 @@ const MemberList=()=>{
     };
     memberData();
   }, []);
- 
+
     return(
         <MemberBlock>
           <TopBar name="일반회원관리"/>
@@ -118,5 +118,4 @@ const MemberBlock=styled.div`
 table,th,td {
   border: 1px solid black;
 }
-  
 `;

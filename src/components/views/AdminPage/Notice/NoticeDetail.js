@@ -37,16 +37,16 @@ const NoticeDetail=()=>{
         <>
         <DetailBlock>
             <TopBar name="공지사항 상세보기"/>
-              {noticeDetail && noticeDetail.map((Info, index)=>(
+              {noticeDetail && noticeDetail.map(({index,title,content,createDate})=>(
                 <React.Fragment key={index}>
-              <div className="container">
-                <div className="topTitle">
+              <div className="notice-detail-container">
+                <div className="notice-detail-titlebox">
                   <div>
-                      <p className="date"> 관리자 | 작성날짜</p>
-                      <p className="title">{Info.title}</p>
+                      <p className="notice-detail-date">{index}</p>
+                      <p className="notice-detail-title">{title}</p>
                   </div>
                 </div>
-                  <div className="notice-content">{Info.content}</div>
+                  <div className="notice-detail-content">{content}</div>
               </div>
               </React.Fragment>
               ))}
@@ -64,10 +64,10 @@ export default NoticeDetail;
 const DetailBlock=styled.div`
   margin:0 auto;
   box-sizing: border-box;
-    .container{
+    .notice-detail-container{
     margin: 0 auto;
     position: relative;
-    width: 100vw;
+    width: 70vw;
     margin : 10px;
     display: flex;
     border: 1px solid black;
@@ -76,26 +76,21 @@ const DetailBlock=styled.div`
     text-align: center;
     padding: 3rem;
     }
-    .topTitle{
+    .notice-detail-titlebox{
+        align-items: center;
         overflow: hidden;
         border-top: 1px solid black;
         border-bottom: 1px solid #dae0e9;
-        height: 70px;
+        height: 90px;
         padding: 0 20px;
         line-height: 70px;
     }
-    .title{
-        float: left;
-        hover{
-            cursor: pointer;
-            background-color: red;
-        }
-    }
-    .date{
+    .notice-detail-date{
         float: right;
     }
-    .content{
-        display: block;
+    .notice-detail-content{
+        margin-top : 20px;
+        /* display: block; */
         height: 500px;
         border-bottom: 1px solid #dae0e9;
     }
@@ -112,5 +107,4 @@ const DetailBlock=styled.div`
       width: 150px;
       height: 50px;
     }
-   
 `;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { PayReady } from "../../../KakaoPay/PayReady";
+import { PayReady } from "../../../../KakaoPay/PayReady";
 
 const BodyStyle = styled.div`
   table ,tr {

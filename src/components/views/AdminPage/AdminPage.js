@@ -46,7 +46,9 @@ function Header() {
   return(
     <HeaderBlock>
       <div className='logoContainer'>
+        <a href='/'>
         <img className="logo" src={process.env.PUBLIC_URL + '/images/TCat.jpg'} alt = ""/>
+        </a>
       </div>
     </HeaderBlock>
   );

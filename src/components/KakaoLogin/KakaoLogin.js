@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { REST_API_KEY, REDIRECT_URI } from '../../Config'
+import { REST_API_KEY, REDIRECT_URI } from '../Config'
 
 function KakaoLogin() {
     const location = useLocation();

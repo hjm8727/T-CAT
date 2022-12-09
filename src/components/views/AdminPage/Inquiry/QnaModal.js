@@ -12,23 +12,26 @@ const QnaModal = (props) => {
 
     // 문의 답장 전송 호출
     const onClickReply=async(e)=>{
-      if(inputReply.length <= 5 || inputReply.length >= 1000) {
-        alert('문의 사항을 최소 5 ~ 1000글자 이내로 부탁드립니다.');
+        if(inputReply.length <= 10 || inputReply.length >= 1000) {
+        alert('문의 사항을 최소 10 ~ 1000글자 이내로 부탁드립니다.');
         e.preventDefault();
     } else {
-      const sendReply = await AdminApi.sendReply(props.index,inputReply);
-      console.log(sendReply.data);
-        // if(sendReply.data.statusCode === 200) {
-        //     alert('문의가 정상 전송 되었습니다.');
-        // } else {
-        //     alert('문의 전송이 실패 하였습니다.');
-        //     e.preventDefault();
-        // }
+        const sendReply = await AdminApi.sendReply(inputReply);
+        if(sendReply.data.statusCode === 200) {
+            alert('문의가 정상 전송 되었습니다.');
+        } else {
+            alert('문의 전송이 실패 하였습니다.');
+            e.preventDefault();
+        }
     }
 
 }
 
-    const { open, close, header ,submit} = props;
+    // const onChangeReply=(e)=>{
+    // setInputReply(e.target.value);
+    // console.log(inputReply);
+    // }
+    const { open, close, header ,submit,title} = props;
 
     return (
         <div className={open ? 'openModal modal' : 'modal'}>
@@ -41,8 +44,9 @@ const QnaModal = (props) => {
                         </button>
                     </header>
                     <main>
-                      {props.children}
-                      <input value={inputReply} onChange={onChangeReply}/>
+                    <div>작성자</div>
+                    {props.children}
+                    <textarea className='qna-replybox' value={inputReply} onChange={onChangeReply}/>
                     </main>
                     <footer>
                     {submit &&

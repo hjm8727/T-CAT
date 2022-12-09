@@ -49,7 +49,7 @@ const Profile=()=>{
             </li>
 
         </ul>
-         ))}
+        ))}
         </div>
         </>
 

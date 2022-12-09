@@ -24,7 +24,7 @@ const AskModalBody = () =>{
     const TextChange = (e) =>{
         setInputText(e.target.value)
         console.log(inputText)
-    }
+    } 
 
     return(
         <AskBodyContainer>

@@ -7,7 +7,7 @@ import { useState } from 'react';
 // import DialogContent from '@mui/material/DialogContent';
 // import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-// import { Rate } from 'antd';
+import { Rate } from 'antd';
 
 import styled from "styled-components";
 
@@ -111,11 +111,12 @@ export default function WriteReview({ buttonValue, addComments, replyingTo }) {
     setOpen(false);
   };
 
-  // const [value, setValue] = React.useState(0);
+  // 별점
+  const [value, setValue] = React.useState(0);
 
-  // function handleChange(value) {
-  //     setValue(value);
-  // }
+  function handleChange(value) {
+      setValue(value);
+  }
 
   const replyingToUser = replyingTo ? `@${replyingTo}, ` : "";
   const [comment, setComment] = useState("");
@@ -135,6 +136,8 @@ export default function WriteReview({ buttonValue, addComments, replyingTo }) {
     addComments(newComment);
     setComment("");
     setOpen(false);
+
+    setValue(value);
   };
 
 
@@ -148,6 +151,7 @@ export default function WriteReview({ buttonValue, addComments, replyingTo }) {
       <button style={{position: 'absolute', top: '15px', right: '15px', width: '30px', fontSize: '21px', fontWeight: '700', textAlign: 'center', color: '#999', backgroundColor: 'transparent', border: '0px'}} onClick={handleClose}>
         &times;
       </button></DialogTitle>
+      <Rate allowHalf value={value} onChange={handleChange} style={{ fontSize: '1.8rem'}}/>
       <ACWrap>
     <div className="add-comment">
       <textarea
