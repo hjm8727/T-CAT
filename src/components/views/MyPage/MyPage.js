@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
@@ -52,33 +52,39 @@ const MyInfoStyle = styled.div`
 function MyPage() {
   const { Content, Sider } = Layout;
 
-function getItem(label, key, icon, children) {
-  return { key, icon, children,label };
-}
+  const [collapsed, setCollapsed] = useState(false);
 
-const items = [
-  getItem('예매 내역', '/MyPage/RList', <ScheduleOutlined />),
-  getItem('취소 내역', '/MyPage/CList', <DeleteOutlined />),
-  getItem('문의 관련', 'sub1', <WhatsAppOutlined />, [
-    getItem('문의 하기', '/MyPage/Contact'),
-    getItem('문의 조회', '/MyPage/IqList'),
-  ]),
-  getItem('관리자와 채팅', 'sub2', <GithubFilled />, [
-    getItem('정경수', '5'),
-    getItem('김성탁', '6'),
-  ])
-];
+  useEffect(() => {
+    const el = document.getElementsByClassName('ant-layout-sider-trigger');
+    el[0].style.position = 'relative';
+  })
+  
+  function getItem(label, key, icon, children) {
+    return { key, icon, children,label };
+  }
+  
+  const items = [
+    getItem('예매 내역', '/MyPage/RList', <ScheduleOutlined />),
+    getItem('취소 내역', '/MyPage/CList', <DeleteOutlined />),
+    getItem('문의 관련', 'sub1', <WhatsAppOutlined />, [
+      getItem('문의 하기', '/MyPage/Contact'),
+      getItem('문의 조회', '/MyPage/IqList'),
+    ]),
+    getItem('관리자와 채팅', 'sub2', <GithubFilled />, [
+      getItem('정경수', '5'),
+      getItem('김성탁', '6'),
+    ])
+  ];
   const navigate = useNavigate();
   
   return (
     <div>
     <MainHeader/>
     <Layout>
-      <Sider>
+      <Sider  collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         {/* <div className="logo" /> */}
         <Menu theme="dark" mode="inline" items={items} onClick={({key}) => navigate(key)}/>
       </Sider>
-
       <Layout className="site-layout">
         <Content style={{margin: '0 16px' }}>
           <div className="site-layout-background">
@@ -87,23 +93,18 @@ const items = [
               <div className='userInfo'>
                 <div className='Contain1'>
                   <GithubFilled style={{fontSize: '10rem', margin: '2rem'}} />
-
                   <div className='up-wrap'>
                     <Link to='MyPage/update'><button className='up-button'>회원 정보 수정</button></Link>
                   </div>
-
                 </div>
-               
                   <div className='info-des'>
                     <div className='description'>
-                      <p><h4><strong>지민</strong>님 오늘도 TCat을 방문해주셔 감사합니다. 좋은 하루 되세요</h4></p>
+                      <h4><strong>지민</strong>님 오늘도 TCat을 방문해주셔 감사합니다. 좋은 하루 되세요</h4>
                       <p>나의 아이디는 jimin0601</p>
                       <p>나의 이메일은 jimin600155@naver.com</p>
                       <p>현재 회원님의 포인트는 <input className='point-box' readOnly value={50000}/></p>
                     </div>
                   </div>
-                  
-
               </div>
           </MyInfoStyle>
           </div>
@@ -119,7 +120,7 @@ const items = [
 }
 
 const MyBody = () => (
-    <>
+  <>
     <Routes>
       <Route path='MyPage/update' element={<InfoUpdate />} />
       <Route path='/RList' element={<RList/>}/>
@@ -129,5 +130,6 @@ const MyBody = () => (
     </Routes>
     </>
 );
+
 
 export default MyPage;

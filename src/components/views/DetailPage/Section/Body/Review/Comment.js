@@ -6,15 +6,10 @@ import CommentHeader from "./CommentHeader";
 import CommentFooter from "./CommentFooter";
 import { commentPostedTime } from "../../../../../../util";
 import styled from "styled-components";
-// import DeleteModal2 from "./DModal";
 
 const CWrap = styled.div`
 width: 100%;
 .comment-container {
-<<<<<<< HEAD
-  margin: 0 20px;
-=======
->>>>>>> df1f5c0ff60b6b6fda3192e7668f2cff8f106a8d
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -155,44 +150,10 @@ width: 100%;
     margin-top: 5px;
     animation-duration: 0.5s;
   }
-
-  /* @include media-md() {
-    width: 735px;
-    .comment {
-      flex-direction: row;
-      padding: 25px;
-      gap: 25px;
-      &--header {
-        .comment--btn {
-          display: flex !important;
-        }
-      }
-      &-content {
-        width: 97%;
-      }
-      .content-edit-box{
-        height: 100px;
-      }
-      &--footer {
-        display: none;
-      }
-    }
-    .add-comment {
-      margin-top: 10px;
-    }
-    .reply-container {
-      padding-left: 35px;
-      margin-left: 35px;
-      gap: 20px;
-    }
-  } */
 }
 
 .reply-container-gap .reply-container {
   margin-top: 15px;
-  /* @include media-md() {
-    margin-top: 20px;
-  } */
 }
 
 @keyframes come-in {
@@ -213,7 +174,6 @@ width: 100%;
 
 const Comment = ({
   commentData,
-  updateScore,
   updateReplies,
   editComment,
   commentDelete,
@@ -251,6 +211,7 @@ const Comment = ({
     commentDelete(finalId, finalType, commentData.id);
     setDeleting(false);
   };
+
 
   return (
     <CWrap>
@@ -306,7 +267,6 @@ const Comment = ({
         <ReplyContainer
           key={commentData.replies.id}
           commentData={commentData.replies}
-          updateScore={updateScore}
           commentPostedTime={commentPostedTime}
           addReply={addReply}
           editComment={editComment}

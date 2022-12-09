@@ -26,7 +26,6 @@ const MapModalBody = () =>{
 
     return(
         <MapModalBodyContainer>
-            
             <div className="right_text">
                 <div id="map" style={{ width: "500px", height: "400px", textAlign: "center", justifyContent: "center", margin: "auto", display: "block" }}></div>
             </div>

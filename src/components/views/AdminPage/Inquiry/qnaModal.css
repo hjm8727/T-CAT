@@ -18,7 +18,7 @@
   width: 90%;
   max-width: 4500px;
   width: 700px;
-  height: 740px;
+  height: auto;
   margin: 0 auto;
   border-radius: 0.3rem;
   background-color: #fff;
@@ -88,5 +88,4 @@
   height: 400px;
   border-radius: 10px;
   resize: none;
-
 }

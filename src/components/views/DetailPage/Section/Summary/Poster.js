@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Star from './Star';
 import { BsHeart } from "react-icons/bs";
 import { Rate } from 'antd';
 

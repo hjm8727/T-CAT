@@ -1,11 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import { useState } from 'react';
-// import DialogActions from '@mui/material/DialogActions';
-// import DialogContent from '@mui/material/DialogContent';
-// import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Rate } from 'antd';
 
@@ -27,7 +23,7 @@ width: 100%;
     position: relative;
     height: 100px;
     border: 2px solid lightgray;
-    color: $dark-blue;
+    color: black;
     border-radius: 10px;
     padding: 15px 25px;
     resize: none;
@@ -42,49 +38,45 @@ width: 100%;
       outline: 1.5px solid #6c757d;
     }
   }
-
-  .send-btn-container {
+  .btn-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
+    justify-content: flex-end;
   }
-
   .add-btn {
     color: white;
     font-weight: bold;
-    text-transform: uppercase;
-    /* padding: 15px 30px;
-    background: blue; */
     border: 0;
-    /* border-radius: 10px; */
     transition: 0.3s;
     cursor: pointer;
-    padding: 6px 12px;
+    padding: 8px 16px;
     color: #fff;
     background-color: #6c757d;
     border-radius: 5px;
     font-size: 13px;
-
+    &:hover,
+    &:focus{
+      opacity: 0.65;
+    }
+    margin-right: 1rem;
+  }
+  .cancel-btn {
+    color: white;
+    font-weight: bold;
+    border: 0;
+    transition: 0.3s;
+    cursor: pointer;
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #6c757d;
+    border-radius: 5px;
+    font-size: 13px;
     &:hover,
     &:focus{
       opacity: 0.65;
     }
   }
-
-  @include media-md() {
-    width: 735px;
-    flex-direction: row;
-    padding: 25px;
-    gap: 25px;
-    .comment-input {
-      width: 100%;
-    }
-    .send-btn-container {
-      align-items: flex-start;
-    }
-  }
 }
-
 @keyframes come-in {
   0%{
     opacity: 0;
@@ -128,7 +120,7 @@ export default function WriteReview({ buttonValue, addComments, replyingTo }) {
       id: Math.floor(Math.random() * 100) + 5,
       content: replyingToUser + comment,
       createdAt: new Date(),
-      username: "하정목",
+      username: "hjm8727",
       currentUser: true,
       replies: [],
     };
@@ -164,9 +156,12 @@ export default function WriteReview({ buttonValue, addComments, replyingTo }) {
           );
         }}
       />
-      <div className="send-btn-container">
+      <div className="btn-container">
         <button className="add-btn" onClick={clickHandler}>
           {buttonValue}
+        </button>
+        <button className="cancel-btn" onClick={handleClose}>
+            취소
         </button>
       </div>
     </div>
@@ -198,11 +193,7 @@ export default function WriteReview({ buttonValue, addComments, replyingTo }) {
           작성된 게시물의 저작권은 작성자에게 있으며, 게시물로 인해 발생하는 문제는 작성자 본인에게 책임이 있습니다.<br/>
           작성 시 유의해주시기 바랍니다.
           </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>등록</Button>
-          <Button onClick={handleClose}>취소</Button>
-        </DialogActions> */}
+        </DialogContent> */}
       </Dialog>
     </div>
   );
