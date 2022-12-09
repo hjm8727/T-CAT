@@ -1,11 +1,26 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Star from './Star';
 import { BsHeart } from "react-icons/bs";
 import { Rate } from 'antd';
 
 const PosterStyle = styled.div `
+    /* width: 30%; */
+    /* border: 1px black solid; */
+    img{
+        width: 300px;
+        height: 400px;
+        margin-left: 40px;
+    }
     .like {
-        margin-right: 4rem;
+        /* margin-right: 4rem;
+        margin: 0 30px; */
+    }
+    .poster-box-bottom{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin : 0 30px;
     }
 `;
 
@@ -33,9 +48,10 @@ function Poster() {
     }
 
     return (
+        <>
+        <h3 className='summary-top'>{item_name}</h3>
         <PosterStyle>
         <div>
-        <h3 className='summary-top'>{item_name}</h3>
             <div className='summary-body'>
                 <div className='poster-box' style={{margin: '0'}}>
                     <img className='poster-box-top' src='test.gif' alt='포스터 이미지'/>
@@ -48,6 +64,7 @@ function Poster() {
             </div>
         </div>
         </PosterStyle>
+        </>
     )
 }
 

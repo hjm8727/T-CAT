@@ -12,6 +12,21 @@ const { Content, Sider } = Layout;
 
 const DWrap = styled.div`
 width: 100%;
+.ItemContainer{
+  width: 80%;
+  margin: 0 auto;
+}
+.TopItemContainer{
+  /* width: 100%; */
+  border: 1px solid black;
+}
+.PosterContainer{
+  /* width: 35%; */
+  border: 1px solid black;
+}
+.InfoContainer{
+  /* width: 70%; */
+}
 .topBtn {
   position: fixed; 
   opacity: 0; 
@@ -74,32 +89,32 @@ function Detail() {
   })
 
   return (
-    <DWrap style={{width: '100%'}}>
+    <DWrap>
       <button className={BtnStatus ? "topBtn active" : "topBtn"} onClick={handleTop}>
         <ArrowCircleUp className='arrow'/></button>
-      <Layout style={{width: '100%', height: '100%'}}>
       <MainHeader/>
-      <hr/>
-        <Content style={{width: '70rem', marginLeft: '10rem ', marginRight: '15rem', padding: '0 50px'}}>
-          <Layout className="site-layout-background" style={{padding: '24px 0'}}>
-            <Content style={{width: '30rem', padding: '0 24px', minHeight: 280 ,border:'1px solid blakc'}}>
-              <Poster/>
-            </Content>
-            <hr style={{backgroundColor: 'black', width: '1px', opacity: '0.6'}} />
 
-            <Content style={{width: '40rem'}}>
+      <Layout className='ItemContainer' >
+      <hr/>    
+          <Layout className="TopItemContainer" >
+            <div className='PosterContainer'>
+              <Poster/>
+            </div>
+            
+            <hr style={{backgroundColor: 'black', opacity: '0.6'}} />
+
+            <Content className='InfoContainer'>
               <Info/>
             </Content>
 
-            <Sider className="site-layout-background" width={310} style={{borderRadius: '1.2rem', backgroundColor: 'silver', overflow: 'auto', height: '650px', position: 'fixed', left: '1200px', top: '6.5rem', bottom: '0'}} >
+            <Sider className="site-layout-background" style={{borderRadius: '1.2rem', backgroundColor: 'silver', overflow: 'auto', height: '650px', position: 'fixed', left: '1200px', top: '6.5rem', bottom: '0'}} >
               <TCalendar item_name={item_name} price={price}/>
             </Sider>
-
           </Layout>
-          <Content style={{width: '70rem' }}>
+
+          <Content style={{}}>
               <DBody/>
           </Content>
-        </Content>
         <Footer/>
         {/* <Footer style={{backgroundColor: 'skyblue'}}>
           Footer 영역

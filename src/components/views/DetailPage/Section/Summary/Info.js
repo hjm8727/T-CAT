@@ -5,7 +5,7 @@ import Modal from '../../../../../util/Modal/Modal';
 import MapModalBody from './MapModal';
 
 const InfoStyle = styled.div`
-    div {
+    /* div {
         margin-top: 4rem;
     }
     .infoDesc {
@@ -42,7 +42,7 @@ const InfoStyle = styled.div`
     }
     .modal > section > main {
 
-    }
+    } */
 `;
 
 // 상세페이지 상단 공연 정보
