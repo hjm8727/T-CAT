@@ -40,8 +40,13 @@ const MyInfoStyle = styled.div`
     border-radius: 12rem;
   }
   .up-button {
+    font-size: 18px;
     border: none; 
   }
+  .up-wrap{
+    display: flex;
+    justify-content: center;
+}
 `;
 
 function MyPage() {
@@ -69,16 +74,26 @@ const items = [
     <div>
     <MainHeader/>
     <Layout>
-      <Sider style={{height: '350px'}}>
-        <div className="logo" />
+      <Sider>
+        {/* <div className="logo" /> */}
         <Menu theme="dark" mode="inline" items={items} onClick={({key}) => navigate(key)}/>
       </Sider>
+
       <Layout className="site-layout">
         <Content style={{margin: '0 16px' }}>
           <div className="site-layout-background">
             <MyInfoStyle>
+      
               <div className='userInfo'>
+                <div className='Contain1'>
                   <GithubFilled style={{fontSize: '10rem', margin: '2rem'}} />
+
+                  <div className='up-wrap'>
+                    <Link to='MyPage/update'><button className='up-button'>회원 정보 수정</button></Link>
+                  </div>
+
+                </div>
+               
                   <div className='info-des'>
                     <div className='description'>
                       <p><h4><strong>지민</strong>님 오늘도 TCat을 방문해주셔 감사합니다. 좋은 하루 되세요</h4></p>
@@ -87,9 +102,8 @@ const items = [
                       <p>현재 회원님의 포인트는 <input className='point-box' readOnly value={50000}/></p>
                     </div>
                   </div>
-                  <div className='up-wrap'>
-                    <Link to='MyPage/update'><button className='up-button'>회원 정보 수정</button></Link>
-                  </div>
+                  
+
               </div>
           </MyInfoStyle>
           </div>
@@ -97,9 +111,9 @@ const items = [
             <MyBody/>
           </div>
         </Content>
-        <Footer/>
       </Layout>
     </Layout>
+    <Footer/>
     </div>
   );
 }

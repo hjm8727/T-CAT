@@ -133,8 +133,8 @@ width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-left: 15px;
-    margin-left: 15px;
+    /* padding-left: 15px; */
+    /* margin-left: 15px; */
     gap: 15px;
     .comment-container {
       width: 100%;

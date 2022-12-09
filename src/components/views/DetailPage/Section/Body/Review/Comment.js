@@ -11,6 +11,10 @@ import styled from "styled-components";
 const CWrap = styled.div`
 width: 100%;
 .comment-container {
+<<<<<<< HEAD
+  margin: 0 20px;
+=======
+>>>>>>> df1f5c0ff60b6b6fda3192e7668f2cff8f106a8d
   display: flex;
   flex-direction: column;
   width: 100%;
