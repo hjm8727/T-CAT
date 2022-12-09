@@ -39,20 +39,20 @@ const MyInfoStyle = styled.div`
     border: 1px solid brown;
     border-radius: 12rem;
   }
-  .up-wrap {
-    width: 15rem;
-    position: relative;
-  }
   .up-button {
-    border: none;
-    padding: 5px 10px;
-    margin-left: 3.5rem;
-    margin-top: 3rem;
+    font-size: 18px;
+    border: none; 
   }
+  .up-wrap{
+    display: flex;
+    justify-content: center;
+}
 `;
 
 function MyPage() {
   const { Content, Sider } = Layout;
+
+  const [collapsed, setCollapsed] = useState(false);
 
 function getItem(label, key, icon, children) {
   return { key, icon, children,label };
@@ -76,19 +76,26 @@ const items = [
     <div>
     <MainHeader/>
     <Layout>
-      <Sider style={{height: '350px'}}>
-        <div className="logo" />
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} style={{position: 'relative'}}>
+        {/* <div className="logo" /> */}
         <Menu theme="dark" mode="inline" items={items} onClick={({key}) => navigate(key)}/>
       </Sider>
+
       <Layout className="site-layout">
         <Content style={{margin: '0 16px' }}>
           <div className="site-layout-background">
             <MyInfoStyle>
+      
               <div className='userInfo'>
+                <div className='Contain1'>
+                  <GithubFilled style={{fontSize: '10rem', margin: '2rem'}} />
+
                   <div className='up-wrap'>
-                  <GithubFilled style={{fontSize: '10rem', marginLeft: '2rem', marginRight: '2rem', marginTop: '2rem', marginBottom: '0', heihjt: '10rem'}} />
                     <Link to='MyPage/update'><button className='up-button'>회원 정보 수정</button></Link>
                   </div>
+
+                </div>
+               
                   <div className='info-des'>
                     <div className='description'>
                       <p><h4><strong>지민</strong>님 오늘도 TCat을 방문해주셔 감사합니다. 좋은 하루 되세요</h4></p>
@@ -97,16 +104,18 @@ const items = [
                       <p>현재 회원님의 포인트는 <input className='point-box' readOnly value={50000}/></p>
                     </div>
                   </div>
+                  
+
               </div>
           </MyInfoStyle>
           </div>
-          <div style={{ width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
+          <div style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
             <MyBody/>
           </div>
         </Content>
-        <Footer/>
       </Layout>
     </Layout>
+    <Footer/>
     </div>
   );
 }

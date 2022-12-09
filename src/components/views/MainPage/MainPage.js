@@ -16,6 +16,7 @@ const ItemContainer = styled.div`
     padding: 0px;
     margin: 0 auto;
     min-width: 930px;
+    margin-bottom: 40px;
     /* background-color: #f5f5f7; */
     hr{
         margin: 0;
@@ -45,10 +46,7 @@ const MainPage = () =>{
                         <MainBanner/>
                         <PosterCategory2/>
                         <MainPoster2/>
-                    </ItemContainer>
-
-
-                    <ItemContainer>
+                        
                         <MainReview/>
                         <hr></hr>
                         <MainIcon/>
