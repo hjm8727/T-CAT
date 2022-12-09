@@ -10,6 +10,8 @@ import Footer from "../Footer/Footer";
 import MainPoster2 from "./Content/MainPoster2/MainPoster2";
 import PosterCategory2 from "./Content/MainPoster2/MainCategory2";
 import MainReview from "./Content/MainReview/MainReview";
+import { useEffect, useState } from "react";
+import { ArrowCircleUp } from "@mui/icons-material";
 
 const ItemContainer = styled.div`
     width: 80%;
@@ -27,16 +29,68 @@ const MainContainer = styled.div`
     margin: 0px;
     padding: 0px;
     min-width: 900px;
+.topBtn {
+    position: fixed; 
+    opacity: 0; 
+    bottom: 40px; 
+    right: 40px;
+    z-index: -10; 
+    border: 0 none;
+    background: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in;
+}
+.arrow {
+    font-size: 50px;
+}
+.topBtn.active {
+    z-index: 10; 
+    opacity: 1; 
+}
+.topBtn:hover,
+.topBtn:focus,
+.topBtn:active { 
+    outline: 0 none; 
+}
 `
 
 const MainPage = () =>{
-    return(
-        
-        <MainContainer>    
-            <MainHeader/>
-                
-                <ContentWarp/>
+    const [ScrollY, setScrollY] = useState(0);
+    const [BtnStatus, setBtnStatus] = useState(false);
+    const handleFollow = () => {
+        setScrollY(window.pageYOffset);
+        if(ScrollY > 100) {
+            setBtnStatus(true);
+        } else {
+            setBtnStatus(false);
+        }
+    }
+    
+    const handleTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+        setScrollY(0);
+        setBtnStatus(false);
+        }
+    
+    useEffect(() => {
+        const watch = () => {
+        window.addEventListener('scroll', handleFollow)
+        }
+        watch();
+        return () => {
+            window.removeEventListener('scroll', handleFollow)
+        }
+    })
 
+    return(
+        <MainContainer>
+            <button className={BtnStatus ? "topBtn active" : "topBtn"} onClick={handleTop}>
+            <ArrowCircleUp className='arrow'/></button>
+            <MainHeader/>
+                <ContentWarp/>
                     <ItemContainer>
                         <MainPoster name = "주간 랭킹"/>
                         <MainPoster name = "일간 랭킹"/>

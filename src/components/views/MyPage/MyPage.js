@@ -52,13 +52,13 @@ const MyInfoStyle = styled.div`
 function MyPage() {
   const { Content, Sider } = Layout;
 
-  const [collapsed, setCollapsed] = useState(false);
-
+  // const [collapsed, setCollapsed] = useState(false);
+  // const el = document.getElementsByClassName('ant-layout-sider-trigger');
+  // el[0].style.position = 'relative';
   
   function getItem(label, key, icon, children) {
     return { key, icon, children,label };
   }
-  
   
   const items = [
     getItem('예매 내역', '/MyPage/RList', <ScheduleOutlined />),
@@ -74,13 +74,11 @@ function MyPage() {
   ];
   const navigate = useNavigate();
   
-  // const el = document.getElementsByClassName('ant-layout-sider-trigger');
-  // el[0].style.position = 'relative';
   return (
     <div>
     <MainHeader/>
     <Layout>
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider>
         {/* <div className="logo" /> */}
         <Menu theme="dark" mode="inline" items={items} onClick={({key}) => navigate(key)}/>
       </Sider>
@@ -119,7 +117,7 @@ function MyPage() {
 }
 
 const MyBody = () => (
-    <>
+  <>
     <Routes>
       <Route path='MyPage/update' element={<InfoUpdate />} />
       <Route path='/RList' element={<RList/>}/>
@@ -129,5 +127,6 @@ const MyBody = () => (
     </Routes>
     </>
 );
+
 
 export default MyPage;
