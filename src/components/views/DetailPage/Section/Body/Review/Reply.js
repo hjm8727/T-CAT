@@ -6,12 +6,12 @@ import CommentFooter from "./CommentFooter";
 import styled from "styled-components";
 
 const RWrap = styled.div`
+width: 100%;
 .comment-container {
+  margin: 20px;
   display: flex;
   flex-direction: column;
-  width: 90%;
-  
-
+  width: 100%;
   .comment {
     display: flex;
     flex-direction: column;
@@ -133,14 +133,13 @@ const RWrap = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-left: 15px;
-    border-left: 2px solid lightgray;
-    margin-left: 15px;
+    /* padding-left: 15px; */
+    /* margin-left: 15px; */
     gap: 15px;
     .comment-container {
       width: 100%;
       .comment{
-        animation: come-in 1.5s ease-in-out;
+        animation: come-in 1s ease-in-out;
       }
     }
   }
@@ -150,7 +149,7 @@ const RWrap = styled.div`
     animation-duration: 0.5s;
   }
 
-  @include media-md() {
+  /* @include media-md() {
     width: 735px;
     .comment {
       flex-direction: row;
@@ -179,14 +178,14 @@ const RWrap = styled.div`
       margin-left: 35px;
       gap: 20px;
     }
-  }
+  } */
 }
 
 .reply-container-gap .reply-container {
   margin-top: 15px;
-  @include media-md() {
+  /* @include media-md() {
     margin-top: 20px;
-  }
+  } */
 }
 
 @keyframes come-in {

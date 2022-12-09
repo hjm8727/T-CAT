@@ -8,19 +8,19 @@ const commentPostedTime = (timeInMileSec) => {
   let years = (timeInMileSec / (1000 * 60 * 60 * 24 * 12)).toFixed(0);
 
   if (sec < 60) {
-    return "seconds";
+    return sec + "초";
   } else if (min < 60) {
-    return min + " mins";
+    return min + "분";
   } else if (hrs < 24) {
-    return hrs + " hrs";
+    return hrs + "시간";
   } else if (days < 7) {
-    return days + " days";
+    return days + "일";
   } else if (weeks < 4) {
-    return weeks + " weeks";
+    return weeks + "주";
   } else if (months < 12) {
-    return months + " months";
+    return months + "달";
   } else {
-    return years + " year";
+    return years + "년";
   }
 };
 
