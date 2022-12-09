@@ -74,7 +74,7 @@ function Detail() {
   })
 
   return (
-    <DWrap>
+    <DWrap style={{width: '100%'}}>
       <button className={BtnStatus ? "topBtn active" : "topBtn"} onClick={handleTop}>
         <ArrowCircleUp className='arrow'/></button>
       <Layout style={{width: '100%', height: '100%'}}>
