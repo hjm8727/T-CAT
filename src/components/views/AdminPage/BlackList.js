@@ -3,17 +3,24 @@ import TopBar from "./Tool/TopBar";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminApi from "../../../api/AdminApi";
+import Pagination from "./Tool/Pagination/Paging";
 
 
 const BlackList=()=>{
+
+  // 페이지네이션 변수
+  const [limit, setLimit] = useState(10); // 한페이지에 보여지는 게시물 갯수
+  const [page, setPage] = useState(1); // 현재 페이지 번호
+  const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
+  const [pageStart, setPageStart] = useState(0);
+
+  // 체크박스 변수
   const [memberList, setMemberList] = useState('');
-  // 체크된 아이템을 담을 배열=> 이거 스프링으로 보내기
   const [checkItems, setCheckItems] = useState([]); 
 
   // 체크박스 단일 선택
   const handleSingleCheck = (checked, obj) => {
     if (checked) {
-      // 단일 선택 시 체크된 아이템을 배열에 추가
       setCheckItems(prev => [...prev, obj]);
       console.log(obj); // 선택한 db 값 
       console.log(obj.index);
@@ -35,9 +42,6 @@ const BlackList=()=>{
       // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
       setCheckItems([]);
     }
-  }
-  const onClickDelete=()=>{
-    
   }
 
   useEffect(() => {
@@ -73,22 +77,30 @@ const BlackList=()=>{
                   </tr>
                 </thead>
                 <tbody>
-                {memberList && memberList.map((data,key) => (<tr key={key}>
-                  <td><input type='checkbox' name={`select-${data}`} onChange={(e) => handleSingleCheck(e.target.checked, data)}
+                {memberList && memberList.slice(offset, offset + limit).map(({id,name,email,date,memberStatus}) => (<tr>
+                  <td><input type='checkbox' name={`select-${id}`} onChange={(e) => handleSingleCheck(e.target.checked, id)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                  checked={checkItems.includes(data) ? true : false} />
+                  checked={checkItems.includes(id) ? true : false} />
                   </td>
-                    <td>{data.id}</td>
-                    <td>{data.name}</td>
-                    <td>{data.email}</td>
-                    <td>{data.date}</td>
-                    <td>{data.report}</td>
+                    <td>{id}</td>
+                    <td>{name}</td>
+                    <td>{email}</td>
+                    <td>{date}</td>
+                    <td>{memberStatus}</td>
                 </tr>
                 ))}
                 </tbody>
               </table>
             </div>
-            <div className="delete"><button onClick={onClickDelete}>탈퇴하기</button></div>
+            <Pagination
+            total={memberList.length}
+            limit={limit}
+            page={page}
+            setPage={setPage}
+            pageStart={pageStart}
+            setPageStart={setPageStart}
+            />
+            <div className="delete"><button>탈퇴하기</button></div>
         </MemberBlock>
     );
 

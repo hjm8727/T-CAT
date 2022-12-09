@@ -1,27 +1,50 @@
-import React from "react";
-import Pagination from "react-js-pagination";
-import "./Paging.css";
-import { useState } from "react";
+import './Paging.css'
 
-const Paging = () => {
-  const [page, setPage] = useState(1);
+// 1조에서 제공 ㅎㅎ
 
-  const handlePageChange = (page) => {
-    setPage(page);
-  };
+const Pagination = ({total, limit, page,pageStart, setPage, setPageStart, setCheckItems}) => {
+  const numPages = Math.ceil(total / limit);
+  const viewPages = (numPages > 5 ? 5 : numPages); //페이지 수 
 
   return (
-    <Pagination
-      activePage={page} // 현재 페이지
-      itemsCountPerPage={10} // 한 페이지랑 보여줄 아이템 갯수
-      totalItemsCount={450} // 총 아이템 갯수
-      pageRangeDisplayed={5} // paginator의 페이지 범위
-      prevPageText={"‹"} // "이전"을 나타낼 텍스트
-      nextPageText={"›"} // "다음"을 나타낼 텍스트
-      onChange={handlePageChange} // 페이지 변경을 핸들링하는 함수
-    />
+    <div className="pagination">
+      <button 
+        onClick={() => {
+          setPage(page - 1); 
+          setPageStart(Math.floor((page - 2) / 10));
+          setCheckItems([]);
+          }} 
+        disabled={page === 1}>
+        &lt;
+      </button>
+      {Array(viewPages)
+        .fill()
+        .map((_, i) => {
+          if(pageStart * 10 + i + 1 <= numPages) {
+            return(
+              <button
+                key={pageStart * 10 + i + 1}
+                onClick={() => {
+                  setPage(pageStart * 10 + i + 1);
+                  setCheckItems([]);
+                }}
+                aria-current={page === pageStart * 10 + i + 1 ? "page" : null}
+              >
+                {pageStart * 10 + i + 1}
+              </button>
+            )
+        }})}
+      <button 
+        onClick={() =>{
+          setPage(page + 1); 
+          setPageStart(Math.floor(page / 10));
+          setCheckItems([]);}}
+        disabled={page === numPages}
+      >
+        &gt;
+      </button>
+    </div>
   );
-};
+}
 
-
-export default Paging;
+export default Pagination;

@@ -7,7 +7,10 @@ import './qnaModal.css';
 
 const QnaModal = (props) => {
     const [inputReply, setInputReply] = useState("");
+    // 문의 답장 값을 담아줌
+    const onChangeReply=(e)=>{setInputReply(e.target.value);}
 
+    // 문의 답장 전송 호출
     const onClickReply=async(e)=>{
         if(inputReply.length <= 10 || inputReply.length >= 1000) {
         alert('문의 사항을 최소 10 ~ 1000글자 이내로 부탁드립니다.');
@@ -22,13 +25,13 @@ const QnaModal = (props) => {
         }
     }
 
-    }
+}
 
-    const onChangeReply=(e)=>{
-    setInputReply(e.target.value);
-    console.log(inputReply);
-    }
-    const { open, close, header ,submit} = props;
+    // const onChangeReply=(e)=>{
+    // setInputReply(e.target.value);
+    // console.log(inputReply);
+    // }
+    const { open, close, header ,submit,title} = props;
 
     return (
         <div className={open ? 'openModal modal' : 'modal'}>
@@ -41,8 +44,9 @@ const QnaModal = (props) => {
                         </button>
                     </header>
                     <main>
+                    <div>작성자</div>
                     {props.children}
-                    <input value={inputReply} onChange={onChangeReply}/>
+                    <textarea className='qna-replybox' value={inputReply} onChange={onChangeReply}/>
                     </main>
                     <footer>
                     {submit &&

@@ -1,6 +1,7 @@
 import { ReactComponent as IconReply } from "../../../../../../images/icon-reply.svg";
 import { ReactComponent as IconDelete } from "../../../../../../images/icon-delete.svg";
 import { ReactComponent as IconEdit } from "../../../../../../images/icon-edit.svg";
+import { useState } from "react";
 
 const CommentBtn = ({commentData, setReplying, setDeleting, setDeleteModalState, setEditing}) => {
   // 대댓글 추가
@@ -23,6 +24,7 @@ const CommentBtn = ({commentData, setReplying, setDeleting, setDeleteModalState,
   const showEditComment = () => {
     setEditing(true);
   };
+
 
   return (
     <div className="comment--btn">

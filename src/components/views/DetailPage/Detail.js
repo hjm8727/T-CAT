@@ -1,18 +1,82 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Layout} from 'antd';
 import TCalendar from './Section/Side/TCalendar'
 import Poster from './Section/Summary/Poster';
 import Info from './Section/Summary/Info';
 import DBody from './Section/Body/DBody';
 import MainHeader from '../MainHeader/MainHeader';
-const { Content, Footer, Sider } = Layout;
+import Footer from '../Footer/Footer';
+import styled from 'styled-components';
+import { ArrowCircleUp } from '@mui/icons-material';
+const { Content, Sider } = Layout;
+
+const DWrap = styled.div`
+width: 100%;
+.topBtn {
+  position: fixed; 
+  opacity: 0; 
+  bottom: 40px; 
+  right: 40px;
+  z-index: -10; 
+  border: 0 none;
+  background: #F5F5F5;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in;
+}
+.arrow {
+  font-size: 50px;
+}
+.topBtn.active {
+  z-index: 10; 
+  opacity: 1; 
+}
+
+.topBtn:hover,
+.topBtn:focus,
+.topBtn:active { 
+  outline: 0 none; 
+}
+`
 
 // 상세페이지
 function Detail() {
   const item_name = '태양의서커스 <뉴 알레그리아>';
   const price = 150000;
+  const [ScrollY, setScrollY] = useState(0);
+  const [BtnStatus, setBtnStatus] = useState(false);
+  
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset);
+    if(ScrollY > 100) {
+      setBtnStatus(true);
+    } else {
+      setBtnStatus(false);
+    }
+  }
+
+  const handleTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+    setScrollY(0);
+    setBtnStatus(false);
+  }
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow)
+    }
+    watch();
+    return () => {
+      window.removeEventListener('scroll', handleFollow)
+    }
+  })
+
   return (
-    <div>
+    <DWrap>
+      <button className={BtnStatus ? "topBtn active" : "topBtn"} onClick={handleTop}>
+        <ArrowCircleUp className='arrow'/></button>
       <Layout style={{width: '100%', height: '100%'}}>
       <MainHeader/>
       <hr/>
@@ -27,7 +91,7 @@ function Detail() {
               <Info/>
             </Content>
 
-            <Sider className="site-layout-background" width={300} style={{borderRadius: '1.2rem', backgroundColor: 'silver', overflow: 'auto', height: '575px', position: 'fixed', left: '1200px', top: '6.5rem', bottom: '0'}} >
+            <Sider className="site-layout-background" width={310} style={{borderRadius: '1.2rem', backgroundColor: 'silver', overflow: 'auto', height: '650px', position: 'fixed', left: '1200px', top: '6.5rem', bottom: '0'}} >
               <TCalendar item_name={item_name} price={price}/>
             </Sider>
 
@@ -36,11 +100,12 @@ function Detail() {
               <DBody/>
           </Content>
         </Content>
-        <Footer style={{backgroundColor: 'skyblue'}}>
+        <Footer/>
+        {/* <Footer style={{backgroundColor: 'skyblue'}}>
           Footer 영역
-        </Footer>
+        </Footer> */}
       </Layout>
-    </div>
+    </DWrap>
   )
 }
   

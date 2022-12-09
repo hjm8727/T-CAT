@@ -6,44 +6,7 @@ import {ref, uploadBytes, listAll, getDownloadURL,deleteObject, getStorage, uplo
 import {v4, v4 as uuidv4} from "uuid";
 // import { ref, uploadString, getDownloadURL, deleteObject } from "@firebase/storage";
 
-const BannerBlock=styled.div`
-    margin:0 auto;
-    box-sizing: border-box;
-    width: 100vw;
-.tableContainer{
-    border: 2px solid gray;
-    margin: 30px 30px;
-}
-.tableWrap{
-    margin: 15px 30px;
-    th{
-        width: 800px;
-        text-align: center;
-        background-color: #CEAB93;
-        height: 20px;
-    }
-    td{
-        input{
-            width: 500px;
-        }
-    }
-}
-.preview{
-    align-items: center;
-    flex-direction: column;
-    ul{
-        list-style: none;
-    }
-    li{
-    float: left;
-}
-}
-    img{
-        width: 300px;
-        height: 200px;
-        margin: 10px;
-    }
-`;
+
 
 const Banner=()=>{
     // 배너 제목, 링크 클릭시 이동 주소 담는 값
@@ -128,25 +91,8 @@ const Banner=()=>{
     return(
         <BannerBlock>
         <NavBar name="광고/배너 관리"/>
-        <div className="tableContainer">
-            <table className="tableWrap">
-            {/* <tbody>
-                <tr>
-                    <th>배너 제목</th>
-                    <td><input type="text" value={title}/></td>
-                </tr>
-                <tr>
-                    <th>링크 주소</th>
-                    <td><input type="text" value={adUrl}/></td>
-                </tr>
-                <tr>
-                    <th>배너 이미지</th>
-                    <td><input type="file"/>
-                    <button onClick={onSubmit}>이미지 올리기</button>
-                    </td>
-                </tr>
-            </tbody> */}
-        </table>
+        <div className="banner-Container">
+           
         </div>
         <input type="file" onChange={onChangeImg}/>
         {attachment && (
@@ -179,3 +125,33 @@ const Banner=()=>{
     );
 }
 export default Banner;
+
+const BannerBlock=styled.div`
+    margin:0 auto;
+    box-sizing: border-box;
+  .banner-container {
+    width: 100vw;
+    margin : 10px;
+    display: flex;
+    border: 1px solid black;
+    height: 60%;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+  }
+.preview{
+    align-items: center;
+    flex-direction: column;
+    ul{
+        list-style: none;
+    }
+    li{
+    float: left;
+}
+}
+    img{
+        width: 300px;
+        height: 200px;
+        margin: 10px;
+    }
+`;

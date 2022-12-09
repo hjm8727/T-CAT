@@ -1,28 +1,34 @@
 import TopBar from "../Tool/TopBar";
 import styled from "styled-components";
 import { useState, useEffect} from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate,useParams} from "react-router-dom";
 import AdminApi from "../../../../api/AdminApi";
+import Pagination from "../Tool/Pagination/Paging";
 
 
 const NoticeList=()=>{
-  const navigate = useNavigate();
-   // 문의 내용을 가져와서 담기 위한 변수
-  const [noticeList, setNoticeList] = useState('');
   const [loading, setLoading] = useState(false);
-
-
-  // 체크된 아이템을 담을 배열
-  const [checkItems, setCheckItems] = useState([]);
+  const params = useParams().index;
+  const navigate = useNavigate();
+   // 페이지네이션 변수
+   const [limit, setLimit] = useState(10); // 한페이지에 보여지는 게시물 갯수
+   const [page, setPage] = useState(1); // 현재 페이지 번호
+   const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
+   const [pageStart, setPageStart] = useState(0);
+ 
+   // 체크박스 변수
+   const [noticeList, setNoticeList] = useState('');
+   const [checkItems, setCheckItems] = useState([]); 
   // 체크박스 단일 선택
-  const handleSingleCheck = (checked, id) => {
+  const handleSingleCheck = (checked, data) => {
     if (checked) {
       // 단일 선택 시 체크된 아이템을 배열에 추가
-      setCheckItems(prev => [...prev, id]);
-      console.log(id);
+      setCheckItems(prev => [...prev, data]);
+      console.log(data); // 아래에서 index 값을 받은거라 index 값 찍힘
+      console.log()
     } else {
       // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-      setCheckItems(checkItems.filter((el) => el !== id));
+      setCheckItems(checkItems.filter((el) => el !== data));
     }
   };
 
@@ -31,7 +37,7 @@ const NoticeList=()=>{
     if(checked) {
       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
-      noticeList.forEach((el) => idArray.push(el));
+      noticeList.forEach((el) => idArray.push(el.index));
       setCheckItems(idArray);
       console.log(idArray);
     }
@@ -40,39 +46,65 @@ const NoticeList=()=>{
       setCheckItems([]);
     }
   }
-  const onClickDelete=()=>{
-    alert("공지사항을 삭제하시겠습니까?")
-    const deleteNotice=async()=>{
-      try{
-        const response = await AdminApi.noticeDelete();
-        setNoticeList(response.data);
-        console.log(response.data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    deleteNotice();
-    setCheckItems([]);
-  }
+    // 체크한거 배열로 담기
+    useEffect(()=>{
+      console.log(checkItems)
+    }, [checkItems])
 
-    /** 문의 내용을 가져오는 useEffect */
+  const array = [checkItems];
+  console.log("체크값 개수 : " + checkItems.length);
+  console.log("배열에 담은거 되는지");
+  console.log(array);
+  console.log(array.join(",")); //[]안에 있는걸 12,13 으로 변환
+
+    /** 공지 목록을 가져오는 useEffect */
   useEffect(() => {
     const noticeData = async()=> {
+      setLoading(true);
       try {
-        const response = await AdminApi.noticeInfo(); // 전체 리스트 조회
-        setNoticeList(response.data);
-        console.log(response.data);
+        const res = await AdminApi.noticeInfo();
+        setNoticeList(res.data);
+        console.log(res.data);
       } catch (e) {
         console.log(e);
       }
+      setLoading(false);
     };
     noticeData();
   }, []);
+  if (loading) {
+    return <div>로딩 중...</div>;
+  }
+
+  const idList = [];
+
+  const onClickDelete=async()=>{
+    idList.push()
+    // const res = await AdminApi.noticeCheck(array.join(",")); //이제 이게 어디서 날라오는건지 헷갈린다 
+    
+    // const res = await AdminApi.noticeCheck(params);
+    // console.log(res.data);
+
+    // alert("공지사항을 삭제하시겠습니까?")
+    // if(checkItems.length<1){
+    //   alert("체크박스 한개 이상 체크해주세요")
+    // } else{
+    //   const response = await AdminApi.noticeCheck(checkItems);
+    //   try{
+    //     console.log(response.data);
+    //   }catch(e){
+    //     console.log(e);
+    //   }
+    // } 
+    // setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
+    };
+
 
     return(
         <NoticeBlock>
         <TopBar name="공지사항 관리"/>
           <div className="container">
+            <input type="hidden" id="arrayParam" name="arrayParam"/>
           <table>
                 <thead>
                   <tr>
@@ -88,23 +120,34 @@ const NoticeList=()=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {noticeList && noticeList.map((info) => (<tr key={info.index}>
-                  <td><input type='checkbox' name={`select-${info}`} onChange={(e) => handleSingleCheck(e.target.checked,info)}
+                  {noticeList && noticeList.slice(offset, offset + limit)
+                  .map(({index,title,create_time}) => (
+                  <tr>
+                  <td><input type='checkbox' name={`select-${index}`} onChange={(e) => handleSingleCheck(e.target.checked,index)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
-                  checked={checkItems.includes(info) ? true : false} />
+                  checked={checkItems.includes(index) ? true : false} />
                   </td>
-                    <td>{info.index}</td>
-                    <td><Link to={`/admin/noticeDetail/${info.index}`}>{info.title}</Link></td>
+                    <td>{index}</td>
+                    <td><Link to={`/admin/noticeDetail/${index}`}>{title}</Link></td>
                     <td>관리자</td>
-                    <td>{info.create_time}</td>
+                    <td>{create_time}</td>
                 </tr>
                 ))}
                 </tbody>
               </table>
             </div>
+            <Pagination
+              total={noticeList.length}
+              limit={limit}
+              page={page}
+              setPage={setPage}
+              pageStart={pageStart}
+              setPageStart={setPageStart}
+              />
+
             <div className="buttonWrap">
-                <button onClick={()=>{navigate('/admin/writeNotice')}}>작성하기</button>
-                <button onClick={onClickDelete}>삭제하기</button>
+                <button className="noticeBtn" onClick={()=>{navigate('/admin/writeNotice')}}>작성하기</button>
+                <button className="noticeBtn" onClick={onClickDelete}>삭제하기</button>
             </div>
         </NoticeBlock>
     );
@@ -131,7 +174,7 @@ table,th,td {
         text-align: center;
         justify-content: center;
     }
-    button{
+    .noticeBtn{
       border: none;
       margin: 15px 0;
       margin: 20px 10px;

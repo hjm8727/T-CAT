@@ -4,7 +4,9 @@ const HeaderContainer = styled.div`
         display: flex;
         justify-content: space-between;        
         margin: 0 auto;
-    
+    h3 {
+        margin-bottom: 0;
+    }
 `
 const IconModalHeader = (props) => {
     return(
