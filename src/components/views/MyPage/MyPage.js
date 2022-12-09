@@ -96,7 +96,7 @@ function MyPage() {
                 </div>
                   <div className='info-des'>
                     <div className='description'>
-                      <p><h4><strong>지민</strong>님 오늘도 TCat을 방문해주셔 감사합니다. 좋은 하루 되세요</h4></p>
+                      <h4><strong>지민</strong>님 오늘도 TCat을 방문해주셔 감사합니다. 좋은 하루 되세요</h4>
                       <p>나의 아이디는 jimin0601</p>
                       <p>나의 이메일은 jimin600155@naver.com</p>
                       <p>현재 회원님의 포인트는 <input className='point-box' readOnly value={50000}/></p>

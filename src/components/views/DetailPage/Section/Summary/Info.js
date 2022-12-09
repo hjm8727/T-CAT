@@ -59,68 +59,68 @@ function Info() {
     return (
         <InfoStyle>
         <div>
-            <ul class="info" style={{listStyle: 'none'}}>
-                <li class="infoItem">
-                    <strong class="infoLabel">장소</strong>
-                <span class="infoDesc">
-                    <span class="infoBtn" data-popup="info-place" role="button" onClick={openModal}>
+            <ul className="info" style={{listStyle: 'none'}}>
+                <li className="infoItem">
+                    <strong className="infoLabel">장소</strong>
+                <span className="infoDesc">
+                    <span className="infoBtn" data-popup="info-place" role="button" onClick={openModal}>
                     대성 디큐브아트센터<ArrowRightOutlined style={{marginBottom: '0.2rem'}}/>
                     </span>
                 </span>
                 </li>
-                <p />
+                <br/>
             
-                <li class="infoItem">
-                    <strong class="infoLabel">공연기간</strong>
-                    <span span class="infoDesc">
-                    <span class="infoText">2022.10.05 ~2023.02.26</span>
+                <li className="infoItem">
+                    <strong className="infoLabel">공연기간</strong>
+                    <span span='true' className="infoDesc">
+                    <span className="infoText">2022.10.05 ~2023.02.26</span>
                 </span>
                 </li>
-                <p />
+                <br/>
 
-                <li class="infoItem"><strong class="infoLabel">공연시간</strong>
-                    <span class="infoDesc">
-                        <span class="infoText">160분(인터미션 15분 포함)</span>
+                <li className="infoItem"><strong className="infoLabel">공연시간</strong>
+                    <span className="infoDesc">
+                        <span className="infoText">160분(인터미션 15분 포함)</span>
                     </span>
                 </li>
-                <p />
+                <br/>
 
-                <li class="infoItem">
-                    <strong class="infoLabel">관람연령</strong>
-                    <span class="infoDesc">
-                        <span class="infoText">8세이상 관람가능</span>
+                <li className="infoItem">
+                    <strong className="infoLabel">관람연령</strong>
+                    <span className="infoDesc">
+                        <span className="infoText">8세이상 관람가능</span>
                     </span>
                 </li>
-                <p />
+                <br/>
                 <div className='hr'>
                 </div>
             
-                <li class="infoItem infoPrice">
-                    <strong class="infoLabel">가격</strong>
-                    <div class="infoDesc">
-                        <ul class="infoPriceList" style={{listStyle: 'none'}}>
-                            <li class="infoPriceItem is-largePrice">
+                <li className="infoItem infoPrice">
+                    <strong className="infoLabel">가격</strong>
+                    <div className="infoDesc">
+                        <ul className="infoPriceList" style={{listStyle: 'none'}}>
+                            <li className="infoPriceItem is-largePrice">
                             </li>
-                            <li class="infoPriceItem">
-                                <span class="name">VIP석</span>
-                                <span class="price">150,000원</span>
-                            </li> <p />
-                            <li class="infoPriceItem">
-                                <span class="name">OP석</span>
-                                <span class="price">140,000원</span>
-                            </li> <p />
-                            <li class="infoPriceItem">
-                                <span class="name">R석</span>
-                                <span class="priceA">130,000원</span>
-                            </li> <p />
-                            <li class="infoPriceItem">
-                                <span class="name">S석</span>
-                                <span class="priceA">100,000원</span>
-                            </li> <p />
-                            <li class="infoPriceItem">
-                                <span class="name">A석</span>
-                                <span class="priceA">70,000원</span>
-                            </li> <p />
+                            <li className="infoPriceItem">
+                                <span className="name">VIP석</span>
+                                <span className="price">150,000원</span>
+                            </li> <br />
+                            <li className="infoPriceItem">
+                                <span className="name">OP석</span>
+                                <span className="price">140,000원</span>
+                            </li> <br />
+                            <li className="infoPriceItem">
+                                <span className="name">R석</span>
+                                <span className="priceA">130,000원</span>
+                            </li> <br />
+                            <li className="infoPriceItem">
+                                <span className="name">S석</span>
+                                <span className="priceA">100,000원</span>
+                            </li> <br />
+                            <li className="infoPriceItem">
+                                <span className="name">A석</span>
+                                <span className="priceA">70,000원</span>
+                            </li> <br />
                         </ul>
                     </div>
                 </li>

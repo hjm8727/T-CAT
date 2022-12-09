@@ -146,19 +146,19 @@ function PopupContent (props) {
           <span className='seat seat-vip'/>
             <li>VIP석 0석</li>
           <span className='price-info'>{price}원</span>
-            <p />
+            <br />
           <span className='seat seat-r'/>
             <li>R석 5석</li>
           <span className='price-info'>{price}원</span>
-            <p />
+            <br />
           <span className='seat seat-s'/>
             <li>S석 28석</li>
           <span className='price-info'>{price}원</span>
-            <p />
+            <br />
           <span className='seat seat-a'/>
             <li>A석 94석</li>
           <span className='price-info'>{price}원</span>
-            <p />
+            <br />
         </ul>
       </div>
         <hr />
@@ -173,6 +173,7 @@ function PopupContent (props) {
           <strong>중복 할인 불가입니다. 하나의 유형으로만 선택해주세요.</strong>
         </div>
         <table>
+          <tbody>
           <tr>
             <th className='BorderBottom'>기본가</th>
             <td className='BorderBottom'>일반</td>
@@ -227,6 +228,7 @@ function PopupContent (props) {
               <span>수량</span>
             </td>
           </tr>
+          </tbody>
         </table>
       </div>
       <div className='BuyOption'>
@@ -277,6 +279,7 @@ function PopupContent (props) {
       <div>
         <h2>My예매정보</h2>
         <table>
+          <tbody>
           <tr>
             <th>제목</th>
             <td>{item_name}</td>
@@ -305,6 +308,7 @@ function PopupContent (props) {
             <th>총 결제금액</th>
             <td>{total}</td>
           </tr>
+          </tbody>
         </table>
       </div>
     );

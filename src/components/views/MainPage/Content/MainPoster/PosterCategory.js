@@ -61,6 +61,7 @@ const PosterCategory = (props) =>{
                 <li 
                     key={c.name}
                     active={category === c.name}
+                    // ER
                     onClick={()=>onSelect(c.name)}
                 >{c.text}</li>
             ))}

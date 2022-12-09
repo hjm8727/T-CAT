@@ -85,12 +85,12 @@ function TCalendar (props) {
             minDate={new Date()}
             />
             </div>
-            <p className='text-center'>
+            <div className='text-center'>
             <br/>
             <span className='bold'>선택한 날짜 : </span>{' '}
             {date.toDateString()}
             <hr />
-            </p>
+            </div>
             <Styleside>
                 <div className='side-container'>
                     <h4 className='side-header'>회차</h4>

@@ -119,7 +119,7 @@ function Qna() {
         </div>
         <div className='qna-top'>
           <p>
-          공연에 대해서 고객간에 자유롭게 질문/답변을 하는 공간입니다. 상품, 예매, 배송 등의 <button className='req-button'>문의 하기</button><p />
+          공연에 대해서 고객간에 자유롭게 질문/답변을 하는 공간입니다. 상품, 예매, 배송 등의 <button className='req-button'>문의 하기</button><br />
           정확한 답변이 필요한 문의는 <strong>TCat</strong> 고객센터 1544-1555를 이용해주시기 바랍니다
           </p>
         </div>
