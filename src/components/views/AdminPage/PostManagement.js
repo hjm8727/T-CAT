@@ -73,6 +73,7 @@ const PostManagement=()=>{
     }
   }
   
+  
     return(
         <PostBlock>
         <TopBar name="전시회 게시물 관리"/>
