@@ -5,7 +5,7 @@ const FooterContainer = styled.div`
   background-color: #f5f5f5;
   .ContentsContainer{
     display: flex;
-    margin: 0 40px;
+    margin: 0 80px;
     justify-content: space-between;
   }
   
@@ -21,7 +21,8 @@ const FooterContainer = styled.div`
   .box{
     display: flex;
     align-items: center;
-    margin: 0 40px;
+    justify-content: center;
+    /* margin: 0 150px; */
   }
   p{
     font-size: 0.9em;
@@ -69,7 +70,7 @@ const Footer =()=> {
         </div>
         <div className="box">
         <div>
-          {/* <li><img src="/images/TCat.jpg" alt=''></img></li> */}
+          <li><img src="/images/TCat.jpg" alt=''></img></li>
         </div>
         <div className="TextBox">
           <div>
@@ -78,32 +79,6 @@ const Footer =()=> {
             <p>주소 : 서울시 강남구 테헤란로 14길 6 kh 정보교육원</p>
             <p>Copyright 2022 T-Cat All rights reserved.</p>
           </div>
-        </div>
-        <div className="Nav">
-          <ul>
-            Home
-            <li>예매내역</li>
-            <li>취소 / 환불</li>
-            <li>Mp page</li>
-            <li>1:1문의</li>
-            <li>공지사항</li>
-            <li>자주 묻는 질문</li>  
-          </ul>
-
-          <ul>
-            MyPage
-            <li>예매내역</li>
-            <li>취소 / 환불</li>
-            <li>QnA</li>
-            <li>포인트</li>
-          </ul>
-          
-          <ul>
-            Admin
-          </ul>
-          <ul>
-            Detail
-          </ul>
         </div>
         </div>
     </FooterContainer>

@@ -71,7 +71,7 @@ const items = [
   const navigate = useNavigate();
   
   return (
-    <div>
+    <div> 
     <MainHeader/>
     <Layout>
       <Sider>
