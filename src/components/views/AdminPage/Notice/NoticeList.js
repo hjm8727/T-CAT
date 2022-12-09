@@ -24,8 +24,7 @@ const NoticeList=()=>{
     if (checked) {
       // 단일 선택 시 체크된 아이템을 배열에 추가
       setCheckItems(prev => [...prev, data]);
-      console.log(data); // 아래에서 index 값을 받은거라 index 값 찍힘
-      console.log()
+      // console.log(data); // 아래에서 index 값을 받은거라 index 값 찍힘
     } else {
       // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
       setCheckItems(checkItems.filter((el) => el !== data));
@@ -42,20 +41,38 @@ const NoticeList=()=>{
       console.log(idArray);
     }
     else {
-      // 전체 선택 해제 시 checkItems 를 빈 배열로 상태 업데이트
       setCheckItems([]);
     }
   }
     // 체크한거 배열로 담기
-    useEffect(()=>{
-      console.log(checkItems)
-    }, [checkItems])
+    // useEffect(()=>{
+    //   // console.log(checkItems)
+    // }, [checkItems]
+    // )
 
-  const array = [checkItems];
-  console.log("체크값 개수 : " + checkItems.length);
-  console.log("배열에 담은거 되는지");
-  console.log(array);
-  console.log(array.join(",")); //[]안에 있는걸 12,13 으로 변환
+  // const checkArray = [checkItems];
+  // // console.log("체크값 개수 : " + checkItems.length);
+  // console.log("const array 값(인덱스번호): " + checkArray);
+  // console.log(checkArray);
+
+  // const row = [...checkItems];
+  // console.log(row);
+
+  const myArr = []
+  const key = 'index';
+  const checkObj = {};
+
+  checkObj[key] = Number(`checkItems`);
+  console.log("타입체크 : " + typeof(Number(`checkItems`)));
+  console.log("배열갯수체크 : " + checkItems.length);
+  const check2 = checkItems.length;
+  console.log("숫자체크 : " + checkItems[check2-1]);
+
+  // console.log("숫자체크2 : " + checkItems.join(","));
+
+
+  myArr.push(checkObj)
+
 
     /** 공지 목록을 가져오는 useEffect */
   useEffect(() => {
@@ -64,7 +81,7 @@ const NoticeList=()=>{
       try {
         const res = await AdminApi.noticeInfo();
         setNoticeList(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       } catch (e) {
         console.log(e);
       }
@@ -76,27 +93,25 @@ const NoticeList=()=>{
     return <div>로딩 중...</div>;
   }
 
-  const idList = [];
-
   const onClickDelete=async()=>{
-    idList.push()
-    // const res = await AdminApi.noticeCheck(array.join(",")); //이제 이게 어디서 날라오는건지 헷갈린다 
-    
-    // const res = await AdminApi.noticeCheck(params);
-    // console.log(res.data);
+    if(checkItems.length<1){
+      alert("체크박스 한개 이상 체크해주세요")
+      navigate('/admin/noticeList');
+    } else{
+      console.log("삭제버튼 클릭(체크박스 1개이상)");
+      // for()
 
-    // alert("공지사항을 삭제하시겠습니까?")
-    // if(checkItems.length<1){
-    //   alert("체크박스 한개 이상 체크해주세요")
-    // } else{
-    //   const response = await AdminApi.noticeCheck(checkItems);
-    //   try{
-    //     console.log(response.data);
-    //   }catch(e){
-    //     console.log(e);
-    //   }
-    // } 
-    // setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
+      const res = await AdminApi.noticeCheck(myArr);
+    
+      // const response = await AdminApi.noticeCheck(checkItems);
+      try{
+        console.log("통신넘어가나? :" + res.data);
+      }catch(e){
+        console.log(e);
+        navigate('/admin/noticeList');
+      }
+    } 
+    setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
     };
 
 
@@ -121,7 +136,7 @@ const NoticeList=()=>{
                 </thead>
                 <tbody>
                   {noticeList && noticeList.slice(offset, offset + limit)
-                  .map(({index,title,create_time}) => (
+                  .map(({index,title,createTime}) => (
                   <tr>
                   <td><input type='checkbox' name={`select-${index}`} onChange={(e) => handleSingleCheck(e.target.checked,index)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
@@ -130,7 +145,7 @@ const NoticeList=()=>{
                     <td>{index}</td>
                     <td><Link to={`/admin/noticeDetail/${index}`}>{title}</Link></td>
                     <td>관리자</td>
-                    <td>{create_time}</td>
+                    <td>{createTime}</td>
                 </tr>
                 ))}
                 </tbody>
