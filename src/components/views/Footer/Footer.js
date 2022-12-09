@@ -3,9 +3,6 @@ import styled from "styled-components";
 const FooterContainer = styled.div`
   width: 100%;
   background-color: #f5f5f5;
-  margin-top: 20px;
-  padding: 20px 0 ;
-  
   .ContentsContainer{
     display: flex;
     margin: 0 40px;

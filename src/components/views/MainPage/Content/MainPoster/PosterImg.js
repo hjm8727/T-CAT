@@ -66,7 +66,7 @@ const PosterImg = () =>{
             <ul>
                 {posterInfo.map(c=>(
                     <li key={c.id} >
-                        <img src={c.img}/>
+                        <img src={c.img} alt=""/>
                         <p>{c.name}</p>
                     </li>
                 ))}

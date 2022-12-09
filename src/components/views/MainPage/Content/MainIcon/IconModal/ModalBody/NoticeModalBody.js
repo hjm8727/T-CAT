@@ -5,7 +5,6 @@ const BodyContainer = styled.div`
     .Topic{
         font-size: 18px;
         border-bottom:1px solid silver;
-        
     }
     td{
         cursor: pointer;
@@ -26,7 +25,6 @@ const BodyContainer = styled.div`
         /* border-bottom:1px solid silver; */
     }
     
-   
 `
 const notice = [
     {

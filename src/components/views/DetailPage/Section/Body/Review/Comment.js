@@ -6,11 +6,15 @@ import CommentHeader from "./CommentHeader";
 import CommentFooter from "./CommentFooter";
 import { commentPostedTime } from "../../../../../../util";
 import styled from "styled-components";
+// import DeleteModal2 from "./DModal";
 
 const CWrap = styled.div`
 width: 100%;
 .comment-container {
+<<<<<<< HEAD
   margin: 0 20px;
+=======
+>>>>>>> df1f5c0ff60b6b6fda3192e7668f2cff8f106a8d
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -31,7 +35,7 @@ width: 100%;
         display: flex;
         align-items: center;
         .username {
-          color: darkblue;
+          color: black;
           font-weight: medium;
         }
         .you-tag {
@@ -39,13 +43,13 @@ width: 100%;
           font-weight: regular;
           font-size: 0.9rem;
           padding: 2px 10px 3px;
-          background: blue;
+          background: #86868b;
           border-radius: 3px;
           margin-left: 10px;
         }
         .comment-posted-time {
           margin-left: 15px;
-          color: blue;
+          color: #86868b;
         }
         .comment--btn {
           display: none;
@@ -53,12 +57,13 @@ width: 100%;
       }
       .comment-content {
         width: 100%;
-        color: blue;
+        color: black;
+        opacity: 75%;
         line-height: 1.5;
         word-wrap: break-word;
         word-break: break;
         .replyingTo {
-          color: blue;
+          color: #6c757d;
           font-weight: bold;
           display: inline-block;
           margin-right: 10px;
@@ -66,7 +71,7 @@ width: 100%;
       }
       .content-edit-box{
         height: 150px;
-        color: blue;
+        color: #86868b;
         line-height: 1.5;
         padding: 10px 15px;
         border: 2px solid lightgray;
@@ -77,7 +82,7 @@ width: 100%;
           width: 0;
         }
         &:focus {
-          outline: 1.5px solid blue;
+          outline: 1.5px solid #86868b;
         }
       }
       .update-btn{
@@ -86,7 +91,7 @@ width: 100%;
         color: white;
         font-weight: bold;
         padding: 15px 30px;
-        background: blue;
+        background: #6c757d;
         border: 0;
         border-radius: 10px;
         transition: 0.3s;
@@ -113,7 +118,7 @@ width: 100%;
       display: flex;
       align-items: center;
       gap: 5px;
-      color: blue;
+      color: #6c757d;
       font-weight: bold;
       padding: 5px;
       background: transparent;

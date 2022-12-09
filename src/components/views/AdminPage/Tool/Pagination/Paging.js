@@ -2,7 +2,7 @@ import React from "react";
 import Pagination from "react-js-pagination";
 import "./Paging.css";
 import { useState } from "react";
- 
+
 const Paging = () => {
   const [page, setPage] = useState(1);
 
@@ -23,5 +23,5 @@ const Paging = () => {
   );
 };
 
- 
+
 export default Paging;

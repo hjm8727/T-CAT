@@ -91,7 +91,7 @@ return(
             {posterInfo.map(c=>(
                 <div className="MainPoster2Contan">
                     <li key={c.id}>
-                        <img  src={c.img}/>
+                        <img src={c.img} alt=""/>
                         <p className="PosterCategory">{c.category}</p>
                         <p className="PosterName">{c.name}</p>
                     </li>

@@ -1,9 +1,9 @@
 import styled, { keyframes } from "styled-components"
 
 const MainNoticeContainer = styled.div` 
-   @keyframes slide{
-       0%{
-           transform: translateY(0);
+    @keyframes slide{
+        0%{
+            transform: translateY(0);
         }
         25%{
             transform: translateY(-30px);
@@ -89,7 +89,7 @@ const MainNotice = () =>{
             <div className="MainNotice">
                 {notice.map(c=>(
                     <div className="Notice1">
-                        <img className="Noticeimg" src="https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/6562f7bc017800001.png?type=thumb&opt=C72x72.fwebp"></img>
+                        <img className="Noticeimg" src="https://t1.kakaocdn.net/kakaocorp/kakaocorp/admin/6562f7bc017800001.png?type=thumb&opt=C72x72.fwebp" alt=""></img>
                         <p>{c.categories}</p>
                         <span key={c.id} >{c.text}</span>
                         <br></br>

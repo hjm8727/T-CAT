@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 const ChartBlock=styled.div`
     .chart{
-    margin: 20px;
+    /* margin: 20px; */
     padding: 20px;
+    /* margin-left: 20px; */
 
-    -webkit-box-shadow: 0px 0px 12px -1px #000000; 
-    box-shadow: 0px 0px 12px -1px #000000;
+    /* -webkit-box-shadow: 0px 0px 12px -1px #000000; 
+    box-shadow: 0px 0px 12px -1px #000000; */
 }
 .chartTitle{
     margin-bottom: 30px;
@@ -68,8 +69,8 @@ const data = [
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
-          {/* <Tooltip /> */}
-          {/* <Legend /> */}
+          <Tooltip />
+          <Legend />
           <Bar dataKey="수익" fill="skyblue" />
           <Bar dataKey="회원" fill="olive" />
           <Bar dataKey="예매" fill="orange" />

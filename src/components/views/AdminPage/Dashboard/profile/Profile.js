@@ -36,14 +36,14 @@ const Profile=()=>{
         <ul className='profile-list'>
             <li className='listItem'>
                 {/* <img src='logo192.png' alt='' className='profile-img'/> */}
-                <div className='user'>
-                    <span className='userName'>{c.name}</span>
-                    <span className='userTitle'>{c.position}</span>
+                <div className='profile-user'>
+                    <span className='profile-userName'>{c.name}</span>
+                    <span className='profile-userTitle'>{c.position}</span>
                 </div>
             </li>
 
         </ul>
-         ))}
+        ))}
         </div>
     )
 
