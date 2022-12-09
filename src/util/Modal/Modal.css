@@ -18,7 +18,7 @@
   width: 90%;
   max-width: 4500px;
   width: 700px;
-  height: 740px;
+  height: auto;
   margin: 0 auto;
   border-radius: 0.3rem;
   background-color: #fff;
@@ -51,6 +51,7 @@
 .modal > section > footer {
   padding: 12px 16px;
   text-align: right;
+  height: auto;
 }
 .modal > section > footer button {
   padding: 6px 12px;

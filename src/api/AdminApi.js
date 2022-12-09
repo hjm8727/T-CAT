@@ -31,7 +31,7 @@ const AdminApi={
         console.log(obj);
         const noticeObj = {
             obj: obj
-          };
+        };
         return await axios.post(TCAT_DOMAIN + "/notice/delete/list",noticeObj, HEADER)
     },
 

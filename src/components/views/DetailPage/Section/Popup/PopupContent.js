@@ -57,6 +57,9 @@ const BodyStyle = styled.div`
   .BuyOption{
       opacity: 60%;
   }
+  .kpay-button {
+    background-color: white;
+  }
 `;
 
 function PopupContent (props) {
@@ -260,7 +263,8 @@ function PopupContent (props) {
       <hr />
       <div>
           <MyInfo cancelday={cancelday} item_name={item_name} date={date} value={value} ticket={ticket} tax={tax} total={total} />
-          <a href={payUrl}><button className='pay-button'>카카오페이로 결제하기</button></a>
+          <br/>
+          <a href={payUrl}><button className='kpay-button'><img src="/images/payment_icon_yellow_medium.png" alt=""/></button></a>
       </div>
     </div>
     );

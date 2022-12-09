@@ -27,7 +27,7 @@ function Detail() {
               <Info/>
             </Content>
 
-            <Sider className="site-layout-background" width={310} style={{borderRadius: '1.2rem', backgroundColor: 'silver', overflow: 'auto', height: '575px', position: 'fixed', left: '1200px', top: '6.5rem', bottom: '0'}} >
+            <Sider className="site-layout-background" width={310} style={{borderRadius: '1.2rem', backgroundColor: 'silver', overflow: 'auto', height: '650px', position: 'fixed', left: '1200px', top: '6.5rem', bottom: '0'}} >
               <TCalendar item_name={item_name} price={price}/>
             </Sider>
 

@@ -41,10 +41,14 @@ const Styleside = styled.div`
         box-sizing: border-box;
         color: #fff;
         /* margin-top: 1rem; */
+        font-size: 18px;
     }
     .remain {
         margin-left: 1rem;
         padding-top: 20px;
+    }
+    .text-center {
+        margin-bottom: 0;
     }
 `;
 
@@ -74,7 +78,7 @@ function TCalendar (props) {
     }
     return (
         <div>
-            <h3 className='text-center'>관람일</h3>
+            <h3 className='text-center' style={{marginTop: '1.5rem', marginBottom: '1.5rem'}}>관람일</h3>
             <div className='calendar-container'>
             <Calendar onChange={setDate} value={date}
             formatDay={(locale, date) => date.toLocaleString("en", { day: "numeric" })}
@@ -82,6 +86,7 @@ function TCalendar (props) {
             />
             </div>
             <p className='text-center'>
+            <br/>
             <span className='bold'>선택한 날짜 : </span>{' '}
             {date.toDateString()}
             <hr />
@@ -92,7 +97,7 @@ function TCalendar (props) {
                     <div className='side-content'><button className='button select' type='button'>1회 20:00</button><button className='button no' type='button'>1회 20:00</button></div>
                     <p className='remain'>잔여석 70</p>
                     <button className='pay-button' onClick={openModal}>예매하기</button>
-                    {modalOpen && <PayPopup plus={plusIndex} index={index} minus={minusIndex} open={openModal} close={closeModal} header={<PopupHeader />} body={<PopupContent date={today} item_name={item_name} cancelday={cancelday} price={price} index={index} />}/>}
+                    {modalOpen && <PayPopup plus={plusIndex} index={index} minus={minusIndex} open={openModal} close={closeModal} header={<PopupHeader index={index}/>} body={<PopupContent date={today} item_name={item_name} cancelday={cancelday} price={price} index={index} />}/>}
                 </div>
             </Styleside>
         </div>

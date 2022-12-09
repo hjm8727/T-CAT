@@ -1,3 +1,4 @@
+import { ArrowRightOutlined } from '@mui/icons-material';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from '../../../../../util/Modal/Modal';
@@ -8,8 +9,8 @@ const InfoStyle = styled.div`
         margin-top: 4rem;
     }
     .infoDesc {
-        margin: 0;
-        margin-left: 1.5rem;
+        margin-top: 1rem;
+        margin-left: 2rem;
     }
     .price {
         color: #ED4037;
@@ -25,6 +26,22 @@ const InfoStyle = styled.div`
         margin: 0;
         margin-right: 15rem;
         margin:1.5rem 0;
+    }
+    .info {
+        padding: 0 0 0 32px;
+    }
+    .infoBtn {
+        margin-left: 1.7rem;
+    }
+    .modal > section > header button {
+    top: 8px;
+    right: 8px;
+    }
+    .modal > section {
+        height: auto;
+    }
+    .modal > section > main {
+
     }
 `;
 
@@ -46,9 +63,9 @@ function Info() {
                 <li class="infoItem">
                     <strong class="infoLabel">장소</strong>
                 <span class="infoDesc">
-                    <a class="infoBtn" href='' data-popup="info-place" role="button" onClick={openModal}>
-                    대성 디큐브아트센터
-                    </a>
+                    <span class="infoBtn" data-popup="info-place" role="button" onClick={openModal}>
+                    대성 디큐브아트센터<ArrowRightOutlined style={{marginBottom: '0.2rem'}}/>
+                    </span>
                 </span>
                 </li>
                 <p />
