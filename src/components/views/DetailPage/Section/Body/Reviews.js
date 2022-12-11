@@ -108,7 +108,7 @@ const Reviews = () => {
     return (
     <div>
         <div>
-    <button onClick={openModal}>asdasd</button>
+    <button onClick={openModal}>관람후기</button>
             {modalOpen && <WriteReview open={openModal} close={closeModal} buttonValue={"등록"} addComments={addComments} />}
     {/* <WriteReview/> */}
     </div>
