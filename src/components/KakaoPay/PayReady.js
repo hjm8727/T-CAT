@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
+import { ADMIN_KEY } from "../Config";
 import PayPopup from "../views/DetailPage/Section/Popup/PayPopup";
 
 let totals, taxs = 0;
@@ -41,7 +42,7 @@ const PayReady = (item_name, total, tax, value) => {
             url: "/v1/payment/ready",
             method: "POST",
             headers: {
-                Authorization: "KakaoAK d853cf82728147a7a985cfeb193f4b8d",
+                Authorization: `KakaoAK ${ADMIN_KEY}`,
                 "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
                 },
                 params,
@@ -87,7 +88,7 @@ const PayResult = () => {
             url: "https://kapi.kakao.com/v1/payment/approve",
             method: "POST",
             headers: {
-                Authorization: "KakaoAK d853cf82728147a7a985cfeb193f4b8d",
+                Authorization: `KakaoAK ${ADMIN_KEY}`,
                 "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
             },
             params,
@@ -121,7 +122,7 @@ const PayCancel = () => {
         params: {
             cid: "TC0ONETIME",
             tid: window.localStorage.getItem("tid"),
-            cancel_amount: 350000,
+            cancel_amount: 100000,
             cancel_tax_free_amount:10000,
         }
     });
@@ -133,7 +134,7 @@ const PayCancel = () => {
             url: "https://kapi.kakao.com/v1/payment/cancel",
             method: "POST",
             headers: {
-                Authorization: "KakaoAK d853cf82728147a7a985cfeb193f4b8d",
+                Authorization: `KakaoAK ${ADMIN_KEY}`,
                 "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
             },
             params
