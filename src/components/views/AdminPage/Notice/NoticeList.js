@@ -4,6 +4,7 @@ import { useState, useEffect} from "react";
 import { Link, useNavigate,useParams} from "react-router-dom";
 import AdminApi from "../../../../api/AdminApi";
 import Pagination from "../Tool/Pagination/Paging";
+// import $ from 'jquery';
 
 
 const NoticeList=()=>{
@@ -20,14 +21,14 @@ const NoticeList=()=>{
    const [noticeList, setNoticeList] = useState('');
    const [checkItems, setCheckItems] = useState([]); 
   // 체크박스 단일 선택
-  const handleSingleCheck = (checked, data) => {
+  const handleSingleCheck = (checked, obj) => {
     if (checked) {
       // 단일 선택 시 체크된 아이템을 배열에 추가
-      setCheckItems(prev => [...prev, data]);
-      // console.log(data); // 아래에서 index 값을 받은거라 index 값 찍힘
+      setCheckItems(prev => [...prev, obj]);
+      console.log(obj); // 아래에서 index 값을 받은거라 index 값 찍힘
     } else {
       // 단일 선택 해제 시 체크된 아이템을 제외한 배열 (필터)
-      setCheckItems(checkItems.filter((el) => el !== data));
+      setCheckItems(checkItems.filter((el) => el !== obj));
     }
   };
 
@@ -58,20 +59,14 @@ const NoticeList=()=>{
   // const row = [...checkItems];
   // console.log(row);
 
-  const myArr = []
-  const key = 'index';
-  const checkObj = {};
+  // const myArr = []
+  // const key = 'index';
+  // const checkObj = {};
 
-  checkObj[key] = Number(`checkItems`);
-  console.log("타입체크 : " + typeof(Number(`checkItems`)));
-  console.log("배열갯수체크 : " + checkItems.length);
-  const check2 = checkItems.length;
-  console.log("숫자체크 : " + checkItems[check2-1]);
+  // checkObj[key] = Number(`checkItems`);
 
-  // console.log("숫자체크2 : " + checkItems.join(","));
+  // debugger;
 
-
-  myArr.push(checkObj)
 
 
     /** 공지 목록을 가져오는 useEffect */
@@ -89,36 +84,41 @@ const NoticeList=()=>{
     };
     noticeData();
   }, []);
+  
   if (loading) {
     return <div>로딩 중...</div>;
   }
 
+  /**
+  
+   * @since   2022.12.10
+   * @author  harin.
+   * */
   const onClickDelete=async()=>{
     if(checkItems.length<1){
       alert("체크박스 한개 이상 체크해주세요")
       navigate('/admin/noticeList');
     } else{
-      console.log("삭제버튼 클릭(체크박스 1개이상)");
-      // for()
-
-      const res = await AdminApi.noticeCheck(myArr);
-    
-      // const response = await AdminApi.noticeCheck(checkItems);
+      console.log(checkItems);
+      const res = await AdminApi.noticeCheck(checkItems);
+      console.log(res.data);
+      alert("선택하신 공지사항이 삭제되었습니다.");
+      navigate('/admin/noticeList');
       try{
         console.log("통신넘어가나? :" + res.data);
       }catch(e){
         console.log(e);
-        navigate('/admin/noticeList');
       }
+      navigate('/admin/noticeList');
     } 
     setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
-    };
+  };
 
 
     return(
         <NoticeBlock>
         <TopBar name="공지사항 관리"/>
-          <div className="container">
+          <div className="notice-list-container">
             <input type="hidden" id="arrayParam" name="arrayParam"/>
           <table>
                 <thead>
@@ -138,7 +138,8 @@ const NoticeList=()=>{
                   {noticeList && noticeList.slice(offset, offset + limit)
                   .map(({index,title,createTime}) => (
                   <tr>
-                  <td><input type='checkbox' name={`select-${index}`} onChange={(e) => handleSingleCheck(e.target.checked,index)}
+                  <td><input type='checkbox'  name={`select-${index}`} onChange={(e) => handleSingleCheck(e.target.checked,index)}
+                  // className='notiitem' id={`select-${index}`}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                   checked={checkItems.includes(index) ? true : false} />
                   </td>
@@ -164,6 +165,11 @@ const NoticeList=()=>{
                 <button className="noticeBtn" onClick={()=>{navigate('/admin/writeNotice')}}>작성하기</button>
                 <button className="noticeBtn" onClick={onClickDelete}>삭제하기</button>
             </div>
+            {/* <script>
+              $(".notiitem").on("onclick", function(e){
+                  $(this).attr("name")};                
+              );
+            </script> */}
         </NoticeBlock>
     );
 }
@@ -172,8 +178,8 @@ export default NoticeList;
 const NoticeBlock=styled.div`
     margin:0 auto;
   box-sizing: border-box;
-  .container {
-    width: 100vw;
+  .notice-list-container {
+    width: 70vw;
     margin : 10px;
     display: flex;
     border: 1px solid black;

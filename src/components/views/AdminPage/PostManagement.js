@@ -2,35 +2,7 @@ import TopBar from "./Tool/TopBar";
 import styled from "styled-components";
 import { useState } from "react";
 
-const PostBlock=styled.div`
-  margin:0 auto;
-  box-sizing: border-box;
-  /* width: 100vw; */
-  .container {
-    width: 100vw;
-    margin : 10px;
-    display: flex;
-    border: 1px solid black;
-    height: 60%;
-    flex-direction: column;
-    text-align: center;
-    padding: 3rem;
-  }
-table,th,td {
-  border: 1px solid black;
-}
-.delete{
-  float: right;
-  button{
-    border: none;
-    margin: 20px 10px;
-        background-color: #E3CAA5;
-        border-radius: 5px;
-        width: 340px;
-        height: 50px;
-}  
-}
-`;
+
 
 const PostManagement=()=>{
   const data = [
@@ -110,3 +82,32 @@ const PostManagement=()=>{
     );
 }
 export default PostManagement;
+
+const PostBlock=styled.div`
+  margin:0 auto;
+  box-sizing: border-box;
+  .container {
+    width: 70vw;
+    margin : 10px;
+    display: flex;
+    border: 1px solid black;
+    height: 60%;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+  }
+table,th,td {
+  border: 1px solid black;
+}
+.delete{
+  float: right;
+  button{
+    border: none;
+    margin: 20px 10px;
+        background-color: #E3CAA5;
+        border-radius: 5px;
+        width: 340px;
+        height: 50px;
+}  
+}
+`;
