@@ -1,16 +1,19 @@
 import axios from "axios";
 const HEADER = 'application/json';
-const TCAT_DOMAIN= "http://localhost:8118";
+const contentType = 'application/json';
+const TCAT_DOMAIN= "http://localhost:8118";//server path
+const serverPAthTCAT_DOMAIN= "http://localhost:8118";//server path
+const param = {};
 // "http://cokebear756.synology.me:33060";
 
 const AdminApi={
     //공지사항 쓰기 api
     writing : async function(inputTitle, inputDetail){
-        const writing = {
-            title : inputTitle,
-            content : inputDetail
-        }
-        return await axios.post(TCAT_DOMAIN + "/notice/write", writing, HEADER)
+        param.title = inputTitle;
+        param.content = inputDetail;
+        
+        return await axios.post(TCAT_DOMAIN + "/notice/write", param, 'application/json');
+
     },
     // 공지사항 전체 목록
     noticeInfo : async function(){
@@ -18,22 +21,26 @@ const AdminApi={
     },
     // 공지사항 상세페이지
     noticeDetail : async function(index){
-        return await axios.get(TCAT_DOMAIN + "/notice/detail/" + index, HEADER)
+        return await axios.get(TCAT_DOMAIN + "/notice/detail/" + index, "Text/json")
     },
 
     // 공지사항 삭제 
     noticeDelete : async function(index){
         return await axios.delete(TCAT_DOMAIN + "/notice/delete/"+ index, HEADER)
+       
     },
 
     // (체크박스) 공지사항 삭제
-    noticeCheck : async function(myArr){
-        console.log("api 폴더에서 찍은 값 : " + myArr);
-        console.log(myArr);
-        const noticeObj = {
-            checkDTOList: myArr
-          };
-        return await axios.post(TCAT_DOMAIN + "/notice/delete/check",noticeObj, HEADER)
+    noticeCheck : async function(arrItems){
+        const arrKeys = [];
+        for(var i=0; i<arrItems.length; i++){
+            arrKeys.push({"index":arrItems[i]});
+        }
+        const params = {
+            checkDTOList: arrKeys
+        };
+        // debugger;
+        return await axios.post(TCAT_DOMAIN + "/notice/delete/check",params, "application/json");
     },
 
     // 공지사항 수정

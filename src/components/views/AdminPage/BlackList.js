@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AdminApi from "../../../api/AdminApi";
 import Pagination from "./Tool/Pagination/Paging";
+import { useNavigate} from "react-router-dom";
+
 
 
 const BlackList=()=>{
-
+  const navigate = useNavigate();
   // 페이지네이션 변수
   const [limit, setLimit] = useState(10); // 한페이지에 보여지는 게시물 갯수
   const [page, setPage] = useState(1); // 현재 페이지 번호
@@ -35,7 +37,7 @@ const BlackList=()=>{
     if(checked) {
       // 전체 선택 클릭 시 데이터의 모든 아이템(id)를 담은 배열로 checkItems 상태 업데이트
       const idArray = [];
-      memberList.forEach((el) => idArray.push(el));
+      memberList.forEach((el) => idArray.push(el.id));
       setCheckItems(idArray);
     }
     else {
@@ -47,15 +49,35 @@ const BlackList=()=>{
   useEffect(() => {
     const memberData = async()=> {
       try {
-        const response = await AdminApi.totalBlackMember(); // 전체 멤버 조회
-        setMemberList(response.data);
-        console.log(response.data);
+        const res = await AdminApi.totalBlackMember(); // 전체 멤버 조회
+        setMemberList(res.data);
+        console.log(res.data);
       } catch (e) {
         console.log(e);
       }
     };
     memberData();
   }, []);
+
+  const onClickDelete=async()=>{
+    if(checkItems.length<1){
+      alert("체크박스 한개 이상 체크해주세요")
+      navigate('/admin/noticeList');
+    } else{
+      console.log(checkItems);
+      const res = await AdminApi.noticeCheck(checkItems);
+      console.log(res.data);
+      alert("선택하신 공지사항이 삭제되었습니다.");
+      navigate('/admin/noticeList');
+      try{
+        console.log("통신넘어가나? :" + res.data);
+      }catch(e){
+        console.log(e);
+      }
+      navigate('/admin/noticeList');
+    } 
+    setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
+  };
 
     return(
         <MemberBlock>
@@ -100,7 +122,7 @@ const BlackList=()=>{
             pageStart={pageStart}
             setPageStart={setPageStart}
             />
-            <div className="delete"><button>탈퇴하기</button></div>
+            <div className="delete"><button onClick={onClickDelete}>탈퇴하기</button></div>
         </MemberBlock>
     );
 

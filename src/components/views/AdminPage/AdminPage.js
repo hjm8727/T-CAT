@@ -68,7 +68,7 @@ function SideMenu() {
       // 사이드바 클릭하면 주소 url값 변경되게 
       defaultSelectedKeys={[window.location.pathname]}
       items={[
-        {label:"Home", key:"/admin/home",icon:<HomeOutlined/>},
+        {label:"Home", key:"/admin",icon:<HomeOutlined/>},
         {label:"회원관리", key:"/admin/member", 
           children:[{label : "일반회원", key:"/admin/normal"},
                     {label : "블랙리스트", key:"/admin/black"}], icon:<UserOutlined/>},
@@ -84,7 +84,7 @@ function SideMenu() {
 function Content() {
   return(
     <Routes>
-      <Route path='/home' element={<AdminHome/>}/>
+      <Route path='/' element={<AdminHome/>}/>
       <Route path='/normal' element={<MemberList/>}/>
       <Route path='/black' element={<BlackList/>}/>
       <Route path='/enroll' element={<PostManagement/>}/>

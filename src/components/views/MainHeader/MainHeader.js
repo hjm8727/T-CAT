@@ -118,7 +118,7 @@ const MainHeader = () =>{
             {/* 여기에 추가해서 사용하시면 될거같습니다 ! 나중에 삭제할 예정이라 막 추가하셔도 될거같습니다. */}
                 <a href="/login">로그인</a>
                 <a href="/sign">회원가입</a>
-                <a href="/admin/home">관리자페이지</a>
+                <a href="/admin">관리자페이지</a>
                 <a href="/MyPage">MyPage</a>
                 <a href="/detail">상세페이지</a>
         </LoginTag>    
