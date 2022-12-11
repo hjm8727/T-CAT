@@ -21,9 +21,9 @@ function DBody() {
       <Tab eventKey="home" title="공연정보">
       <Contents/>
       </Tab>
-      {/* <Tab eventKey="profile" title="관람후기">
+      <Tab eventKey="profile" title="관람후기">
       <Reviews/>
-      </Tab> */}
+      </Tab>
       <Tab eventKey="contact" title="Q&A">
       <Qna/>
       </Tab>
