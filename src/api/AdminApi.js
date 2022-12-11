@@ -27,7 +27,6 @@ const AdminApi={
     // 공지사항 삭제 
     noticeDelete : async function(index){
         return await axios.delete(TCAT_DOMAIN + "/notice/delete/"+ index, HEADER)
-       
     },
 
     // (체크박스) 공지사항 삭제
@@ -77,12 +76,13 @@ const AdminApi={
         return await axios.get(TCAT_DOMAIN + "/qna/list", HEADER)
     },
     // qna 관리자 답장
-    qnaReply : async function(id, qna_content) {
-        const qna = {
-            id : id,
-            qna_content : qna_content
+    qnaReply : async function(inputReply,index) {
+        console.log("api통신 되는지 " + inputReply +index);
+        const params = {
+            reply : inputReply,
+            index : index
         }
-        return await axios.post(TCAT_DOMAIN + "/qna-reply", qna, HEADER);
+        return await axios.post(TCAT_DOMAIN + "/qna/reply", params, HEADER);
     },
 }
 export default AdminApi;

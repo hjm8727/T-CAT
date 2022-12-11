@@ -86,7 +86,7 @@ const BlackList=()=>{
           <table>
                 <thead>
                   <tr>
-                  <th width = "50px">
+                  <th width = "30px">
                     <input type='checkbox' name='select-all' onChange={(e) => handleAllCheck(e.target.checked)}
                     // 데이터 개수와 체크된 아이템의 개수가 다를 경우 선택 해제 (하나라도 해제 시 선택 해제)
                     checked={checkItems.length === memberList.length ? true : false} />
@@ -99,7 +99,7 @@ const BlackList=()=>{
                   </tr>
                 </thead>
                 <tbody>
-                {memberList && memberList.slice(offset, offset + limit).map(({index,id,name,email,date,memberStatus}) => (<tr>
+                {memberList && memberList.slice(offset, offset + limit).map(({index,id,name,email,createTime,memberStatus}) => (<tr>
                   <td><input type='checkbox' name={`select-${index}`} onChange={(e) => handleSingleCheck(e.target.checked, index)}
                    // 체크된 아이템 배열에 해당 아이템이 있을 경우 선택 활성화, 아닐 시 해제
                   checked={checkItems.includes(index) ? true : false} />
@@ -107,7 +107,7 @@ const BlackList=()=>{
                     <td>{id}</td>
                     <td>{name}</td>
                     <td>{email}</td>
-                    <td>{date}</td>
+                    <td>{createTime}</td>
                     <td>{memberStatus}</td>
                 </tr>
                 ))}

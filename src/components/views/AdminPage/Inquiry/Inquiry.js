@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useParams } from "react";
 import styled from "styled-components";
 import TopBar from "../Tool/TopBar";
 import Modal from "../../../../util/Modal/Modal"
@@ -8,6 +8,8 @@ import QnaModal from "./QnaModal";
 const Inquiry=()=>{
   const [inputReply, setInputReply] = useState("");
   const [qnaList, setQnaList] = useState('');
+  // const params = useParams().index;
+
 
     // 모달
     const [modalOpen, setModalOpen] = useState(false);
@@ -60,7 +62,6 @@ const Inquiry=()=>{
                     <td><button onClick={()=>{setModalText(data); setModalOpen(true);}}>답장</button>
                       {modalOpen && <QnaModal setModalOpen={setModalOpen}/>}
                     </td>
-
                   </tr>
                   </tbody>
                   ))}
