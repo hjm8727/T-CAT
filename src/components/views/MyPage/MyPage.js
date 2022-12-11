@@ -16,11 +16,19 @@ const MyInfoStyle = styled.div`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
+  min-width: 930px;
+  height: 100vh;
+  h4{
+    font-size: 18px;
+    strong{
+      font-size: 22px;
+    }
+  }
   .userInfo {
     display: flex;
     border: 1px solid black;
     width: 60%;
+    min-width: 660px;
     /* height: 350px; */
     margin: 0 auto;
     margin-top: 20px;
@@ -49,6 +57,7 @@ const MyInfoStyle = styled.div`
     justify-content: center;
 }
   .MypageMainContainer{
+    height : 100%;
     height: 73vh;
   }
   .MypageDataContainer{
@@ -56,7 +65,8 @@ const MyInfoStyle = styled.div`
     width: 60%;
     height: 300px;
     margin: 0 auto;
-    margin-top: '20px;'
+    margin-top: 20px;
+    min-width: 660px;
   }
   @media(max-width : 1024px){
     .userInfo{
