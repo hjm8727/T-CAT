@@ -12,21 +12,9 @@ const { Content, Sider } = Layout;
 
 const DWrap = styled.div`
 width: 100%;
-.ItemContainer{
-  width: 80%;
-  margin: 0 auto;
-}
-.TopItemContainer{
-  /* width: 100%; */
-  border: 1px solid black;
-}
-.PosterContainer{
-  /* width: 35%; */
-  border: 1px solid black;
-}
-.InfoContainer{
-  /* width: 70%; */
-}
+background-color: #f5f5f5;
+/* min-width: 1024px; */
+/* border: 1px solid black; */
 .topBtn {
   position: fixed; 
   opacity: 0; 
@@ -50,6 +38,26 @@ width: 100%;
 .topBtn:focus,
 .topBtn:active { 
   outline: 0 none; 
+}
+.detailSiderContainer{
+  border-radius: 1.2rem;
+  background-color: silver;
+  overflow: auto;
+  height: 650px;
+  position: fixed; 
+  left: 70%;
+  top: 6.5rem;
+  bottom: 0;
+}
+@media (max-width: 1024px){
+  .site-layout-background{
+    display: block;
+  }
+  .detailSiderContainer{
+    left: 500px;
+    /* position: absolute; */
+  }
+
 }
 `
 
@@ -93,32 +101,33 @@ function Detail() {
       <button className={BtnStatus ? "topBtn active" : "topBtn"} onClick={handleTop}>
         <ArrowCircleUp className='arrow'/></button>
       <MainHeader/>
+      <Layout style={{width: '80%', height: '100%' ,margin:'0 auto'}}>
 
-      <Layout className='ItemContainer' >
-      <hr/>    
-          <Layout className="TopItemContainer" >
-            <div className='PosterContainer'>
-              <Poster/>
-            </div>
+        <Content >
+          <Layout className="site-layout-background" >
             
-            <hr style={{backgroundColor: 'black', opacity: '0.6'}} />
+            <Content style={{width: '40%',border:'1px solid blakc'}}>
+              <Poster/>
+            </Content>
+            <hr style={{backgroundColor: 'black', width: '1px', opacity: '0.6'}} />
 
-            <Content className='InfoContainer'>
+
+            <Content className='DetailInfoContainer' style={{width: '60%'}}>
               <Info/>
             </Content>
 
-            <Sider className="site-layout-background" style={{borderRadius: '1.2rem', backgroundColor: 'silver', overflow: 'auto', height: '650px', position: 'fixed', left: '1200px', top: '6.5rem', bottom: '0'}} >
+
+            <Sider className="detailSiderContainer" width={310} >
               <TCalendar item_name={item_name} price={price}/>
             </Sider>
           </Layout>
 
-          <Content style={{}}>
+
+          <Content>
               <DBody/>
           </Content>
+        </Content>
         <Footer/>
-        {/* <Footer style={{backgroundColor: 'skyblue'}}>
-          Footer 영역
-        </Footer> */}
       </Layout>
     </DWrap>
   )
