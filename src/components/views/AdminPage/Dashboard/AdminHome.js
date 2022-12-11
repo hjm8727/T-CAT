@@ -13,6 +13,9 @@ const AdminBlock=styled.div`
     .homeBottom{
     display: flex;
     margin: 20px;
+    .RecnetCommentContainer{
+        width: 70%;
+    }
 }
 `;
 const AdminHome=()=>{
@@ -22,7 +25,9 @@ const AdminHome=()=>{
             <FeaturedInfo/>
             <Chart/>
             <div className="homeBottom">
-                <RecentComment/>
+                <div className="RecnetCommentContainer">
+                    <RecentComment/>
+                </div>
                 <Profile/>
             </div>
         </div>

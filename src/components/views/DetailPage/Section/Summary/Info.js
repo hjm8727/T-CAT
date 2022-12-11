@@ -1,5 +1,5 @@
-import { ArrowRightOutlined } from '@mui/icons-material';
 import React, { useState } from 'react';
+import { BsArrowRight } from 'react-icons/bs';
 import styled from 'styled-components';
 import Modal from '../../../../../util/Modal/Modal';
 import MapModalBody from './MapModal';
@@ -64,7 +64,7 @@ function Info() {
                     <strong className="infoLabel">장소</strong>
                 <span className="infoDesc">
                     <span className="infoBtn" data-popup="info-place" role="button" onClick={openModal}>
-                    대성 디큐브아트센터<ArrowRightOutlined style={{marginBottom: '0.2rem'}}/>
+                    대성 디큐브아트센터<BsArrowRight style={{marginBottom: '0.2rem'}}/>
                     </span>
                 </span>
                 </li>

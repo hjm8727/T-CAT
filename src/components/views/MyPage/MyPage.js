@@ -12,6 +12,7 @@ import InfoUpdate from './section/InfoUpdate';
 import styled from 'styled-components';
 
 const MyInfoStyle = styled.div`
+  width: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -20,7 +21,7 @@ const MyInfoStyle = styled.div`
     display: flex;
     border: 1px solid black;
     width: 60%;
-    height: 350px;
+    /* height: 350px; */
     margin: 0 auto;
     margin-top: 20px;
   }
@@ -28,7 +29,7 @@ const MyInfoStyle = styled.div`
     display: flex;
   }
   .info-des {
-    margin: 1.5rem 0 1.5rem 0;
+    margin: 1.5rem 0;
     font-size: 17px;
     border-left: 2px solid black;
   }
@@ -46,6 +47,24 @@ const MyInfoStyle = styled.div`
   .up-wrap{
     display: flex;
     justify-content: center;
+}
+  .MypageMainContainer{
+    height: 73vh;
+  }
+  .MypageDataContainer{
+    border: 1px solid black;
+    width: 60%;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: '20px;'
+  }
+  @media(max-width : 1024px){
+    .userInfo{
+      width: 80%;
+    }
+    .MypageDataContainer{
+      width: 80%;
+    }
 }
 `;
 
@@ -78,7 +97,7 @@ function MyPage() {
   const navigate = useNavigate();
   
   return (
-    <div>
+    <MyInfoStyle> 
     <MainHeader/>
     <Layout>
       <Sider  collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
@@ -86,9 +105,9 @@ function MyPage() {
         <Menu theme="dark" mode="inline" items={items} onClick={({key}) => navigate(key)}/>
       </Sider>
       <Layout className="site-layout">
-        <Content style={{margin: '0 16px' }}>
+        <Content className='MypageMainContainer'>
           <div className="site-layout-background">
-            <MyInfoStyle>
+            <div>
       
               <div className='userInfo'>
                 <div className='Contain1'>
@@ -106,16 +125,16 @@ function MyPage() {
                     </div>
                   </div>
               </div>
-          </MyInfoStyle>
           </div>
-          <div style={{border: '1px solid black', width: '60%', height: '350px', margin: '0 auto', marginTop: '20px'}}>
+          </div>
+          <div className='MypageDataContainer' >
             <MyBody/>
           </div>
         </Content>
       </Layout>
     </Layout>
     <Footer/>
-    </div>
+    </MyInfoStyle>
   );
 }
 

@@ -5,7 +5,6 @@ import styled from 'styled-components'
 const RecentWrap = styled.div`
 .comment-container{
     flex: 2;
-
     -webkit-box-shadow: 0px 0px 12px -1px #000000; 
     box-shadow: 0px 0px 12px -1px #000000;
     padding: 20px;
