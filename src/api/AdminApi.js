@@ -60,10 +60,18 @@ const AdminApi={
     totalBlackMember : async function(){
         return await axios.get(TCAT_DOMAIN + "/blacklist", HEADER)
     },
+
     // 회원 탈퇴(관리자)
-    deleteMemberAdmin : async function(){
-        return await axios.post(TCAT_DOMAIN + "/notice/delete/"+ HEADER)
-    },
+    deleteMemberAdmin : async function(arrItems){
+    const arrKeys = [];
+    for(var i=0; i<arrItems.length; i++){
+        arrKeys.push({"index":arrItems[i]});
+    }
+    const params = {
+        memberDTOCheckList: arrKeys
+    };
+    return await axios.post(TCAT_DOMAIN + "/notice/delete/member/check",params, "application/json");
+},
     // 일대일문의(qna) 전체 조회
     qnaList : async function(){
         return await axios.get(TCAT_DOMAIN + "/qna/list", HEADER)

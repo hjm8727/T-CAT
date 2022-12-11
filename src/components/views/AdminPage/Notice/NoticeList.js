@@ -84,7 +84,7 @@ const NoticeList=()=>{
     };
     noticeData();
   }, []);
-  
+
   if (loading) {
     return <div>로딩 중...</div>;
   }
@@ -119,7 +119,6 @@ const NoticeList=()=>{
         <NoticeBlock>
         <TopBar name="공지사항 관리"/>
           <div className="notice-list-container">
-            <input type="hidden" id="arrayParam" name="arrayParam"/>
           <table>
                 <thead>
                   <tr>
