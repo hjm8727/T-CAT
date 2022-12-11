@@ -14,6 +14,14 @@ const Review = styled.div`
 `
 
 const Reviews = () => {
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => {
+        setModalOpen(false);
+    }
+
+
     const [comments, updateComments] = useState([]);
     const [deleteModalState, setDeleteModalState] = useState(false);
 
@@ -99,7 +107,11 @@ const Reviews = () => {
 
     return (
     <div>
-    <WriteReview buttonValue={"등록"} addComments={addComments} />
+        <div>
+    <button onClick={openModal}>asdasd</button>
+            {modalOpen && <WriteReview open={openModal} close={closeModal} buttonValue={"등록"} addComments={addComments} />}
+    {/* <WriteReview/> */}
+    </div>
     <br/>
     <Review>
         {comments.map((comment) => (
@@ -114,6 +126,7 @@ const Reviews = () => {
     ))}
     </Review>
     </div>
+
     );
 };
 
