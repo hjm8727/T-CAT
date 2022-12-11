@@ -11,7 +11,7 @@ import MainPoster2 from "./Content/MainPoster2/MainPoster2";
 import PosterCategory2 from "./Content/MainPoster2/MainCategory2";
 import MainReview from "./Content/MainReview/MainReview";
 import { useEffect, useState } from "react";
-import { ArrowCircleUp } from "@mui/icons-material";
+import { BsArrowUpCircle } from "react-icons/bs";
 
 const ItemContainer = styled.div`
     width: 80%;
@@ -88,7 +88,7 @@ const MainPage = () =>{
     return(
         <MainContainer>
             <button className={BtnStatus ? "topBtn active" : "topBtn"} onClick={handleTop}>
-            <ArrowCircleUp className='arrow'/></button>
+            <BsArrowUpCircle className='arrow'/></button>
             <MainHeader/>
                 <ContentWarp/>
                     <ItemContainer>

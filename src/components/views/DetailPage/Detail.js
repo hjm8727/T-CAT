@@ -7,7 +7,7 @@ import DBody from './Section/Body/DBody';
 import MainHeader from '../MainHeader/MainHeader';
 import Footer from '../Footer/Footer';
 import styled from 'styled-components';
-import { ArrowCircleUp } from '@mui/icons-material';
+import { BsArrowUpCircle } from 'react-icons/bs';
 const { Content, Sider } = Layout;
 
 const DWrap = styled.div`
@@ -99,7 +99,8 @@ function Detail() {
   return (
     <DWrap>
       <button className={BtnStatus ? "topBtn active" : "topBtn"} onClick={handleTop}>
-        <ArrowCircleUp className='arrow'/></button>
+      <BsArrowUpCircle className='arrow'/>
+        </button>
       <MainHeader/>
       <Layout style={{width: '80%', height: '100%' ,margin:'0 auto'}}>
 

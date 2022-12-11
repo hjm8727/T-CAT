@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import styled from 'styled-components';
-import Modal from '../../../.././util/Modal/Modal';
+
 
 const ModalStyle2 = styled.div`
     .modal {
