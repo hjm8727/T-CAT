@@ -92,7 +92,6 @@ const Banner=()=>{
         <BannerBlock>
         <NavBar name="광고/배너 관리"/>
         <div className="banner-Container">
-           
         </div>
         <input type="file" onChange={onChangeImg}/>
         {attachment && (

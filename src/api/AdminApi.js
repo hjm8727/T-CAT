@@ -27,7 +27,6 @@ const AdminApi={
     // 공지사항 삭제 
     noticeDelete : async function(index){
         return await axios.delete(TCAT_DOMAIN + "/notice/delete/"+ index, HEADER)
-       
     },
 
     // (체크박스) 공지사항 삭제
@@ -60,21 +59,35 @@ const AdminApi={
     totalBlackMember : async function(){
         return await axios.get(TCAT_DOMAIN + "/blacklist", HEADER)
     },
+
     // 회원 탈퇴(관리자)
-    deleteMemberAdmin : async function(){
-        return await axios.post(TCAT_DOMAIN + "/notice/delete/"+ HEADER)
-    },
+    deleteMemberAdmin : async function(arrItems){
+    const arrKeys = [];
+    for(var i=0; i<arrItems.length; i++){
+        arrKeys.push({"index":arrItems[i]});
+    }
+    const params = {
+        memberDTOCheckList: arrKeys
+    };
+    return await axios.post(TCAT_DOMAIN + "/notice/delete/member/check",params, "application/json");
+},
     // 일대일문의(qna) 전체 조회
     qnaList : async function(){
         return await axios.get(TCAT_DOMAIN + "/qna/list", HEADER)
     },
     // qna 관리자 답장
-    qnaReply : async function(id, qna_content) {
-        const qna = {
-            id : id,
-            qna_content : qna_content
+    qnaReply : async function(inputReply,index) {
+        console.log("api통신 되는지 " + inputReply +index);
+        const params = {
+            reply : inputReply,
+            index : index
         }
-        return await axios.post(TCAT_DOMAIN + "/qna-reply", qna, HEADER);
+        return await axios.post(TCAT_DOMAIN + "/qna/reply", params, HEADER);
     },
+
+    // 차트 정보
+    getChart : async function() {
+        return await axios.get(TCAT_DOMAIN + "/admin/chart", HEADER)
+    }
 }
 export default AdminApi;
