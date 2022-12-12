@@ -88,7 +88,7 @@ function TCalendar (props) {
             <div className='text-center'>
             <br/>
             <span className='bold'>선택한 날짜 : </span>{' '}
-            {date.toDateString()}
+            {date.toDateString("kr", { day: "numeric" })}
             <hr />
             </div>
             <Styleside>
