@@ -123,7 +123,7 @@ function MyPage() {
                 <div className='Contain1'>
                   <GithubFilled style={{fontSize: '10rem', margin: '2rem'}} />
                   <div className='up-wrap'>
-                    <Link to='MyPage/update'><button className='up-button'>회원 정보 수정</button></Link>
+                    <Link to='./update'><button className='up-button'>회원 정보 수정</button></Link>
                   </div>
                 </div>
                   <div className='info-des'>
@@ -151,7 +151,7 @@ function MyPage() {
 const MyBody = () => (
   <>
     <Routes>
-      <Route path='MyPage/update' element={<InfoUpdate />} />
+      <Route path='/update' element={<InfoUpdate />} />
       <Route path='/RList' element={<RList/>}/>
       <Route path='/CList' element={<CList/>}/>
       <Route path='/Contact' element={<Contact/>}/>
