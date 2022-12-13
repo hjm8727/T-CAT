@@ -16,6 +16,13 @@ const AskBodyContainer = styled.div`
         border-radius: 10px;
         resize: none;
     }
+    .close {
+    padding: 6px 12px;
+    color: black;
+    background-color: #dee2e6;
+    border-radius: 5px;
+    font-size: 13px;
+    }
 `
 
 const AskModalBody = () =>{

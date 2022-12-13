@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled} from '@ant-design/icons';
+import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled, EditOutlined, BookOutlined} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import RList from './section/RList';
 import CList from './section/CList';
 import Contact from './section/Iquiry/Contact';
@@ -17,7 +17,7 @@ const MyInfoStyle = styled.div`
   padding: 0;
   box-sizing: border-box;
   min-width: 930px;
-  height: 100vh;
+  height: auto;
   h4{
     font-size: 18px;
     strong{
@@ -99,10 +99,8 @@ function MyPage() {
       getItem('문의 하기', '/MyPage/Contact'),
       getItem('문의 조회', '/MyPage/IqList'),
     ]),
-    getItem('관리자와 채팅', 'sub2', <GithubFilled />, [
-      getItem('정경수', '5'),
-      getItem('김성탁', '6'),
-    ])
+    getItem('회원 정보 변경', '/MyPage/InfoUpdate', <EditOutlined />),
+    getItem('내가 찜한 목록', 'sub', <BookOutlined />)
   ];
   const navigate = useNavigate();
   
@@ -122,9 +120,6 @@ function MyPage() {
               <div className='userInfo'>
                 <div className='Contain1'>
                   <GithubFilled style={{fontSize: '10rem', margin: '2rem'}} />
-                  <div className='up-wrap'>
-                    <Link to='./update'><button className='up-button'>회원 정보 수정</button></Link>
-                  </div>
                 </div>
                   <div className='info-des'>
                     <div className='description'>
@@ -151,11 +146,11 @@ function MyPage() {
 const MyBody = () => (
   <>
     <Routes>
-      <Route path='/update' element={<InfoUpdate />} />
       <Route path='/RList' element={<RList/>}/>
       <Route path='/CList' element={<CList/>}/>
       <Route path='/Contact' element={<Contact/>}/>
       <Route path='/IqLIst' element={<IqList/>}/>
+      <Route path='/InfoUpdate' element={<InfoUpdate />} />
     </Routes>
     </>
 );

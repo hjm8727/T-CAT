@@ -6,8 +6,6 @@ import AdminApi from "../../../api/AdminApi";
 import Pagination from "./Tool/Pagination/Paging";
 import { useNavigate} from "react-router-dom";
 
-
-
 const BlackList=()=>{
   const navigate = useNavigate();
   // 페이지네이션 변수
@@ -15,6 +13,7 @@ const BlackList=()=>{
   const [page, setPage] = useState(1); // 현재 페이지 번호
   const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
   const [pageStart, setPageStart] = useState(0);
+
 
   // 체크박스 변수
   const [memberList, setMemberList] = useState('');
@@ -45,11 +44,11 @@ const BlackList=()=>{
       setCheckItems([]);
     }
   }
-
+//  블랙리스트 목록 가져오는 useEffect
   useEffect(() => {
     const memberData = async()=> {
       try {
-        const res = await AdminApi.totalBlackMember(); // 전체 멤버 조회
+        const res = await AdminApi.totalBlackMember();
         setMemberList(res.data);
         console.log(res.data);
       } catch (e) {
@@ -62,23 +61,23 @@ const BlackList=()=>{
   const onClickDelete=async()=>{
     if(checkItems.length<1){
       alert("체크박스 한개 이상 체크해주세요")
-      navigate('/admin/noticeList');
     } else{
       console.log(checkItems);
       const res = await AdminApi.deleteMemberAdmin(checkItems);
       console.log(res.data);
       alert("선택하신 회원이 탈퇴되었습니다.");
-      navigate('/admin/black');
       try{
         console.log("통신넘어가나? :" + res.data);
+        if(res.data === true) {
+          navigate(0);
+        }
       }catch(e){
         console.log(e);
       }
-      navigate('/admin/black');
     } 
     setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
   };
-
+  
     return(
         <MemberBlock>
         <TopBar name="블랙리스트 관리"/>

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Star from './Star';
-import { BsHeart } from "react-icons/bs";
 import { Rate } from 'antd';
+import WishBt from './WishBt';
 
 const PosterStyle = styled.div `
     .poster-box-bottom{
@@ -19,31 +18,41 @@ const PosterStyle = styled.div `
 `;
 
 // 상세페이지 상단 포스터
-function Poster() {
+function Poster(props) {
     const item_name = '태양의서커스 <뉴 알레그리아>';
-    const [like, setLike] = useState(0);
-    const [style, setStyle] = useState(false);
-    const onClickLike = e => {
-        setStyle(!style);
-        if(style === false){
-            e.target.style.color = 'red';
-            setLike(like + 1);
-        } else {
-            e.target.style.color = 'unset';
-            setLike(like - 1);
-        }
-        e.preventDefault();
+
+    // 찜하기
+    const [isWishAdd, setIsWishAdd] = useState(false);
+    const [like, setLike] = useState(false);
+
+    const wishAddHandler = () => {
+        setIsWishAdd(!isWishAdd)
     }
 
-    const [value, setValue] = useState(3);
+    // useEffect(async () => {
+    //     const fetchData = async () => {
+    //         const res = await DetailApi.axios.getWish
+    //         if (res.data.type === 'liked') setLike(true)
+    //     }
+    //     fetchData()
+    // }, []);
 
+    const wishHandler = async (e) => {
+        wishAddHandler()
+        // const res = await DetailApi.axios.postWish
+        // 사용자가 찜하기를 누름 -> DB 갱신
+        setLike(!like);
+    }
+
+
+    // 별점
+    const [value, setValue] = useState(3);
     function handleChange(value) {
         setValue(value);
     }
 
     return (
         <PosterStyle>
-        {/* <div> */}
         <h3 className='summary-top'>{item_name}</h3>
             <div className='summary-body'>
                 <div className='poster-box' style={{margin: '0'}}>
@@ -55,13 +64,12 @@ function Poster() {
                                     <span>{value}</span>
                                 </div>
                                 <div style={{marginRight:'20px'}}>
-                                    <BsHeart style={{fontSize: '23px' , marginRight:'5px'}} onClick={onClickLike}/><span>{like}</span>
+                                    <WishBt like={like} onClick={wishHandler}/>
                                 </div>
                             </div>
                     </div>
                 </div>
             </div>
-        {/* </div> */}
         </PosterStyle>
     )
 }

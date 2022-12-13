@@ -36,7 +36,6 @@ const InfoStyle = styled.div`
     margin-top: 20px;
   }
 `
-
 const postCodeStyle = {
   display: "block",
   position: "absolute",

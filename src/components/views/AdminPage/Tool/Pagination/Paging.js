@@ -2,9 +2,10 @@ import './Paging.css'
 
 // 1조에서 제공 ㅎㅎ
 
-const Pagination = ({total, limit, page,pageStart, setPage, setPageStart, setCheckItems}) => {
+const Pagination = ({total, limit, page,pageStart, setPage, setPageStart, setCheckItems,totalPages}) => {
   const numPages = Math.ceil(total / limit);
-  const viewPages = (numPages > 5 ? 5 : numPages); //페이지 수 
+  // const viewPages = (numPages > 5 ? 5 : numPages); //페이지 수 
+  const viewPages = {totalPages};
 
   return (
     <div className="pagination">
