@@ -85,7 +85,7 @@ width: 100%;
         width: max-content;
         color: white;
         font-weight: bold;
-        padding: 15px 30px;
+        padding: 10px 20px;
         background: #6c757d;
         border: 0;
         border-radius: 10px;

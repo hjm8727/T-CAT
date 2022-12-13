@@ -1,5 +1,5 @@
 import { async } from '@firebase/util';
-import React, { useState,useParams } from 'react';
+import React, { useState, useParams } from 'react';
 import AdminApi from '../../../../api/AdminApi';
 import { useNavigate} from "react-router-dom";
 import './qnaModal.css';
@@ -32,7 +32,7 @@ const QnaModal = (props) => {
     }
 }
 
-    const { open, close, header ,submit,title} = props;
+    const { open, close, header ,submit, title} = props;
 
     return (
         <div className={open ? 'openModal modal' : 'modal'}>

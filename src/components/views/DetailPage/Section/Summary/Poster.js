@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { BsHeart } from "react-icons/bs";
 import { Rate } from 'antd';
+import WishBt from './WishBt';
 
 const PosterStyle = styled.div `
     .poster-box-bottom{
@@ -18,43 +18,32 @@ const PosterStyle = styled.div `
 `;
 
 // 상세페이지 상단 포스터
-function Poster() {
-    const [isWishAdd, setIsWishAdd] = useState(false)
-    const [wishCount, setWishCount] = useState(77) 
+function Poster(props) {
+    const item_name = '태양의서커스 <뉴 알레그리아>';
+
+    // 찜하기
+    const [isWishAdd, setIsWishAdd] = useState(false);
+    const [like, setLike] = useState(false);
 
     const wishAddHandler = () => {
         setIsWishAdd(!isWishAdd)
     }
 
-    const item_name = '태양의서커스 <뉴 알레그리아>';
-    const [style, setStyle] = useState(false);
+    // useEffect(async () => {
+    //     const fetchData = async () => {
+    //         const res = await DetailApi.axios.getWish
+    //         if (res.data.type === 'liked') setLike(true)
+    //     }
+    //     fetchData()
+    // }, []);
 
-    const wishCountHandler = (e) => {
-        setStyle(!style);
+    const wishHandler = async (e) => {
         wishAddHandler()
-        if (!isWishAdd) {
-            e.target.style.color = 'red';
-            setWishCount(wishCount +1)
-            fetch("url", {
-                method: "POST",
-                body: JSON.stringify({
-                "user_id": 8,
-                "product_id": 2
-            })
-            })
-        } else if (isWishAdd) {
-            e.target.style.color = 'unset';
-            setWishCount(wishCount -1)
-            fetch("url", {
-            method: "POST",
-            body: JSON.stringigy({
-                "user_id": 8,
-                "product_id": 2
-            })
-            })
-        }
-        e.preventDefault();
-    }    
+        // const res = await DetailApi.axios.postWish
+        // 사용자가 찜하기를 누름 -> DB 갱신
+        setLike(!like);
+    }
+
 
     // 별점
     const [value, setValue] = useState(3);
@@ -64,7 +53,6 @@ function Poster() {
 
     return (
         <PosterStyle>
-        {/* <div> */}
         <h3 className='summary-top'>{item_name}</h3>
             <div className='summary-body'>
                 <div className='poster-box' style={{margin: '0'}}>
@@ -76,13 +64,12 @@ function Poster() {
                                     <span>{value}</span>
                                 </div>
                                 <div style={{marginRight:'20px'}}>
-                                    <BsHeart style={{fontSize: '23px' , marginRight:'5px'}} onClick={wishCountHandler}/><span>{wishCount}</span>
+                                    <WishBt like={like} onClick={wishHandler}/>
                                 </div>
                             </div>
                     </div>
                 </div>
             </div>
-        {/* </div> */}
         </PosterStyle>
     )
 }

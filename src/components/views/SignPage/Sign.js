@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PopupDom from './PopupDom';
 import DaumPostcode from "react-daum-postcode";
-import './Sign.css';
 import MemberApi from '../../../api/MemberApi';
 import { useNavigate } from 'react-router-dom';
 

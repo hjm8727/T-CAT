@@ -1,11 +1,5 @@
 import styled from "styled-components";
-import {QuestionCircleOutlined, 
-    ClockCircleOutlined,
-    DollarCircleOutlined,
-    UserOutlined,
-    SendOutlined,
-    NotificationOutlined,
-    } from "@ant-design/icons";
+import {QuestionCircleOutlined, ClockCircleOutlined, DollarCircleOutlined, UserOutlined, SendOutlined, NotificationOutlined,} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import Modal from "../../../../../util/Modal/Modal";
 import { useState } from "react";
