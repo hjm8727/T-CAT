@@ -84,5 +84,10 @@ const AdminApi={
         }
         return await axios.post(TCAT_DOMAIN + "/qna/reply", params, HEADER);
     },
+
+    // 차트 정보
+    getChart : async function() {
+        return await axios.get(TCAT_DOMAIN + "/admin/chart", HEADER)
+    }
 }
 export default AdminApi;
