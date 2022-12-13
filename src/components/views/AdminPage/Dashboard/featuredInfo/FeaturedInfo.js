@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import AdminApi from '../../../../../api/AdminApi';
 
 const FeaturedInfo=()=>{
-    const [chartData, setChartData] = useState('');
     const [chartAmount, setChartAmount] = useState('');
     const [chartMember, setChartMember] = useState('');
     const [chartReserve, setChartReserve] = useState('');
