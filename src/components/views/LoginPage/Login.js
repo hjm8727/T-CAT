@@ -329,7 +329,8 @@ const IdStyle = styled.div`
           <label name='email'>이메일 입력 </label>
           <input value={inputEmail} onChange={onChangeEmail} className='modal-input'name='email'  type='email' />
             <p />
-              {isShowPwd ? <></> : <button className='check-button' onClick={onClickCheck}>확인</button>}
+            <button className='check-button' onClick={onClickCheck}>확인</button>
+            {isShowPwd ? <></> : <button className='check-button' onClick={onClickCheck}>확인</button>}
               {isShowPwd &&
               <div className='show-00'>
                 <small>{inputName}님의 아이디는<br /> <u><span style={{fontWeight: 'bold', color: '#232323'}}>{password}</span></u>입니다.</small>
@@ -390,7 +391,7 @@ const t = [...props.topics];
     <div className='loginwrap'>
       <form className="form" onsubmit="return false" autocomplete="off">
       <div className="form-inner">
-          <h2>User Login</h2><Link className='sign-link'>User Sign</Link>
+          <h2>User Login</h2><Link className='sign-link' to='/sign'>User Sign</Link>
           <div className="input-wrapper">
             <label for="login-username">Username</label>
               <div className="input-group"><span className="icon"><svg viewBox="0 0 24 24">
