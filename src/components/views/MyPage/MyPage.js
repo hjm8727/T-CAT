@@ -58,7 +58,7 @@ const MyInfoStyle = styled.div`
 }
   .MypageMainContainer{
     height : 100%;
-    height: 73vh;
+    height: 70%;
   }
   .MypageDataContainer{
     border: 1px solid black;
@@ -66,7 +66,7 @@ const MyInfoStyle = styled.div`
     margin: 0 auto;
     margin-top: 20px;
     min-width: 660px;
-    min-height: 300px;
+    min-height: 400px;
   }
   @media(max-width : 1024px){
     .userInfo{

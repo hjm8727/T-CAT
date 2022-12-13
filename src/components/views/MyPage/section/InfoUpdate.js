@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import DaumPostcode, { DaumPostcodeEmbed } from "react-daum-postcode";
+import { DaumPostcodeEmbed } from "react-daum-postcode";
 import PopupDom from "../../SignPage/PopupDom";
 
 
@@ -8,6 +8,7 @@ const InfoStyle = styled.div`
   margin: 0 auto;
   box-sizing: border-box;
   .info-container {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
