@@ -12,13 +12,13 @@ const NoticeList=()=>{
   const params = useParams().index;
   const navigate = useNavigate();
    // 페이지네이션 변수
-   const [limit, setLimit] = useState(10); // 한페이지에 보여지는 게시물 갯수
+   const [limit, setLimit] = useState(6); // 한페이지에 보여지는 게시물 갯수
    const [page, setPage] = useState(1); // 현재 페이지 번호
    const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
    const [pageStart, setPageStart] = useState(0);
  
    // 체크박스 변수
-   const [noticeList, setNoticeList] = useState('');
+   const [noticeList, setNoticeList] = useState([]); //db 에서 정보 받아오기(배열에  담기)
    const [checkItems, setCheckItems] = useState([]); 
   // 체크박스 단일 선택
   const handleSingleCheck = (checked, obj) => {
@@ -45,29 +45,6 @@ const NoticeList=()=>{
       setCheckItems([]);
     }
   }
-    // 체크한거 배열로 담기
-    // useEffect(()=>{
-    //   // console.log(checkItems)
-    // }, [checkItems]
-    // )
-
-  // const checkArray = [checkItems];
-  // // console.log("체크값 개수 : " + checkItems.length);
-  // console.log("const array 값(인덱스번호): " + checkArray);
-  // console.log(checkArray);
-
-  // const row = [...checkItems];
-  // console.log(row);
-
-  // const myArr = []
-  // const key = 'index';
-  // const checkObj = {};
-
-  // checkObj[key] = Number(`checkItems`);
-
-  // debugger;
-
-
 
     /** 공지 목록을 가져오는 useEffect */
   useEffect(() => {
@@ -75,8 +52,9 @@ const NoticeList=()=>{
       setLoading(true);
       try {
         const res = await AdminApi.noticeInfo();
-        setNoticeList(res.data);
-        // console.log(res.data);
+        console.log("위에 삭제 최종 호출", res.data.noticeDTOList);
+        setNoticeList([...noticeList, ...res.data.noticeDTOList]);
+        console.log("데이터 다 찍히는지 : " + res.data.page);
       } catch (e) {
         console.log(e);
       }
@@ -89,27 +67,20 @@ const NoticeList=()=>{
     return <div>로딩 중...</div>;
   }
 
-  /**
-  
-   * @since   2022.12.10
-   * @author  harin.
-   * */
   const onClickDelete=async()=>{
     if(checkItems.length<1){
       alert("체크박스 한개 이상 체크해주세요")
-      navigate('/admin/noticeList');
     } else{
       console.log(checkItems);
       const res = await AdminApi.noticeCheck(checkItems);
       console.log(res.data);
       alert("선택하신 공지사항이 삭제되었습니다.");
-      navigate('/admin/noticeList');
       try{
         console.log("통신넘어가나? :" + res.data);
+        navigate(0);
       }catch(e){
         console.log(e);
       }
-      navigate('/admin/noticeList');
     } 
     setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
   };
@@ -134,8 +105,7 @@ const NoticeList=()=>{
                   </tr>
                 </thead>
                 <tbody>
-                  {noticeList && noticeList.slice(offset, offset + limit)
-                  .map(({index,title,createTime}) => (
+                  {noticeList.map(({index,title,createTime}) => (
                   <tr>
                   <td><input type='checkbox'  name={`select-${index}`} onChange={(e) => handleSingleCheck(e.target.checked,index)}
                   // className='notiitem' id={`select-${index}`}
@@ -164,11 +134,6 @@ const NoticeList=()=>{
                 <button className="noticeBtn" onClick={()=>{navigate('/admin/writeNotice')}}>작성하기</button>
                 <button className="noticeBtn" onClick={onClickDelete}>삭제하기</button>
             </div>
-            {/* <script>
-              $(".notiitem").on("onclick", function(e){
-                  $(this).attr("name")};                
-              );
-            </script> */}
         </NoticeBlock>
     );
 }
@@ -198,7 +163,7 @@ table,th,td {
       border: none;
       margin: 15px 0;
       margin: 20px 10px;
-      background-color: #E3CAA5;
+      background-color: #92A9BD;
       border-radius: 5px;
       width: 150px;
       height: 50px;

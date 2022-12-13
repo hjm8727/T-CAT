@@ -11,9 +11,7 @@ const AdminApi={
     writing : async function(inputTitle, inputDetail){
         param.title = inputTitle;
         param.content = inputDetail;
-        
         return await axios.post(TCAT_DOMAIN + "/notice/write", param, 'application/json');
-
     },
     // 공지사항 전체 목록
     noticeInfo : async function(){

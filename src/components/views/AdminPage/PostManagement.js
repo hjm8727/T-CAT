@@ -104,7 +104,7 @@ table,th,td {
   button{
     border: none;
     margin: 20px 10px;
-        background-color: #E3CAA5;
+        background-color: #92A9BD;
         border-radius: 5px;
         width: 340px;
         height: 50px;
