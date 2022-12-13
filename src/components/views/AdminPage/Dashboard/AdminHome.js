@@ -6,7 +6,8 @@ import Profile from "./profile/Profile";
 
 
 const AdminBlock=styled.div`
-        width: 100vw;
+        width: 85%;
+        margin: 0 auto;
     .home{
     margin-top: 15px;
     }

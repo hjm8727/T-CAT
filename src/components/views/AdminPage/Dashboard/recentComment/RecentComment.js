@@ -42,10 +42,12 @@ hr{
     overflow: hidden;
 }
 .minititle{
-    background-color: #f5f5f5;
-    margin: 0;
+    /* background-color: #f5f5f5; */
+    margin: auto 0;
     /* text-align: center; */
-    opacity: 90%;
+    /* opacity: 90%; */
+    font-size: 18px;
+    font-weight: bolder;
     text-overflow: ellipsis;
     overflow:hidden;
     white-space: nowrap;
@@ -63,6 +65,16 @@ const RecentComment=()=>{
             id : "2",
             title : "첫번째 후기 제목입니다.",
             contents : "재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다재미있습니다"
+        },
+        {
+            id : "3",
+            title : "첫번째 후기 제목입니다.",
+            contents : "재미있습니다."
+        },
+        {
+            id : "3",
+            title : "첫번째 후기 제목입니다.",
+            contents : "재미있습니다."
         },
         {
             id : "3",

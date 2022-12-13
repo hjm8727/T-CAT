@@ -10,6 +10,7 @@ const InfoStyle = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 20px 0;
   }
   input {
     width: 200px;
@@ -30,6 +31,7 @@ const InfoStyle = styled.div`
     height: 40px;
     background-color: #232323;
     color: silver;
+    margin-top: 20px;
   }
 `
 

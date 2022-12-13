@@ -5,8 +5,16 @@ import { BsHeart } from "react-icons/bs";
 import { Rate } from 'antd';
 
 const PosterStyle = styled.div `
-    .like {
-        margin-right: 4rem;
+    .poster-box-bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 10px;
+    }
+    @media (max-width:1024px){
+        .poster-box-bottom{
+            margin-right: 80px;
+        }
     }
 `;
 
@@ -35,19 +43,25 @@ function Poster() {
 
     return (
         <PosterStyle>
-        <div>
+        {/* <div> */}
         <h3 className='summary-top'>{item_name}</h3>
             <div className='summary-body'>
                 <div className='poster-box' style={{margin: '0'}}>
-                    <img className='poster-box-top' src='test.gif' alt='포스터 이미지'/>
-                    <div className='poster-box-bottom'>
-                        <span className='like'><BsHeart style={{fontSize: '20px'}} onClick={onClickLike}/>{like}</span>
-                        <Rate allowHalf value={value} onChange={handleChange} style={{ fontSize: '1.8rem'}}/>
-                        <span>{value}</span>
+                    <div className='posoterConta'>
+                        <img className='poster-box-top' src='test.gif' alt='포스터 이미지'/>
+                            <div className='poster-box-bottom'>
+                                <div>
+                                    <Rate allowHalf value={value} onChange={handleChange} style={{ fontSize: '1.8rem'}}/>
+                                    <span>{value}</span>
+                                </div>
+                                <div style={{marginRight:'20px'}}>
+                                    <BsHeart style={{fontSize: '23px' , marginRight:'5px'}} onClick={onClickLike}/><span>{like}</span>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
-        </div>
+        {/* </div> */}
         </PosterStyle>
     )
 }

@@ -63,10 +63,10 @@ const MyInfoStyle = styled.div`
   .MypageDataContainer{
     border: 1px solid black;
     width: 60%;
-    height: 300px;
     margin: 0 auto;
     margin-top: 20px;
     min-width: 660px;
+    min-height: 300px;
   }
   @media(max-width : 1024px){
     .userInfo{

@@ -61,6 +61,7 @@ const posterInfo = [
     ]
 
 const PosterImg = () =>{
+    
     return(
         <PosterImgContainer>
             <ul>

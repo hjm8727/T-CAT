@@ -109,7 +109,7 @@ const MainHeader = () =>{
         const val = e.target.value
         setcategoryvalue(val);
     }
-    console.log(categoryvalue);
+    // console.log(categoryvalue);
 
     return(
         <>

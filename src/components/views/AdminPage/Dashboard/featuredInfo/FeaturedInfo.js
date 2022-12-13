@@ -5,7 +5,7 @@ const FeaturedInfo=()=>{
     return(
         <div className="featured">
             <div className="featuredItem">
-                <HiOutlineCurrencyDollar size="80px"/>
+                <HiOutlineCurrencyDollar className='featureIcon' size="70px"/>
                 <div className='featured-content'>
                 <div className="featureTitle">누적 수익</div>
                 <div className="featuredRate">2000</div>
@@ -13,14 +13,14 @@ const FeaturedInfo=()=>{
             </div>
 
             <div className="featuredItem">
-                <HiOutlineUserAdd size="80px"/>
+                <HiOutlineUserAdd className='featureIcon' size="65px"/>
                 <div className='featured-content'>
                 <div className="featureTitle">누적 회원 수</div>
                 <div className="featuredRate">2000</div>
                 </div>
             </div>
             <div className="featuredItem">
-                <HiOutlineTicket size="80px"/>
+                <HiOutlineTicket className='featureIcon' size="65px"/>
                 <div className='featured-content'>
                 <div className="featureTitle">누적 예매 수</div>
                 <div className="featuredRate">2000</div>

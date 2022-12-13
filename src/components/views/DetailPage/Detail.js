@@ -12,6 +12,7 @@ const { Content, Sider } = Layout;
 
 const DWrap = styled.div`
 width: 100%;
+min-width: 970px;
 background-color: #f5f5f5;
 /* min-width: 1024px; */
 /* border: 1px solid black; */
@@ -49,13 +50,21 @@ background-color: #f5f5f5;
   top: 6.5rem;
   bottom: 0;
 }
+.ItemContainer2{
+  width: 100%;
+  display: flex;
+}
+
 @media (max-width: 1024px){
-  .site-layout-background{
+  
+  .ItemContainer2{
     display: block;
+  }
+  .site-layout-background{
   }
   .detailSiderContainer{
     left: 500px;
-    /* position: absolute; */
+    position: sticky;
   }
 
 }
@@ -106,8 +115,8 @@ function Detail() {
 
         <Content >
           <Layout className="site-layout-background" >
-            
-            <Content style={{width: '40%',border:'1px solid blakc'}}>
+            <div className='ItemContainer2'>
+            <Content className='posterCon' style={{border:'1px solid blakc'}}>
               <Poster/>
             </Content>
             <hr style={{backgroundColor: 'black', width: '1px', opacity: '0.6'}} />
@@ -116,7 +125,7 @@ function Detail() {
             <Content className='DetailInfoContainer' style={{width: '60%'}}>
               <Info/>
             </Content>
-
+            </div>
 
             <Sider className="detailSiderContainer" width={310} >
               <TCalendar item_name={item_name} price={price}/>

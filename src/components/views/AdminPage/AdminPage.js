@@ -16,14 +16,15 @@ import UpdateNotice from './Notice/UpdateNotice';
 
 const HeaderBlock=styled.div`
   /* width: 100%; */
-  height: 65px;
-  background-color: #E3CAA5;
+  background-color: #92A9BD;
   /* display: flex; */
   justify-content: center;
   align-items: center;
   .logoContainer{
-    float: left;
-  }
+    height: 76px;
+    display: flex;
+    align-items: center;
+}
   .logo{
         width   :150px;
         height: 50px;
@@ -33,7 +34,7 @@ const HeaderBlock=styled.div`
 `;
 function AdminPage() {
   return (
-    <div style={{display : "flex", flexDirection:"column", flex : 1, height : '100vh', width : "100%"}}>
+    <div style={{display : "flex", flexDirection:"column", flex : 1, height : '100vh', width : "100%", minWidth : '1024px'}}>
       <Header/>
       <div style={{display : "flex", flexDirection:"row", flex : 1}}>
         <SideMenu/>
@@ -56,7 +57,7 @@ function Header() {
 function SideMenu() {
   const navigate = useNavigate();
   return(
-    <Menu style={{backgroundColor : "#E3CAA5"}}
+    <Menu style={{backgroundColor : '#f5f5f5'}}
       onClick={({key})=>{
         if(key === "로그아웃"){
           console.log("관리자 로그아웃");
