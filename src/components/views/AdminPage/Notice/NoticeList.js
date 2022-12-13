@@ -3,22 +3,25 @@ import styled from "styled-components";
 import { useState, useEffect} from "react";
 import { Link, useNavigate,useParams} from "react-router-dom";
 import AdminApi from "../../../../api/AdminApi";
-import Pagination from "../Tool/Pagination/Paging";
+import { Pagination } from "antd";
+// import { Pagination } from "react-bootstrap";
+// import Pagination from "../Tool/Pagination/Paging";
 // import $ from 'jquery';
 
 
-const NoticeList=()=>{
+const NoticeList=(props)=>{
   const [loading, setLoading] = useState(false);
   const params = useParams().index;
   const navigate = useNavigate();
-   // 페이지네이션 변수
-   const [limit, setLimit] = useState(6); // 한페이지에 보여지는 게시물 갯수
-   const [page, setPage] = useState(1); // 현재 페이지 번호
-   const offset = (page - 1) * limit; // 각 페이지별 첫 게시물의 위치 계산
-   const [pageStart, setPageStart] = useState(0);
+
+  //  리액트 페이지네이션 변수 
+  const [noticeList, setNoticeList] = useState([]); //db 에서 정보 받아오기(배열에  담기)
+  const [pageSize, setPageSize] = useState(10); // 한페이지에 몇개씩 있을건지
+  const [totalCount, setTotalCount] = useState(0); // 총 데이터 숫자
+  const [currentPage, setCurrentPage] = useState(1); // 현재 몇번째 페이지인지
+
  
    // 체크박스 변수
-   const [noticeList, setNoticeList] = useState([]); //db 에서 정보 받아오기(배열에  담기)
    const [checkItems, setCheckItems] = useState([]); 
   // 체크박스 단일 선택
   const handleSingleCheck = (checked, obj) => {
@@ -46,22 +49,39 @@ const NoticeList=()=>{
     }
   }
 
+  // useEffect(()=>{
+  //   noticeData()
+  // }, [setCurrentPage]);
+
+  // const noticeData = async()=> {
+  //   const res = await AdminApi.noticeInfo();
+  //   setNoticeList([...noticeList, ...res.data.noticeDTOList]);
+  //   setTotalCount(res.data.totalResults); // db에서 잘라준 size 별로 잘랐을때 나온 페이지 수
+  //   setCurrentPage(res.data.page);
+  // }
+
+
+
     /** 공지 목록을 가져오는 useEffect */
   useEffect(() => {
     const noticeData = async()=> {
       setLoading(true);
       try {
-        const res = await AdminApi.noticeInfo();
+        
+        const res = await AdminApi.noticeInfo(currentPage, pageSize);
         console.log("위에 삭제 최종 호출", res.data.noticeDTOList);
         setNoticeList([...noticeList, ...res.data.noticeDTOList]);
-        console.log("데이터 다 찍히는지 : " + res.data.page);
+        // 페이징 시작
+        setTotalCount(res.data.totalResults); 
+        // db에서 잘라준 size 별로 잘랐을때 나온 페이지 수
+        setCurrentPage(res.data.page);
       } catch (e) {
         console.log(e);
       }
       setLoading(false);
     };
     noticeData();
-  }, []);
+  }, [currentPage]); // currentpage 값이 바뀌면 렌더링 되도록 
 
   if (loading) {
     return <div>로딩 중...</div>;
@@ -69,7 +89,9 @@ const NoticeList=()=>{
 
   const onClickDelete=async()=>{
     if(checkItems.length<1){
-      alert("체크박스 한개 이상 체크해주세요")
+      alert("체크박스 한개 이상 체크해주세요");
+      navigate(0);
+      // navigate('/admin/noticeList')
     } else{
       console.log(checkItems);
       const res = await AdminApi.noticeCheck(checkItems);
@@ -77,13 +99,15 @@ const NoticeList=()=>{
       alert("선택하신 공지사항이 삭제되었습니다.");
       try{
         console.log("통신넘어가나? :" + res.data);
-        navigate(0); 
+        navigate(0);
       }catch(e){
         console.log(e);
       }
     } 
     setCheckItems({}); // 삭제버튼 누르고 데이터 넘기면 초기화
   };
+
+  // const onChangeBtn=(page)
 
 
     return(
@@ -122,14 +146,13 @@ const NoticeList=()=>{
               </table>
             </div>
             <Pagination
-              total={noticeList.length}
-              limit={limit}
-              page={page}
-              setPage={setPage}
-              pageStart={pageStart}
-              setPageStart={setPageStart}
-              />
+             total={totalCount}  //총 데이터 갯수
+             current={currentPage} 
+             pageSize={pageSize}
+             onChange={(page) => {setCurrentPage(page); setNoticeList([]);}} //숫자 누르면 해당 페이지로 이동
+            //  onChange={onChangeBtn} //숫자 누르면 해당 페이지로 이동
 
+            />
             <div className="buttonWrap">
                 <button className="noticeBtn" onClick={()=>{navigate('/admin/writeNotice')}}>작성하기</button>
                 <button className="noticeBtn" onClick={onClickDelete}>삭제하기</button>

@@ -1,21 +1,23 @@
 import axios from "axios";
+import { createSearchParams } from "react-router-dom";
 const HEADER = 'application/json';
 const contentType = 'application/json';
 const TCAT_DOMAIN= "http://localhost:8118";//server path
 const serverPAthTCAT_DOMAIN= "http://localhost:8118";//server path
-const param = {};
 // "http://cokebear756.synology.me:33060";
 
 const AdminApi={
     //공지사항 쓰기 api
     writing : async function(inputTitle, inputDetail){
-        param.title = inputTitle;
-        param.content = inputDetail;
-        return await axios.post(TCAT_DOMAIN + "/notice/write", param, 'application/json');
+        const params = {
+            title : inputTitle,
+            content : inputDetail
+        }
+        return await axios.post(TCAT_DOMAIN + "/notice/write", params, HEADER);
     },
     // 공지사항 전체 목록
-    noticeInfo : async function(){
-        return await axios.get(TCAT_DOMAIN + "/notice/list", HEADER)
+    noticeInfo : async function(currentPage ,setPageSize){
+        return await axios.get(TCAT_DOMAIN + `/notice/list?page=${(currentPage - 1)}&size=${setPageSize}`, HEADER)
     },
     // 공지사항 상세페이지
     noticeDetail : async function(index){
