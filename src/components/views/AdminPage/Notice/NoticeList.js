@@ -77,7 +77,7 @@ const NoticeList=()=>{
       alert("선택하신 공지사항이 삭제되었습니다.");
       try{
         console.log("통신넘어가나? :" + res.data);
-        navigate(0);
+        navigate(0); 
       }catch(e){
         console.log(e);
       }

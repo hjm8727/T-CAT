@@ -18,7 +18,7 @@ const FeaturedInfo=()=>{
             setChartReserve(response.data[0].totalReserve);
         } catch (e) {
             console.log(e);
-        }
+    }
     };
     getChart();
 }, []);

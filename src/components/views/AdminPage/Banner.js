@@ -70,9 +70,6 @@ const Banner=()=>{
     
         },[])
 
-        const onIndex=()=>{
-        }
-
         const onDelete = async () => {
             console.log(attachmentUrl);
             const urlRef = ref(storage, attachmentUrl);
