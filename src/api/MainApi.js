@@ -6,8 +6,8 @@ const TCAT_DOMAIN= "http://localhost:8211";//server path
 const MainApi={
   // 주간랭킹  
   rankingWeek : async function(category,size){
-      category = category,
-      size = size;
+      // category = category,
+      // size = size;
       return await axios.post(TCAT_DOMAIN + "/ranking/week", HEADER);
     },
    

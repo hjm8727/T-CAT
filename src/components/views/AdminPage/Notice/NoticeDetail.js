@@ -102,7 +102,7 @@ const DetailBlock=styled.div`
       border: none;
       margin: 15px 0;
       margin: 20px 10px;
-      background-color: #E3CAA5;
+      background-color: #92A9BD;
       border-radius: 5px;
       width: 150px;
       height: 50px;
