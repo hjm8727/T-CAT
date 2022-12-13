@@ -36,7 +36,6 @@ const InfoStyle = styled.div`
 `
 
 
-
 function InfoUpdate () {
   
   const [inputPwd, setInputPwd] = useState('');
