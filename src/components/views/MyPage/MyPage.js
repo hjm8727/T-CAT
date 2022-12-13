@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled, EditOutlined} from '@ant-design/icons';
+import { ScheduleOutlined, DeleteOutlined, WhatsAppOutlined, GithubFilled, EditOutlined, BookOutlined} from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import MainHeader from '../MainHeader/MainHeader';
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import RList from './section/RList';
 import CList from './section/CList';
 import Contact from './section/Iquiry/Contact';
@@ -99,7 +99,8 @@ function MyPage() {
       getItem('문의 하기', '/MyPage/Contact'),
       getItem('문의 조회', '/MyPage/IqList'),
     ]),
-    getItem('회원 정보 변경', '/MyPage/InfoUpdate', <EditOutlined />)
+    getItem('회원 정보 변경', '/MyPage/InfoUpdate', <EditOutlined />),
+    getItem('내가 찜한 목록', 'sub', <BookOutlined />)
   ];
   const navigate = useNavigate();
   
@@ -119,9 +120,6 @@ function MyPage() {
               <div className='userInfo'>
                 <div className='Contain1'>
                   <GithubFilled style={{fontSize: '10rem', margin: '2rem'}} />
-                  {/* <div className='up-wrap'>
-                    <Link to='MyPage/update'><button className='up-button'>회원 정보 수정</button></Link>
-                  </div> */}
                 </div>
                   <div className='info-des'>
                     <div className='description'>

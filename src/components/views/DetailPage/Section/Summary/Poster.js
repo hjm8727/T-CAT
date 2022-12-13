@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Star from './Star';
 import { BsHeart } from "react-icons/bs";
 import { Rate } from 'antd';
 
@@ -20,23 +19,45 @@ const PosterStyle = styled.div `
 
 // 상세페이지 상단 포스터
 function Poster() {
-    const item_name = '태양의서커스 <뉴 알레그리아>';
-    const [like, setLike] = useState(0);
-    const [style, setStyle] = useState(false);
-    const onClickLike = e => {
-        setStyle(!style);
-        if(style === false){
-            e.target.style.color = 'red';
-            setLike(like + 1);
-        } else {
-            e.target.style.color = 'unset';
-            setLike(like - 1);
-        }
-        e.preventDefault();
+    const [isWishAdd, setIsWishAdd] = useState(false)
+    const [wishCount, setWishCount] = useState(77) 
+
+    const wishAddHandler = () => {
+        setIsWishAdd(!isWishAdd)
     }
 
-    const [value, setValue] = useState(3);
+    const item_name = '태양의서커스 <뉴 알레그리아>';
+    const [style, setStyle] = useState(false);
 
+    const wishCountHandler = (e) => {
+        setStyle(!style);
+        wishAddHandler()
+        if (!isWishAdd) {
+            e.target.style.color = 'red';
+            setWishCount(wishCount +1)
+            fetch("url", {
+                method: "POST",
+                body: JSON.stringify({
+                "user_id": 8,
+                "product_id": 2
+            })
+            })
+        } else if (isWishAdd) {
+            e.target.style.color = 'unset';
+            setWishCount(wishCount -1)
+            fetch("url", {
+            method: "POST",
+            body: JSON.stringigy({
+                "user_id": 8,
+                "product_id": 2
+            })
+            })
+        }
+        e.preventDefault();
+    }    
+
+    // 별점
+    const [value, setValue] = useState(3);
     function handleChange(value) {
         setValue(value);
     }
@@ -55,7 +76,7 @@ function Poster() {
                                     <span>{value}</span>
                                 </div>
                                 <div style={{marginRight:'20px'}}>
-                                    <BsHeart style={{fontSize: '23px' , marginRight:'5px'}} onClick={onClickLike}/><span>{like}</span>
+                                    <BsHeart style={{fontSize: '23px' , marginRight:'5px'}} onClick={wishCountHandler}/><span>{wishCount}</span>
                                 </div>
                             </div>
                     </div>
