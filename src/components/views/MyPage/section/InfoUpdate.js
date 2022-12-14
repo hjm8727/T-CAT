@@ -38,8 +38,7 @@ const InfoStyle = styled.div`
 `
 const postCodeStyle = {
   display: "block",
-  position: "absolute",
-  top: "2%",
+  position: "relative",
   width: "500px",
   height: "500px",
   padding: "7px",
@@ -84,7 +83,7 @@ const InfoUpdate = () => {
               <div>
                 <PopupDom>
                   <DaumPostcodeEmbed style={postCodeStyle} onComplete={handlePostCode} />
-                  <button className='btn btn--primary' onClick={onClose} type='button'>닫기</button>
+                  <button className='btn btn--primary' style={{marginLeft: '190px'}} onClick={onClose} type='button'>닫기</button>
                 </PopupDom>
               </div>
               )}
