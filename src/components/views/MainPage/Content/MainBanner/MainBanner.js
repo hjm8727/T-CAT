@@ -13,7 +13,6 @@ const BannerContainer = styled.div`
     }
 `
 
-
 const banner = [
     {
         id : "1",
