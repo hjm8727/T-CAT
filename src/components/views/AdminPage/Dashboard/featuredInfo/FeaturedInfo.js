@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import AdminApi from '../../../../../api/AdminApi';
 
 const FeaturedInfo=()=>{
-    const [chartData, setChartData] = useState('');
     const [chartAmount, setChartAmount] = useState('');
     const [chartMember, setChartMember] = useState('');
     const [chartReserve, setChartReserve] = useState('');
@@ -18,7 +17,7 @@ const FeaturedInfo=()=>{
             setChartReserve(response.data[0].totalReserve);
         } catch (e) {
             console.log(e);
-        }
+    }
     };
     getChart();
 }, []);

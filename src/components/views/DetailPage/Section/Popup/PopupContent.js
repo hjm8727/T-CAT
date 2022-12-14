@@ -262,7 +262,6 @@ function PopupContent (props) {
     
     return(
       <div>
-      <hr />
       <div>
           <MyInfo cancelday={cancelday} item_name={item_name} date={date} value={value} ticket={ticket} tax={tax} total={total} />
           <br/>

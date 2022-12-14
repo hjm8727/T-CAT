@@ -13,7 +13,7 @@ const MapModalBody = (props) =>{
     useEffect(() => {
         var container = document.getElementById('map');
         var options = {
-            center: new kakao.maps.LatLng(37.31769736304275, 126.83974503891676),
+            center: new kakao.maps.LatLng(37.31123213275, 126.83214503891676),
             level: 3
         };
     

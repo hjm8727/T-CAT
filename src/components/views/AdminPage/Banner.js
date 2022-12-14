@@ -15,7 +15,6 @@ const Banner=()=>{
     const[image, setImage] = useState("");
     // 사진 업로드 하고 담는 값
 
-    // const StudyWrite = (studyObj) => {
         const [attachment, setAttachment] = useState("");
         const [imageList, setImageList] =useState([]);
         let attachmentUrl = "";
@@ -67,11 +66,7 @@ const Banner=()=>{
                     })
                 })
             })
-    
         },[])
-
-        const onIndex=()=>{
-        }
 
         const onDelete = async () => {
             console.log(attachmentUrl);

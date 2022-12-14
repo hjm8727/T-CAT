@@ -32,8 +32,8 @@ const MainContainer = styled.div`
 .topBtn {
     position: fixed; 
     opacity: 0; 
-    bottom: 40px; 
-    right: 40px;
+    bottom: 80px; 
+    right: 55px;
     z-index: -10; 
     border: 0 none;
     background: none;

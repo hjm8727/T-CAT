@@ -143,10 +143,17 @@ const WModal = styled.div`
   padding: 12px 16px;
   text-align: right;
 }
-.modal > section > footer button {
+.add-btn {
   padding: 6px 12px;
   color: #fff;
   background-color: #6c757d;
+  border-radius: 5px;
+  font-size: 13px;
+}
+.cancel-btn {
+  padding: 6px 12px;
+  color: black;
+  background-color: #dee2e6;
   border-radius: 5px;
   font-size: 13px;
 }
