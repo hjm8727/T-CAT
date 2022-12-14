@@ -54,13 +54,14 @@ const ModalStyle = styled.div`
         padding: 12px 16px;
         text-align: right;
     }
-    .modal > section > footer button {
+    .close {
         padding: 6px 12px;
-        color: #fff;
-        background-color: #6c757d;
+        color: black;
+        background-color: #dee2e6;
         border-radius: 5px;
         font-size: 13px;
     }
+    
     .modal.openModal {
         display: flex;
         align-items: center;

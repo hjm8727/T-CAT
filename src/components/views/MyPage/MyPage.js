@@ -17,7 +17,7 @@ const MyInfoStyle = styled.div`
   padding: 0;
   box-sizing: border-box;
   min-width: 930px;
-  height: auto;
+  /* height: auto; */
   h4{
     font-size: 18px;
     strong{
@@ -61,10 +61,8 @@ const MyInfoStyle = styled.div`
     height: 70%;
   }
   .MypageDataContainer{
-    border: 1px solid black;
     width: 60%;
-    margin: 0 auto;
-    margin-top: 20px;
+    margin: 23px auto;
     min-width: 660px;
     min-height: 400px;
   }
@@ -86,6 +84,10 @@ function MyPage() {
   useEffect(() => {
     const el = document.getElementsByClassName('ant-layout-sider-trigger');
     el[0].style.position = 'relative';
+    const el2 = document.getElementsByClassName('ant-layout-sider-children');
+    el2[0].style.height = '228px';
+    const el3 = document.getElementsByClassName('ant-layout-sider ant-layout-sider-dark ant-layout-sider-has-trigger');
+    el3[0].style.background = 'none';
   })
   
   function getItem(label, key, icon, children) {
@@ -108,7 +110,7 @@ function MyPage() {
     <MyInfoStyle> 
     <MainHeader/>
     <Layout>
-      <Sider  collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} style={{minHeight: 'auto'}}>
         {/* <div className="logo" /> */}
         <Menu theme="dark" mode="inline" items={items} onClick={({key}) => navigate(key)}/>
       </Sider>
